@@ -1,8 +1,10 @@
 import React from 'react';
-import { contacts } from '../../utils/contacts';
-import information from '../../utils/infomation';
-import { Link } from '../Link';
-import { Caps } from '../Text/titles';
+
+import { contacts } from '@utils/contacts';
+import information from '@utils/infomation';
+
+import { Link } from '@components/Link';
+import { Caps } from '@components/Text/titles';
 
 export const Contact: React.FC = () => {
   const phoneRegex =

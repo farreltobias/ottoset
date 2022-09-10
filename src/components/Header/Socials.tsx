@@ -1,6 +1,7 @@
 import { Children } from 'react';
-import { socials } from '../../utils/socials';
-import { Caps } from '../Text/titles';
+
+import { socials } from '@utils/socials';
+import { Caps } from '@components/Text/titles';
 
 export const Socials: React.FC = () => {
   return (

@@ -1,5 +1,6 @@
 import WhatsappIcon from '@public/social/whatsapp.svg';
-import information from '../utils/infomation';
+
+import information from '@utils/infomation';
 
 import { Link } from './Link';
 import { Caps } from './Text/titles';

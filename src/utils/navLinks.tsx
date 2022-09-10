@@ -4,7 +4,6 @@ export const navLinks = [
     label: 'Sobre',
   },
   {
-    href: '/',
     label: 'Grupo Gerador',
     dropdown: [
       {
@@ -34,7 +33,6 @@ export const navLinks = [
     ],
   },
   {
-    href: '/',
     label: 'Aviação',
     dropdown: [
       {
@@ -44,7 +42,6 @@ export const navLinks = [
     ],
   },
   {
-    href: '/',
     label: 'Energia Solar',
     dropdown: [
       {
@@ -66,7 +63,6 @@ export const navLinks = [
     ],
   },
   {
-    href: '/',
     label: 'Manutenção Predial',
     dropdown: [
       {
