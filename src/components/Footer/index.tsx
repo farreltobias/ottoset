@@ -1,9 +1,29 @@
-import React from 'react';
+import Link from 'next/link';
 
-export const index = () => {
+import Logo from '@public/logo/logo.svg';
+
+import { Desktop } from './Navigation/Desktop';
+import { Mobile } from './Navigation/Mobile';
+
+import { Information } from './Information';
+import { Policy } from './Policy';
+
+export const Footer: React.FC = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <footer className="w-full bg-neutral-50">
+      <div className="container mx-auto flex py-8">
+        <div className="flex flex-col w-full lg:w-fit lg:mr-8 child:w-fit child:mx-auto child:lg:mx-0">
+          <Link href="/">
+            <a className="mb-4">
+              <Logo width={130} height={130 * 0.36} viewBox="15 0 130 60" />
+            </a>
+          </Link>
+          <Mobile />
+          <Information />
+        </div>
+        <Desktop />
+      </div>
+      <Policy />
+    </footer>
   );
 };
