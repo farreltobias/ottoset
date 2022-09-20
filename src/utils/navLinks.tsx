@@ -1,11 +1,53 @@
-export const navLinks = [
+type SubItem = {
+  href: string;
+  label: string;
+  onlyFooter?: boolean;
+  onlyHeader?: boolean;
+};
+
+type NavLink = {
+  label: string;
+  href?: string;
+  subItems?: SubItem[];
+  onlyFooter?: boolean;
+  onlyHeader?: boolean;
+};
+
+export const navLinks: NavLink[] = [
   {
-    href: '/',
+    href: '/sobre',
     label: 'Sobre',
+    onlyHeader: true,
+  },
+  {
+    label: 'A Ottoset',
+    onlyFooter: true,
+    subItems: [
+      {
+        href: '/sobre',
+        label: 'Quem somos',
+      },
+      {
+        href: '/servicos',
+        label: 'Serviços',
+      },
+      {
+        href: '/projetos',
+        label: 'Portfolio de projetos',
+      },
+      {
+        href: '/prestador',
+        label: 'Seja prestador de serviços Ottoset',
+      },
+      {
+        href: '/carreiras',
+        label: 'Trabalhe conosco',
+      },
+    ],
   },
   {
     label: 'Grupo Gerador',
-    dropdown: [
+    subItems: [
       {
         href: '/',
         label: 'Venda',
@@ -34,7 +76,7 @@ export const navLinks = [
   },
   {
     label: 'Aviação',
-    dropdown: [
+    subItems: [
       {
         href: '/',
         label: 'Modernização de GPU',
@@ -43,7 +85,7 @@ export const navLinks = [
   },
   {
     label: 'Energia Solar',
-    dropdown: [
+    subItems: [
       {
         href: '/',
         label: 'Venda',
@@ -59,12 +101,13 @@ export const navLinks = [
       {
         href: '/',
         label: 'Simule seu sistema',
+        onlyFooter: true,
       },
     ],
   },
   {
     label: 'Manutenção Predial',
-    dropdown: [
+    subItems: [
       {
         href: '/',
         label: 'Elétrica',

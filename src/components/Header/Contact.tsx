@@ -4,33 +4,22 @@ import { contacts } from '@utils/contacts';
 import information from '@utils/infomation';
 
 import { Link } from '@components/Link';
-import { Caps } from '@components/Text/titles';
+import { Title } from '@components/Text/titles';
+import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
 export const Contact: React.FC = () => {
-  const phoneRegex =
-    /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
-
-  const aux = contacts.map(({ type, number, link }) => {
-    const phoneNumber = number.replace(/\+55/g, '');
-
-    const [_, ddd, num1, num2] = phoneRegex.exec(phoneNumber) || [];
-    let phone = `${num1}-${num2}`;
-
-    if (ddd) {
-      phone = `(${ddd}) ${phone}`;
-    }
-
-    return {
+  const contactInformation = contacts
+    .filter(({ onlyFooter }) => !onlyFooter)
+    .map(({ type, number, link }) => ({
       type,
+      number: formatPhoneNumber(number || ''),
       link,
-      number: phone,
-    };
-  });
+    }));
 
   return (
     <div className="flex">
       {React.Children.toArray(
-        aux.map(({ type, number, link }, index) => {
+        contactInformation.map(({ type, number, link }, index) => {
           return (
             <>
               <a
@@ -40,13 +29,23 @@ export const Contact: React.FC = () => {
                 className="flex items-center"
               >
                 <span className="hidden lg:block">
-                  <Caps>{type}:</Caps>
+                  <Title
+                    as="span"
+                    variant="caps"
+                    className="text-sm xl:text-base"
+                  >
+                    {type}:
+                  </Title>
                 </span>
-                <span className="text-sm pl-1 font-title">{number}</span>
+                <span className="text-xs sm:text-sm pl-1 font-title">
+                  {number}
+                </span>
               </a>
-              {index !== aux.length - 1 && (
+              {index !== contactInformation.length - 1 && (
                 <span className="flex items-center px-1">
-                  <span className="text-sm font-title font-bold">|</span>
+                  <span className="text-xs sm:text-sm font-title font-bold">
+                    |
+                  </span>
                 </span>
               )}
             </>
@@ -55,7 +54,7 @@ export const Contact: React.FC = () => {
       )}
       <Link
         href={`mailto:${information.email}`}
-        className="hidden lg:block ml-6 font-title font-normal p-0"
+        className="hidden lg:block ml-6 font-title font-normal p-0 text-sm xl:text-base"
       >
         {information.email}
       </Link>

@@ -1,0 +1,6 @@
+{
+  "conventionalCommits.scopes": [
+    "header",
+    "footer"
+  ]
+}

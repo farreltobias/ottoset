@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 
-import { Caps } from '@components/Text/titles';
+import { Title } from '@components/Text/titles';
 
 type Props = React.PropsWithChildren<{
   label: string;
@@ -11,7 +11,9 @@ export const Dropdown: React.FC<Props> = ({ children, label }) => {
   return (
     <Menu as="li" className="list-none inline-block relative text-left">
       <Menu.Button className="py-[1.625rem] px-4 text-neutral-900 hover:text-primary-600 bg-neutral">
-        <Caps>{label}</Caps>
+        <Title as="span" variant="caps" className="text-xs xl:text-base">
+          {label}
+        </Title>
       </Menu.Button>
 
       <Transition
@@ -24,7 +26,7 @@ export const Dropdown: React.FC<Props> = ({ children, label }) => {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute left-4 mt-2 px-9 pt-5 pb-7 origin-top-left bg-neutral shadow-lg border-t-4 border-t-primary-700 whitespace-nowrap">
-          <div className="px-2 py-4 uppercase text-sm font-semibold">
+          <div className="px-2 py-4 uppercase lg:text-xs xl:text-sm font-semibold">
             {label}
           </div>
           <ul className="w-full">{children}</ul>

@@ -13,7 +13,7 @@ export const SubItem: React.FC<Props> = ({ href, label, className = '' }) => {
       {({ active }) => (
         <Link href={href}>
           <a
-            className={`text-lg px-3 py-2 font-semibold w-full ${
+            className={`text-sm xl:text-lg px-3 py-2 font-semibold w-full ${
               active ? 'text-primary-500' : 'text-neutral-900'
             }`}
           >

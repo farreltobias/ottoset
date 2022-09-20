@@ -13,7 +13,7 @@ export const socials = [
     Icon: Facebook,
   },
   {
-    href: `https://www.linkedin.com/in/${information.linkedin}`,
+    href: `https://www.linkedin.com/${information.linkedin}`,
     Icon: LinkedIn,
   },
 ];

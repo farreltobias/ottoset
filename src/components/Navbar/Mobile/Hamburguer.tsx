@@ -1,12 +1,13 @@
-type Props = {
-  show: boolean;
-  setShow: (show: boolean) => void;
-};
+import { SidebarContext } from '@contexts/SidebarContext';
+import { useContext } from 'react';
 
-export const Hamburguer: React.FC<Props> = ({ show, setShow }) => {
+export const Hamburguer: React.FC = () => {
+  const { show, setShow } = useContext(SidebarContext);
+
   return (
     <button
       onClick={() => {
+        document.body.classList.toggle('overflow-hidden');
         setShow(!show);
       }}
       className="flex lg:hidden z-20 flex-col items-center justify-center"

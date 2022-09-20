@@ -1,19 +1,20 @@
-type Information = {
-  whatsapp: string,
-  phoneNumber: string,
-  instagram: string,
-  facebook: string,
-  linkedin: string,
-  email: string,
-}
-
-const information: Information = {
+const information = {
   whatsapp: '+5543991714488',
-  phoneNumber: '33049505',
-  instagram: 'farrel.tobias',
-  facebook: 'farreltobias',
-  linkedin: 'farreltobias',
+  phoneNumber: '+554333049505',
+  instagram: 'ottosetenergy',
+  facebook: 'OttosetEnergy',
+  linkedin: 'company/ottoset-geradores',
   email: 'contato@ottoset.com.br',
+  address: {
+    street: 'José da Silva',
+    number: '136',
+    neiboorhood: 'Tarobá',
+    city: 'Londrina',
+    state: 'PR',
+    country: 'Brasil',
+    zipCode: '86042-280',
+    link: 'https://goo.gl/maps/bhLEsxMHRegy9S4D9',
+  },
 };
 
 export default information;

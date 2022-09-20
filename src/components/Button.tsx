@@ -18,15 +18,15 @@ type Variants = {
 
 const vairents: Variants = {
   filled: {
-    bg: 'bg-primary-500',
+    bg: 'bg-primary-600',
     text: 'text-neutral',
     hover: 'hover:bg-neutral-900 hover:shadow-button hover:shadow-primary-600',
-    disabled: 'bg-secondary-50 text-secondary-500',
+    disabled: 'bg-secondary-50 text-secondary-600',
   },
   outline: {
     bg: 'bg-neutral',
-    text: 'text-primary-500',
-    border: 'border border-primary-500',
+    text: 'text-primary-600',
+    border: 'border border-primary-600',
     hover: 'hover:border-neutral-900 hover:text-neutral-900',
     disabled: 'bg-secondary-50 text-secondary-500 border border-secondary-500',
   },
@@ -51,7 +51,7 @@ export const Button: React.FC<Props> = ({
     ? `cursor-not-allowed ${disabledStyle}`
     : Object.values(rest).join(' ');
 
-  const classNames = `flex font-bold py-2 px-4 rounded ${style} ${
+  const classNames = `flex font-bold rounded px-4 py-2 ${style} ${
     className || ''
   }`;
 
