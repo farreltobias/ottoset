@@ -11,6 +11,13 @@ module.exports = {
       title: ['Montserrat', ...fontFamily.sans],
       body: ['Inter', ...fontFamily.sans],
     },
+    screens: {
+      xs: '475px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+    },
     colors: {
       primary: {
         50: '#fff7ec',
@@ -98,25 +105,29 @@ module.exports = {
         900: '#1e3a8a',
       },
     },
+    container: {
+      padding: '2rem',
+    },
     extend: {
       boxShadow: {
         button: '4px 4px 0px #FF5200',
       },
-      fontSize: {
-        'display-1': '8.375rem',
-        'display-3': '4.75rem',
-        h1: '4rem',
-        h3: '2rem',
+      textStroke: {
+        'none': '0',
+        1: '1px',
       },
       lineHeight: {
         120: '120%',
         125: '125%',
         150: '150%',
       },
+      transitionTimingFunction: {
+        disclosure: 'cubic-bezier(0.87, 0, 0.13, 1)',
+      },
     },
   },
   variants: {
     boxShadow: ['hover'],
   },
-  plugins: [require('tailwind-children'), require('./plugins/solid-border')],
+  plugins: [require('tailwind-children'), require('./plugins/components')],
 };
