@@ -16,7 +16,6 @@ const variants = {
   h4: 'text-2xl leading-120 font-bold',
   h5: 'text-xl leading-120 font-bold',
   h6: 'text-base leading-120 font-bold',
-  caps: 'leading-150 uppercase font-bold',
 };
 
 export const Title: React.FC<Props> = ({

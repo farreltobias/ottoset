@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { Title } from '@components/Text/titles';
 import { Button } from '@components/Button';
 
 const custom404: React.FC = () => {
@@ -18,7 +17,7 @@ const custom404: React.FC = () => {
       <div
         className="pt-12 pb-28 lg:pt-[12.5rem] lg:pb-[9.75rem] flex items-center justify-center bg-cover bg-no-repeat bg-center"
         style={{
-          backgroundImage: 'url("not-found-background.svg")',
+          backgroundImage: 'url("backgrounds/not-found.svg")',
         }}
       >
         <div className="container flex flex-col items-center justify-center">

@@ -2,7 +2,7 @@ import Whatsapp from '@public/social/whatsapp.svg';
 import Phone from '@public/others/phone.svg';
 import Email from '@public/others/email-outline.svg';
 
-import information from './infomation';
+import { information } from './infomation';
 
 export const contacts = [
   {

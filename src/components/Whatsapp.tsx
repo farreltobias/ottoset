@@ -1,9 +1,9 @@
 import WhatsappIcon from '@public/social/whatsapp.svg';
 
-import information from '@utils/infomation';
+import { information } from '@utils/infomation';
 
 import { Link } from './Link';
-import { Title } from './Text/titles';
+import { Caps } from './Texts';
 
 export const Whatsapp: React.FC = () => (
   <Link
@@ -13,8 +13,6 @@ export const Whatsapp: React.FC = () => (
     className="w-fit py-3 px-5 rounded-full shadow-md bg-[#25D366] hover:bg-[#128C7E]"
   >
     <WhatsappIcon size={24} color="white" className="mr-2" />
-    <Title as="span" variant="caps">
-      Fale Conosco
-    </Title>
+    <Caps>Fale Conosco</Caps>
   </Link>
 );

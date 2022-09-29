@@ -1,4 +1,4 @@
-const information = {
+export const information = {
   whatsapp: '+5543991714488',
   phoneNumber: '+554333049505',
   instagram: 'ottosetenergy',
@@ -16,5 +16,3 @@ const information = {
     link: 'https://goo.gl/maps/bhLEsxMHRegy9S4D9',
   },
 };
-
-export default information;

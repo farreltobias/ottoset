@@ -1,7 +1,7 @@
 import Instagram from '@public/social/instagram.svg';
 import LinkedIn from '@public/social/linkedin.svg';
 import Facebook from '@public/social/facebook.svg';
-import information from './infomation';
+import { information } from './infomation';
 
 export const socials = [
   {
