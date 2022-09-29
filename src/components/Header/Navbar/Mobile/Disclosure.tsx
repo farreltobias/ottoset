@@ -1,7 +1,7 @@
 import { Fragment, ReactNode } from 'react';
 import { Disclosure as Menu, Transition } from '@headlessui/react';
 
-import { Title } from '@components/Text/titles';
+import { Caps } from '@components/Texts';
 
 type Props = {
   label: string;
@@ -11,11 +11,9 @@ type Props = {
 
 export const Disclosure: React.FC<Props> = ({ label, children, id }) => {
   return (
-    <Menu as="li" className="list-none inline-block relative w-full">
+    <Menu as="li" className=" inline-block relative w-full">
       <Menu.Button className="py-[1.625rem] px-4 text-neutral text-left w-full">
-        <Title as="span" variant="caps">
-          {label}
-        </Title>
+        <Caps>{label}</Caps>
       </Menu.Button>
 
       <Transition

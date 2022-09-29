@@ -1,8 +1,8 @@
 import { Children } from 'react';
 
-import { P4 } from '@components/Text/body';
+import { Text } from '@components/Texts';
 
-import information from '@utils/infomation';
+import { information } from '@utils/infomation';
 import { contacts } from '@utils/contacts';
 import { socials } from '@utils/socials';
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
@@ -30,7 +30,9 @@ export const Information = () => {
         rel="noreferrer"
         className="text-center lg:text-start mb-4"
       >
-        <P4 className="whitespace-pre">{addressString}</P4>
+        <Text variant="p4" className="whitespace-pre">
+          {addressString}
+        </Text>
       </a>
       {Children.toArray(
         contactInformation.map(({ Icon, link, number, email }) => (
@@ -46,11 +48,11 @@ export const Information = () => {
               viewBox="0 0 24 24"
               className="fill-secondary-900 mr-1"
             />
-            <P4>{number || email}</P4>
+            <Text variant="p4">{number || email}</Text>
           </a>
         ))
       )}
-      <ul className="list-none flex lg:mt-2 mx-auto lg:mx-0">
+      <ul className="flex lg:mt-2 mx-auto lg:mx-0">
         {Children.toArray(
           socials.map(({ Icon, href }) => (
             <li className="mx-3 lg:mr-6 lg:ml-0">

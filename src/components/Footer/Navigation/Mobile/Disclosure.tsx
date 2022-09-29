@@ -3,7 +3,7 @@ import { Disclosure as Menu, Transition } from '@headlessui/react';
 
 import Arrow from '@public/navigation/arrow-right.svg';
 
-import { Title } from '@components/Text/titles';
+import { Title } from '@components/Texts';
 
 type Props = {
   label: string;

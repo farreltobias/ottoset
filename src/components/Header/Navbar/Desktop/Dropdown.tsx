@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 
-import { Title } from '@components/Text/titles';
+import { Caps } from '@components/Texts';
 
 type Props = React.PropsWithChildren<{
   label: string;
@@ -9,11 +9,9 @@ type Props = React.PropsWithChildren<{
 
 export const Dropdown: React.FC<Props> = ({ children, label }) => {
   return (
-    <Menu as="li" className="list-none inline-block relative text-left">
+    <Menu as="li" className=" inline-block relative text-left">
       <Menu.Button className="py-[1.625rem] px-4 text-neutral-900 hover:text-primary-600 bg-neutral">
-        <Title as="span" variant="caps" className="text-xs xl:text-base">
-          {label}
-        </Title>
+        <Caps className="text-xs xl:text-base">{label}</Caps>
       </Menu.Button>
 
       <Transition

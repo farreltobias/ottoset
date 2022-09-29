@@ -4,11 +4,10 @@ import { screens } from 'tailwindcss/defaultTheme';
 
 import { SidebarContext } from '@contexts/SidebarContext';
 
-import { Item } from '@components/Navbar/Mobile/Item';
-
-import { useGetScreenWidth } from '@hooks/useGetScreenWidth';
+import { useWindowSize } from '@hooks/useWindowSize';
 import { navLinks } from '@utils/navLinks';
 
+import { Item } from './Item';
 import { Hamburguer } from './Hamburguer';
 import { Disclosure } from './Disclosure';
 import { SubItem } from './SubItem';
@@ -45,11 +44,13 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
   const desktopWidth = Number(screens.lg.match(/\d+/g)?.[0]);
 
   const { show, setShow } = useContext(SidebarContext);
-  const { width } = useGetScreenWidth();
+  const { width } = useWindowSize();
 
   const [styles, setStyles] = useState<JSX.Element>();
 
   useEffect(() => {
+    if (!width) return;
+
     setStyles(getClassNames(width));
 
     if (width > desktopWidth) {
@@ -90,7 +91,7 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
         leaveTo="-right-full"
         className="block lg:hidden bg-neutral-900 h-screen w-screen fixed top-0 z-10 pt-28 overflow-auto"
       >
-        <ul className="container mx-auto h-full w-full list-none">
+        <ul className="container mx-auto h-full w-full">
           {Children.toArray(NavList)}
         </ul>
       </Transition>

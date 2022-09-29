@@ -1,5 +1,4 @@
-import { Navbar } from '@components/Navbar';
-
+import { Navbar } from './Navbar';
 import { Contact } from './Contact';
 import { Socials } from './Socials';
 

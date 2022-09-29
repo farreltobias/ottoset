@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { contacts } from '@utils/contacts';
-import information from '@utils/infomation';
-
 import { Link } from '@components/Link';
-import { Title } from '@components/Text/titles';
+import { Caps } from '@components/Texts';
+
+import { information } from '@utils/infomation';
+import { contacts } from '@utils/contacts';
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
 export const Contact: React.FC = () => {
@@ -29,13 +29,7 @@ export const Contact: React.FC = () => {
                 className="flex items-center"
               >
                 <span className="hidden lg:block">
-                  <Title
-                    as="span"
-                    variant="caps"
-                    className="text-sm xl:text-base"
-                  >
-                    {type}:
-                  </Title>
+                  <Caps className="text-sm xl:text-base">{type}:</Caps>
                 </span>
                 <span className="text-xs sm:text-sm pl-1 font-title">
                   {number}

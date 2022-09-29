@@ -1,6 +1,6 @@
 import Link, { LinkProps } from 'next/link';
 
-import { Title } from '@components/Text/titles';
+import { Caps } from '@components/Texts';
 
 type Props = React.PropsWithChildren<
   LinkProps & {
@@ -10,12 +10,10 @@ type Props = React.PropsWithChildren<
 
 export const Item: React.FC<Props> = ({ children, className, ...props }) => {
   return (
-    <li className={`flex list-none bg-neutral-900 ${className}`}>
+    <li className={`flex  bg-neutral ${className}`}>
       <Link {...props}>
-        <a className="py-[1.625rem] px-4 text-neutral">
-          <Title as="span" variant="caps">
-            {children}
-          </Title>
+        <a className="py-[1.625rem] px-4 text-neutral-900 hover:text-primary-600">
+          <Caps className="text-xs xl:text-base">{children}</Caps>
         </a>
       </Link>
     </li>

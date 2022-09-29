@@ -1,5 +1,5 @@
-import { SidebarContext } from '@contexts/SidebarContext';
 import { useContext } from 'react';
+import { SidebarContext } from '@contexts/SidebarContext';
 
 export const Hamburguer: React.FC = () => {
   const { show, setShow } = useContext(SidebarContext);

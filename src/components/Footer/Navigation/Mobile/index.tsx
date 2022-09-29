@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import { Children, useEffect, useState } from 'react';
 
-import { Item } from '@components/Navbar/Mobile/Item';
-
-import { useGetScreenWidth } from '@hooks/useGetScreenWidth';
+import { useWindowSize } from '@hooks/useWindowSize';
 import { navLinks } from '@utils/navLinks';
 
 import { Disclosure } from './Disclosure';
@@ -39,36 +37,35 @@ const getClassNames = (width: number) => {
 };
 
 export const Mobile: React.FC<React.PropsWithChildren> = () => {
-  const { width } = useGetScreenWidth();
+  const { width } = useWindowSize();
 
   const [styles, setStyles] = useState<JSX.Element>();
 
   useEffect(() => {
+    if (!width) return;
+
     setStyles(getClassNames(width));
   }, [width]);
 
   const NavList = navLinks
     .filter(({ onlyHeader }) => !onlyHeader)
-    .map(({ label, href, subItems }, index) =>
-      subItems ? (
-        <Disclosure label={label} id={index.toString()}>
-          {Children.toArray(
-            subItems.map((item) => (
-              <SubItem href={item.href} label={item.label} />
-            ))
-          )}
-        </Disclosure>
-      ) : (
-        <Item href={href || ''} className="child:w-full">
-          {label}
-        </Item>
-      )
+    .map(
+      ({ label, subItems }, index) =>
+        subItems && (
+          <Disclosure label={label} id={index.toString()}>
+            {Children.toArray(
+              subItems.map((item) => (
+                <SubItem href={item.href} label={item.label} />
+              ))
+            )}
+          </Disclosure>
+        )
     );
 
   return (
     <>
       <Head>{styles}</Head>
-      <ul className="list-none flex justify-center items-center lg:hidden flex-col h-full w-full mb-6">
+      <ul className="flex justify-center items-center lg:hidden flex-col h-full w-full mb-6">
         {Children.toArray(NavList)}
       </ul>
     </>
