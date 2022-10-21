@@ -1,7 +1,9 @@
+import { forwardRef } from 'react';
+
 type Props = React.PropsWithChildren<{
   className?: string;
   style?: React.CSSProperties;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
   variant?: keyof typeof variants;
 }>;
 
@@ -18,17 +20,15 @@ const variants = {
   h6: 'text-base leading-120 font-bold',
 };
 
-export const Title: React.FC<Props> = ({
-  children,
-  className = '',
-  as = 'h1',
-  variant = 'h1',
-  style,
-}) => {
+const FowardFunction: React.ForwardRefRenderFunction<
+  HTMLHeadingElement,
+  Props
+> = ({ children, className = '', as = 'h1', variant = 'h1', style }, ref) => {
   const Component = as;
 
   return (
     <Component
+      ref={ref}
       className={`font-title ${variants[variant]} ${className}`}
       style={style}
     >
@@ -36,3 +36,5 @@ export const Title: React.FC<Props> = ({
     </Component>
   );
 };
+
+export const Title = forwardRef(FowardFunction);

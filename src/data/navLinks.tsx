@@ -106,7 +106,7 @@ export const navLinks: NavLink[] = [
     ],
   },
   {
-    label: 'Manutenção Predial',
+    label: 'Soluções prediais',
     subItems: [
       {
         href: '/',

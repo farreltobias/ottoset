@@ -2,7 +2,7 @@ import { Children } from 'react';
 
 import { Caps } from '@components/Texts';
 
-import { socials } from '@utils/socials';
+import { socials } from '@data/socials';
 
 export const Socials: React.FC = () => {
   return (

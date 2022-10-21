@@ -7,7 +7,7 @@ import thumb5 from '@public/static/img-thumb-5.png';
 import thumb6 from '@public/static/img-thumb-6.png';
 import thumb7 from '@public/static/img-thumb-7.png';
 
-export const staticImages = [
+export const images = [
   {
     path: thumb0,
     name: 'img-thumb',

@@ -13,7 +13,7 @@ import roque from '@public/clients/sao-roque.png';
 import exclusiva from '@public/clients/exclusiva.png';
 import hoftalon from '@public/clients/hoftalon.png';
 
-export const clientImages = [
+export const clients = [
   {
     path: segrpro,
     name: 'segrpro',

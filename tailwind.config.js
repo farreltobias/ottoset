@@ -10,6 +10,7 @@ module.exports = {
     fontFamily: {
       title: ['Montserrat', ...fontFamily.sans],
       body: ['Inter', ...fontFamily.sans],
+      alt: ['Syne', ...fontFamily.sans],
     },
     screens: {
       xs: '475px',
@@ -19,6 +20,7 @@ module.exports = {
       xl: '1280px',
     },
     colors: {
+      transparent: 'transparent',
       primary: {
         50: '#fff7ec',
         100: '#ffecd3',
@@ -109,12 +111,29 @@ module.exports = {
       padding: '2rem',
     },
     extend: {
+      keyframes: {
+        scroll: {
+          '0%, 100%': {
+            transform: 'translateY(-125%)',
+            'animation-timing-function': 'cubic-bezier(0.8,0,1,1)',
+          },
+          '50%': {
+            transform: 'none',
+            height: '1px',
+            'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
+          },
+        },
+      },
+      animation: {
+        scroll: 'scroll 1.5s infinite',
+      },
       boxShadow: {
         button: '4px 4px 0px #FF5200',
       },
       textStroke: {
-        'none': '0',
+        none: '0',
         1: '1px',
+        2: '2px',
       },
       lineHeight: {
         120: '120%',
@@ -129,5 +148,9 @@ module.exports = {
   variants: {
     boxShadow: ['hover'],
   },
-  plugins: [require('tailwind-children'), require('./plugins/components')],
+  plugins: [
+    require('@headlessui/tailwindcss'),
+    require('tailwind-children'),
+    require('./plugins/components'),
+  ],
 };

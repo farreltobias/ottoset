@@ -1,12 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Carousel } from '@components/Carousel';
 import { Energy } from '@components/Home/Energy';
 import { Monitor } from '@components/Home/Monitor';
 import { Clients } from '@components/Home/Clients';
-import { Service } from '@components/Home/Service';
+import { Reach } from '@components/Home/Reach';
 import { Instagram } from '@components/Home/Instagram';
+import { Projects } from '@components/Home/Projects';
+import { Slider } from '@components/Home/Slider';
 
 const Home: NextPage = () => {
   return (
@@ -19,16 +20,12 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      {/* <Carousel
-        slides={['Slide 1', 'Slide 2', 'Slide 3']}
-        options={{ draggable: false }}
-      /> */}
-
+      <Slider />
       <Energy />
       <Monitor />
+      <Projects />
       <Clients />
-      <Service />
-
+      <Reach />
       <Instagram />
     </>
   );

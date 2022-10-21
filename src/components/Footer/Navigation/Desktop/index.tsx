@@ -1,6 +1,6 @@
 import { Children } from 'react';
 
-import { navLinks } from '@utils/navLinks';
+import { navLinks } from '@data/navLinks';
 
 import { SubItem } from './SubItem';
 

@@ -1,3 +1,5 @@
+import React from 'react';
+
 type Props = React.PropsWithChildren<{
   className?: string;
   style?: React.CSSProperties;
@@ -5,23 +7,28 @@ type Props = React.PropsWithChildren<{
   variant?: 'title' | 'text';
 }>;
 
-export const Caps: React.FC<Props> = ({
-  children,
-  className = '',
-  as = 'span',
-  variant = 'title',
-  style,
-}) => {
+const FowardFunction: React.ForwardRefRenderFunction<
+  HTMLHeadingElement,
+  Props
+> = (
+  { children, className = '', as = 'span', variant = 'title', style },
+  ref
+) => {
   const Component = as;
 
   const font = variant === 'title' ? 'font-title' : 'font-body';
 
+  const leading = className.includes('leading-') ? '' : 'leading-150';
+
   return (
     <Component
-      className={`${font} leading-150 uppercase font-bold ${className}`}
+      ref={ref}
+      className={`${font} ${leading} uppercase font-bold ${className}`}
       style={style}
     >
       {children}
     </Component>
   );
 };
+
+export const Caps = React.forwardRef(FowardFunction);

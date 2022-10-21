@@ -3,8 +3,9 @@ import React from 'react';
 import { Link } from '@components/Link';
 import { Caps } from '@components/Texts';
 
-import { information } from '@utils/infomation';
-import { contacts } from '@utils/contacts';
+import { email } from '@data/static/ottoset';
+import { contacts } from '@data/contacts';
+
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
 export const Contact: React.FC = () => {
@@ -47,10 +48,10 @@ export const Contact: React.FC = () => {
         })
       )}
       <Link
-        href={`mailto:${information.email}`}
+        href={`mailto:${email}`}
         className="hidden lg:block ml-6 font-title font-normal p-0 text-sm xl:text-base"
       >
-        {information.email}
+        {email}
       </Link>
     </div>
   );

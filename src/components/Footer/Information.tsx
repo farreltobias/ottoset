@@ -2,15 +2,14 @@ import { Children } from 'react';
 
 import { Text } from '@components/Texts';
 
-import { information } from '@utils/infomation';
-import { contacts } from '@utils/contacts';
-import { socials } from '@utils/socials';
+import { address } from '@data/static/ottoset';
+import { contacts } from '@data/contacts';
+import { socials } from '@data/socials';
+
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
 export const Information = () => {
-  const { address } = information;
   const { street, number, neiboorhood, city, state, zipCode, link } = address;
-
   const addressString = `R. ${street}, ${number}. ${neiboorhood} - \n${city}, ${state} - ${zipCode}`;
 
   const contactInformation = contacts

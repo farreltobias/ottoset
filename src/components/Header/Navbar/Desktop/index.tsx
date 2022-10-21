@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Button } from '@components/Button';
 
-import { navLinks } from '@utils/navLinks';
+import { navLinks } from '@data/navLinks';
 
 import { Item } from './Item';
 import { Dropdown } from './Dropdown';
