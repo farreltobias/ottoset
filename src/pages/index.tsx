@@ -8,6 +8,7 @@ import { Reach } from '@components/Home/Reach';
 import { Instagram } from '@components/Home/Instagram';
 import { Projects } from '@components/Home/Projects';
 import { Slider } from '@components/Home/Slider';
+import { Services } from '@components/Home/Services';
 
 const Home: NextPage = () => {
   return (
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Slider />
+      <Services />
       <Energy />
       <Monitor />
       <Projects />

@@ -44,17 +44,14 @@ export const Slide: React.FC<Props> = ({ title, image, description }) => {
       />
       <span className="absolute bg-secondary-900 w-full h-full bg-opacity-60" />
       <div className="absolute flex flex-col justify-center items-center h-full w-full">
-        {/* <span className="absolute top-1/4 -translate-y-full">
-          <Lightning height="75" width="75" viewBox="0 0 48 48" />
-        </span> */}
         <Caps
           ref={titleRef}
           as="h1"
           variant="title"
-          className="w-full flex items-center justify-center text-center text-transparent text-5xl md:text-8xl lg:text-9xl children:leading-120"
+          className="w-full flex items-center justify-center text-center text-transparent text-3xl sm:text-7xl md:text-8xl children:leading-120"
         >
           <span
-            className="shadow-neutral text-stroke-2"
+            className="shadow-neutral text-stroke-1 lg:text-stroke-2"
             style={{ paddingBottom: height / 2 }}
           >
             {title}
@@ -77,9 +74,9 @@ export const Slide: React.FC<Props> = ({ title, image, description }) => {
         </Caps>
         <Title
           ref={ref}
-          variant="h5"
+          variant="h6"
           as="span"
-          className="container mx-auto absolute flex flex-wrap justify-center items-center text-neutral text-center whitespace-pre md:text-3xl lg:text-[2rem] lg:leading-125 lg:px-40 xl:px-64"
+          className="container mx-auto absolute flex flex-wrap justify-center items-center text-neutral text-center whitespace-pre sm:text-2xl md:text-3xl lg:leading-125 lg:px-40 xl:px-64"
           style={{ paddingTop: titleHeight / 2 + 24 }}
         >
           {Children.toArray(
