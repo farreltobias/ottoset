@@ -11,7 +11,7 @@ export const Slider: React.FC = () => {
     delay: 5000,
   });
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({}, []);
+  const [emblaRef, emblaApi] = useEmblaCarousel({}, [autoplay]);
 
   return (
     <section className="relative h-[80vh] w-full">

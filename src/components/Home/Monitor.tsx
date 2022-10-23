@@ -7,29 +7,18 @@ import Foco from '@public/logo/foco.svg';
 
 import computer from '@public/photos/computer.png';
 
-import { Caps, Title } from '@components/Texts';
+import { Overlaid } from '@components/Texts/Overlaid';
+import { Caps } from '@components/Texts';
 
 import { monitor } from '@data/static/content';
 
 export const Monitor: React.FC = () => {
   return (
     <section className="container mx-auto flex flex-col w-full mt-20 lg:mt-44">
-      <Title
-        as="h1"
-        variant="h3"
-        className="text-center mx-auto lg:text-8xl lg:leading-120 lg:font-extrabold"
-      >
-        <span className="block text-neutral shadow-neutral-900 text-stroke-[0.5px] lg:text-stroke-1">
-          Monitoramos
-        </span>
-        <Title
-          as="span"
-          variant="h3"
-          className="block text-neutral-900 -mt-6 lg:-mt-14 lg:text-7xl lg:leading-120 lg:font-extrabold"
-        >
-          em tempo real
-        </Title>
-      </Title>
+      <Overlaid className="text-center">
+        <Overlaid.Title>Monitoramos</Overlaid.Title>
+        <Overlaid.SubTitle>em tempo real</Overlaid.SubTitle>
+      </Overlaid>
 
       <div className="flex flex-col-reverse mt-8 lg:flex-row lg:mt-[4.5rem]">
         <div className="flex items-center justify-center mt-10 lg:mt-0 lg:w-1/2">

@@ -143,6 +143,12 @@ module.exports = {
       transitionTimingFunction: {
         disclosure: 'cubic-bezier(0.87, 0, 0.13, 1)',
       },
+      spacing: {
+        '1/5': '20%',
+        // '1/6': '16.6666666667%',
+        '1/8': '12.5%',
+        '1/10': '10%',
+      },
     },
   },
   variants: {

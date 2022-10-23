@@ -1,8 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
-  // overflow-hidden lg:overflow-auto
-
   return (
     <Html lang="pt" className="h-full">
       <Head>
