@@ -3,7 +3,7 @@ import { Title as MainTitle } from '../titles';
 import { Title } from './Title';
 import { SubTitle } from './SubTitle';
 
-type SubComponets = {
+type SubComponents = {
   Title: typeof Title;
   SubTitle: typeof SubTitle;
 };
@@ -12,7 +12,7 @@ type Props = React.PropsWithChildren<{
   className?: string;
 }>;
 
-const Overlaid: React.FC<Props> & SubComponets = ({
+const Overlaid: React.FC<Props> & SubComponents = ({
   children,
   className = '',
 }) => (

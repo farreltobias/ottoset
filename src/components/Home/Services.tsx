@@ -7,15 +7,7 @@ export const Services: React.FC = () => {
     <div className="flex flex-wrap">
       {Children.toArray(
         services.map(({ icon, image, title, link }) => (
-          <Service
-            title={title}
-            icon={icon}
-            image={{
-              path: image.path,
-              name: image.name,
-            }}
-            link={link}
-          />
+          <Service title={title} icon={icon} image={image} link={link} />
         ))
       )}
     </div>
