@@ -8,7 +8,7 @@ import { SidebarProvider } from '@contexts/SidebarContext';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 
-import { SEO } from 'seo/next-seo.config';
+import { SEO } from '@seo/next-seo.config';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

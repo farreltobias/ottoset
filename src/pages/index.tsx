@@ -10,7 +10,7 @@ import { Projects } from '@components/Home/Projects';
 import { Slider } from '@components/Home/Slider';
 import { Services } from '@components/Home/Services';
 
-import { SEO } from 'seo/home';
+import { SEO } from '@seo/home';
 
 const Home: NextPage = () => {
   return (

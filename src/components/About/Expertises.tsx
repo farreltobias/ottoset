@@ -12,7 +12,7 @@ export const Expertises: React.FC = () => {
         <Overlaid.Title>Conheça nossas</Overlaid.Title>
         <Overlaid.SubTitle>Áreas de Atuação</Overlaid.SubTitle>
       </Overlaid>
-      <div className="flex  overflow-auto">
+      <div className="flex flex-col lg:flex-row lg:overflow-auto">
         {Children.toArray(
           expertises.map(({ image, link, title }) => (
             <Expertise image={image} link={link} title={title} />
