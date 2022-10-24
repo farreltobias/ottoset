@@ -13,8 +13,8 @@ import { Overlaid } from '@components/Texts/Overlaid';
 import { Button } from '@components/Button';
 
 export const About: React.FC = () => (
-  <section className="container mx-auto flex flex-col lg:flex-row">
-    <div className="flex flex-col items-center lg:items-start text-center mt-10 mb-12 sm:mb-24 lg:w-1/2 lg:mt-12 lg:text-start lg:mb-0">
+  <section className="container mx-auto flex flex-col lg:flex-row mt-10 lg:mt-12">
+    <div className="flex flex-col items-center lg:items-start text-center mb-12 sm:mb-24 lg:w-1/2 lg:text-start lg:mb-0">
       <Overlaid className="mb-8">
         <Overlaid.Title>Sobre a</Overlaid.Title>
         <Overlaid.SubTitle>Ottoset</Overlaid.SubTitle>
@@ -38,14 +38,11 @@ export const About: React.FC = () => (
       </Text>
       <Button
         variant="outline"
-        className="justify-center lg:justify-start font-title max-w-md w-full lg:w-fit group"
+        className="item-center justify-center lg:justify-start font-title max-w-md w-full lg:w-fit group"
+        onClick={() => window.print()}
       >
-        <Link href="/contact">
-          <a className="flex items-center">
-            Baixar apresentação em pdf
-            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-          </a>
-        </Link>
+        Baixar apresentação em pdf
+        <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
       </Button>
     </div>
     <div className="flex items-center justify-center w-full lg:pl-32 lg:w-1/2">

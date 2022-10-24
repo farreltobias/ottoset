@@ -17,4 +17,21 @@ const areas = [
   'monitoramento remoto',
 ];
 
-export { monitor, areas };
+const missions = [
+  {
+    topic: 'Missão',
+    content:
+      'Fornecer soluções seguras, inteligentes e customizáveis em energia',
+  },
+  {
+    topic: 'Visão',
+    content: 'Ser a empresa líder em soluções energéticas eficazes no Brasil.',
+  },
+  {
+    topic: 'Valores',
+    content:
+      'Inovação, competitividade, sustentabilidade, responsabilidade social, disponibilidade e comprometimento',
+  },
+];
+
+export { monitor, areas, missions };
