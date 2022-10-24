@@ -30,9 +30,9 @@ jobs:
 
       - name: Add ssh private key
         uses: shimataro/ssh-key-action@v2
-          with:
-            key: ${{ secrets.STAGING_SERVER_SSH }}
-            known_hosts: 'server_known_hosts'
+        with:
+          key: ${{ secrets.STAGING_SERVER_SSH }}
+          known_hosts: 'server_known_hosts'
 
       - name: Adding Known Hosts
         run: ssh-keyscan -H $host >> ~/.ssh/known_hosts
