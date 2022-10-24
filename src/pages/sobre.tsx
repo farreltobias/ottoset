@@ -6,6 +6,8 @@ import { Mission } from '@components/About/Mission';
 
 import { SEO } from 'seo/sobre';
 import { Services } from '@components/About/Services';
+import { More } from '@components/About/More';
+import { Diferentials } from '@components/About/Diferentials';
 
 const Sobre: NextPage = () => {
   return (
@@ -15,6 +17,8 @@ const Sobre: NextPage = () => {
       <About />
       <Mission />
       <Services />
+      <More />
+      <Diferentials />
     </>
   );
 };

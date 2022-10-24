@@ -34,4 +34,24 @@ const missions = [
   },
 ];
 
-export { monitor, areas, missions };
+const services = [
+  'Manutenção Preditiva, Preventiva e Corretiva',
+  'Monitoramento Remoto',
+  'Chamados avulsos',
+  'Status online',
+  'Contratos mensais, semestrais e anuais',
+  'Falhas acionamentos Relatórios gerenciais',
+  'Avaliação técnica',
+  'Laudos técnicos',
+  'Atendimento 24h',
+];
+
+const diferentials = [
+  'Técnicos qualificados em todo o Brasil',
+  'Plantão 24 horas',
+  'Monitoramento pelo celular: Monitoramento Remoto de Grupo Gerador, com gerenciamento de risco e status online, pelo celular.',
+  'Monitoramento Remoto de Grupo Gerador, com gerenciamento de risco e status online - pelo celular;',
+  'APP de Controle: Acompanhamento online dos serviços, relatórios técnicos e gerenciais, interação ponta a ponta com os técnicos e plataforma ajustável de acordo com a necessidade do cliente.',
+];
+
+export { monitor, areas, missions, services, diferentials };
