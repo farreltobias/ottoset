@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
-import Badge from '@public/logo/badge.svg';
+import Badge from '@public/company/badge.svg';
 
 import street from '@public/photos/street.png';
 

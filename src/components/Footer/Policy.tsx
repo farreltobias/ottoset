@@ -1,4 +1,4 @@
-import Lets from '@public/logo/lets.svg';
+import Lets from '@public/company/lets.svg';
 
 import { Link } from '@components/Link';
 

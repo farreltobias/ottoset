@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Logo from '@public/logo/logo.svg';
+import Logo from '@public/company/logo.svg';
 
 import { Desktop } from './Navigation/Desktop';
 import { Mobile } from './Navigation/Mobile';

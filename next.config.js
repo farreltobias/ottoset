@@ -1,5 +1,3 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -27,11 +25,6 @@ const nextConfig = {
         },
       ],
     });
-
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@public': path.resolve(process.cwd(), 'public'),
-    };
 
     return config;
   },

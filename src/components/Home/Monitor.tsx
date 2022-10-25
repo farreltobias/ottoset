@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { Children } from 'react';
 
 import Flecha from '@public/navigation/flecha.svg';
-import Badge from '@public/logo/badge.svg';
-import Foco from '@public/logo/foco.svg';
+import Badge from '@public/company/badge.svg';
+import Foco from '@public/company/foco.svg';
 
 import computer from '@public/photos/computer.png';
 

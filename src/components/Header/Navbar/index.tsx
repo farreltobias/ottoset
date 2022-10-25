@@ -3,7 +3,7 @@ import { screens } from 'tailwindcss/defaultTheme';
 
 import { useWindowSize } from '@hooks/useWindowSize';
 
-import Logo from '@public/logo/logo.svg';
+import Logo from '@public/company/logo.svg';
 
 import { Desktop } from './Desktop';
 import { Mobile } from './Mobile';
