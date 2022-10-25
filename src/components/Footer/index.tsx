@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col w-full lg:w-fit lg:mr-8 child:w-fit child:mx-auto child:lg:mx-0">
           <Link href="/">
             <a className="mb-4">
-              <Logo width={130} height={130 * 0.36} viewBox="15 0 130 60" />
+              <Logo width={130} height={130 * 0.36} />
             </a>
           </Link>
           <Mobile />

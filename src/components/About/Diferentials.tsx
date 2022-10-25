@@ -24,7 +24,6 @@ export const Diferentials: React.FC = () => {
                   className="absolute fill-primary-600 -rotate-90 left-1"
                   width={18}
                   height={24}
-                  viewBox="0 0 37 48"
                 />
                 <Text
                   as="span"

@@ -41,12 +41,7 @@ export const Information = () => {
             rel="noreferrer"
             className="flex items-center mb-2"
           >
-            <Icon
-              width={16}
-              height={16}
-              viewBox="0 0 24 24"
-              className="fill-secondary-900 mr-1"
-            />
+            <Icon width={16} height={16} className="fill-secondary-900 mr-1" />
             <Text variant="p4">{number || email}</Text>
           </a>
         )),
@@ -59,7 +54,6 @@ export const Information = () => {
                 <Icon
                   width={24}
                   height={24}
-                  viewBox="0 0 16 16"
                   className="child:fill-secondary-900"
                 />
               </a>

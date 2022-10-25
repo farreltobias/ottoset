@@ -12,7 +12,7 @@ export const Whatsapp: React.FC = () => (
     rel="noreferrer"
     className="w-fit py-3 px-5 rounded-full shadow-md bg-[#25D366] hover:bg-[#128C7E]"
   >
-    <WhatsappIcon size={24} color="white" className="mr-2" />
+    <WhatsappIcon height={24} width={24} color="white" className="mr-2" />
     <Caps>Fale Conosco</Caps>
   </Link>
 );

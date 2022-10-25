@@ -30,7 +30,6 @@ export const Monitor: React.FC = () => {
                     className="absolute fill-primary-600 -rotate-90 top-1"
                     width={18}
                     height={24}
-                    viewBox="0 0 37 48"
                   />
                   <span className="inline ml-8 lg:mx-8 text-base lg:text-xl lg:leading-150">
                     {item}
@@ -52,14 +51,8 @@ export const Monitor: React.FC = () => {
               Por que nos escolher?
             </Caps>
             <div className="absolute top-0 w-[calc(100%-2.5rem)] lg:w-[calc(100%-4.25rem)] h-full">
-              <Foco
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5/6 h-5/6"
-                viewBox="0 0 467 471"
-              />
-              <Badge
-                className="absolute child:fill-neutral top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/4 h-1/4"
-                viewBox="0 0 156 166"
-              />
+              <Foco className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5/6 h-5/6" />
+              <Badge className="absolute child:fill-neutral top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/4 h-1/4" />
             </div>
           </div>
         </div>

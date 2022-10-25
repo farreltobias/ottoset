@@ -15,7 +15,7 @@ export const services = [
         Grupos <br /> Geradores
       </>
     ),
-    icon: <Lightning viewBox="0 0 48 48" />,
+    icon: <Lightning />,
     image: {
       path: generator,
       name: 'Gerador',
@@ -33,7 +33,7 @@ export const services = [
   },
   {
     title: 'Fotovoltaica',
-    icon: <Sun viewBox="0 0 48 48" />,
+    icon: <Sun />,
     image: {
       path: photovoltaic,
       name: 'Fotovoltaica',
@@ -42,7 +42,7 @@ export const services = [
   },
   {
     title: 'Manutenção',
-    icon: <Config viewBox="0 0 48 48" />,
+    icon: <Config />,
     image: {
       path: maintenance,
       name: 'Manutenção',
