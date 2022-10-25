@@ -19,8 +19,19 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'jsx-a11y', '@typescript-eslint'],
+  plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'unused-imports'],
   rules: {
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
     'react/jsx-key': 'off',
     'prettier/prettier': ['error'],
     'react/react-in-jsx-scope': 'off',
