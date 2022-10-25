@@ -10,7 +10,7 @@ type Props = {
 
 const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
   { projects },
-  emblaRef
+  emblaRef,
 ) => {
   return (
     <div className="embla overflow-hidden" ref={emblaRef}>
@@ -29,7 +29,7 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
                 />
               </div>
             </div>
-          ))
+          )),
         )}
       </div>
     </div>

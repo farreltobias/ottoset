@@ -18,21 +18,19 @@ export const Desktop: React.FC<React.PropsWithChildren> = () => {
           {Children.toArray(
             subItems
               .filter(({ onlyFooter }) => !onlyFooter)
-              .map((item) => <SubItem href={item.href} label={item.label} />)
+              .map((item) => <SubItem href={item.href} label={item.label} />),
           )}
         </Dropdown>
       ) : (
         <Item href={href || ''}>{label}</Item>
-      )
+      ),
     );
 
   return (
     <>
       <ul className="hidden lg:flex">{Children.toArray(NavList)}</ul>
       <Button className="hidden lg:flex text-xs xl:text-base">
-        <Link href="contato">
-          Fale conosco
-        </Link>
+        <Link href="contato">Fale conosco</Link>
       </Button>
     </>
   );

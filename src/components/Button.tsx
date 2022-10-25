@@ -12,9 +12,7 @@ type Variant = {
   disabled?: string;
 };
 
-type Variants = {
-  [key in NonNullable<Props['variant']>]: Variant;
-};
+type Variants = Record<NonNullable<Props['variant']>, Variant>;
 
 const vairents: Variants = {
   filled: {

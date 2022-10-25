@@ -12,7 +12,7 @@ const FowardFunction: React.ForwardRefRenderFunction<
   Props
 > = (
   { children, className = '', as = 'span', variant = 'title', style },
-  ref
+  ref,
 ) => {
   const Component = as;
 

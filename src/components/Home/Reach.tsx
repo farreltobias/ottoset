@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import brasil from '@public/photos/brasil.png';
-import { Text, Title } from '@components/Texts';
+import { Text } from '@components/Texts';
 import { Button } from '@components/Button';
 import Link from 'next/link';
 

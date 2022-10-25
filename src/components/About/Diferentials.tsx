@@ -34,7 +34,7 @@ export const Diferentials: React.FC = () => {
                   {service}
                 </Text>
               </li>
-            ))
+            )),
           )}
         </ul>
       </div>

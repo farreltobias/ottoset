@@ -19,7 +19,10 @@ export const Energy: React.FC = () => (
           alt="street with lights"
           placeholder="blur"
         />
-        <Badge className="absolute bottom-8 left-8 w-1/4 h-1/4" viewBox="0 0 156 166" />
+        <Badge
+          className="absolute bottom-8 left-8 w-1/4 h-1/4"
+          viewBox="0 0 156 166"
+        />
       </div>
     </div>
     <div className="flex flex-col justify-center items-center text-center py-12 lg:text-start lg:items-start lg:w-1/2 lg:pl-20 lg:py-[6.75rem]">
@@ -42,7 +45,10 @@ export const Energy: React.FC = () => (
         qualidade, seriedade e pontualidade.
       </Text>
 
-      <Button variant="outline" className="justify-center lg:justify-start font-title max-w-md w-full lg:w-fit group">
+      <Button
+        variant="outline"
+        className="justify-center lg:justify-start font-title max-w-md w-full lg:w-fit group"
+      >
         <Link href="/contact">
           <a className="flex">
             Seja um cliente Ottoset

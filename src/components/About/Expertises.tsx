@@ -16,7 +16,7 @@ export const Expertises: React.FC = () => {
         {Children.toArray(
           expertises.map(({ image, link, title }) => (
             <Expertise image={image} link={link} title={title} />
-          ))
+          )),
         )}
       </div>
     </section>

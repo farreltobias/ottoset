@@ -8,7 +8,7 @@ export const Services: React.FC = () => {
       {Children.toArray(
         services.map(({ icon, image, title, link }) => (
           <Service title={title} icon={icon} image={image} link={link} />
-        ))
+        )),
       )}
     </div>
   );

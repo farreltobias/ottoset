@@ -36,7 +36,7 @@ export const Monitor: React.FC = () => {
                     {item}
                   </span>
                 </li>
-              ))
+              )),
             )}
           </ul>
         </div>
@@ -48,10 +48,7 @@ export const Monitor: React.FC = () => {
               alt="computer with monitor"
               placeholder="blur"
             />
-            <Caps
-              className="absolute bg-primary-50 text-base lg:text-2xl rotate-180 top-0 right-0 h-full flex justify-center px-2 lg:px-4"
-              style={{ writingMode: 'vertical-rl' }}
-            >
+            <Caps className="absolute bg-primary-50 text-base lg:text-2xl rotate-180 top-0 right-0 h-full flex justify-center px-2 lg:px-4 [writing-mode:vertical-rl]">
               Por que nos escolher?
             </Caps>
             <div className="absolute top-0 w-[calc(100%-2.5rem)] lg:w-[calc(100%-4.25rem)] h-full">

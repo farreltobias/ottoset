@@ -85,7 +85,7 @@ export const Slide: React.FC<Props> = ({ title, image, description }) => {
                 {text}
                 <span className="text-primary-400">.</span>
               </span>
-            ))
+            )),
           )}
         </Title>
       </div>

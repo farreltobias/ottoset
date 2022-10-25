@@ -25,7 +25,7 @@ export const Instagram: React.FC = () => {
       skipSnaps: false,
       align: 'start',
     }),
-    []
+    [],
   );
 
   const autoplay = Autoplay({
@@ -79,7 +79,7 @@ export const Instagram: React.FC = () => {
                     />
                   </div>
                 </div>
-              ))
+              )),
             )}
           </div>
         </div>

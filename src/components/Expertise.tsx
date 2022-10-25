@@ -29,7 +29,7 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
         <Caps
           as="h1"
           variant="title"
-          className="w-full flex items-center justify-center text-center text-transparent text-3xl sm:text-5xl lg:text-2xl xl:text-4xl children:leading-120 children:transition-all" //text-xl md:text-3xl
+          className="w-full flex items-center justify-center text-center text-transparent text-3xl sm:text-5xl lg:text-2xl xl:text-4xl children:leading-120 children:transition-all"
         >
           <span className="shadow-neutral text-stroke-1 group-hover:text-stroke-none group-hover:text-neutral">
             {title}

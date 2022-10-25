@@ -1,12 +1,5 @@
 import { forwardRef } from 'react';
 
-type Props = React.PropsWithChildren<{
-  className?: string;
-  style?: React.CSSProperties;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
-  variant?: keyof typeof variants;
-}>;
-
 const variants = {
   display1: 'text-[8.375rem] font-extrabold',
   display2: 'text-8xl leading-120 font-extrabold',
@@ -19,6 +12,13 @@ const variants = {
   h5: 'text-xl leading-120 font-bold',
   h6: 'text-base leading-120 font-bold',
 };
+
+type Props = React.PropsWithChildren<{
+  className?: string;
+  style?: React.CSSProperties;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
+  variant?: keyof typeof variants;
+}>;
 
 const FowardFunction: React.ForwardRefRenderFunction<
   HTMLHeadingElement,

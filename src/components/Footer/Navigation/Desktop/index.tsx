@@ -15,7 +15,7 @@ export const Desktop: React.FC = () => {
         {Children.toArray(
           subItems?.map((item) => (
             <SubItem label={item.label} href={item.href} />
-          ))
+          )),
         )}
       </div>
     ));

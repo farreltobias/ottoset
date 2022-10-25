@@ -16,7 +16,7 @@ export const Information = () => {
     .map(({ Icon, number, link, email }) => ({
       Icon,
       number: number ? formatPhoneNumber(number) : null,
-      email: email ? email : null,
+      email: email || null,
       link,
     }))
     .reverse();
@@ -49,7 +49,7 @@ export const Information = () => {
             />
             <Text variant="p4">{number || email}</Text>
           </a>
-        ))
+        )),
       )}
       <ul className="flex lg:mt-2 mx-auto lg:mx-0">
         {Children.toArray(
@@ -64,7 +64,7 @@ export const Information = () => {
                 />
               </a>
             </li>
-          ))
+          )),
         )}
       </ul>
     </>

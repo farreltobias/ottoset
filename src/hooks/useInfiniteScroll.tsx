@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 export const useInfiniteScroll = (
   embla: EmblaCarouselType,
   slides: any[],
-  hasMoreToLoad: boolean
+  hasMoreToLoad: boolean,
 ) => {
   const scrollListener = useRef(() => {});
   const [loadingMore, setLoadingMore] = useState(false);

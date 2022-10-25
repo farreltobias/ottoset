@@ -21,7 +21,7 @@ export const Mission: React.FC = () => (
               {content}
             </Text>
           </li>
-        ))
+        )),
       )}
     </ul>
   </section>

@@ -24,7 +24,10 @@ export const Projects: React.FC = () => {
             </Button>
           </div>
           <Tabs tabs={tabs} />
-          <Button variant="outline" className="my-auto block lg:hidden mx-auto mb-14">
+          <Button
+            variant="outline"
+            className="my-auto block lg:hidden mx-auto mb-14"
+          >
             <Link href="/projects">Ver todos os cases</Link>
           </Button>
         </div>

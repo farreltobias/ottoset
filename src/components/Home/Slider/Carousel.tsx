@@ -10,7 +10,7 @@ type Props = {
 
 const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
   { slides, emblaApi },
-  emblaRef
+  emblaRef,
 ) => {
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -18,11 +18,11 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
+    [emblaApi],
   );
   const scrollNext = useCallback(
     () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
+    [emblaApi],
   );
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -51,7 +51,7 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
               <div className="embla__slide w-full h-full shrink-0 grow-0 basis-full">
                 <div className="embla__slide__inner w-full h-full">{slide}</div>
               </div>
-            ))
+            )),
           )}
         </div>
       </div>

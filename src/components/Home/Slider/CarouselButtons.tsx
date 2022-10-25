@@ -20,10 +20,7 @@ export const PrevButton: React.FC<Props> = ({
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha
-        className="fill-neutral w-2/3 lg:w-full"
-        viewBox="0 0 37 48"
-      />
+      <Flecha className="fill-neutral w-2/3 lg:w-full" viewBox="0 0 37 48" />
     </button>
     <Text
       variant="p2"
@@ -49,10 +46,7 @@ export const NextButton: React.FC<Props> = ({
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha
-        className="fill-neutral w-2/3 lg:w-full"
-        viewBox="0 0 37 48"
-      />
+      <Flecha className="fill-neutral w-2/3 lg:w-full" viewBox="0 0 37 48" />
     </button>
     <Text
       variant="p2"

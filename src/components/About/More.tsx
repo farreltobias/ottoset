@@ -54,7 +54,7 @@ export const More: React.FC = () => {
                   {service}
                 </Text>
               </li>
-            ))
+            )),
           )}
         </ul>
       </div>

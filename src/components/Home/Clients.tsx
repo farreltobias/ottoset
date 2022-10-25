@@ -25,7 +25,7 @@ export const Clients: React.FC = () => {
                 />
               </div>
             );
-          })
+          }),
         )}
       </div>
     </section>

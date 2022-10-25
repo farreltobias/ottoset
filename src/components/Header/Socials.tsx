@@ -16,7 +16,7 @@ export const Socials: React.FC = () => {
                 <Icon width={15} />
               </a>
             </li>
-          ))
+          )),
         )}
       </ul>
     </div>

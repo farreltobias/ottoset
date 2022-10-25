@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
               )}
             </>
           );
-        })
+        }),
       )}
       <Link
         href={`mailto:${email}`}

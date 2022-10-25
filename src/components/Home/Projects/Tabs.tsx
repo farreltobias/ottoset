@@ -35,7 +35,7 @@ export const Tabs: React.FC<Props> = ({ tabs }) => {
                 {label}
               </Title>
             </Tab>
-          ))
+          )),
         )}
       </Tab.List>
       <Tab.Panels className="mb-16 lg:mb-36">
@@ -44,7 +44,7 @@ export const Tabs: React.FC<Props> = ({ tabs }) => {
             <Tab.Panel as={Fragment}>
               <Carousel projects={projects} ref={emblaRef} />
             </Tab.Panel>
-          ))
+          )),
         )}
       </Tab.Panels>
     </Tab.Group>

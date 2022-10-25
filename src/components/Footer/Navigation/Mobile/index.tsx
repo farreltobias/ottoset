@@ -56,10 +56,10 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
             {Children.toArray(
               subItems.map((item) => (
                 <SubItem href={item.href} label={item.label} />
-              ))
+              )),
             )}
           </Disclosure>
-        )
+        ),
     );
 
   return (
