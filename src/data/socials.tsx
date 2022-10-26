@@ -1,8 +1,8 @@
+import Facebook from '@public/social/facebook.svg';
 import Instagram from '@public/social/instagram.svg';
 import LinkedIn from '@public/social/linkedin.svg';
-import Facebook from '@public/social/facebook.svg';
 
-import { instagram, linkedin, facebook } from './static/ottoset';
+import { facebook, instagram, linkedin } from './static/ottoset';
 
 export const socials = [
   {

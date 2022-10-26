@@ -1,14 +1,14 @@
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 
-import 'tailwindcss/tailwind.css';
-
 import { SidebarProvider } from '@contexts/SidebarContext';
 
-import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 
 import { SEO } from '@seo/next-seo.config';
+
+import 'tailwindcss/tailwind.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

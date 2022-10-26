@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 import { Caps, Text, Title } from './Texts';
 

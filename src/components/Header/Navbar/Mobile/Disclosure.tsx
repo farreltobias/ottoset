@@ -1,7 +1,8 @@
 import { Fragment, ReactNode } from 'react';
-import { Disclosure as Menu, Transition } from '@headlessui/react';
 
 import { Caps } from '@components/Texts';
+
+import { Disclosure as Menu, Transition } from '@headlessui/react';
 
 type Props = {
   label: string;

@@ -2,14 +2,14 @@ import Image from 'next/image';
 
 import DoubleArrow from '@public/navigation/double-arrow-down.svg';
 
-import office from '@public/photos/office.png';
-import streetview from '@public/photos/streetview.png';
 import eletronic from '@public/photos/eletronic.png';
 import mechanic from '@public/photos/mechanic.png';
+import office from '@public/photos/office.png';
+import streetview from '@public/photos/streetview.png';
 
+import { Button } from '@components/Button';
 import { Text, Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
-import { Button } from '@components/Button';
 
 export const About: React.FC = () => (
   <section className="container mx-auto flex flex-col lg:flex-row mt-10 lg:mt-12">

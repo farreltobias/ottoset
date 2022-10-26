@@ -1,6 +1,8 @@
-import { Service } from '@components/Service';
-import { services } from '@data/static/services';
 import { Children } from 'react';
+
+import { Service } from '@components/Service';
+
+import { services } from '@data/static/services';
 
 export const Services: React.FC = () => {
   return (

@@ -1,8 +1,9 @@
-import Image from 'next/image';
 import { Children } from 'react';
+import Image from 'next/image';
+
+import { Overlaid } from '@components/Texts/Overlaid';
 
 import { clients } from '@data/clients';
-import { Overlaid } from '@components/Texts/Overlaid';
 
 export const Clients: React.FC = () => {
   return (

@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from 'next/image';
 import { Children, useCallback, useEffect, useMemo, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
 
-import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 
 import { useWindowSize } from '@hooks/useWindowSize';
 
-import { Title } from '@components/Texts';
 import { Link } from '@components/Link';
+import { Title } from '@components/Texts';
 
 import { images } from '@data/static/instagram';
 import { instagram } from '@data/static/ottoset';

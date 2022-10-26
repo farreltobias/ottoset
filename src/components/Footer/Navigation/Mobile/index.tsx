@@ -1,7 +1,8 @@
-import Head from 'next/head';
 import { Children, useEffect, useState } from 'react';
+import Head from 'next/head';
 
 import { useWindowSize } from '@hooks/useWindowSize';
+
 import { navLinks } from '@data/navLinks';
 
 import { Disclosure } from './Disclosure';

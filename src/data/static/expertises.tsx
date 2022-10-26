@@ -1,5 +1,5 @@
-import hospital from '@public/photos/hospital.png';
 import agribusiness from '@public/photos/agribusiness.png';
+import hospital from '@public/photos/hospital.png';
 import hospitality from '@public/photos/hospitality.png';
 import truck from '@public/photos/truck.png';
 

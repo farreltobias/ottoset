@@ -1,4 +1,5 @@
 import React, { Children, useCallback, useEffect, useState } from 'react';
+
 import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { NextButton, PrevButton } from './CarouselButtons';

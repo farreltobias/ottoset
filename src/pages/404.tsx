@@ -1,6 +1,6 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { NextPage } from 'next';
 
 import { Button } from '@components/Button';
 

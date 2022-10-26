@@ -7,6 +7,7 @@ import workers from '@public/photos/diferentials-workers.png';
 import monitor from '@public/photos/double-monitor.png';
 
 import { Text, Title } from '@components/Texts';
+
 import { diferentials } from '@data/static/content';
 
 export const Diferentials: React.FC = () => {

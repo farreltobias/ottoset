@@ -1,7 +1,9 @@
+import { Children } from 'react';
+
 import { Service } from '@components/Service';
 import { Overlaid } from '@components/Texts/Overlaid';
+
 import { services } from '@data/static/services';
-import { Children } from 'react';
 
 export const Services: React.FC = () => {
   return (

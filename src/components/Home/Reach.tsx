@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import brasil from '@public/photos/brasil.png';
-import { Text } from '@components/Texts';
+
 import { Button } from '@components/Button';
-import Link from 'next/link';
+import { Text } from '@components/Texts';
 
 export const Reach: React.FC = () => {
   return (

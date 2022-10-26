@@ -1,12 +1,12 @@
-import Lightning from '@public/icons/lightning.svg';
 import Airplane from '@public/icons/airplane.svg';
-import Sun from '@public/icons/sun.svg';
 import Config from '@public/icons/config.svg';
+import Lightning from '@public/icons/lightning.svg';
+import Sun from '@public/icons/sun.svg';
 
-import generator from '@public/photos/generator.png';
 import aviation from '@public/photos/aviation.png';
-import photovoltaic from '@public/photos/photovoltaic.png';
+import generator from '@public/photos/generator.png';
 import maintenance from '@public/photos/maintenance.png';
+import photovoltaic from '@public/photos/photovoltaic.png';
 
 export const services = [
   {

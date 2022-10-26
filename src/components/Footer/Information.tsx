@@ -2,9 +2,9 @@ import { Children } from 'react';
 
 import { Text } from '@components/Texts';
 
-import { address } from '@data/static/ottoset';
 import { contacts } from '@data/contacts';
 import { socials } from '@data/socials';
+import { address } from '@data/static/ottoset';
 
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 

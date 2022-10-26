@@ -1,5 +1,5 @@
 import { Children, Fragment } from 'react';
-import { Tab } from '@headlessui/react';
+
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 
 import { Title } from '@components/Texts';
@@ -7,6 +7,8 @@ import { Title } from '@components/Texts';
 import type { Tab as TabProps } from '@data/static/projects';
 
 import { Carousel } from './Carousel';
+
+import { Tab } from '@headlessui/react';
 
 type Props = {
   tabs: TabProps[];

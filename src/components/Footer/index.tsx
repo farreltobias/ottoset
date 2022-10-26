@@ -4,7 +4,6 @@ import Logo from '@public/company/logo.svg';
 
 import { Desktop } from './Navigation/Desktop';
 import { Mobile } from './Navigation/Mobile';
-
 import { Information } from './Information';
 import { Policy } from './Policy';
 

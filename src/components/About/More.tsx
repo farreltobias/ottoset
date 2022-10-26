@@ -3,10 +3,11 @@ import Image from 'next/image';
 
 import Flecha from '@public/navigation/flecha.svg';
 
-import workers from '@public/photos/office-workers.png';
 import happy from '@public/photos/happy.png';
+import workers from '@public/photos/office-workers.png';
 
 import { Text, Title } from '@components/Texts';
+
 import { services } from '@data/static/content';
 
 export const More: React.FC = () => {

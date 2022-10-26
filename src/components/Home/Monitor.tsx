@@ -1,14 +1,14 @@
-import Image from 'next/image';
 import { Children } from 'react';
+import Image from 'next/image';
 
-import Flecha from '@public/navigation/flecha.svg';
 import Badge from '@public/company/badge.svg';
 import Foco from '@public/company/foco.svg';
+import Flecha from '@public/navigation/flecha.svg';
 
 import computer from '@public/photos/computer.png';
 
-import { Overlaid } from '@components/Texts/Overlaid';
 import { Caps } from '@components/Texts';
+import { Overlaid } from '@components/Texts/Overlaid';
 
 import { monitor } from '@data/static/content';
 

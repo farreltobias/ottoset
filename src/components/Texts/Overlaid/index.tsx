@@ -1,7 +1,7 @@
 import { Title as MainTitle } from '../titles';
 
-import { Title } from './Title';
 import { SubTitle } from './SubTitle';
+import { Title } from './Title';
 
 type SubComponents = {
   Title: typeof Title;

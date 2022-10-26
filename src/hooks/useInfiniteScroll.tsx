@@ -1,5 +1,6 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+
 import type { EmblaCarouselType } from 'embla-carousel-react';
-import { useState, useEffect, useCallback, useRef } from 'react';
 
 export const useInfiniteScroll = (
   embla: EmblaCarouselType,

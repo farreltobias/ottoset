@@ -1,8 +1,9 @@
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 import { Caps } from '@components/Texts';
+
 import { Button } from './Button';
-import Link from 'next/link';
 
 type Props = {
   title: string | React.ReactNode;

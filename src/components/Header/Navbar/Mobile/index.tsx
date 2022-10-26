@@ -1,17 +1,20 @@
-import Head from 'next/head';
 import { Children, useContext, useEffect, useState } from 'react';
-import { Transition } from '@headlessui/react';
+import Head from 'next/head';
+
 import { screens } from 'tailwindcss/defaultTheme';
+
+import { useWindowSize } from '@hooks/useWindowSize';
 
 import { SidebarContext } from '@contexts/SidebarContext';
 
-import { useWindowSize } from '@hooks/useWindowSize';
 import { navLinks } from '@data/navLinks';
 
-import { Item } from './Item';
-import { Hamburguer } from './Hamburguer';
 import { Disclosure } from './Disclosure';
+import { Hamburguer } from './Hamburguer';
+import { Item } from './Item';
 import { SubItem } from './SubItem';
+
+import { Transition } from '@headlessui/react';
 
 const getClassNames = (width: number) => {
   const stylesString = navLinks.reduce((acc, { subItems }, index) => {

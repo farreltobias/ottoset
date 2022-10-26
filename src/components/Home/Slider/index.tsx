@@ -1,9 +1,10 @@
-import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+
+import { slides } from '@data/static/slider';
 
 import { Carousel } from './Carousel';
 import { Slide } from './Slide';
-import { slides } from '@data/static/slider';
 
 export const Slider: React.FC = () => {
   const autoplay = Autoplay({

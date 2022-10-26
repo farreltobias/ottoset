@@ -1,5 +1,6 @@
-import { Text } from '@components/Texts';
 import Flecha from '@public/navigation/flecha.svg';
+
+import { Text } from '@components/Texts';
 
 type Props = {
   enabled: boolean;

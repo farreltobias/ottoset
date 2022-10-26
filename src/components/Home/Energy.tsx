@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import DoubleArrow from '@public/navigation/double-arrow-right.svg';
 import Badge from '@public/company/badge.svg';
+import DoubleArrow from '@public/navigation/double-arrow-right.svg';
 
 import street from '@public/photos/street.png';
 
-import { Text, Title } from '@components/Texts';
 import { Button } from '@components/Button';
+import { Text, Title } from '@components/Texts';
 
 export const Energy: React.FC = () => (
   <section className="lg:mt-36 container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly">

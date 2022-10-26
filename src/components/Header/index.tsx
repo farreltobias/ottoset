@@ -1,5 +1,5 @@
-import { Navbar } from './Navbar';
 import { Contact } from './Contact';
+import { Navbar } from './Navbar';
 import { Socials } from './Socials';
 
 export const Header: React.FC = () => {

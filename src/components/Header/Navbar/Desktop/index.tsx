@@ -5,8 +5,8 @@ import { Button } from '@components/Button';
 
 import { navLinks } from '@data/navLinks';
 
-import { Item } from './Item';
 import { Dropdown } from './Dropdown';
+import { Item } from './Item';
 import { SubItem } from './SubItem';
 
 export const Desktop: React.FC<React.PropsWithChildren> = () => {

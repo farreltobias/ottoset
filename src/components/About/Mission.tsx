@@ -1,6 +1,8 @@
-import { Text, Title } from '@components/Texts';
-import { missions } from '@data/static/content';
 import { Children } from 'react';
+
+import { Text, Title } from '@components/Texts';
+
+import { missions } from '@data/static/content';
 
 export const Mission: React.FC = () => (
   <section className="relative container mx-auto flex flex-col items-center lg:mt-16">
