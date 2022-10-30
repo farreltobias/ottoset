@@ -20,7 +20,6 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
             <div className="embla__slide mr-2 lg:mr-8">
               <div className="embla__slide__inner relative">
                 <Card
-                  key={title}
                   title={title}
                   description={description}
                   duration={duration}
