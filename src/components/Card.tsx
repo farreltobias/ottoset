@@ -1,6 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
+import { convertTime } from '@utils/convertTime';
+
 import { Caps, Text, Title } from './Texts';
 
 type Props = {
@@ -9,6 +11,7 @@ type Props = {
   description: string;
   link: string;
   duration: number;
+  className?: string;
 };
 
 export const Card: React.FC<Props> = ({
@@ -17,20 +20,11 @@ export const Card: React.FC<Props> = ({
   duration,
   img,
   link,
+  className = 'w-80 lg:w-[35.25rem] h-[40.625rem] lg:h-[47.5rem]',
 }) => {
-  const [hours, minutes] = new Date(duration)
-    .toISOString()
-    .substring(11, 19)
-    .split(':')
-    .map((time) => Number(time));
-
-  const time = `${hours ? `${hours} h ` : ''}${
-    minutes ? `${minutes} min ` : ''
-  }de leitura`;
-
   return (
     <Link href={link}>
-      <a className="block relative w-80 h-[40.625rem] lg:w-[35.25rem] lg:h-[47.5rem] group">
+      <a className={`block relative group ${className}`}>
         <span className="absolute bg-secondary-900 w-full h-full bg-opacity-60 z-10" />
         <Image
           src={img}
@@ -55,7 +49,7 @@ export const Card: React.FC<Props> = ({
           <Text as="p" variant="p3" className="mb-4">
             {description}
             <span className="mx-2">•</span>
-            {time}
+            {convertTime(duration)}
           </Text>
           <Title as="h4" variant="h4">
             {title}
