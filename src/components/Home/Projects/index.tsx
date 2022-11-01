@@ -20,7 +20,7 @@ export const Projects: React.FC = () => {
               Portfolio de Projetos
             </Title>
             <Button variant="outline" className="my-auto hidden lg:block">
-              <Link href="/projects">Ver todos os cases</Link>
+              <Link href="/projetos">Ver todos os cases</Link>
             </Button>
           </div>
           <Tabs tabs={tabs} />
@@ -28,7 +28,7 @@ export const Projects: React.FC = () => {
             variant="outline"
             className="my-auto block lg:hidden mx-auto mb-14"
           >
-            <Link href="/projects">Ver todos os cases</Link>
+            <Link href="/projetos">Ver todos os cases</Link>
           </Button>
         </div>
       </div>
