@@ -15,18 +15,22 @@
   "dependencies": {
     "@headlessui/react": "^1.7.0",
     "@headlessui/tailwindcss": "^0.1.1",
+    "@unform/core": "^2.1.6",
+    "@unform/web": "^2.1.6",
     "embla-carousel-autoplay": "^7.0.3",
     "embla-carousel-react": "^7.0.3",
     "next": "12.2.5",
     "next-seo": "^5.8.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-input-mask": "^2.0.4"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.0",
     "@types/node": "18.7.14",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
+    "@types/react-input-mask": "^3.0.1",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",

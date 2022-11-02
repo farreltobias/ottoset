@@ -8,7 +8,7 @@ const variants = {
 type Props = React.PropsWithChildren<{
   variant?: keyof typeof variants;
   className?: string;
-  as?: 'p' | 'span' | 'div' | 'li';
+  as?: 'p' | 'span' | 'div' | 'li' | 'label';
 }>;
 
 export const Text: React.FC<Props> = ({
