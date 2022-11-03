@@ -49,27 +49,27 @@ export const navLinks: NavLink[] = [
     label: 'Grupo Gerador',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Venda',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Locação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Instalação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Manutenção',
       },
       {
-        href: '/',
+        href: '/servicos#automacao',
         label: 'Automação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Monitoramento remoto',
       },
     ],
@@ -78,7 +78,7 @@ export const navLinks: NavLink[] = [
     label: 'Aviação',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#aviacao',
         label: 'Modernização de GPU',
       },
     ],
@@ -87,19 +87,19 @@ export const navLinks: NavLink[] = [
     label: 'Energia Solar',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Venda',
       },
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Instalação',
       },
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Manutenção',
       },
       {
-        href: '/',
+        href: '/contato',
         label: 'Simule seu sistema',
         onlyFooter: true,
       },
@@ -109,15 +109,15 @@ export const navLinks: NavLink[] = [
     label: 'Soluções prediais',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Elétrica',
       },
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Civil',
       },
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Hidráulica',
       },
     ],

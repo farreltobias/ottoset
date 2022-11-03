@@ -10,7 +10,7 @@ import { Article, Content } from '@components/Article';
 
 export const Energy: React.FC = () => {
   return (
-    <Article className="lg:mt-36">
+    <Article className="lg:pt-0 lg:mt-36">
       <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[-45px_56px_0px_-1px_white,-45px_56px_#818181]">
         <Image
           src={street}
@@ -37,7 +37,7 @@ export const Energy: React.FC = () => {
           qualidade, seriedade e pontualidade.
         </Content.Text>
         <Content.Button>
-          <Link href="/contact">
+          <Link href="/contato">
             <a className="flex">
               Seja um cliente Ottoset
               <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />

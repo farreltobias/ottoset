@@ -18,12 +18,14 @@ type Props = {
   className?: string;
   order?: 'left' | 'right';
   children: ChildrenType | ChildrenType[];
+  id?: string;
 };
 
 const Article: React.FC<Props> & SubComponents = ({
   children,
   className = '',
   order = 'left',
+  id,
 }) => {
   const keys = Object.keys(Article) as (keyof typeof Article)[];
 
@@ -48,7 +50,8 @@ const Article: React.FC<Props> & SubComponents = ({
   return (
     <ArticleProvider order={order}>
       <section
-        className={`container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly mt-12 ${className}`}
+        id={id}
+        className={`container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly pt-12 ${className}`}
       >
         <div
           className={`flex items-center justify-center w-full lg:w-1/2 ${

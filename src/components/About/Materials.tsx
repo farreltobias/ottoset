@@ -3,7 +3,7 @@ import { Overlaid } from '@components/Texts/Overlaid';
 
 export const Materials: React.FC = () => {
   return (
-    <section className="container mx-auto lg:mt-24">
+    <section className="container mx-auto lg:mt-24 mb-24">
       <Overlaid>
         <Overlaid.Title>Outros</Overlaid.Title>
         <Overlaid.SubTitle>Materiais sobre nós</Overlaid.SubTitle>

@@ -1,7 +1,7 @@
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 
-import { slides } from '@data/static/slider';
+import { services } from '@data/static/services';
 
 import { Carousel } from './Carousel';
 import { Slide } from './Slide';
@@ -19,7 +19,7 @@ export const Slider: React.FC = () => {
       <Carousel
         ref={emblaRef}
         emblaApi={emblaApi}
-        slides={slides.map((slide) => (
+        slides={services.map((slide) => (
           <Slide
             title={slide.title}
             description={slide.description}

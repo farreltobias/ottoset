@@ -10,7 +10,7 @@ import { Article, Content } from '@components/Article';
 
 export const Maintenance: React.FC = () => {
   return (
-    <Article className="lg:mt-32">
+    <Article id="manutencao" className="lg:pt-48 lg:-mt-[4.5rem]">
       <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[22px_24px_0_-1px_white,22px_24px_#818181]">
         <Image
           src={adequacy}
@@ -47,7 +47,7 @@ export const Maintenance: React.FC = () => {
           projeto concessionária.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contact">
+          <Link href="/contato">
             <a className="flex justify-center w-full">
               Seja um cliente Ottoset
               <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />

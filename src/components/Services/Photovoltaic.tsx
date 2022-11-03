@@ -10,7 +10,7 @@ import { Article, Content } from '@components/Article';
 
 export const Photovoltaic: React.FC = () => {
   return (
-    <Article className="lg:mt-32">
+    <Article id="fotovoltaica" className="lg:pt-48 lg:-mt-[4.5rem]">
       <Article.Image>
         <Image
           src={sunrise}
@@ -44,7 +44,7 @@ export const Photovoltaic: React.FC = () => {
           homologação do seu sistema.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contact">
+          <Link href="/contato">
             <a className="flex justify-center w-full">
               Simule seu sistema
               <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />

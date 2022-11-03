@@ -10,7 +10,7 @@ import { Article, Content } from '@components/Article';
 
 export const Generators: React.FC = () => {
   return (
-    <Article className="lg:mt-12">
+    <Article id="grupo-geradores" className="lg:pt-48 lg:-mt-36">
       <Article.Image>
         <Image
           src={generator}
@@ -34,7 +34,7 @@ export const Generators: React.FC = () => {
           tempo real.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contact">
+          <Link href="/contato">
             <a className="flex justify-center w-full">
               Seja um cliente Ottoset
               <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />

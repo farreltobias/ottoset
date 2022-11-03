@@ -8,45 +8,63 @@ import generator from '@public/photos/generator.png';
 import maintenance from '@public/photos/maintenance.png';
 import photovoltaic from '@public/photos/photovoltaic.png';
 
+import { areas } from './content';
+
 export const services = [
   {
     title: (
       <>
-        Grupos <br /> Geradores
+        ottoset <br /> geradores
       </>
     ),
     icon: <Lightning />,
+    description: areas,
     image: {
       path: generator,
       name: 'Gerador',
     },
-    link: '/',
+    link: '/servicos#grupo-geradores',
   },
   {
-    title: 'Aviação',
+    title: (
+      <>
+        ottoset <br /> aviação
+      </>
+    ),
     icon: <Airplane />,
+    description: areas,
     image: {
       path: aviation,
       name: 'Aviação',
     },
-    link: '/',
+    link: '/servicos#aviacao',
   },
   {
-    title: 'Fotovoltaica',
+    title: (
+      <>
+        ottoset <br /> solar
+      </>
+    ),
     icon: <Sun />,
+    description: areas,
     image: {
       path: photovoltaic,
       name: 'Fotovoltaica',
     },
-    link: '/',
+    link: '/servicos#fotovoltaica',
   },
   {
-    title: 'Manutenção',
+    title: (
+      <>
+        ottoset <br /> facility
+      </>
+    ),
     icon: <Config />,
+    description: areas,
     image: {
       path: maintenance,
       name: 'Manutenção',
     },
-    link: '/',
+    link: '/servicos#manutencao',
   },
 ];

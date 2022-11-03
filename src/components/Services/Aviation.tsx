@@ -10,7 +10,7 @@ import { Article, Content } from '@components/Article';
 
 export const Aviation: React.FC = () => {
   return (
-    <Article className="lg:mt-32" order="right">
+    <Article id="aviacao" className="lg:pt-48 lg:-mt-[4.5rem]" order="right">
       <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[88px_32px_0_-1px_white,88px_32px_#818181]">
         <Image
           src={aviation}
@@ -23,7 +23,7 @@ export const Aviation: React.FC = () => {
       </Article.Image>
 
       <Article.Content className="py-12 lg:py-[6.75rem]">
-        <Content.Title>Automação</Content.Title>
+        <Content.Title>Aviação</Content.Title>
         <Content.SubTitle>Modernização de GPU</Content.SubTitle>
         <Content.Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non tempor
@@ -38,7 +38,7 @@ export const Aviation: React.FC = () => {
           aliquet elementum. Elementum mi ultrices dui sagittis convallis.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contact">
+          <Link href="/contato">
             <a className="flex justify-center w-full">
               Solicite um orçamento
               <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />

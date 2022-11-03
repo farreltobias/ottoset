@@ -10,7 +10,7 @@ export const expertises = [
       path: hospital,
       name: 'Hospital',
     },
-    link: '/',
+    link: '/contato',
   },
   {
     title: 'Agronegócio',
@@ -18,7 +18,7 @@ export const expertises = [
       path: agribusiness,
       name: 'Agronegócio',
     },
-    link: '/',
+    link: '/contato',
   },
   {
     title: 'Hotelaria',
@@ -26,7 +26,7 @@ export const expertises = [
       path: hospitality,
       name: 'Hotelaria',
     },
-    link: '/',
+    link: '/contato',
   },
   {
     title: 'Hospitais',
@@ -34,6 +34,6 @@ export const expertises = [
       path: truck,
       name: 'Caminhão',
     },
-    link: '/',
+    link: '/contato',
   },
 ];

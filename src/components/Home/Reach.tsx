@@ -21,7 +21,7 @@ export const Reach: React.FC = () => {
             </Text>
 
             <Button className="font-title w-fit">
-              <Link href="/contact">Fale com nossa equipe</Link>
+              <Link href="/contato">Fale com nossa equipe</Link>
             </Button>
           </div>
           <div className="lg:w-1/2 flex items-center justify-center">
