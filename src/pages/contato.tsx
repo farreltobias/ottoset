@@ -6,9 +6,9 @@ import { NextSeo } from 'next-seo';
 import office from '@public/photos/office-alt.png';
 
 import { Button } from '@components/Button';
-import { Checkbox } from '@components/From/Checkbox';
-import { Input } from '@components/From/Input';
-import { InputMask } from '@components/From/InputMask';
+import { Checkbox } from '@components/Form/Checkbox';
+import { Input } from '@components/Form/Input';
+import { InputMask } from '@components/Form/InputMask';
 import { Text, Title } from '@components/Texts';
 
 import { SEO } from '@seo/contato';

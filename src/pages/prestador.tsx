@@ -2,8 +2,9 @@ import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
 import { Button } from '@components/Button';
-import { Input } from '@components/From/Input';
-import { InputMask } from '@components/From/InputMask';
+import { Input } from '@components/Form/Input';
+import { InputMask } from '@components/Form/InputMask';
+import { Radio } from '@components/Form/Radio';
 import { Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
 
@@ -11,8 +12,6 @@ import { SEO } from '@seo/prestador';
 
 import { SubmitHandler } from '@unform/core';
 import { Form } from '@unform/web';
-import { Radio } from '@components/From/Radio';
-import { Children } from 'react';
 
 const Prestador: NextPage = () => {
   const handleSubmit: SubmitHandler<any> = (data) => {
@@ -72,7 +71,7 @@ const Prestador: NextPage = () => {
       <NextSeo {...SEO} />
 
       <section className="container mx-auto mt-12 mb-24 lg:mt-20 lg:mb-48">
-        <Overlaid className='text-center lg:text-left'>
+        <Overlaid className="text-center lg:text-left">
           <Overlaid.Title>Seja um prestador</Overlaid.Title>
           <Overlaid.SubTitle>De serviços Ottoset</Overlaid.SubTitle>
         </Overlaid>

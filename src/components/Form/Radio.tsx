@@ -6,7 +6,7 @@ import { useField } from '@unform/core';
 
 type InputProps = Omit<
   JSX.IntrinsicElements['input'],
-  'ref' | 'defaultValue' | 'className'
+  'ref' | 'defaultValue' | 'className' | 'accept'
 >;
 
 type Option = {

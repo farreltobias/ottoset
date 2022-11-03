@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import ReactInputMask, { Props as InputProps } from 'react-input-mask';
+import ReactInputMask, { Props as ReactInputProps } from 'react-input-mask';
 
 import { Text, Title } from '@components/Texts';
 
 import { useField } from '@unform/core';
+
+type InputProps = Omit<ReactInputProps, 'accept'>;
 
 interface Props extends InputProps {
   name: string;
