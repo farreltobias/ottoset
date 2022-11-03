@@ -1,7 +1,8 @@
-import { Children, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+
+import { Text, Title } from '@components/Texts';
 
 import { useField } from '@unform/core';
-import { Text, Title } from '@components/Texts';
 
 type InputProps = Omit<
   JSX.IntrinsicElements['input'],
@@ -31,7 +32,7 @@ export const Radio: React.FC<Props> = ({
   ...rest
 }) => {
   const inputRefs = useRef<HTMLInputElement[] | null[]>([]);
-  const { fieldName, registerField, defaultValue = '', error } = useField(name);
+  const { fieldName, registerField, defaultValue = '' } = useField(name);
 
   useEffect(() => {
     registerField({

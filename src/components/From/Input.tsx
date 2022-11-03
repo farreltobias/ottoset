@@ -45,7 +45,7 @@ export const Input: React.FC<Props> = ({
   return (
     <Text
       as="label"
-      variant='p2'
+      variant="p2"
       className="flex items-center mb-8 lg:mb-12 border-b lg:text-2xl border-secondary-300"
     >
       <Title
