@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import Badge from '@public/company/badge.svg';
 import Foco from '@public/company/foco.svg';

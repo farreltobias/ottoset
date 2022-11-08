@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import DoubleArrow from '@public/navigation/double-arrow-down.svg';
 

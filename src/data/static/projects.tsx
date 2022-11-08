@@ -1,4 +1,4 @@
-import { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/legacy/image';
 
 import project from '@public/photos/projects.jpg';
 

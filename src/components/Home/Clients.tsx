@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import { Overlaid } from '@components/Texts/Overlaid';
 

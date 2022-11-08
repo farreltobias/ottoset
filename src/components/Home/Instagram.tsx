@@ -1,5 +1,5 @@
 import { Children, useCallback, useEffect, useMemo, useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/legacy/image';
 
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';

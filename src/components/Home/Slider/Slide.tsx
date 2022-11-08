@@ -1,5 +1,5 @@
 import { Children, createRef, useEffect, useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/legacy/image';
 
 import { useWindowSize } from '@hooks/useWindowSize';
 
