@@ -16,16 +16,15 @@ export const Item: React.FC<Props> = ({ children, className, ...props }) => {
 
   return (
     <li className={`flex bg-neutral-900 ${className}`}>
-      <Link {...props}>
-        <a
-          onClick={() => {
-            document.body.classList.remove('overflow-hidden');
-            setShow(false);
-          }}
-          className="py-[1.625rem] px-4 text-neutral"
-        >
-          <Caps>{children}</Caps>
-        </a>
+      <Link
+        {...props}
+        onClick={() => {
+          document.body.classList.remove('overflow-hidden');
+          setShow(false);
+        }}
+        className="py-[1.625rem] px-4 text-neutral"
+      >
+        <Caps>{children}</Caps>
       </Link>
     </li>
   );

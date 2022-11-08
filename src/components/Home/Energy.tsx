@@ -37,11 +37,9 @@ export const Energy: React.FC = () => {
           qualidade, seriedade e pontualidade.
         </Content.Text>
         <Content.Button>
-          <Link href="/contato">
-            <a className="flex">
-              Seja um cliente Ottoset
-              <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-            </a>
+          <Link href="/contato" className="flex">
+            Seja um cliente Ottoset
+            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
           </Link>
         </Content.Button>
       </Article.Content>

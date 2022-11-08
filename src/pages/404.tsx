@@ -24,8 +24,8 @@ const Custom404: NextPage = () => {
             variant="outline"
             className="flex items-center justify-center font-title w-full sm:w-fit"
           >
-            <Link href="/">
-              <a className="text-base">Voltar para a página inicial</a>
+            <Link href="/" className="text-base">
+              Voltar para a página inicial
             </Link>
           </Button>
         </div>

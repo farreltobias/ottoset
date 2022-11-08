@@ -8,10 +8,11 @@ export const Policy: React.FC = () => {
   return (
     <div className="border-t border-t-secondary-300">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center py-6 lg:py-8">
-        <NextLink href="/privacidade">
-          <a className='className="hidden lg:block font-medium text-sm"'>
-            Política de privacidade
-          </a>
+        <NextLink
+          href="/privacidade"
+          className='className="hidden lg:block font-medium text-sm"'
+        >
+          Política de privacidade
         </NextLink>
         <Link
           className="flex items-center mb-6 lg:mb-2"

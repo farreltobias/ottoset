@@ -49,17 +49,18 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
             {title}
           </span>
         </Caps>
-        <Link href={link}>
-          <a className="transition-all z-10 group-hover:child:bg-primary-600">
-            {/* hidden group-hover:flex */}
-            <Button
-              variant="outline"
-              hover="filled"
-              className="h-10 hover:!bg-neutral-900 group-hover:text-neutral group-hover:border-none"
-            >
-              Solicite orçamento
-            </Button>
-          </a>
+        <Link
+          href={link}
+          className="transition-all z-10 group-hover:child:bg-primary-600"
+        >
+          {/* hidden group-hover:flex */}
+          <Button
+            variant="outline"
+            hover="filled"
+            className="h-10 hover:!bg-neutral-900 group-hover:text-neutral group-hover:border-none"
+          >
+            Solicite orçamento
+          </Button>
         </Link>
       </div>
     </div>

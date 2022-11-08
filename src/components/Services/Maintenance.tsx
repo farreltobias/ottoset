@@ -47,11 +47,9 @@ export const Maintenance: React.FC = () => {
           projeto concessionária.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contato">
-            <a className="flex justify-center w-full">
-              Seja um cliente Ottoset
-              <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-            </a>
+          <Link href="/contato" className="flex justify-center w-full">
+            Seja um cliente Ottoset
+            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
           </Link>
         </Content.Button>
       </Article.Content>

@@ -8,8 +8,11 @@ type Props = {
 export const SubItem: React.FC<Props> = ({ href, label }) => {
   return (
     <li className="flex items-center">
-      <NextLink href={href}>
-        <a className="my-1 text-neutral-600 font-medium text-sm">{label}</a>
+      <NextLink
+        href={href}
+        className="my-1 text-neutral-600 font-medium text-sm"
+      >
+        {label}
       </NextLink>
     </li>
   );

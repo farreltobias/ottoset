@@ -44,11 +44,9 @@ export const Photovoltaic: React.FC = () => {
           homologação do seu sistema.
         </Content.Text>
         <Content.Button className="xl:w-3/5">
-          <Link href="/contato">
-            <a className="flex justify-center w-full">
-              Simule seu sistema
-              <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-            </a>
+          <Link href="/contato" className="flex justify-center w-full">
+            Simule seu sistema
+            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
           </Link>
         </Content.Button>
       </Article.Content>
