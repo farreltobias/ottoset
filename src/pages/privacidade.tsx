@@ -1,15 +1,17 @@
 import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 
 import { Text, Title } from '@components/Texts';
+
+import { SEO } from '@seo/privacidade';
 
 const Privacidade: NextPage = () => {
   return (
     <>
+      <NextSeo {...SEO} />
+
       <section className="container mx-auto mt-12 mb-36 lg:mt-24 lg:mb-72">
-        <Title
-          variant="h3"
-          className="text-center lg:text-left lg:text-[4rem] mb-6"
-        >
+        <Title variant="h3" largeVariant="h1" center className="mb-6">
           Política de privacidade e cookies
         </Title>
 

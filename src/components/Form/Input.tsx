@@ -46,7 +46,8 @@ export const Input: React.FC<Props> = ({
     <Text
       as="label"
       variant="p2"
-      className="flex items-center mb-8 lg:mb-12 border-b lg:text-2xl border-secondary-300"
+      largeVariant="p1"
+      className="flex items-center mb-8 lg:mb-12 border-b border-secondary-300"
     >
       <Title
         as="span"
@@ -60,7 +61,8 @@ export const Input: React.FC<Props> = ({
         <Title
           as="span"
           variant="h4"
-          className="block mb-2 lg:mb-4 lg:text-[2rem] lg:leading-125"
+          largeVariant="h3"
+          className="block mb-2 lg:mb-4"
         >
           {label}
         </Title>

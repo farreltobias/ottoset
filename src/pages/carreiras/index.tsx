@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Item } from '@components/careers/Item';
+import { Item } from '@components/Careers/Item';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/carreiras';
@@ -14,7 +14,7 @@ const Careers: NextPage = () => {
       <NextSeo {...SEO} />
 
       <section className="container mx-auto mt-12 mb-48 lg:mt-[4.5rem]">
-        <Overlaid className="text-center lg:text-left">
+        <Overlaid center>
           <Overlaid.Title>Carreiras</Overlaid.Title>
           <Overlaid.SubTitle>na Ottoset</Overlaid.SubTitle>
         </Overlaid>

@@ -13,7 +13,7 @@ import { Overlaid } from '@components/Texts/Overlaid';
 
 export const About: React.FC = () => (
   <section className="container mx-auto flex flex-col lg:flex-row mt-10 lg:mt-12">
-    <div className="flex flex-col items-center lg:items-start text-center mb-12 sm:mb-24 lg:w-1/2 lg:text-start lg:mb-0">
+    <div className="flex flex-col items-center lg:items-start text-center mb-20 sm:mb-24 lg:w-1/2 lg:text-start lg:mb-0">
       <Overlaid className="mb-8">
         <Overlaid.Title>Sobre a</Overlaid.Title>
         <Overlaid.SubTitle>Ottoset</Overlaid.SubTitle>
@@ -21,7 +21,7 @@ export const About: React.FC = () => (
       <Title as="h2" variant="h6" className="mb-3 lg:mb-2">
         Juntos, pensando no Futuro
       </Title>
-      <Text variant="p2" className="mb-10">
+      <Text variant="p2" className="mb-8 lg:mb-10">
         A Ottoset Energy é uma empresa especializada em soluções em energia.
         <br />
         <br />

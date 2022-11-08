@@ -13,23 +13,88 @@ const variants = {
   h6: 'text-base leading-120 font-bold',
 };
 
+const largeVarients = {
+  display1: 'lg:text-[8.375rem] lg:font-extrabold',
+  display2: 'lg:text-8xl lg:leading-120 lg:font-extrabold',
+  display3: 'lg:text-[4.75rem] lg:leading-120 lg:font-extrabold',
+  display4: 'lg:text-7xl lg:leading-120 lg:font-extrabold',
+  h1: 'lg:text-[4rem] lg:leading-120 lg:font-bold',
+  h2: 'lg:text-5xl lg:leading-120 lg:font-bold',
+  h3: 'lg:text-[2rem] lg:leading-125 lg:font-bold',
+  h4: 'lg:text-2xl lg:leading-120 lg:font-bold',
+  h5: 'lg:text-xl lg:leading-120 lg:font-bold',
+  h6: 'lg:text-base lg:leading-120 lg:font-bold',
+};
+
+const mediumVarients = {
+  display1: 'md:text-[8.375rem] md:font-extrabold',
+  display2: 'md:text-8xl md:leading-120 md:font-extrabold',
+  display3: 'md:text-[4.75rem] md:leading-120 md:font-extrabold',
+  display4: 'md:text-7xl md:leading-120 md:font-extrabold',
+  h1: 'md:text-[4rem] md:leading-120 md:font-bold',
+  h2: 'md:text-5xl md:leading-120 md:font-bold',
+  h3: 'md:text-[2rem] md:leading-125 md:font-bold',
+  h4: 'md:text-2xl md:leading-120 md:font-bold',
+  h5: 'md:text-xl md:leading-120 md:font-bold',
+  h6: 'md:text-base md:leading-120 md:font-bold',
+};
+
+const smallVarients = {
+  display1: 'sm:text-[8.375rem] sm:font-extrabold',
+  display2: 'sm:text-8xl sm:leading-120 sm:font-extrabold',
+  display3: 'sm:text-[4.75rem] sm:leading-120 sm:font-extrabold',
+  display4: 'sm:text-7xl sm:leading-120 sm:font-extrabold',
+  h1: 'sm:text-[4rem] sm:leading-120 sm:font-bold',
+  h2: 'sm:text-5xl sm:leading-120 sm:font-bold',
+  h3: 'sm:text-[2rem] sm:leading-125 sm:font-bold',
+  h4: 'sm:text-2xl sm:leading-120 sm:font-bold',
+  h5: 'sm:text-xl sm:leading-120 sm:font-bold',
+  h6: 'sm:text-base sm:leading-120 sm:font-bold',
+};
+
 type Props = React.PropsWithChildren<{
   className?: string;
+  center?: boolean;
   style?: React.CSSProperties;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
   variant?: keyof typeof variants;
+  largeVariant?: keyof typeof largeVarients;
+  mediumVariant?: keyof typeof mediumVarients;
+  smallVariant?: keyof typeof smallVarients;
 }>;
 
 const FowardFunction: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
   Props
-> = ({ children, className = '', as = 'h1', variant = 'h1', style }, ref) => {
+> = (
+  {
+    children,
+    className = '',
+    as = 'h1',
+    variant = 'h1',
+    largeVariant,
+    mediumVariant,
+    smallVariant,
+    style,
+    center = false,
+  },
+  ref,
+) => {
   const Component = as;
+
+  const variantClass = variants[variant];
+  const largeVariantClass = largeVariant ? largeVarients[largeVariant] : '\b';
+  const mediumVariantClass = mediumVariant
+    ? mediumVarients[mediumVariant]
+    : '\b';
+  const smallVariantClass = smallVariant ? smallVarients[smallVariant] : '\b';
+
+  const centerClass = center ? 'text-center lg:text-left' : '\b';
 
   return (
     <Component
       ref={ref}
-      className={`font-title ${variants[variant]} ${className}`}
+      className={`font-title ${centerClass} ${variantClass} ${smallVariantClass} ${mediumVariantClass} ${largeVariantClass} ${className}`}
       style={style}
     >
       {children}

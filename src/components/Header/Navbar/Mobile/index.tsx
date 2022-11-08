@@ -62,21 +62,23 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
     }
   }, [width, setShow, desktopWidth]);
 
-  const NavList = navLinks.map(({ label, href, subItems }, index) =>
-    subItems ? (
-      <Disclosure label={label} id={index.toString()}>
-        {Children.toArray(
-          subItems.map((item) => (
-            <SubItem href={item.href} label={item.label} />
-          )),
-        )}
-      </Disclosure>
-    ) : (
-      <Item href={href || ''} className="child:w-full">
-        {label}
-      </Item>
-    ),
-  );
+  const NavList = navLinks
+    .filter(({ onlyFooter }) => !onlyFooter)
+    .map(({ label, href, subItems }, index) =>
+      subItems ? (
+        <Disclosure label={label} id={(index + 1).toString()}>
+          {Children.toArray(
+            subItems.map((item) => (
+              <SubItem href={item.href} label={item.label} />
+            )),
+          )}
+        </Disclosure>
+      ) : (
+        <Item href={href || ''} className="child:w-full">
+          {label}
+        </Item>
+      ),
+    );
 
   return (
     <>

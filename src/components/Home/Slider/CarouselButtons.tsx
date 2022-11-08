@@ -25,8 +25,9 @@ export const PrevButton: React.FC<Props> = ({
     </button>
     <Text
       variant="p2"
+      largeVariant="p1"
       as="span"
-      className={`lg:text-2xl ml-2 lg:ml-6 text-neutral ${
+      className={`ml-2 lg:ml-6 text-neutral ${
         current + 1 !== total ? 'opacity-0' : 'opacity-100'
       }`}
     >
@@ -51,8 +52,9 @@ export const NextButton: React.FC<Props> = ({
     </button>
     <Text
       variant="p2"
+      largeVariant="p1"
       as="span"
-      className="lg:text-2xl mr-2 lg:mr-6 peer-disabled:opacity-0 text-neutral"
+      className="mr-2 lg:mr-6 peer-disabled:opacity-0 text-neutral"
     >
       {current + 1} / {total}
     </Text>

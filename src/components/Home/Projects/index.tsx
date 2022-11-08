@@ -15,7 +15,9 @@ export const Projects: React.FC = () => {
           <div className="flex justify-center lg:justify-between mt-16 lg:mt-28 mb-8">
             <Title
               variant="h2"
-              className="text-neutral text-center lg:text-start lg:text-[4rem]"
+              largeVariant="h1"
+              className="text-neutral"
+              center
             >
               Portfolio de Projetos
             </Title>

@@ -66,7 +66,8 @@ export const Radio: React.FC<Props> = ({
         <Title
           as="span"
           variant="h4"
-          className="flex items-center mb-6 lg:text-[2rem] lg:leading-125"
+          largeVariant="h3"
+          className="flex items-center mb-6"
         >
           <Title
             as="span"

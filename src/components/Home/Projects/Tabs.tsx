@@ -32,7 +32,8 @@ export const Tabs: React.FC<Props> = ({ tabs }) => {
               <Title
                 as="span"
                 variant="h6"
-                className="inline-block lg:text-2xl whitespace-nowrap py-2 px-6 text-neutral ui-not-selected:opacity-[0.7]"
+                largeVariant="h4"
+                className="inline-block whitespace-nowrap py-2 px-6 text-neutral ui-not-selected:opacity-[0.7]"
               >
                 {label}
               </Title>

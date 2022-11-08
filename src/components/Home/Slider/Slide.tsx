@@ -75,8 +75,9 @@ export const Slide: React.FC<Props> = ({ title, image, description }) => {
         <Title
           ref={ref}
           variant="h6"
+          smallVariant="h4"
           as="span"
-          className="container mx-auto absolute flex flex-wrap justify-center items-center text-neutral text-center whitespace-pre sm:text-2xl md:text-3xl lg:leading-125 lg:px-40 xl:px-64"
+          className="container mx-auto absolute flex flex-wrap justify-center items-center text-neutral text-center whitespace-pre md:text-3xl lg:leading-125 lg:px-40 xl:px-64"
           style={{ paddingTop: titleHeight / 2 + 24 }}
         >
           {Children.toArray(

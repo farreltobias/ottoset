@@ -65,12 +65,18 @@ export const Dropzone: React.FC<Props> = ({
     <div
       {...getRootProps()}
       onClick={() => inputRef.current?.click()}
-      className="mb-10 lg:mb-14 text-center lg:text-left"
+      className="mb-10 lg:mb-14"
     >
       <input {...getInputProps()} id={name} ref={inputRef} />
 
       <label htmlFor={name} className="block mb-4 lg:mb-4">
-        <Title as="span" variant="h4" className="lg:text-[2rem] lg:leading-125">
+        <Title
+          className="w-full block"
+          as="span"
+          variant="h4"
+          largeVariant="h3"
+          center
+        >
           {label}
         </Title>
       </label>
@@ -83,7 +89,13 @@ export const Dropzone: React.FC<Props> = ({
           {isDragActive ? 'Solte o arquivo aqui' : 'Escolher arquivo'}
         </Button>
 
-        <Text variant="p2" as="span" className="lg:text-2xl text-neutral-400">
+        <Text
+          variant="p2"
+          largeVariant="p1"
+          as="span"
+          className="text-neutral-400"
+          center
+        >
           {!acceptedFiles.length
             ? 'Nenhum arquivo selecionado'
             : `${acceptedFiles[0].name.slice(0, 30)}...`}

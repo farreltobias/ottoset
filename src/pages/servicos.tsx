@@ -17,7 +17,7 @@ const Servicos: NextPage = () => {
     <>
       <NextSeo {...SEO} />
 
-      <Overlaid className="container mx-auto lg:mt-12 w-full text-center lg:text-left">
+      <Overlaid center className="container mx-auto lg:mt-12 w-full">
         <Overlaid.Title>Nossos</Overlaid.Title>
         <Overlaid.SubTitle>Serviços</Overlaid.SubTitle>
       </Overlaid>
@@ -28,7 +28,7 @@ const Servicos: NextPage = () => {
       <Aviation />
       <Maintenance />
       <Services />
-      <Expertises />
+      <Expertises className="mt-12 lg:mt-56" />
     </>
   );
 };

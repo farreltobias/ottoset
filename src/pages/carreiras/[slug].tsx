@@ -69,10 +69,7 @@ const Career: NextPage<Props> = ({ career }) => {
       <NextSeo {...SEO(career)} />
 
       <section className="container mx-auto mt-12 mb-36 lg:mt-20 lg:mb-48">
-        <Title
-          variant="h3"
-          className="text-center lg:text-left lg:text-7xl lg:leading-120 lg:font-extrabold"
-        >
+        <Title variant="h3" largeVariant="display4" center>
           {career.title}
         </Title>
 

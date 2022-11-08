@@ -21,7 +21,7 @@ const Sobre: NextPage = () => {
       <Services />
       <More />
       <Diferentials />
-      <Expertises />
+      <Expertises className="mt-20 lg:mt-28" />
       <Materials />
     </>
   );

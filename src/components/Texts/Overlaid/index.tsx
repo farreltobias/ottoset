@@ -10,16 +10,21 @@ type SubComponents = {
 
 type Props = React.PropsWithChildren<{
   className?: string;
+  center?: boolean;
 }>;
 
 const Overlaid: React.FC<Props> & SubComponents = ({
   children,
   className = '',
+  center = false,
 }) => (
   <MainTitle
     as="h1"
     variant="h3"
-    className={`sm:text-5xl sm:leading-120 lg:text-8xl lg:font-extrabold ${className}`}
+    smallVariant="h2"
+    largeVariant="display2"
+    className={className}
+    center={center}
   >
     {children}
   </MainTitle>

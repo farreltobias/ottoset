@@ -2,14 +2,19 @@ import { Text, Title } from '@components/Texts';
 
 export const Services: React.FC = () => {
   return (
-    <section className="container mx-auto flex justify-between mt-40">
-      <div className="flex flex-col w-fit">
-        <Title variant="h2" className="mb-8 whitespace-pre">
-          Serviços GMC
-        </Title>
-        <Title variant="h2">Serviços UFV</Title>
-      </div>
-      <Text variant="p2" className="max-w-4xl ml-12">
+    <section className="container mx-auto flex flex-col lg:flex-row justify-between mt-16 lg:mt-40">
+      <Title
+        variant="h3"
+        largeVariant="h2"
+        center
+        className="mb-8 lg:leading-relaxed whitespace-pre"
+      >
+        Serviços GMC
+        <br />
+        Serviços UFV
+      </Title>
+
+      <Text variant="p2" center className="max-w-4xl lg:ml-12">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non tempor
         aliquet quis feugiat ac at. Scelerisque lectus phasellus dignissim nec
         accumsan. Mi tincidunt aenean tristique metus venenatis ac, volutpat.

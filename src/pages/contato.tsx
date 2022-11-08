@@ -58,17 +58,15 @@ const Prestador: NextPage = () => {
       <NextSeo {...SEO} />
 
       <section className="container mx-auto mt-12 lg:mt-20 lg:mb-48">
-        <Title
-          as="h1"
-          variant="h3"
-          className="text-center lg:text-left lg:text-8xl lg:leading-120 lg:font-extrabold"
-        >
+        <Title as="h1" variant="h3" largeVariant="display2" center>
           Vamos iniciar um projeto juntos
         </Title>
 
         <Text
           variant="p2"
-          className="text-center lg:text-left text-neutral-900 mt-6 lg:text-2xl lg:mt-8 mb-12 lg:mb-20"
+          largeVariant="p1"
+          center
+          className="text-neutral-900 mt-6 lg:mt-8 mb-12 lg:mb-20"
         >
           Preencha o formulário abaixo para contato e orçamentos
         </Text>

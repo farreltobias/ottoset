@@ -71,7 +71,7 @@ const Prestador: NextPage = () => {
       <NextSeo {...SEO} />
 
       <section className="container mx-auto mt-12 mb-24 lg:mt-20 lg:mb-48">
-        <Overlaid className="text-center lg:text-left">
+        <Overlaid center>
           <Overlaid.Title>Seja um prestador</Overlaid.Title>
           <Overlaid.SubTitle>De serviços Ottoset</Overlaid.SubTitle>
         </Overlaid>
@@ -84,7 +84,8 @@ const Prestador: NextPage = () => {
           <Title
             as="h2"
             variant="h5"
-            className="text-center mt-4 mb-12 lg:mt-10 lg:mb-20 lg:text-left lg:text-[2rem] lg:leading-125"
+            largeVariant="h3"
+            className="text-center mt-4 mb-12 lg:mt-10 lg:mb-20 lg:text-left"
           >
             Trabalhe como prestador de serviços Ottoset. Atuamos em todo o
             Brasil.

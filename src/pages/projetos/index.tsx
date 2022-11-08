@@ -17,7 +17,7 @@ const Projetos: NextPage = () => {
     <>
       <NextSeo {...SEO} />
 
-      <Overlaid className="container mx-auto mt-12 w-full text-center lg:text-left">
+      <Overlaid center className="container mx-auto mt-12 w-full">
         <Overlaid.Title>Nossos</Overlaid.Title>
         <Overlaid.SubTitle>Projetos</Overlaid.SubTitle>
       </Overlaid>

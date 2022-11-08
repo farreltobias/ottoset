@@ -88,7 +88,7 @@ export const Instagram: React.FC = () => {
           <Title
             as="span"
             variant="h6"
-            className="lg:text-2xl"
+            largeVariant="h4"
             style={{
               background:
                 '-webkit-linear-gradient(0, #FFB76D 0%, #FF6C0A 100%)',
