@@ -1,6 +1,7 @@
 import { Children, Fragment } from 'react';
 
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { Title } from '@components/Texts';
 
@@ -21,7 +22,8 @@ export const Tabs: React.FC<Props> = ({ tabs }) => {
     containScroll: 'keepSnaps',
   };
 
-  const [emblaRef] = useEmblaCarousel(options);
+  const wheelGestures = WheelGesturesPlugin();
+  const [emblaRef] = useEmblaCarousel(options, [wheelGestures]);
 
   return (
     <Tab.Group>

@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Badge from '@public/company/badge.svg';
@@ -14,9 +14,13 @@ export const Energy: React.FC = () => {
       <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[-45px_56px_0px_-1px_white,-45px_56px_#818181]">
         <Image
           src={street}
-          layout="responsive"
           alt="street with lights"
           placeholder="blur"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
         />
         <Badge className="absolute bottom-8 left-8 w-1/4 h-1/4" />
       </Article.Image>

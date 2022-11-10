@@ -6,34 +6,22 @@ import truck from '@public/photos/truck.png';
 export const expertises = [
   {
     title: 'Hospitais',
-    image: {
-      path: hospital,
-      name: 'Hospital',
-    },
+    image: hospital,
     link: '/contato',
   },
   {
     title: 'Agronegócio',
-    image: {
-      path: agribusiness,
-      name: 'Agronegócio',
-    },
+    image: agribusiness,
     link: '/contato',
   },
   {
     title: 'Hotelaria',
-    image: {
-      path: hospitality,
-      name: 'Hotelaria',
-    },
+    image: hospitality,
     link: '/contato',
   },
   {
     title: 'Hospitais',
-    image: {
-      path: truck,
-      name: 'Caminhão',
-    },
+    image: truck,
     link: '/contato',
   },
 ];

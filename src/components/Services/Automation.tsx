@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
@@ -14,11 +14,15 @@ export const Automation: React.FC = () => {
       <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[36px_-34px_0_-1px_white,36px_-34px_#818181]">
         <Image
           src={worker}
-          layout="responsive"
-          objectFit="cover"
-          objectPosition="center"
           alt="construction worker"
           placeholder="blur"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </Article.Image>
 

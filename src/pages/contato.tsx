@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
 import office from '@public/photos/office-alt.png';
@@ -127,10 +127,14 @@ const Prestador: NextPage = () => {
             <div className="relative w-full shadow-[-32px_32px_0px_-1px_white,-32px_32px_#818181] lg:shadow-[-32px_36px_0px_-1px_white,-32px_36px_#818181]">
               <Image
                 src={office}
-                layout="responsive"
-                objectFit="cover"
                 alt="office"
                 placeholder="blur"
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                }}
               />
             </div>
             <span className="block absolute w-20 h-20 top-0 right-0 -translate-x-1/2 -translate-y-1/2 lg:translate-x-1/2">

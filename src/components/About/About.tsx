@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import DoubleArrow from '@public/navigation/double-arrow-down.svg';
 
@@ -48,17 +48,25 @@ export const About: React.FC = () => (
       <div className="relative w-5/6">
         <Image
           src={office}
-          layout="responsive"
           alt="office"
           placeholder="blur"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
         />
         <div className="absolute w-2/5 top-0 left-0 -translate-x-1/3 -translate-y-1/3">
           <div className="relative">
             <Image
               src={streetview}
-              layout="responsive"
               alt="streetview"
               placeholder="blur"
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
           </div>
         </div>
@@ -66,9 +74,13 @@ export const About: React.FC = () => (
           <div className="relative">
             <Image
               src={eletronic}
-              layout="responsive"
               alt="eletronic"
               placeholder="blur"
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
           </div>
         </div>
@@ -76,9 +88,13 @@ export const About: React.FC = () => (
           <div className="relative">
             <Image
               src={mechanic}
-              layout="responsive"
               alt="mechanic"
               placeholder="blur"
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
           </div>
         </div>

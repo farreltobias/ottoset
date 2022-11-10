@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import Flecha from '@public/navigation/flecha.svg';
 
@@ -17,17 +17,25 @@ export const More: React.FC = () => {
         <div className="relative w-5/6">
           <Image
             src={workers}
-            layout="responsive"
             alt="Office workers"
             placeholder="blur"
+            sizes="100vw"
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           />
           <div className="absolute w-1/2 top-0 left-0 -translate-x-1/5 -translate-y-1/5">
             <div className="relative">
               <Image
                 src={happy}
-                layout="responsive"
                 alt="Happy worker"
                 placeholder="blur"
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
               />
             </div>
           </div>

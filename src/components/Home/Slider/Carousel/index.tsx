@@ -2,10 +2,14 @@ import React, { Children, useCallback, useEffect, useState } from 'react';
 
 import { EmblaCarouselType } from 'embla-carousel-react';
 
-import { NextButton, PrevButton } from './CarouselButtons';
+import { Service } from '@data/static/services';
+
+import { Slide } from '../Slide';
+
+import { NextButton, PrevButton } from './Buttons';
 
 type Props = {
-  slides: React.ReactNode[];
+  slides: Service[];
   emblaApi?: EmblaCarouselType;
 };
 
@@ -44,20 +48,26 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="embla h-full relative">
-      <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
-        <div className="embla__container flex h-full">
+    <div className="h-full relative overflow-hidden">
+      <div className="h-full" ref={emblaRef}>
+        <div className="flex h-full">
           {Children.toArray(
-            slides.map((slide) => (
-              <div className="embla__slide w-full h-full shrink-0 grow-0 basis-full">
-                <div className="embla__slide__inner w-full h-full">{slide}</div>
+            slides.map(({ title, description, image, link, subTitle }) => (
+              <div className="w-full h-full shrink-0 grow-0 basis-full">
+                <Slide
+                  title={title}
+                  subTitle={subTitle}
+                  link={link}
+                  description={description}
+                  image={image}
+                />
               </div>
             )),
           )}
         </div>
       </div>
-      <span className="w-full h-full absolute top-0">
-        <span className="block w-full h-full container mx-auto relative">
+      <div className="absolute top-10 container mx-auto lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2">
+        <div className="relative w-full">
           <NextButton
             current={currentSlide}
             total={slides.length}
@@ -70,8 +80,8 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
             onClick={scrollPrev}
             enabled={prevBtnEnabled}
           />
-        </span>
-      </span>
+        </div>
+      </div>
     </div>
   );
 };

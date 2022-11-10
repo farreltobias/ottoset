@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import brasil from '@public/photos/brasil.png';
@@ -28,9 +28,13 @@ export const Reach: React.FC = () => {
             <div className="relative w-full">
               <Image
                 src={brasil}
-                layout="responsive"
                 alt="Brasil's map"
                 placeholder="blur"
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
               />
             </div>
           </div>

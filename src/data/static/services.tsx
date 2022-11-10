@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 import Airplane from '@public/icons/airplane.svg';
 import Config from '@public/icons/config.svg';
 import Lightning from '@public/icons/lightning.svg';
@@ -10,61 +12,43 @@ import photovoltaic from '@public/photos/photovoltaic.png';
 
 import { areas } from './content';
 
-export const services = [
+export type Service = {
+  title: string;
+  subTitle?: string;
+  description: string[];
+  icon: React.ReactNode;
+  image: StaticImageData;
+  link: string;
+};
+
+export const services: Service[] = [
   {
-    title: (
-      <>
-        ottoset <br /> geradores
-      </>
-    ),
+    title: 'ottoset\ngeradores',
     icon: <Lightning />,
     description: areas,
-    image: {
-      path: generator,
-      name: 'Gerador',
-    },
+    image: generator,
     link: '/servicos#grupo-geradores',
   },
   {
-    title: (
-      <>
-        ottoset <br /> aviação
-      </>
-    ),
+    title: 'ottoset\naviação',
     icon: <Airplane />,
     description: areas,
-    image: {
-      path: aviation,
-      name: 'Aviação',
-    },
+    image: aviation,
     link: '/servicos#aviacao',
   },
   {
-    title: (
-      <>
-        ottoset <br /> solar
-      </>
-    ),
+    title: 'ottoset\nsolar',
     icon: <Sun />,
     description: areas,
-    image: {
-      path: photovoltaic,
-      name: 'Fotovoltaica',
-    },
+    image: photovoltaic,
     link: '/servicos#fotovoltaica',
   },
   {
-    title: (
-      <>
-        ottoset <br /> facility
-      </>
-    ),
+    title: 'ottoset\nfacility',
     icon: <Config />,
     description: areas,
-    image: {
-      path: maintenance,
-      name: 'Manutenção',
-    },
+    image: maintenance,
     link: '/servicos#manutencao',
+    subTitle: 'soluções prediais',
   },
 ];

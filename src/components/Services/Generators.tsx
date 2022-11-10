@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
@@ -14,11 +14,15 @@ export const Generators: React.FC = () => {
       <Article.Image>
         <Image
           src={generator}
-          layout="responsive"
-          objectFit="cover"
-          objectPosition="center"
           alt="generator"
           placeholder="blur"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </Article.Image>
       <Article.Content className="py-12 lg:py-[6.75rem]">

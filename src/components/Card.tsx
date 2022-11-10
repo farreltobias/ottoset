@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/legacy/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { convertTime } from '@utils/convertTime';
@@ -20,17 +20,20 @@ export const Card: React.FC<Props> = ({
   duration,
   img,
   link,
-  className = 'w-80 lg:w-[35.25rem] h-[40.625rem] lg:h-[47.5rem]',
+  className = 'w-80 lg:w-[35rem] h-[40.625rem] lg:h-[47.5rem]',
 }) => {
   return (
     <Link href={link} className={`block relative group ${className}`}>
       <span className="absolute bg-secondary-900 w-full h-full bg-opacity-60 z-10" />
       <Image
         src={img}
-        layout="fill"
         alt="project"
-        objectFit="cover"
         placeholder="blur"
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: 'cover',
+        }}
       />
       <div className="transition-all opacity-0 group-hover:opacity-100 flex absolute top-0 h-[calc(100%-13.25rem)] w-full items-center justify-center z-10">
         <span className="w-full border-[0.5px] border-neutral-400" />

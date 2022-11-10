@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import Badge from '@public/company/badge.svg';
 import Foco from '@public/company/foco.svg';
@@ -43,9 +43,13 @@ export const Monitor: React.FC = () => {
           <div className="relative w-full">
             <Image
               src={computer}
-              layout="responsive"
               alt="computer with monitor"
               placeholder="blur"
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
             <Caps className="absolute bg-primary-50 text-base lg:text-2xl rotate-180 top-0 right-0 h-full flex justify-center px-2 lg:px-4 [writing-mode:vertical-rl]">
               Por que nos escolher?

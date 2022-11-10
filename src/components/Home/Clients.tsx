@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { Overlaid } from '@components/Texts/Overlaid';
 
@@ -20,9 +20,13 @@ export const Clients: React.FC = () => {
               <div className="relative w-40 lg:w-60">
                 <Image
                   src={path}
-                  layout="responsive"
                   alt={name}
                   placeholder="blur"
+                  sizes="100vw"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                  }}
                 />
               </div>
             );
