@@ -60,7 +60,7 @@ export const Checkbox: React.FC<Props> = ({
       <span className="relative flex items-center justify-center w-fit transition-all mr-3 peer-checked:child:h-full peer-checked:child:w-full peer-checked:children:w-[10px] peer-checked:children:h-[17px]">
         <span className="not-child not-children h-6 w-6 border-2 border-secondary-300" />
         <span className="absolute not-children block bg-primary-500 w-0 h-0 transition-all" />
-        <span className="not-child absolute bottom-1/4 h-0 w-0 rotate-45 border-neutral border-[0_3.5px_3.5px_0] transition-all" />
+        <span className="not-child absolute bottom-1/4 h-0 w-0 rotate-45 border-neutral border-b-[3.5px] border-r-[3.5px] transition-all" />
       </span>
       {label}
     </Text>
