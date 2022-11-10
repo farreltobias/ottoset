@@ -50,11 +50,8 @@ export const About: React.FC = () => (
           src={office}
           alt="office"
           placeholder="blur"
+          className="w-full h-auto"
           sizes="100vw"
-          style={{
-            width: '100%',
-            height: 'auto',
-          }}
         />
         <div className="absolute w-2/5 top-0 left-0 -translate-x-1/3 -translate-y-1/3">
           <div className="relative">
@@ -62,11 +59,8 @@ export const About: React.FC = () => (
               src={streetview}
               alt="streetview"
               placeholder="blur"
+              className="w-full h-auto"
               sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
           </div>
         </div>
@@ -76,11 +70,8 @@ export const About: React.FC = () => (
               src={eletronic}
               alt="eletronic"
               placeholder="blur"
+              className="w-full h-auto"
               sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
           </div>
         </div>
@@ -90,11 +81,8 @@ export const About: React.FC = () => (
               src={mechanic}
               alt="mechanic"
               placeholder="blur"
+              className="w-full h-auto"
               sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
           </div>
         </div>

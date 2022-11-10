@@ -29,11 +29,9 @@ export const Card: React.FC<Props> = ({
         src={img}
         alt="project"
         placeholder="blur"
-        fill
+        className="object-cover"
         sizes="100vw"
-        style={{
-          objectFit: 'cover',
-        }}
+        fill
       />
       <div className="transition-all opacity-0 group-hover:opacity-100 flex absolute top-0 h-[calc(100%-13.25rem)] w-full items-center justify-center z-10">
         <span className="w-full border-[0.5px] border-neutral-400" />

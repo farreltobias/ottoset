@@ -1,5 +1,5 @@
 import { Children } from 'react';
-import { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { Caps } from '@components/Texts';
@@ -29,15 +29,22 @@ export const Slide: React.FC<Props> = ({
   return (
     <Link
       href={link}
-      className="relative block text-center overflow-hidden w-full h-full bg-cover bg-no-repeat bg-center after:content-[''] after:bg-neutral-900 after:bg-opacity-60 after:absolute after:inset-0"
-      style={{ backgroundImage: `url(${image.src})` }}
+      className="relative block text-center overflow-hidden w-full h-full bg-cover bg-no-repeat bg-center"
     >
+      <Image
+        src={image}
+        alt="background image"
+        placeholder="blur"
+        className="object-cover brightness-50"
+        sizes="100vw"
+        fill
+      />
       <Caps
         as="span"
         variant="title"
         className={`absolute z-20 bottom-0 ${
           subTitle ? 'pb-[8.5rem] xs:pb-[10.5rem] sm:pb-44' : 'pb-20 xs:pb-28'
-        } flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-[47.5%] whitespace-pre ${titleSizes}`}
+        } flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 whitespace-pre ${titleSizes}`}
         style={{ backgroundImage: `url(${image.src})` }}
       >
         {title}
@@ -47,7 +54,7 @@ export const Slide: React.FC<Props> = ({
         <Caps
           as="span"
           variant="title"
-          className={`pt-[0.375rem] xs:pt-0 xs:pb-4 sm:pb-0 sm:pt-8 lg:pt-20 xl:pt-36 absolute z-20 bottom-0 flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-[47.5%] whitespace-pre ${subTitleSizes}`}
+          className={`pt-[0.375rem] xs:pt-0 xs:pb-4 sm:pb-0 sm:pt-8 lg:pt-20 xl:pt-36 absolute z-20 bottom-0 flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 whitespace-pre ${subTitleSizes}`}
           style={{ backgroundImage: `url(${image.src})` }}
         >
           {subTitle}
@@ -91,64 +98,3 @@ export const Slide: React.FC<Props> = ({
     </Link>
   );
 };
-
-/*
-  <div className="relative h-full w-full">
-      <Image
-        src={image}
-        alt={''}
-        placeholder="blur"
-        className="object-cover"
-        sizes="100vw"
-        fill
-      />
-      <span className="absolute bg-secondary-900 w-full h-full bg-opacity-60" />
-      <div className="absolute flex flex-col justify-center items-center h-full w-full">
-        <Caps
-          ref={titleRef}
-          as="h1"
-          variant="title"
-          className="w-full flex items-center justify-center text-center text-transparent text-3xl sm:text-7xl md:text-8xl children:leading-120"
-        >
-          <span
-            className="shadow-neutral text-stroke-1 lg:text-stroke-2"
-            style={{ paddingBottom: height / 2 }}
-          >
-            {title}
-          </span>
-          <span
-            className="absolute w-full h-full flex items-center justify-center bg-cover bg-center text-center bg-clip-text"
-            style={{
-              paddingBottom: height / 2,
-              backgroundImage: `url(${image.src})`,
-            }}
-          >
-            {title}
-          </span>
-          <span
-            className="absolute bg-secondary-900 bg-opacity-60 bg-clip-text"
-            style={{ paddingBottom: height / 2 }}
-          >
-            {title}
-          </span>
-          </Caps>
-          <Title
-            ref={ref}
-            variant="h6"
-            smallVariant="h4"
-            as="span"
-            className="container mx-auto absolute flex flex-wrap justify-center items-center text-neutral text-center whitespace-pre md:text-3xl lg:leading-125 lg:px-40 xl:px-64"
-            style={{ paddingTop: titleHeight / 2 + 24 }}
-          >
-            {Children.toArray(
-              description.map((text) => (
-                <span className="pr-2 lg:pr-4">
-                  {text}
-                  <span className="text-primary-400">.</span>
-                </span>
-              )),
-            )}
-          </Title>
-        </div>
-      </div>
-*/

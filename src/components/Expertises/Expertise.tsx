@@ -1,4 +1,4 @@
-import { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@components/Button';
@@ -14,10 +14,15 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
   const fontSizes = 'leading-120 text-3xl sm:text-5xl';
 
   return (
-    <div
-      className="relative w-full h-full hover:h-[110%] group transition-all bg-cover bg-no-repeat bg-center after:content-[''] after:bg-neutral-900 after:bg-opacity-60 after:absolute after:inset-0"
-      style={{ backgroundImage: `url(${image.src})` }}
-    >
+    <div className="relative w-full h-full hover:h-[110%] group transition-all bg-cover bg-no-repeat bg-center">
+      <Image
+        src={image}
+        alt="background image"
+        placeholder="blur"
+        className="object-cover brightness-50"
+        sizes="100vw"
+        fill
+      />
       <Caps
         as="span"
         variant="title"

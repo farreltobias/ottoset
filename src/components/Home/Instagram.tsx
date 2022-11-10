@@ -64,28 +64,20 @@ export const Instagram: React.FC = () => {
         rel="noreferrer"
         className="flex-col m-0"
       >
-        <div className="embla overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex">
-            {Children.toArray(
-              photos.map(({ path, name }) => (
-                <div className="embla__slide">
-                  <div className="embla__slide__inner relative w-60">
-                    <Image
-                      src={path}
-                      alt={name}
-                      placeholder="blur"
-                      className="embla__slide__img"
-                      sizes="100vw"
-                      style={{
-                        width: '100%',
-                        height: 'auto',
-                      }}
-                    />
-                  </div>
-                </div>
-              )),
-            )}
-          </div>
+        <div className="flex overflow-hidden" ref={emblaRef}>
+          {Children.toArray(
+            photos.map(({ path, name }) => (
+              <div className="relative w-60">
+                <Image
+                  src={path}
+                  alt={name}
+                  placeholder="blur"
+                  className="w-full h-auto"
+                  sizes="100vw"
+                />
+              </div>
+            )),
+          )}
         </div>
 
         <div className="w-full p-9 text-center bg-primary-50">

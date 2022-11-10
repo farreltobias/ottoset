@@ -129,12 +129,8 @@ const Prestador: NextPage = () => {
                 src={office}
                 alt="office"
                 placeholder="blur"
+                className="w-full h-auto object-cover"
                 sizes="100vw"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'cover',
-                }}
               />
             </div>
             <span className="block absolute w-20 h-20 top-0 right-0 -translate-x-1/2 -translate-y-1/2 lg:translate-x-1/2">

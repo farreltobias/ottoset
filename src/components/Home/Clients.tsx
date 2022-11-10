@@ -22,11 +22,8 @@ export const Clients: React.FC = () => {
                   src={path}
                   alt={name}
                   placeholder="blur"
+                  className="w-full h-auto"
                   sizes="100vw"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                  }}
                 />
               </div>
             );

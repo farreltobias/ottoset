@@ -16,13 +16,8 @@ export const Aviation: React.FC = () => {
           src={aviation}
           alt="Aviação"
           placeholder="blur"
+          className="w-full h-auto object-cover object-center"
           sizes="100vw"
-          style={{
-            width: '100%',
-            height: 'auto',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
         />
       </Article.Image>
 

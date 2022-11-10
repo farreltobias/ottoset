@@ -30,11 +30,8 @@ export const Reach: React.FC = () => {
                 src={brasil}
                 alt="Brasil's map"
                 placeholder="blur"
+                className="w-full h-auto"
                 sizes="100vw"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                }}
               />
             </div>
           </div>

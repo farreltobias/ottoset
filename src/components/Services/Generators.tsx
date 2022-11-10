@@ -16,13 +16,8 @@ export const Generators: React.FC = () => {
           src={generator}
           alt="generator"
           placeholder="blur"
+          className="w-full h-auto object-cover object-center"
           sizes="100vw"
-          style={{
-            width: '100%',
-            height: 'auto',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
         />
       </Article.Image>
       <Article.Content className="py-12 lg:py-[6.75rem]">

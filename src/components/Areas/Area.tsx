@@ -1,4 +1,4 @@
-import { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { Caps } from '@components/Texts';
@@ -23,15 +23,22 @@ export const Area: React.FC<Props> = ({
   return (
     <Link
       href={link}
-      className="relative text-center overflow-hidden w-full h-full hover:h-[110%] group transition-all bg-cover bg-no-repeat bg-center after:content-[''] after:bg-neutral-900 after:bg-opacity-60 after:absolute after:inset-0"
-      style={{ backgroundImage: `url(${image.src})` }}
+      className="relative text-center overflow-hidden w-full h-full hover:h-[110%] group transition-all bg-cover bg-no-repeat bg-center"
     >
+      <Image
+        src={image}
+        alt="background image"
+        placeholder="blur"
+        className="object-cover brightness-50"
+        sizes="100vw"
+        fill
+      />
       <Caps
         as="span"
         variant="title"
         className={`absolute z-20 bottom-0 ${
           subTitle ? 'pt-8' : 'pt-16'
-        } flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-[47.5%] transition-all group-hover:opacity-0 whitespace-pre ${fontSizes}`}
+        } flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 transition-all group-hover:opacity-0 whitespace-pre ${fontSizes}`}
         style={{ backgroundImage: `url(${image.src})` }}
       >
         {title}
@@ -41,7 +48,7 @@ export const Area: React.FC<Props> = ({
         <Caps
           as="span"
           variant="title"
-          className={`absolute z-20 bottom-0 pt-36 sm:pt-[10.5rem] flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-[47.5%] transition-all group-hover:opacity-0 whitespace-pre`}
+          className={`absolute z-20 bottom-0 pt-36 sm:pt-[10.5rem] flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 transition-all group-hover:opacity-0 whitespace-pre`}
           style={{ backgroundImage: `url(${image.src})` }}
         >
           {subTitle}

@@ -19,11 +19,8 @@ export const More: React.FC = () => {
             src={workers}
             alt="Office workers"
             placeholder="blur"
+            className="w-full h-auto"
             sizes="100vw"
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
           />
           <div className="absolute w-1/2 top-0 left-0 -translate-x-1/5 -translate-y-1/5">
             <div className="relative">
@@ -31,11 +28,8 @@ export const More: React.FC = () => {
                 src={happy}
                 alt="Happy worker"
                 placeholder="blur"
+                className="w-full h-auto"
                 sizes="100vw"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                }}
               />
             </div>
           </div>

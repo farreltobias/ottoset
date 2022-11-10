@@ -16,11 +16,8 @@ export const Energy: React.FC = () => {
           src={street}
           alt="street with lights"
           placeholder="blur"
+          className="w-full h-auto"
           sizes="100vw"
-          style={{
-            width: '100%',
-            height: 'auto',
-          }}
         />
         <Badge className="absolute bottom-8 left-8 w-1/4 h-1/4" />
       </Article.Image>

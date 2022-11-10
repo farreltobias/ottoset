@@ -45,11 +45,8 @@ export const Monitor: React.FC = () => {
               src={computer}
               alt="computer with monitor"
               placeholder="blur"
+              className="w-full h-auto"
               sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
             />
             <Caps className="absolute bg-primary-50 text-base lg:text-2xl rotate-180 top-0 right-0 h-full flex justify-center px-2 lg:px-4 [writing-mode:vertical-rl]">
               Por que nos escolher?
