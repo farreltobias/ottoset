@@ -54,37 +54,31 @@ export const About: React.FC = () => (
           sizes="100vw"
         />
         <div className="absolute w-2/5 top-0 left-0 -translate-x-1/3 -translate-y-1/3">
-          <div className="relative">
-            <Image
-              src={streetview}
-              alt="streetview"
-              placeholder="blur"
-              className="w-full h-auto"
-              sizes="100vw"
-            />
-          </div>
+          <Image
+            src={streetview}
+            alt="streetview"
+            placeholder="blur"
+            className="w-full h-auto"
+            sizes="100vw"
+          />
         </div>
         <div className="absolute w-2/5 top-0 right-0 -translate-x-1/5 -translate-y-1/3 lg:-translate-y-3/4">
-          <div className="relative">
-            <Image
-              src={eletronic}
-              alt="eletronic"
-              placeholder="blur"
-              className="w-full h-auto"
-              sizes="100vw"
-            />
-          </div>
+          <Image
+            src={eletronic}
+            alt="eletronic"
+            placeholder="blur"
+            className="w-full h-auto"
+            sizes="100vw"
+          />
         </div>
         <div className="absolute w-2/5 bottom-0 right-0 translate-x-1/3 translate-y-1/3">
-          <div className="relative">
-            <Image
-              src={mechanic}
-              alt="mechanic"
-              placeholder="blur"
-              className="w-full h-auto"
-              sizes="100vw"
-            />
-          </div>
+          <Image
+            src={mechanic}
+            alt="mechanic"
+            placeholder="blur"
+            className="w-full h-auto"
+            sizes="100vw"
+          />
         </div>
       </div>
     </div>

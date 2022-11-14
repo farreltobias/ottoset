@@ -4,9 +4,8 @@ import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { Service } from '@data/static/services';
 
-import { Slide } from '../Slide';
-
 import { NextButton, PrevButton } from './Buttons';
+import { Slide } from './Slide';
 
 type Props = {
   slides: Service[];

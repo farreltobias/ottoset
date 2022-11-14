@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Item } from '@components/careers/Item';
+import { Item } from '@components/Careers/Item';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/carreiras';

@@ -124,7 +124,7 @@ const Prestador: NextPage = () => {
           </Form>
 
           <div className="relative my-32 lg:mt-0 lg:ml-36 lg:w-1/3">
-            <div className="relative w-full shadow-[-32px_32px_0px_-1px_white,-32px_32px_#818181] lg:shadow-[-32px_36px_0px_-1px_white,-32px_36px_#818181]">
+            <div className="w-full shadow-[-32px_32px_0px_-1px_white,-32px_32px_#818181] lg:shadow-[-32px_36px_0px_-1px_white,-32px_36px_#818181]">
               <Image
                 src={office}
                 alt="office"
