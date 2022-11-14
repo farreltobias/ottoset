@@ -26,6 +26,19 @@ const largeVarients = {
   h6: 'lg:text-base lg:leading-120 lg:font-bold',
 };
 
+const extraLargeVarients = {
+  display1: 'xl:text-[8.375rem] xl:font-extrabold',
+  display2: 'xl:text-8xl xl:leading-120 xl:font-extrabold',
+  display3: 'xl:text-[4.75rem] xl:leading-120 xl:font-extrabold',
+  display4: 'xl:text-7xl xl:leading-120 xl:font-extrabold',
+  h1: 'xl:text-[4rem] xl:leading-120 xl:font-bold',
+  h2: 'xl:text-5xl xl:leading-120 xl:font-bold',
+  h3: 'xl:text-[2rem] xl:leading-125 xl:font-bold',
+  h4: 'xl:text-2xl xl:leading-120 xl:font-bold',
+  h5: 'xl:text-xl xl:leading-120 xl:font-bold',
+  h6: 'xl:text-base xl:leading-120 xl:font-bold',
+};
+
 const mediumVarients = {
   display1: 'md:text-[8.375rem] md:font-extrabold',
   display2: 'md:text-8xl md:leading-120 md:font-extrabold',
@@ -58,6 +71,7 @@ type Props = React.PropsWithChildren<{
   style?: React.CSSProperties;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
   variant?: keyof typeof variants;
+  xlVariant?: keyof typeof extraLargeVarients;
   largeVariant?: keyof typeof largeVarients;
   mediumVariant?: keyof typeof mediumVarients;
   smallVariant?: keyof typeof smallVarients;
@@ -72,6 +86,7 @@ const FowardFunction: React.ForwardRefRenderFunction<
     className = '',
     as = 'h1',
     variant = 'h1',
+    xlVariant,
     largeVariant,
     mediumVariant,
     smallVariant,
@@ -84,6 +99,9 @@ const FowardFunction: React.ForwardRefRenderFunction<
 
   const variantClass = variants[variant];
   const largeVariantClass = largeVariant ? largeVarients[largeVariant] : '\b';
+  const extraLargeVariantClass = xlVariant
+    ? extraLargeVarients[xlVariant]
+    : '\b';
   const mediumVariantClass = mediumVariant
     ? mediumVarients[mediumVariant]
     : '\b';
@@ -94,7 +112,7 @@ const FowardFunction: React.ForwardRefRenderFunction<
   return (
     <Component
       ref={ref}
-      className={`font-title ${centerClass} ${variantClass} ${smallVariantClass} ${mediumVariantClass} ${largeVariantClass} ${className}`}
+      className={`font-title ${centerClass} ${variantClass} ${smallVariantClass} ${mediumVariantClass} ${largeVariantClass} ${extraLargeVariantClass} ${className}`}
       style={style}
     >
       {children}

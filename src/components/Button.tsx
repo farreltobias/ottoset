@@ -62,7 +62,7 @@ export const Button: React.FC<Props> = ({
 
   return (
     <button
-      className={`flex font-bold rounded px-4 py-2 transition-all ${style} ${hoverStyle} ${className}`}
+      className={`flex items-center font-bold rounded px-4 py-2 transition-all ${style} ${hoverStyle} ${className}`}
       {...props}
     >
       {children}

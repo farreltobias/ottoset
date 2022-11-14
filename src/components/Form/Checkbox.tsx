@@ -47,7 +47,7 @@ export const Checkbox: React.FC<Props> = ({
     <Text
       as="label"
       variant="p2"
-      className="flex items-center text-base hover:cursor-pointer mb-6 last:m-0"
+      className="flex items-center text-base hover:cursor-pointer mb-6 last:m-0 w-fit"
     >
       <input
         type="checkbox"
