@@ -10,8 +10,12 @@ import { Article, Content } from '@components/Article';
 
 export const Automation: React.FC = () => {
   return (
-    <Article id="automacao" className="lg:pt-48 lg:-mt-[4.5rem]" order="right">
-      <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[36px_-34px_0_-1px_white,36px_-34px_#818181]">
+    <Article
+      id="automacao"
+      className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]"
+      order="right"
+    >
+      <Article.Image className="shadow-[24px_-24px_0px_-1px_white,24px_-24px_#818181] lg:shadow-[36px_-34px_0_-1px_white,36px_-34px_#818181]">
         <Image
           src={worker}
           alt="construction worker"
@@ -21,7 +25,7 @@ export const Automation: React.FC = () => {
         />
       </Article.Image>
 
-      <Article.Content className="py-12 lg:py-[6.75rem]">
+      <Article.Content className="pb-12 lg:py-[6.75rem]">
         <Content.Title>Automação</Content.Title>
         <Content.Text className="text-neutral-500">
           Envolve a aplicação de tecnologias, métodos, procedimentos altamente

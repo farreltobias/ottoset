@@ -15,7 +15,7 @@ export const Slider: React.FC = () => {
 
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="h-[80vh]">
+      <div className="relative h-[80vh]">
         <Carousel ref={emblaRef} emblaApi={emblaApi} slides={services} />
         <span className="absolute flex flex-col items-center justify-center bottom-12 left-1/2 -translate-x-1/2">
           <span className="flex justify-center border-2 border-neutral w-6 h-9 rounded-full py-2">

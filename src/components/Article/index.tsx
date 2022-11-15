@@ -51,7 +51,7 @@ const Article: React.FC<Props> & SubComponents = ({
     <ArticleProvider order={order}>
       <section
         id={id}
-        className={`container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly pt-12 ${className}`}
+        className={`container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly ${className}`}
       >
         <div
           className={`flex items-center justify-center w-full lg:w-1/2 ${

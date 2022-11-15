@@ -10,8 +10,12 @@ import { Article, Content } from '@components/Article';
 
 export const Aviation: React.FC = () => {
   return (
-    <Article id="aviacao" className="lg:pt-48 lg:-mt-[4.5rem]" order="right">
-      <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[88px_32px_0_-1px_white,88px_32px_#818181]">
+    <Article
+      id="aviacao"
+      className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]"
+      order="right"
+    >
+      <Article.Image className="shadow-[24px_24px_0px_-1px_white,24px_24px_#818181] lg:shadow-[32px_32px_0_-1px_white,32px_32px_#818181]">
         <Image
           src={aviation}
           alt="Aviação"
@@ -21,7 +25,7 @@ export const Aviation: React.FC = () => {
         />
       </Article.Image>
 
-      <Article.Content className="py-12 lg:py-[6.75rem]">
+      <Article.Content className="pb-12 lg:py-[6.75rem]">
         <Content.Title>Aviação</Content.Title>
         <Content.SubTitle>Modernização de GPU</Content.SubTitle>
         <Content.Text>

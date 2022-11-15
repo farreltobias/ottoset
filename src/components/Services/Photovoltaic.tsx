@@ -10,8 +10,11 @@ import { Article, Content } from '@components/Article';
 
 export const Photovoltaic: React.FC = () => {
   return (
-    <Article id="fotovoltaica" className="lg:pt-48 lg:-mt-[4.5rem]">
-      <Article.Image>
+    <Article
+      id="fotovoltaica"
+      className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]"
+    >
+      <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[-32px_38px_0_-1px_white,-32px_38px_#818181]">
         <Image
           src={sunrise}
           alt="sunrise"
@@ -21,7 +24,7 @@ export const Photovoltaic: React.FC = () => {
         />
       </Article.Image>
 
-      <Article.Content className="py-12 lg:py-0">
+      <Article.Content className="pb-12 lg:py-0">
         <Content.Title>Energia Solar Fotovoltaica</Content.Title>
         <Content.Text className="mb-6">
           Atua no segmento de geração de energia. Garantia de manutenção,

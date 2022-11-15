@@ -10,8 +10,8 @@ import { Article, Content } from '@components/Article';
 
 export const Maintenance: React.FC = () => {
   return (
-    <Article id="manutencao" className="lg:pt-48 lg:-mt-[4.5rem]">
-      <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[22px_24px_0_-1px_white,22px_24px_#818181]">
+    <Article id="manutencao" className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]">
+      <Article.Image className="shadow-[-24px_24px_0px_-1px_white,-24px_24px_#818181] lg:shadow-[-22px_24px_0_-1px_white,-22px_24px_#818181]">
         <Image
           src={adequacy}
           alt="sunrise"
@@ -21,7 +21,7 @@ export const Maintenance: React.FC = () => {
         />
       </Article.Image>
 
-      <Article.Content className="py-12 lg:py-0">
+      <Article.Content className="pb-12 lg:py-0">
         <Content.Title>Manutenção e adequação</Content.Title>
         <Content.SubTitle>Residencial e Comercial</Content.SubTitle>
         <Content.Text>

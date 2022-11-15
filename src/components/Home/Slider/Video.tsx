@@ -17,15 +17,20 @@ export const Video: React.FC = () => {
       >
         A Ottoset
       </Caps>
-      <Link href="https://youtu.be" target="_blank" rel="noopener noreferrer">
-        <Image
-          src={ottoset}
-          alt="ottoset"
-          placeholder="blur"
-          className="object-cover object-center"
-          sizes="100vw"
-          fill
-        />
+      <Image
+        src={ottoset}
+        alt="ottoset"
+        placeholder="blur"
+        className="object-cover object-center -z-10"
+        sizes="100vw"
+        fill
+      />
+      <Link
+        href="https://youtu.be"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
         <span className="flex justify-center items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border p-4 border-neutral">
           <span className="animate-ping h-2/3 w-2/3 border-4 border-neutral absolute rounded-full opacity-75" />
           <Play className="pl-2 w-9 h-9" />
