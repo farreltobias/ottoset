@@ -1,6 +1,7 @@
 type SubItem = {
   href: string;
   label: string;
+  target?: string;
   onlyFooter?: boolean;
   onlyHeader?: boolean;
 };
@@ -38,6 +39,10 @@ export const navLinks: NavLink[] = [
       {
         href: '/prestador',
         label: 'Seja prestador de serviços Ottoset',
+      },
+      {
+        href: '/faq',
+        label: 'Perguntas frequentes',
       },
       {
         href: '/carreiras',
@@ -99,7 +104,8 @@ export const navLinks: NavLink[] = [
         label: 'Manutenção',
       },
       {
-        href: '/contato',
+        href: 'https://solar.ottoset.com.br/',
+        target: '_blank',
         label: 'Simule seu sistema',
         onlyFooter: true,
       },

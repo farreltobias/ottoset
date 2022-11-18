@@ -18,7 +18,9 @@ export const Desktop: React.FC<React.PropsWithChildren> = () => {
           {Children.toArray(
             subItems
               .filter(({ onlyFooter }) => !onlyFooter)
-              .map((item) => <SubItem href={item.href} label={item.label} />),
+              .map(({ href, label, target }) => (
+                <SubItem href={href} label={label} target={target} />
+              )),
           )}
         </Dropdown>
       ) : (
@@ -29,9 +31,11 @@ export const Desktop: React.FC<React.PropsWithChildren> = () => {
   return (
     <>
       <ul className="hidden lg:flex">{Children.toArray(NavList)}</ul>
-      <Button className="hidden lg:flex text-xs xl:text-base">
-        <Link href="contato">Fale conosco</Link>
-      </Button>
+      <Link href="contato">
+        <Button className="hidden lg:flex text-xs xl:text-base">
+          Fale conosco
+        </Button>
+      </Link>
     </>
   );
 };

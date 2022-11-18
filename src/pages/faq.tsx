@@ -3,6 +3,8 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
+import { motion, Variants } from 'framer-motion';
+
 import { Button } from '@components/Button';
 import { Disclosure } from '@components/FAQ/Disclosure';
 import { Title } from '@components/Texts';
@@ -12,6 +14,16 @@ import { Typeahead } from '@components/Typeahead';
 import { SEO } from '@seo/faq';
 
 import { categories, faq } from '@data/static/faq';
+
+const container: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+    },
+  },
+};
 
 const FAQ: NextPage = () => {
   const [filteredFAQ, setFilteredFAQ] = useState(faq);
@@ -73,7 +85,8 @@ const FAQ: NextPage = () => {
           </ul>
         </aside>
 
-        <ul className="flex flex-col max-w-4xl w-full mx-auto mb-48">
+        <motion.ul className="flex flex-col max-w-4xl w-full mx-auto mb-48">
+          {/* <AnimatePresence mode="wait"> */}
           {filteredFAQ.length ? (
             filteredFAQ.map(({ question, answer }) => (
               <Disclosure key={question}>
@@ -82,16 +95,24 @@ const FAQ: NextPage = () => {
               </Disclosure>
             ))
           ) : (
-            <li className="flex flex-col items-center my-10">
+            <motion.li
+              className="flex flex-col items-center my-10"
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              layout
+            >
               <Title as="span" variant="h3" className="text-center mb-4">
                 Nenhuma pergunta encontrada
               </Title>
               <Button>
                 <Link href="contato">Fale conosco</Link>
               </Button>
-            </li>
+            </motion.li>
           )}
-        </ul>
+          {/* </AnimatePresence> */}
+        </motion.ul>
       </section>
     </>
   );

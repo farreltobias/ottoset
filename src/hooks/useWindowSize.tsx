@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import { screens } from 'tailwindcss/defaultTheme';
+
 export const useWindowSize = () => {
+  const desktopWidth = Number(screens.lg.match(/\d+/g)?.[0]);
   const [width, setWidth] = useState<number | null>(null);
 
   function handleWindowSizeChange() {
@@ -16,5 +19,5 @@ export const useWindowSize = () => {
     };
   }, []);
 
-  return { width };
+  return { width, desktopWidth };
 };

@@ -55,8 +55,8 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
         subItems && (
           <Disclosure label={label} id={index.toString()}>
             {Children.toArray(
-              subItems.map((item) => (
-                <SubItem href={item.href} label={item.label} />
+              subItems.map(({ href, label, target }) => (
+                <SubItem href={href} label={label} target={target} />
               )),
             )}
           </Disclosure>

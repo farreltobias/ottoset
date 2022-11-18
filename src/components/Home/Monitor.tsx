@@ -16,8 +16,8 @@ export const Monitor: React.FC = () => {
   return (
     <section className="container mx-auto flex flex-col w-full mt-20 lg:mt-44">
       <Overlaid className="text-center">
-        <Overlaid.Title>Monitoramos</Overlaid.Title>
-        <Overlaid.SubTitle>em tempo real</Overlaid.SubTitle>
+        <Overlaid.Title>Por que</Overlaid.Title>
+        <Overlaid.SubTitle>nos escolher?</Overlaid.SubTitle>
       </Overlaid>
 
       <div className="flex flex-col-reverse mt-8 lg:flex-row lg:mt-[4.5rem]">

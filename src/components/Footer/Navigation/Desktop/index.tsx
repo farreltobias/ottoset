@@ -13,8 +13,8 @@ export const Desktop: React.FC = () => {
           {label}
         </span>
         {Children.toArray(
-          subItems?.map((item) => (
-            <SubItem label={item.label} href={item.href} />
+          subItems?.map(({ href, label, target }) => (
+            <SubItem label={label} href={href} target={target} />
           )),
         )}
       </div>

@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import Play from '@public/icons/play.svg';
 
@@ -7,9 +7,13 @@ import ottoset from '@public/photos/video.png';
 
 import { Caps } from '@components/Texts';
 
+import { Modal } from './Modal';
+
 export const Video: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="relative w-full lg:w-1/4 h-[27.5vh] lg:absolute bottom-0 transition-all right-0 lg:translate-x-full lg:hover:translate-x-0">
+    <div className="relative w-full lg:w-1/4 h-[27.5vh] lg:absolute bottom-0 transition-transform right-0 lg:translate-x-full lg:hover:translate-x-0">
       <Caps
         as="span"
         variant="title"
@@ -25,17 +29,13 @@ export const Video: React.FC = () => {
         sizes="100vw"
         fill
       />
-      <Link
-        href="https://youtu.be"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
+      <button onClick={() => setIsOpen(true)} className="h-full w-full">
         <span className="flex justify-center items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border p-4 border-neutral">
           <span className="animate-ping h-2/3 w-2/3 border-4 border-neutral absolute rounded-full opacity-75" />
           <Play className="pl-2 w-9 h-9" />
         </span>
-      </Link>
+      </button>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };

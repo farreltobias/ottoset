@@ -7,14 +7,22 @@ type Props = {
   className?: string;
   href: string;
   label: string;
+  target?: string;
 };
 
-export const SubItem: React.FC<Props> = ({ href, label, className = '' }) => {
+export const SubItem: React.FC<Props> = ({
+  href,
+  label,
+  target,
+  className = '',
+}) => {
   const { setShow } = useContext(SidebarContext);
   return (
     <li className={`flex items-center ${className}`}>
       <Link
         href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
         onClick={() => {
           document.body.classList.remove('overflow-hidden');
           setShow(false);

@@ -8,11 +8,23 @@ const monitor = [
   'Controle de qualidade e soluções ágeis.',
 ];
 
-const areas = [
+const generator = [
   'venda',
   'instalação',
   'locação',
   'automação',
+  'manutenção',
+  'monitoramento remoto',
+];
+
+const aviation = ['modernização de GPU'];
+
+const facility = ['soluções prediais'];
+
+const solar = [
+  'venda',
+  'instalação',
+  'locação',
   'manutenção',
   'monitoramento remoto',
 ];
@@ -54,4 +66,13 @@ const diferentials = [
   'APP de Controle: Acompanhamento online dos serviços, relatórios técnicos e gerenciais, interação ponta a ponta com os técnicos e plataforma ajustável de acordo com a necessidade do cliente.',
 ];
 
-export { monitor, areas, missions, services, diferentials };
+export {
+  monitor,
+  missions,
+  services,
+  diferentials,
+  generator,
+  facility,
+  solar,
+  aviation,
+};

@@ -51,14 +51,13 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
       <div className="h-full" ref={emblaRef}>
         <div className="flex h-full">
           {Children.toArray(
-            slides.map(({ title, description, image, link, subTitle }) => (
+            slides.map(({ title, description, background, link }) => (
               <div className="w-full h-full shrink-0 grow-0 basis-full">
                 <Slide
                   title={title}
-                  subTitle={subTitle}
                   link={link}
                   description={description}
-                  image={image}
+                  image={background}
                 />
               </div>
             )),

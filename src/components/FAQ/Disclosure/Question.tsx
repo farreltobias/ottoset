@@ -6,11 +6,7 @@ type Props = React.PropsWithChildren<{
 
 export const Question: React.FC<Props> = ({ children }) => {
   return (
-    <Title
-      as="span"
-      variant="h4"
-      className="ui-open:text-primary-500 transition-colors text-left"
-    >
+    <Title as="span" variant="h4" className="text-left">
       {children}
     </Title>
   );
