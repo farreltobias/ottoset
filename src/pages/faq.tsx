@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { Button } from '@components/Button';
 import { Disclosure } from '@components/FAQ/Disclosure';
@@ -14,16 +14,6 @@ import { Typeahead } from '@components/Typeahead';
 import { SEO } from '@seo/faq';
 
 import { categories, faq } from '@data/static/faq';
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-    },
-  },
-};
 
 const FAQ: NextPage = () => {
   const [filteredFAQ, setFilteredFAQ] = useState(faq);
