@@ -28,7 +28,13 @@ export const Dropzone: React.FC<Props> = ({
   label = name,
 }) => {
   const inputRef = useRef<InputRefProps>(null);
-  const { fieldName, registerField, defaultValue = [] } = useField(name);
+  const {
+    fieldName,
+    registerField,
+    defaultValue = [],
+    error,
+    clearError,
+  } = useField(name);
 
   const [acceptedFiles, setAcceptedFiles] = useState<File[]>(defaultValue);
 
@@ -39,6 +45,7 @@ export const Dropzone: React.FC<Props> = ({
       if (inputRef.current) {
         inputRef.current.acceptedFiles = onDropAcceptedFiles;
         setAcceptedFiles(onDropAcceptedFiles);
+        clearError();
       }
     },
   });
@@ -83,6 +90,7 @@ export const Dropzone: React.FC<Props> = ({
 
       <div className="flex flex-col lg:flex-row w-full items-center">
         <Button
+          type="button"
           variant="outline"
           className="w-full lg:w-2/5 justify-center lg:mr-8 mb-3 lg:mb-0"
         >
@@ -98,9 +106,22 @@ export const Dropzone: React.FC<Props> = ({
         >
           {!acceptedFiles.length
             ? 'Nenhum arquivo selecionado'
-            : `${acceptedFiles[0].name.slice(0, 30)}...`}
+            : acceptedFiles[0].name.length > 30
+            ? `${acceptedFiles[0].name.slice(0, 30)}...`
+            : acceptedFiles[0].name}
         </Text>
       </div>
+      {error && (
+        <Text
+          as="span"
+          variant="p3"
+          largeVariant="p2"
+          className="block text-error-600 mt-2"
+          center
+        >
+          {error}
+        </Text>
+      )}
     </div>
   );
 };
