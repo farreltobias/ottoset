@@ -23,7 +23,8 @@ export const Checkbox: React.FC<Props> = ({
   ...rest
 }) => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
 
   const defaultChecked = defaultValue === value;
 
@@ -53,6 +54,7 @@ export const Checkbox: React.FC<Props> = ({
         type="checkbox"
         ref={inputRef}
         id={fieldName}
+        onChange={clearError}
         defaultChecked={defaultChecked}
         className={`peer appearance-none ${className}`}
         {...rest}
@@ -62,7 +64,14 @@ export const Checkbox: React.FC<Props> = ({
         <span className="absolute not-children block bg-primary-500 w-0 h-0 transition-all" />
         <span className="not-child absolute bottom-1/4 h-0 w-0 rotate-45 border-neutral border-b-[3.5px] border-r-[3.5px] transition-all" />
       </span>
-      {label}
+      <span className="flex flex-col">
+        {label}
+        {error && (
+          <Text as="span" variant="p4" className="text-error-400">
+            {error}
+          </Text>
+        )}
+      </span>
     </Text>
   );
 };

@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+
+import { z } from 'zod';
 
 import office from '@public/photos/office-alt.png';
 
@@ -13,35 +16,120 @@ import { Text, Title } from '@components/Texts';
 
 import { SEO } from '@seo/contato';
 
-import { SubmitHandler } from '@unform/core';
+import { Body } from './api/contact';
+
+import { FormHandles, SubmitHandler } from '@unform/core';
 import { Form } from '@unform/web';
 
 const Prestador: NextPage = () => {
-  const [mask, setMask] = useState('(99) 99999-9999');
+  const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
+  const [mask, setMask] = useState('(99) 99999-9999');
+  const [sending, setSending] = useState(false);
+
+  const telephoneRegex = /^\(\d{2}\) (9?\d{4})-\d{4}$/;
+
+  const required = z.string().min(1, 'Campo obrigatório');
+
+  const schema = z.object({
+    name: required,
+    telephone: required.regex(telephoneRegex, 'Telefone inválido'),
+    service: required,
+    message: required,
+    privacy: z
+      .boolean()
+      .refine(
+        (value) => value === true,
+        'Você precisa aceitar os termos de privacidade',
+      ),
+  });
+
+  const defaultToasterOptions = {
+    autoClose: 2500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  };
+
+  const handleSubmit: SubmitHandler<Body> = async (data) => {
+    if (sending) return;
+
+    setSending(true);
+    const id = toast.loading('Enviando contato...');
+
+    try {
+      formRef.current?.setErrors({});
+
+      await schema.parseAsync(data);
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const json = await response.json();
+
+      setSending(false);
+
+      toast.update(id, {
+        ...defaultToasterOptions,
+        render: 'Contato enviado com sucesso!',
+        type: 'success',
+        isLoading: false,
+      });
+
+      return json;
+    } catch (error) {
+      setSending(false);
+
+      if (error instanceof z.ZodError) {
+        toast.update(id, {
+          ...defaultToasterOptions,
+          render: 'Por favor, verifique os campos',
+          type: 'error',
+          isLoading: false,
+        });
+
+        const errors = (error as z.ZodError<z.infer<typeof schema>>).formErrors;
+
+        Object.entries(errors.fieldErrors).forEach(([field, [message]]) => {
+          formRef.current?.setFieldError(field, message);
+        });
+      } else {
+        toast.update(id, {
+          ...defaultToasterOptions,
+          render: 'Ocorreu um erro ao enviar o contato',
+          type: 'error',
+          isLoading: false,
+        });
+      }
+    }
   };
 
   const formInputs = [
     {
-      name: 'nome',
+      name: 'name',
       label: 'Nome completo',
       placeholder: 'Digite seu nome',
     },
     {
-      name: 'phone',
+      name: 'telephone',
       label: 'Telefone',
       placeholder: 'Digite seu telefone fixo ou celular',
       mask,
     },
     {
-      name: 'services',
+      name: 'service',
       label: 'Quais serviços você está buscando?',
       placeholder: 'Grupo geradores, Energia solar, Manutenção predial...',
     },
     {
-      name: 'city',
+      name: 'message',
       label: 'Sua mensagem',
       placeholder: 'Olá,',
     },
@@ -73,6 +161,7 @@ const Prestador: NextPage = () => {
 
         <div className="relative flex flex-col lg:flex-row">
           <Form
+            ref={formRef}
             onSubmit={handleSubmit}
             initialData={{ area: '1' }}
             className="lg:w-2/3 flex flex-col"
@@ -103,6 +192,7 @@ const Prestador: NextPage = () => {
 
                 return (
                   <Component
+                    autoFocus={!index}
                     key={name}
                     name={name}
                     label={label}
@@ -118,8 +208,9 @@ const Prestador: NextPage = () => {
             <Button
               type="submit"
               className="lg:absolute lg:bottom-0 lg:left-1/2 lg:translate-y-full lg:-translate-x-1/2 w-full lg:w-1/4 justify-center self-center mt-10 lg:mt-16"
+              disabled={sending}
             >
-              Enviar mensagem
+              {sending ? 'Enviando...' : 'Enviar mensagem'}
             </Button>
           </Form>
 

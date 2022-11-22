@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Text, Title } from '@components/Texts';
 
@@ -24,7 +24,10 @@ export const Input: React.FC<Props> = ({
   ...rest
 }) => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } =
+    useField(name);
+
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     registerField({
@@ -47,7 +50,10 @@ export const Input: React.FC<Props> = ({
       as="label"
       variant="p2"
       largeVariant="p1"
-      className="flex items-center mb-8 lg:mb-12 border-b border-secondary-300"
+      className={`flex items-center mb-8 lg:mb-12 border-b ${
+        error && 'border-error-600'
+      } ${isFocused ? 'border-info-600' : 'border-secondary-300'}
+       ${className}`}
     >
       <Title
         as="span"
@@ -57,7 +63,7 @@ export const Input: React.FC<Props> = ({
         {order.toString().padStart(2, '0')}
         <span className="text-primary-600">.</span>
       </Title>
-      <span className="w-full child:w-full">
+      <span className="w-full child:w-full mb-6 lg:mb-10">
         <Title
           as="span"
           variant="h4"
@@ -69,9 +75,24 @@ export const Input: React.FC<Props> = ({
         <input
           ref={inputRef}
           defaultValue={defaultValue}
-          className={`outline-none mb-6 lg:mb-10 ${className}`}
+          onFocus={() => {
+            setIsFocused(true);
+            clearError();
+          }}
+          onBlur={() => setIsFocused(false)}
+          className={`outline-none ${className}`}
           {...rest}
         />
+        {error && (
+          <Text
+            as="span"
+            variant="p3"
+            largeVariant="p2"
+            className="text-error-600"
+          >
+            {error}
+          </Text>
+        )}
       </span>
     </Text>
   );

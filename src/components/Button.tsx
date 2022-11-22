@@ -21,7 +21,8 @@ const vairents: Variants = {
     text: 'text-neutral',
     hover:
       'hover:text-neutral hover:bg-neutral-900 hover:shadow-button hover:shadow-primary-600',
-    disabled: 'bg-secondary-50 text-secondary-600',
+    disabled:
+      'bg-secondary-50 text-secondary-600 hover:bg-secondary-50 hover:text-secondary-600 hover:shadow-none',
   },
   outline: {
     bg: 'bg-neutral',
