@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Add enviroment file
+        run: echo -n "${{ secrets.STAGING_ENV }}" | base64 --decode > .env
+
       - name: Build application
         run: yarn build
 
