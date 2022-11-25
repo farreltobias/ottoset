@@ -1,6 +1,5 @@
 import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 
 import { SidebarProvider } from '@contexts/SidebarContext';
@@ -12,23 +11,11 @@ import { SEO } from '@seo/next-seo.config';
 
 import 'tailwindcss/tailwind.css';
 import 'react-toastify/dist/ReactToastify.css';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SidebarProvider>
-      <Head>
-        <style>
-          {`
-            input[type='search']::-webkit-search-decoration,
-            input[type='search']::-webkit-search-cancel-button,
-            input[type='search']::-webkit-search-results-button,
-            input[type='search']::-webkit-search-results-decoration {
-              display: none;
-            }
-          `}
-        </style>
-      </Head>
-
       <DefaultSeo {...SEO} />
 
       <Header />

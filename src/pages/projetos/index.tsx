@@ -25,14 +25,14 @@ const Projetos: NextPage = () => {
       <section className="container mx-auto w-full mt-11 lg:mt-14">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {Children.toArray(
-            projects.map(({ title, description, duration, img, link }) => (
+            projects.map(({ title, description, duration, img, slug }) => (
               <Card
                 className="h-[40.625rem]"
                 title={title}
                 description={description}
                 duration={duration}
                 img={img}
-                link={link}
+                link={`/projetos/${slug}`}
               />
             )),
           )}

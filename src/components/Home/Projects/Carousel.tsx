@@ -16,7 +16,7 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
     <div className="embla overflow-hidden" ref={emblaRef}>
       <div className="embla__container flex">
         {Children.toArray(
-          projects.map(({ title, description, duration, link, img }) => (
+          projects.map(({ title, description, duration, slug, img }) => (
             <div className="embla__slide mr-2 lg:mr-6 last:mr-0">
               <div className="embla__slide__inner relative">
                 <Card
@@ -24,7 +24,7 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
                   description={description}
                   duration={duration}
                   img={img}
-                  link={link}
+                  link={`/projetos/${slug}`}
                 />
               </div>
             </div>
