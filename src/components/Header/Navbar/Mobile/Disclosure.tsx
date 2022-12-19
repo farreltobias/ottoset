@@ -13,7 +13,7 @@ type Props = {
 
 export const Disclosure: React.FC<Props> = ({ label, children }) => {
   return (
-    <Menu as="li" className=" inline-block relative w-full">
+    <Menu as="li" className="inline-block relative w-full">
       {({ open }) => (
         <>
           <Menu.Button className="py-[1.625rem] px-4 text-neutral text-left w-full">

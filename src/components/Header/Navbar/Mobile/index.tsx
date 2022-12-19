@@ -1,5 +1,6 @@
 import { Children, useContext, useEffect } from 'react';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { screens } from 'tailwindcss/defaultTheme';
 
 import { useWindowSize } from '@hooks/useWindowSize';
@@ -12,8 +13,6 @@ import { Disclosure } from './Disclosure';
 import { Hamburguer } from './Hamburguer';
 import { Item } from './Item';
 import { SubItem } from './SubItem';
-
-import { Transition } from '@headlessui/react';
 
 export const Mobile: React.FC<React.PropsWithChildren> = () => {
   const desktopWidth = Number(screens.lg.match(/\d+/g)?.[0]);
@@ -52,21 +51,21 @@ export const Mobile: React.FC<React.PropsWithChildren> = () => {
     <>
       <Hamburguer />
 
-      <Transition
-        as="div"
-        show={show}
-        enter="transition-all duration-300"
-        enterFrom="-right-full"
-        enterTo="right-0"
-        leave="transition-all duration-150"
-        leaveFrom="right-0"
-        leaveTo="-right-full"
-        className="block lg:hidden bg-neutral-900 h-screen w-screen fixed top-0 z-10 pt-28 overflow-auto"
-      >
-        <ul className="container mx-auto h-full w-full">
-          {Children.toArray(NavList)}
-        </ul>
-      </Transition>
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            className="block lg:hidden bg-neutral-900 fixed inset-0 z-10 pt-28 overflow-auto"
+            initial={{ x: '100%' }}
+            animate={{ x: show ? 0 : '100%' }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.2 }}
+          >
+            <ul className="container mx-auto h-full w-full mb-10">
+              {Children.toArray(NavList)}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
