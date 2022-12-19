@@ -1,5 +1,6 @@
-import { Children, useCallback, useEffect, useMemo, useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
+/* eslint-disable camelcase */
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
@@ -9,15 +10,18 @@ import { useWindowSize } from '@hooks/useWindowSize';
 import { Link } from '@components/Link';
 import { Title } from '@components/Texts';
 
-import { images } from '@data/static/instagram';
 import { instagram } from '@data/static/ottoset';
 
-type Photos = {
-  path: StaticImageData;
-  name: string;
-}[];
+import { Response } from '@pages/api/get-instagram-photos';
 
-export const Instagram: React.FC = () => {
+type Props = {
+  images: Response['data'];
+};
+
+export const Instagram: React.FC<Props> = ({ images }) => {
+  const { width } = useWindowSize();
+  const [photos, setPhotos] = useState(images);
+
   const options: EmblaOptionsType = useMemo(
     () => ({
       dragFree: true,
@@ -41,16 +45,18 @@ export const Instagram: React.FC = () => {
     emblaApi.reInit(options);
   }, [emblaApi, options]);
 
-  const { width } = useWindowSize();
-
-  const [photos, setPhotos] = useState<Photos>(images);
-
   useEffect(() => {
     if (!width) return;
 
-    const repetitions = Math.ceil(width / 240 / (images.length - 1));
-    setPhotos(Array.from({ length: repetitions }, () => images).flat());
-  }, [width]);
+    const limit = Math.ceil(width / 240) + 1;
+
+    if (photos.length === limit || photos.length > limit) return;
+
+    const repetitions = Math.ceil(limit / images.length);
+    const newPhotos = Array.from({ length: repetitions }, () => images).flat();
+
+    setPhotos(newPhotos.slice(0, limit));
+  }, [photos.length, width, images]);
 
   useEffect(() => {
     reloadEmbla();
@@ -65,22 +71,18 @@ export const Instagram: React.FC = () => {
         className="flex-col m-0"
       >
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {Children.toArray(
-              photos.map(({ path, name }) => (
-                <div className="">
-                  <div className="relative w-60">
-                    <Image
-                      src={path}
-                      alt={name}
-                      placeholder="blur"
-                      className="w-full h-auto"
-                      sizes="100vw"
-                    />
-                  </div>
-                </div>
-              )),
-            )}
+          <div className="grid grid-flow-col">
+            {photos.map(({ media_url, id }, index) => (
+              <div className="relative w-60 h-60" key={id}>
+                <Image
+                  src={media_url}
+                  alt={`Instagram photo ${index + 1}`}
+                  className="w-full h-full"
+                  sizes="(min-width: 0) 100vw"
+                  fill
+                />
+              </div>
+            ))}
           </div>
         </div>
 
