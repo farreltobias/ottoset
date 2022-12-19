@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import { Caps } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 type Props = {
   title: string;
   image: StaticImageData;
@@ -33,7 +35,10 @@ export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
       <Caps
         as="span"
         variant="title"
-        className={`absolute z-20 bottom-0 pb-20 xs:pb-28 flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 whitespace-pre ${titleSizes}`}
+        className={classNames(
+          'absolute z-20 bottom-0 pb-20 xs:pb-28 flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 whitespace-pre',
+          titleSizes,
+        )}
         style={{ backgroundImage: `url(${image.src})` }}
       >
         {title}
@@ -43,12 +48,18 @@ export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
         <Caps
           as="span"
           variant="title"
-          className={`flex items-center justify-center text-transparent shadow-neutral text-stroke-[0.5px] lg:text-stroke-1 whitespace-pre ${titleSizes}`}
+          className={classNames(
+            'flex items-center justify-center text-transparent shadow-neutral text-stroke-[0.5px] lg:text-stroke-1 whitespace-pre',
+            titleSizes,
+          )}
         >
           {title}
         </Caps>
         <span
-          className={`container mx-auto h-20 xs:h-28 flex flex-wrap justify-center items-center max-w-xs xs:max-w-md sm:max-w-screen-sm lg:max-w-screen-md text-neutral text-center ${descriptionSizes}`}
+          className={classNames(
+            'container mx-auto h-20 xs:h-28 flex flex-wrap justify-center items-center max-w-xs xs:max-w-md sm:max-w-screen-sm lg:max-w-screen-md text-neutral text-center',
+            descriptionSizes,
+          )}
         >
           <span className="flex flex-wrap justify-center items-center">
             {Children.toArray(

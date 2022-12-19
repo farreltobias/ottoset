@@ -1,3 +1,5 @@
+import { classNames } from '@utils/classNames';
+
 const variants = {
   p1: 'text-2xl leading-150',
   p2: 'text-base leading-150',
@@ -37,7 +39,12 @@ export const Text: React.FC<Props> = ({
 
   return (
     <Component
-      className={`${centerClass} ${variantClass} ${largeVariantClass} ${className}`}
+      className={classNames(
+        centerClass,
+        variantClass,
+        largeVariantClass,
+        className,
+      )}
     >
       {children}
     </Component>

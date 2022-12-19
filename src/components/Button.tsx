@@ -1,3 +1,5 @@
+import { classNames } from '@utils/classNames';
+
 type Props = React.PropsWithChildren<
   {
     variant?: 'filled' | 'outline' | 'link';
@@ -67,7 +69,7 @@ export const Button: React.FC<Props> = ({
   const hoverStyle = hover ? vairents[hover].hover : hoverStyles;
   const groupStyle = hover ? vairents[variant].group : groupStyles;
 
-  const hoverToApply = group ? groupStyle : hoverStyle;
+  const hoverToApply = (group ? groupStyle : hoverStyle) || '';
 
   const style = disabled
     ? `cursor-not-allowed ${disabledStyle} ${hoverStyle}`
@@ -77,7 +79,13 @@ export const Button: React.FC<Props> = ({
 
   return (
     <button
-      className={`flex items-center font-title font-bold text-lg rounded outline-none transition-all ${padding} ${style} ${hoverToApply} ${className}`}
+      className={classNames(
+        'flex items-center font-title font-bold text-lg rounded outline-none transition-all',
+        padding,
+        style,
+        hoverToApply,
+        className,
+      )}
       {...props}
     >
       {children}

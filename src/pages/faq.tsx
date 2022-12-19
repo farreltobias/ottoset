@@ -15,6 +15,8 @@ import { SEO } from '@seo/faq';
 
 import { categories, faq } from '@data/static/faq';
 
+import { classNames } from '@utils/classNames';
+
 const FAQ: NextPage = () => {
   const [filteredFAQ, setFilteredFAQ] = useState(faq);
   const [category, setCategory] = useState('Todos');
@@ -57,11 +59,12 @@ const FAQ: NextPage = () => {
             {Children.toArray(
               categories.map((value) => (
                 <li
-                  className={`py-1 ${
+                  className={classNames(
+                    'py-1',
                     value === category
                       ? 'text-primary-500 font-bold'
-                      : 'text-neutral-900'
-                  }`}
+                      : 'text-neutral-900',
+                  )}
                 >
                   <button
                     className="outline-none"

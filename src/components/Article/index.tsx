@@ -2,6 +2,8 @@ import { Children } from 'react';
 
 import { ArticleProvider } from '@contexts/ArticleContext';
 
+import { classNames } from '@utils/classNames';
+
 import { Content } from './Content';
 import { Image } from './Image';
 
@@ -51,12 +53,16 @@ const Article: React.FC<Props> & SubComponents = ({
     <ArticleProvider order={order}>
       <section
         id={id}
-        className={`container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly ${className}`}
+        className={classNames(
+          'container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly',
+          className,
+        )}
       >
         <div
-          className={`flex items-center justify-center w-full lg:w-1/2 ${
-            order === 'left' ? 'lg:order-1' : 'lg:order-2'
-          }`}
+          className={classNames(
+            'flex items-center justify-center w-full lg:w-1/2',
+            order === 'left' ? 'lg:order-1' : 'lg:order-2',
+          )}
         >
           {Image}
         </div>

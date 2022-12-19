@@ -1,5 +1,7 @@
 import { forwardRef } from 'react';
 
+import { classNames } from '@utils/classNames';
+
 const variants = {
   display1: 'text-[8.375rem] font-extrabold',
   display2: 'text-8xl leading-120 font-extrabold',
@@ -112,7 +114,16 @@ const FowardFunction: React.ForwardRefRenderFunction<
   return (
     <Component
       ref={ref}
-      className={`font-title ${centerClass} ${variantClass} ${smallVariantClass} ${mediumVariantClass} ${largeVariantClass} ${extraLargeVariantClass} ${className}`}
+      className={classNames(
+        'font-title',
+        centerClass,
+        variantClass,
+        smallVariantClass,
+        mediumVariantClass,
+        largeVariantClass,
+        extraLargeVariantClass,
+        className,
+      )}
       style={style}
     >
       {children}

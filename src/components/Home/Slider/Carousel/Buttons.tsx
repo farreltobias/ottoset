@@ -2,6 +2,8 @@ import Flecha from '@public/navigation/flecha.svg';
 
 import { Text } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 type Props = {
   enabled: boolean;
   onClick: () => void;
@@ -27,9 +29,10 @@ export const PrevButton: React.FC<Props> = ({
       variant="p2"
       largeVariant="p1"
       as="span"
-      className={`ml-2 lg:ml-6 text-neutral ${
-        current + 1 !== total ? 'opacity-0' : 'opacity-100'
-      }`}
+      className={classNames(
+        'ml-2 lg:ml-6 text-neutral',
+        current + 1 !== total ? 'opacity-0' : 'opacity-100',
+      )}
     >
       {current + 1} / {total}
     </Text>

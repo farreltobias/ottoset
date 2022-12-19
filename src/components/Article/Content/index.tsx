@@ -2,6 +2,8 @@ import { useContext } from 'react';
 
 import { ArticleContext } from '@contexts/ArticleContext';
 
+import { classNames } from '@utils/classNames';
+
 import { Button } from './Button';
 import { SubTitle } from './SubTitle';
 import { Text } from './Text';
@@ -33,9 +35,11 @@ const Content: React.FC<Props> & SubComponents = ({
 
   return (
     <div
-      className={`flex flex-col justify-center items-center text-center lg:text-start lg:items-start lg:w-1/2 ${
-        order === 'left' ? 'lg:order-2 lg:pl-20' : 'lg:order-1 lg:pr-20'
-      } ${className}`}
+      className={classNames(
+        'flex flex-col justify-center items-center text-center lg:text-start lg:items-start lg:w-1/2',
+        order === 'left' ? 'lg:order-2 lg:pl-20' : 'lg:order-1 lg:pr-20',
+        className,
+      )}
     >
       {children}
     </div>

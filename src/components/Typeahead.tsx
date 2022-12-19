@@ -4,6 +4,8 @@ import SearchIcon from '@public/navigation/search.svg';
 
 import { Text } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 type Props = {
   onChange: (value: string) => void;
   className?: string;
@@ -16,7 +18,10 @@ const FowardFunction: React.ForwardRefRenderFunction<
   return (
     <Text
       as="span"
-      className={`flex items-center border-b border-b-secondary-300 mb-12 ${className}`}
+      className={classNames(
+        'flex items-center border-b border-b-secondary-300 mb-12',
+        className,
+      )}
     >
       <input
         ref={ref}

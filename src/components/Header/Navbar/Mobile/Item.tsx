@@ -5,6 +5,8 @@ import { SidebarContext } from '@contexts/SidebarContext';
 
 import { Caps } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 type Props = React.PropsWithChildren<
   LinkProps & {
     className?: string;
@@ -15,7 +17,7 @@ export const Item: React.FC<Props> = ({ children, className, ...props }) => {
   const { setShow } = useContext(SidebarContext);
 
   return (
-    <li className={`flex bg-neutral-900 ${className}`}>
+    <li className={classNames('flex bg-neutral-900', className || '')}>
       <Link
         {...props}
         onClick={() => {

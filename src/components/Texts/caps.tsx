@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { classNames } from '@utils/classNames';
+
 type Props = React.PropsWithChildren<{
   className?: string;
   style?: React.CSSProperties;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
   variant?: 'title' | 'text';
 }>;
 
@@ -23,7 +25,7 @@ const FowardFunction: React.ForwardRefRenderFunction<
   return (
     <Component
       ref={ref}
-      className={`${font} ${leading} uppercase font-bold ${className}`}
+      className={classNames('uppercase font-bold', font, leading, className)}
       style={style}
     >
       {children}

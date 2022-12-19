@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { classNames } from '@utils/classNames';
+
 import { Menu } from '@headlessui/react';
 
 type Props = {
@@ -16,7 +18,7 @@ export const SubItem: React.FC<Props> = ({
   className = '',
 }) => {
   return (
-    <Menu.Item as="li" className={`flex items-center ${className}`}>
+    <Menu.Item as="li" className={classNames('flex items-center', className)}>
       <Link
         href={href}
         target={target}

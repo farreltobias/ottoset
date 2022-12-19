@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 
 import { Text, Title } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 import { useField } from '@unform/core';
 
 type InputProps = Omit<
@@ -95,7 +97,7 @@ export const Radio: React.FC<Props> = ({
                 name={name}
                 defaultChecked={defaultValue.includes(option.id)}
                 value={option.value}
-                className={`peer appearance-none ${className}`}
+                className={classNames('peer appearance-none', className)}
                 {...rest}
               />
               <span className="relative flex items-center justify-center w-fit peer-checked:children:border-primary-500 peer-checked:child:h-3/5 peer-checked:child:w-3/5 transition-all mr-3">

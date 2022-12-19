@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 import { SidebarContext } from '@contexts/SidebarContext';
 
+import { classNames } from '@utils/classNames';
+
 type Props = {
   className?: string;
   href: string;
@@ -18,7 +20,7 @@ export const SubItem: React.FC<Props> = ({
 }) => {
   const { setShow } = useContext(SidebarContext);
   return (
-    <li className={`flex items-center ${className}`}>
+    <li className={classNames('flex items-center', className)}>
       <Link
         href={href}
         target={target}

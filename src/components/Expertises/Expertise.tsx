@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Button } from '@components/Button';
 import { Caps } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 type Props = {
   title: string | React.ReactNode;
   image: StaticImageData;
@@ -26,7 +28,10 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
       <Caps
         as="span"
         variant="title"
-        className={`absolute z-20 bottom-0 flex items-center justify-center w-full h-full pb-14 text-transparent bg-cover bg-center bg-clip-text group-hover:opacity-0 brightness-[47.5%] transition-all whitespace-pre ${fontSizes}`}
+        className={classNames(
+          'absolute z-20 bottom-0 flex items-center justify-center w-full h-full pb-14 text-transparent bg-cover bg-center bg-clip-text group-hover:opacity-0 brightness-[47.5%] transition-all whitespace-pre',
+          fontSizes,
+        )}
         style={{ backgroundImage: `url(${image.src})` }}
       >
         {title}
@@ -36,7 +41,10 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
         <Caps
           as="span"
           variant="title"
-          className={`flex items-center justify-center text-transparent mb-4 z-10 transition-all shadow-neutral text-stroke-[0.5px] lg:text-stroke-1 group-hover:text-stroke-none group-hover:text-neutral whitespace-pre ${fontSizes}`}
+          className={classNames(
+            'flex items-center justify-center text-transparent mb-4 z-10 transition-all shadow-neutral text-stroke-[0.5px] lg:text-stroke-1 group-hover:text-stroke-none group-hover:text-neutral whitespace-pre',
+            fontSizes,
+          )}
         >
           {title}
         </Caps>

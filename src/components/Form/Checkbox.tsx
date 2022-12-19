@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 
 import { Text } from '@components/Texts';
 
+import { classNames } from '@utils/classNames';
+
 import { useField } from '@unform/core';
 
 type InputProps = Omit<
@@ -18,7 +20,7 @@ type Props = {
 export const Checkbox: React.FC<Props> = ({
   name,
   value,
-  className,
+  className = '',
   label,
   ...rest
 }) => {
@@ -56,7 +58,7 @@ export const Checkbox: React.FC<Props> = ({
         id={fieldName}
         onChange={clearError}
         defaultChecked={defaultChecked}
-        className={`peer appearance-none ${className}`}
+        className={classNames('peer appearance-none', className)}
         {...rest}
       />
       <span className="relative flex items-center justify-center w-fit transition-all mr-3 peer-checked:child:h-full peer-checked:child:w-full peer-checked:children:w-[10px] peer-checked:children:h-[17px]">
