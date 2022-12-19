@@ -1,8 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { client, createClient } from 'prismicio';
-import { ProjectConnectionEdge } from 'src/types/generated/graphql';
+import { createClient } from 'prismicio';
 
 import { Article } from '@components/Project/Article';
 import { Footer } from '@components/Project/Footer';
@@ -10,12 +9,11 @@ import { RelatedProjectType } from '@components/Project/Footer/Button';
 import { Header } from '@components/Project/Header';
 
 import { getRelatedProjects } from '@graphql/getRelatedProjects';
-import { AFTER_CURSOR, BEFORE_CURSOR, SINGLE_PROJECT } from '@graphql/queries';
-import { ProjectQuery } from '@graphql/types';
+import { AFTER_CURSOR, BEFORE_CURSOR } from '@graphql/queries';
 
 import { SEO } from '@seo/projetos/projeto';
 
-import { convertProject, Project as ProjectType } from '@utils/convertProject';
+import { Project as ProjectType } from '@utils/convertProject';
 
 type PageProps = {
   project: ProjectType;
@@ -41,17 +39,25 @@ const Project: NextPage<PageProps> = ({
 
 export default Project;
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (
-  ctx,
-) => {
-  const { slug } = ctx.params || {};
-  const { cursor } = ctx.query as { cursor?: string };
+export const getServerSideProps: GetServerSideProps<PageProps> = async ({
+  params,
+  query,
+  previewData,
+}) => {
+  const { slug } = params as { slug: string };
+  const { cursor } = query as { cursor?: string };
+
+  const nextClient = createClient({ previewData });
+
+  const project = await nextClient.getByUID('project', slug).catch(() => null);
+
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
 
   if (!cursor) {
-    const nextClient = createClient({ previewData: ctx.previewData });
-
-    const project = await nextClient.getByUID('project', slug as string);
-
     return {
       props: {
         project: {
@@ -59,26 +65,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
           slug: project.uid,
         },
       },
-    };
-  }
-
-  const { data } = await client.query<ProjectQuery>({
-    query: SINGLE_PROJECT,
-    variables: {
-      slug,
-    },
-  });
-
-  const graphQLProject = {
-    node: data.project,
-    cursor: '',
-  } as ProjectConnectionEdge;
-
-  const project = convertProject(graphQLProject);
-
-  if (!project) {
-    return {
-      notFound: true,
     };
   }
 
@@ -90,7 +76,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
 
   return {
     props: {
-      project,
+      project: {
+        ...project.data,
+        slug: project.uid,
+      },
       previousProject,
       nextProject,
     },
