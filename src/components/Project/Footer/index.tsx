@@ -1,8 +1,8 @@
 import { Button, RelatedProjectType } from './Button';
 
 type Props = {
-  previousProject: RelatedProjectType;
-  nextProject: RelatedProjectType;
+  previousProject?: RelatedProjectType;
+  nextProject?: RelatedProjectType;
 };
 
 export const Footer: React.FC<Props> = ({ previousProject, nextProject }) => {

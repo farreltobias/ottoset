@@ -10,13 +10,12 @@ export type RelatedProjectType = {
 };
 
 type Props = React.PropsWithChildren<{
-  project: RelatedProjectType;
+  project?: RelatedProjectType;
 }>;
 
-export const Button: React.FC<Props> = ({
-  project: { slug, cursor },
-  children,
-}) => {
+export const Button: React.FC<Props> = ({ project, children }) => {
+  const { slug, cursor } = project || {};
+
   return (
     <>
       {!slug ? (

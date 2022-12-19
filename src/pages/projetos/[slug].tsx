@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { client } from 'prismicio';
+import { client, createClient } from 'prismicio';
 import { ProjectConnectionEdge } from 'src/types/generated/graphql';
 
 import { Article } from '@components/Project/Article';
@@ -19,8 +19,8 @@ import { convertProject, Project as ProjectType } from '@utils/convertProject';
 
 type PageProps = {
   project: ProjectType;
-  previousProject: RelatedProjectType;
-  nextProject: RelatedProjectType;
+  previousProject?: RelatedProjectType;
+  nextProject?: RelatedProjectType;
 };
 
 const Project: NextPage<PageProps> = ({
@@ -45,7 +45,22 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
   ctx,
 ) => {
   const { slug } = ctx.params || {};
-  const { cursor } = ctx.query as { cursor: string };
+  const { cursor } = ctx.query as { cursor?: string };
+
+  if (!cursor) {
+    const nextClient = createClient({ previewData: ctx.previewData });
+
+    const project = await nextClient.getByUID('project', slug as string);
+
+    return {
+      props: {
+        project: {
+          ...project.data,
+          slug: project.uid,
+        },
+      },
+    };
+  }
 
   const { data } = await client.query<ProjectQuery>({
     query: SINGLE_PROJECT,
