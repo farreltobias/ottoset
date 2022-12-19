@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
@@ -144,6 +144,8 @@ const Prestador: NextPage = () => {
   return (
     <>
       <NextSeo {...SEO} />
+
+      <ToastContainer />
 
       <section className="container mx-auto mt-12 lg:mt-20 lg:mb-48">
         <Title as="h1" variant="h3" largeVariant="display2" center>

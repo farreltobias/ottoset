@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { GetServerSideProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
@@ -173,6 +173,8 @@ const Career: NextPage<Props> = ({ career }) => {
   return (
     <>
       <NextSeo {...SEO(career)} />
+
+      <ToastContainer />
 
       <section className="container mx-auto mt-12 mb-36 lg:mt-20 lg:mb-48">
         <Title variant="h3" largeVariant="display4" center>

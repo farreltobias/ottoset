@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
@@ -89,8 +89,6 @@ const Prestador: NextPage = () => {
 
         const errors = (error as z.ZodError<z.infer<typeof schema>>).formErrors;
 
-        console.log(errors);
-
         Object.entries(errors.fieldErrors).forEach(([field, [message]]) => {
           formRef.current?.setFieldError(field, message);
         });
@@ -156,6 +154,8 @@ const Prestador: NextPage = () => {
   return (
     <>
       <NextSeo {...SEO} />
+
+      <ToastContainer />
 
       <section className="container mx-auto mt-12 mb-24 lg:mt-20 lg:mb-48">
         <Overlaid center>
