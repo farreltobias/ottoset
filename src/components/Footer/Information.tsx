@@ -48,9 +48,14 @@ export const Information = () => {
       )}
       <ul className="flex lg:mt-2 mx-auto lg:mx-0">
         {Children.toArray(
-          socials.map(({ Icon, href }) => (
+          socials.map(({ Icon, href, type }) => (
             <li className="mx-3 lg:mr-6 lg:ml-0">
-              <a href={href} target="_blank" rel="noreferrer">
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visite o ${type} da ottoset`}
+              >
                 <Icon
                   width={24}
                   height={24}

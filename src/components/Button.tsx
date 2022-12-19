@@ -5,6 +5,7 @@ type Props = React.PropsWithChildren<
     variant?: 'filled' | 'outline' | 'link';
     hover?: 'filled' | 'outline' | 'link';
     group?: boolean;
+    as?: React.ElementType;
   } & React.ComponentPropsWithoutRef<'button'>
 >;
 
@@ -57,8 +58,11 @@ export const Button: React.FC<Props> = ({
   variant = 'filled',
   hover,
   group = false,
+  as = 'button',
   ...props
 }) => {
+  const Component = as;
+
   const {
     disabled: disabledStyle,
     hover: hoverStyles,
@@ -78,7 +82,7 @@ export const Button: React.FC<Props> = ({
   const padding = /p-\d|\[/g.test(className) ? '' : 'px-4 py-2';
 
   return (
-    <button
+    <Component
       className={classNames(
         'flex items-center font-title font-bold text-lg rounded outline-none transition-all',
         padding,
@@ -89,6 +93,6 @@ export const Button: React.FC<Props> = ({
       {...props}
     >
       {children}
-    </button>
+    </Component>
   );
 };

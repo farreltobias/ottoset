@@ -10,9 +10,14 @@ export const Socials: React.FC = () => {
       <Caps className="text-sm xl:text-base">Redes sociais</Caps>
       <ul className="flex items-center justify-start pl-4">
         {Children.toArray(
-          socials.map(({ Icon, href }) => (
+          socials.map(({ Icon, href, type }) => (
             <li className="mr-4">
-              <a href={href} target="_blank" rel="noreferrer">
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visite o ${type} da ottoset`}
+              >
                 <Icon width={15} />
               </a>
             </li>
