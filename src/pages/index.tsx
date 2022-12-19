@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
 import { Areas } from '@components/Areas';
@@ -43,7 +43,18 @@ const Home: NextPage<PageProps> = ({ initialProjects, images }) => {
 
 export default Home;
 
-Home.getInitialProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async ({
+  req,
+  res,
+}) => {
+  const SECONDS_IN_10_MINUTES = 60 * 10;
+  const SECONDS_IN_A_DAY = 60 * 60 * 24;
+
+  res.setHeader(
+    'Cache-Control',
+    `public, s-maxage=${SECONDS_IN_10_MINUTES}, stale-while-revalidate=${SECONDS_IN_A_DAY}`,
+  );
+
   const protocol = req?.headers['x-forwarded-proto'] || 'http';
   const baseUrl = req ? `${protocol}://${req.headers.host}` : '';
 
@@ -54,7 +65,7 @@ Home.getInitialProps = async ({ req }) => {
 
   const allProjectsPage = await projectPager();
 
-  const promises = categories.map((category) => {
+  const promises = categories.map(async (category) => {
     return projectPagerByCategory(category).then((data) => ({
       category,
       data,
@@ -69,7 +80,9 @@ Home.getInitialProps = async ({ req }) => {
   };
 
   return {
-    initialProjects: [allProjects, ...projects],
-    images,
+    props: {
+      initialProjects: [allProjects, ...projects],
+      images,
+    },
   };
 };
