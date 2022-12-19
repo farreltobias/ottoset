@@ -33,12 +33,14 @@ module.exports = {
       {
         groups: [
           ['^react', '^next'],
+          ['^@prismicio'],
           ['^\\w'],
           ['^@public.*\\.svg$'],
           ['^@public'],
           ['^@hooks'],
           ['^@contexts'],
           ['^@components'],
+          ['^@graphql'],
           ['^@seo'],
           ['^@data'],
           ['^@utils'],
@@ -92,4 +94,5 @@ module.exports = {
     React: 'readonly',
     JSX: 'readonly',
   },
+  ignorePatterns: ['node_modules/', 'src/types/generated/graphql.*.ts'],
 };

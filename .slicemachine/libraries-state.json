@@ -1,0 +1,105 @@
+{
+  "slices": {
+    "components": {
+      "artigo": {
+        "library": "slices",
+        "id": "artigo",
+        "name": "Artigo",
+        "description": "Artigo",
+        "model": {
+          "id": "artigo",
+          "type": "SharedSlice",
+          "name": "Artigo",
+          "description": "Artigo",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Artigo",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Título",
+                    "placeholder": "Adicione um subtítulo",
+                    "allowTargetBlank": true,
+                    "single": "heading2"
+                  }
+                },
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Imagem",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {
+                "paragraph": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Parágrafo",
+                    "placeholder": "Adicione o conteúdo de seu projeto",
+                    "allowTargetBlank": true,
+                    "single": "paragraph"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "paragraph": [
+                  {
+                    "type": "paragraph",
+                    "text": "Magna laborum minim fugiat proident mollit. Exercitation exercitation magna sit.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading2",
+                  "text": "Potatoes",
+                  "spans": []
+                }
+              ],
+              "image": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1613665813446-82a78c468a1d"
+              }
+            },
+            "slice_type": "artigo"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/farreltobias/Documents/www/ottoset/slices/Artigo/default/preview.png",
+            "width": 1144,
+            "height": 712
+          }
+        }
+      }
+    }
+  }
+}

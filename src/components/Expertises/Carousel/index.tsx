@@ -41,8 +41,6 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
   }, [emblaApi]);
 
   useEffect(() => {
-    console.log('emblaApi', emblaApi);
-
     if (!emblaApi) return;
 
     emblaApi.on('select', onSelect);

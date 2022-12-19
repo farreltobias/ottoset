@@ -1,18 +1,19 @@
+import * as prismicH from '@prismicio/helpers';
+
+import { Project } from '@utils/convertProject';
 import { convertTime } from '@utils/convertTime';
+import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
-type Params = {
-  id: string;
-  title: string;
-  description: string;
-  duration: number;
-};
+export const SEO = ({ title, description, slug, slices }: Project) => {
+  const duration = getDurationFromSlices(slices);
 
-export const SEO = ({ id, title, description, duration }: Params) => {
   return {
-    title: `${title} - Ottoset Energy`,
-    description: `${description}. Veja mais sobre o projeto ${title} da Ottoset Energy - ${convertTime(
-      duration,
-    )}`,
-    canonical: `https://www.ottoset.com.br/projetos/${id}`,
+    title: `${prismicH.asText(title)} - Ottoset Energy`,
+    description: `${prismicH.asText(
+      description,
+    )}. Veja mais sobre o projeto ${prismicH.asText(
+      title,
+    )} da Ottoset Energy - ${convertTime(duration)}`,
+    canonical: `https://www.ottoset.com.br/projetos/${slug || ''}`,
   };
 };

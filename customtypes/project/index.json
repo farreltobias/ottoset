@@ -1,0 +1,61 @@
+{
+  "id": "project",
+  "label": "Projeto",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "slug",
+          "placeholder": "Identificador único da página"
+        }
+      },
+      "category": {
+        "type": "Text",
+        "config": {
+          "label": "Categoria",
+          "placeholder": "Categoria do Projeto"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Título",
+          "placeholder": "título do projeto",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "descrição",
+          "placeholder": "Descrição do projeto",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "cover": {
+        "type": "Image",
+        "config": {
+          "label": "Capa",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "artigo": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

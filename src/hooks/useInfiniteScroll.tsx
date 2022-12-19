@@ -2,11 +2,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { EmblaCarouselType } from 'embla-carousel-react';
 
-export const useInfiniteScroll = (
-  embla: EmblaCarouselType,
-  slides: any[],
-  hasMoreToLoad: boolean,
-) => {
+type InfiniteScrollProps = {
+  slides: any[];
+  hasMoreToLoad: boolean;
+  embla?: EmblaCarouselType;
+};
+
+export const useInfiniteScroll = ({
+  slides,
+  hasMoreToLoad,
+  embla,
+}: InfiniteScrollProps) => {
   const scrollListener = useRef(() => {});
   const [loadingMore, setLoadingMore] = useState(false);
   const [pointerIsDown, setPointerIsDown] = useState(false);

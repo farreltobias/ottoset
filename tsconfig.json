@@ -24,8 +24,9 @@
       "@hooks/*": ["./src/hooks/*"],
       "@public/*": ["./public/*"],
       "@seo/*": ["./src/seo/*"],
+      "@graphql/*": ["./src/graphql/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "./.slicemachine/prismicio.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "next-env.d.ts"]
 }

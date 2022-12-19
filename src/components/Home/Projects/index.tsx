@@ -3,11 +3,14 @@ import Link from 'next/link';
 import { Button } from '@components/Button';
 import { Title } from '@components/Texts';
 
-import { tabs } from '@data/static/projects';
-
+import { ProjectsPageByCategory } from './Carousel';
 import { Tabs } from './Tabs';
 
-export const Projects: React.FC = () => {
+type Props = {
+  initialData: ProjectsPageByCategory[];
+};
+
+export const Projects: React.FC<Props> = ({ initialData }) => {
   return (
     <section className="flex flex-col w-full mt-16 lg:mt-36 bg-primary-600">
       <div className="bg-cover bg-no-repeat lg:bg-[url('/backgrounds/portfolio.svg')]">
@@ -21,17 +24,21 @@ export const Projects: React.FC = () => {
             >
               Portfolio de Projetos
             </Title>
-            <Button variant="outline" className="my-auto hidden lg:block">
-              <Link href="/projetos">Ver todos os cases</Link>
-            </Button>
+            <Link href="/projetos">
+              <Button variant="outline" className="my-auto hidden lg:block">
+                Ver todos os cases
+              </Button>
+            </Link>
           </div>
-          <Tabs tabs={tabs} />
-          <Button
-            variant="outline"
-            className="my-auto block lg:hidden mx-auto mb-14"
-          >
-            <Link href="/projetos">Ver todos os cases</Link>
-          </Button>
+          <Tabs initialData={initialData} />
+          <Link href="/projetos">
+            <Button
+              variant="outline"
+              className="my-auto block lg:hidden mx-auto mb-14"
+            >
+              Ver todos os cases
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

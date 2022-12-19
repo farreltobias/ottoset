@@ -1,0 +1,46 @@
+{
+  "_cts": {
+    "project": {
+      "title": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "category": {
+        "content": "Grupo Gerador"
+      }
+    }
+  },
+  "slices": {
+    "Artigo": {
+      "default": {
+        "primary": {
+          "title": {
+            "config": {
+              "patternType": "HEADING",
+              "blocks": 1
+            }
+          },
+          "image": {
+            "content": "https://images.unsplash.com/photo-1613665813446-82a78c468a1d"
+          }
+        },
+        "items": {
+          "paragraph": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
