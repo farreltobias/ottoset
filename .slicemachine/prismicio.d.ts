@@ -9,6 +9,17 @@ type Simplify<T> = {
 /** Content for Perguntas Frequentes documents */
 interface FaqDocumentData {
     /**
+     * Pergunta chave field in *Perguntas Frequentes*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Qual a pergunta mais frequente?
+     * - **API ID Path**: faq.key_question
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    key_question: prismicT.KeyTextField;
+    /**
      * Slice Zone field in *Perguntas Frequentes*
      *
      * - **Field Type**: Slice Zone

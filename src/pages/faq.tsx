@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 
 import { SliceZone } from '@prismicio/react';
 import { RTTextNode } from '@prismicio/types';
@@ -10,6 +11,8 @@ import { components } from 'slices';
 import { Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
 import { Typeahead } from '@components/Typeahead';
+
+import { SEO } from '@seo/faq';
 
 import { classNames } from '@utils/classNames';
 
@@ -26,9 +29,10 @@ type PerguntasSliceWithCategory = Omit<PerguntasSlice, 'items'> & {
 type PageProps = {
   faq: PerguntasSliceWithCategory;
   categories: string[];
+  keyQuestion: string;
 };
 
-const FAQ: NextPage<PageProps> = ({ faq, categories }) => {
+const FAQ: NextPage<PageProps> = ({ faq, categories, keyQuestion }) => {
   const [filteredFAQ, setFilteredFAQ] = useState(faq);
   const [category, setCategory] = useState('Todos');
   const [search, setSearch] = useState('');
@@ -66,7 +70,7 @@ const FAQ: NextPage<PageProps> = ({ faq, categories }) => {
 
   return (
     <>
-      {/* <NextSeo {...SEO(faq[0])} /> */}
+      <NextSeo {...SEO({ question: keyQuestion })} />
 
       <Overlaid className="text-center mt-20">
         <Overlaid.Title>FAQ</Overlaid.Title>
@@ -148,10 +152,24 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     { items: [] as Items[] } as PerguntasSliceWithCategory,
   );
 
+  const firstQuestion =
+    slices.items.reduce((acc: string | null, item) => {
+      if (acc) return acc;
+
+      return item.question.length
+        ? item.question.reduce((acc, { text }) => {
+            if (acc) return acc;
+
+            return text;
+          }, '')
+        : acc;
+    }, null) || 'O que é a Ottoset Energy?';
+
   return {
     props: {
       categories,
       faq: slices,
+      keyQuestion: faq.data.key_question || firstQuestion,
     },
   };
 };

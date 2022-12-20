@@ -5,6 +5,13 @@
   "status": true,
   "json": {
     "Main": {
+      "key_question": {
+        "type": "Text",
+        "config": {
+          "label": "Pergunta chave",
+          "placeholder": "Qual a pergunta mais frequente?"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
