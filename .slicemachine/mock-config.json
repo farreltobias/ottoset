@@ -16,7 +16,8 @@
       "category": {
         "content": "Grupo Gerador"
       }
-    }
+    },
+    "faq": {}
   },
   "slices": {
     "Artigo": {
@@ -36,6 +37,25 @@
           "paragraph": {
             "config": {
               "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "Perguntas": {
+      "default": {
+        "primary": {},
+        "items": {
+          "answer": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "question": {
+            "config": {
+              "patternType": "HEADING",
               "blocks": 1
             }
           }

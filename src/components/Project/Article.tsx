@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PrismicNextImage } from '@prismicio/next';
-import { PrismicText, SliceZone } from '@prismicio/react';
+import { PrismicRichText, SliceZone } from '@prismicio/react';
 
 import { components } from 'slices';
 
@@ -22,7 +22,7 @@ export const Article: React.FC<Props> = ({ project }) => {
         className="mt-8 mb-6 lg:mt-6 lg:mb-10"
         center
       >
-        <PrismicText field={project.title} />
+        <PrismicRichText field={project.title} />
       </Title>
 
       <PrismicNextImage

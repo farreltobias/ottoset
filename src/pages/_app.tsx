@@ -9,7 +9,6 @@ import { SidebarProvider } from '@contexts/SidebarContext';
 
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
-import { Text, Title } from '@components/Texts';
 
 import { SEO } from '@seo/next-seo.config';
 
@@ -20,26 +19,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 
 const richTextComponents: JSXMapSerializer = {
-  heading1: ({ children }) => (
-    <Title variant="h3" largeVariant="h1" center>
-      {children}
-    </Title>
-  ),
-  heading2: ({ children }) => (
-    <Title
-      as="h2"
-      variant="h4"
-      largeVariant="h3"
-      className="text-center mb-6 lg:mb-8"
-    >
-      {children}
-    </Title>
-  ),
-  paragraph: ({ children }) => (
-    <Text variant="p2" className="text-center mb-6 lg:mb-10">
-      {children}
-    </Text>
-  ),
+  heading1: ({ children }) => <>{children}</>,
+  heading2: ({ children }) => <>{children}</>,
+  paragraph: ({ children }) => <>{children}</>,
 };
 
 function MyApp({ Component, pageProps }: AppProps) {

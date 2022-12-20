@@ -6,6 +6,35 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Perguntas Frequentes documents */
+interface FaqDocumentData {
+    /**
+     * Slice Zone field in *Perguntas Frequentes*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: faq.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<FaqDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Perguntas Frequentes → Slice Zone*
+ *
+ */
+type FaqDocumentDataSlicesSlice = PerguntasSlice;
+/**
+ * Perguntas Frequentes document from Prismic
+ *
+ * - **API ID**: `faq`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FaqDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<FaqDocumentData>, "faq", Lang>;
 /** Content for Projeto documents */
 interface ProjectDocumentData {
     /**
@@ -79,7 +108,7 @@ type ProjectDocumentDataSlicesSlice = ArtigoSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = ProjectDocument;
+export type AllDocumentTypes = FaqDocument | ProjectDocument;
 /**
  * Primary content in Artigo → Primary
  *
@@ -145,11 +174,76 @@ type ArtigoSliceVariation = ArtigoSliceDefault;
  *
  */
 export type ArtigoSlice = prismicT.SharedSlice<"artigo", ArtigoSliceVariation>;
+/**
+ * Primary content in Perguntas → Primary
+ *
+ */
+interface PerguntasSliceDefaultPrimary {
+    /**
+     * Categoria field in *Perguntas → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Preencha a categoria das perguntas
+     * - **API ID Path**: perguntas.primary.category
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    category: prismicT.KeyTextField;
+}
+/**
+ * Item in Perguntas → Items
+ *
+ */
+export interface PerguntasSliceDefaultItem {
+    /**
+     * Pergunta field in *Perguntas → Items*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: Qual a pergunta?
+     * - **API ID Path**: perguntas.items[].question
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    question: prismicT.TitleField;
+    /**
+     * Resposta field in *Perguntas → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Preencha a resposta da sua pergunta
+     * - **API ID Path**: perguntas.items[].answer
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    answer: prismicT.RichTextField;
+}
+/**
+ * Default variation for Perguntas Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Perguntas`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PerguntasSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<PerguntasSliceDefaultPrimary>, Simplify<PerguntasSliceDefaultItem>>;
+/**
+ * Slice variation for *Perguntas*
+ *
+ */
+type PerguntasSliceVariation = PerguntasSliceDefault;
+/**
+ * Perguntas Shared Slice
+ *
+ * - **API ID**: `perguntas`
+ * - **Description**: `Perguntas`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PerguntasSlice = prismicT.SharedSlice<"perguntas", PerguntasSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice };
+        export type { FaqDocumentData, FaqDocumentDataSlicesSlice, FaqDocument, ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice, PerguntasSliceDefaultPrimary, PerguntasSliceDefaultItem, PerguntasSliceDefault, PerguntasSliceVariation, PerguntasSlice };
     }
 }

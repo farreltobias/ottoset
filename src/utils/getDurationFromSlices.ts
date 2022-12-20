@@ -1,5 +1,5 @@
 import { Content } from '@prismicio/client';
-import { RTNode } from '@prismicio/types';
+import { RTParagraphNode } from '@prismicio/types';
 
 const MINUTES_IN_MILLISECONDS = 60 * 1000;
 const WORDS_PER_MINUTE = 100;
@@ -11,9 +11,7 @@ export const getDurationFromSlices = (slices: Content.ArtigoSlice[]) => {
       (items.reduce((acc, item) => {
         return (
           acc +
-          (item.paragraph as RTNode[]).reduce((acc, item) => {
-            if (item.type !== 'paragraph') return acc;
-
+          (item.paragraph as RTParagraphNode[]).reduce((acc, item) => {
             const { text } = item;
             const count = text.split(' ').length;
 

@@ -100,16 +100,12 @@ const FowardFunction: React.ForwardRefRenderFunction<
   const Component = as;
 
   const variantClass = variants[variant];
-  const largeVariantClass = largeVariant ? largeVarients[largeVariant] : '\b';
-  const extraLargeVariantClass = xlVariant
-    ? extraLargeVarients[xlVariant]
-    : '\b';
-  const mediumVariantClass = mediumVariant
-    ? mediumVarients[mediumVariant]
-    : '\b';
-  const smallVariantClass = smallVariant ? smallVarients[smallVariant] : '\b';
+  const largeVariantClass = largeVariant ? largeVarients[largeVariant] : '';
+  const extraLargeVariantClass = xlVariant ? extraLargeVarients[xlVariant] : '';
+  const mediumVariantClass = mediumVariant ? mediumVarients[mediumVariant] : '';
+  const smallVariantClass = smallVariant ? smallVarients[smallVariant] : '';
 
-  const centerClass = center ? 'text-center lg:text-left' : '\b';
+  const centerClass = center ? 'text-center lg:text-left' : '';
 
   return (
     <Component

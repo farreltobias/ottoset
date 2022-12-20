@@ -1,44 +1,72 @@
-import React, { Children, useEffect, useState } from 'react';
-import { NextPage } from 'next';
-import Link from 'next/link';
-import { NextSeo } from 'next-seo';
+import React, { useEffect, useState } from 'react';
+import { GetStaticProps, NextPage } from 'next';
 
-import { motion } from 'framer-motion';
+import { SliceZone } from '@prismicio/react';
+import { RTTextNode } from '@prismicio/types';
 
-import { Button } from '@components/Button';
-import { Disclosure } from '@components/FAQ/Disclosure';
+import { createClient } from 'prismicio';
+import { components } from 'slices';
+
 import { Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
 import { Typeahead } from '@components/Typeahead';
 
-import { SEO } from '@seo/faq';
-
-import { categories, faq } from '@data/static/faq';
-
 import { classNames } from '@utils/classNames';
 
-const FAQ: NextPage = () => {
+import { PerguntasSlice } from '.slicemachine/prismicio';
+
+type Items = PerguntasSlice['items'][0] & {
+  category: string;
+};
+
+type PerguntasSliceWithCategory = Omit<PerguntasSlice, 'items'> & {
+  items: Items[];
+};
+
+type PageProps = {
+  faq: PerguntasSliceWithCategory;
+  categories: string[];
+};
+
+const FAQ: NextPage<PageProps> = ({ faq, categories }) => {
   const [filteredFAQ, setFilteredFAQ] = useState(faq);
   const [category, setCategory] = useState('Todos');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    const filtered = faq.filter((item) => {
-      const question = item.question.toLowerCase();
-      const answer = item.answer.toLowerCase();
+    const filtered = faq.items.filter((item) => {
+      if (category !== 'Todos' && item.category !== category) return false;
 
-      return (
-        (question.includes(search) || answer.includes(search)) &&
-        (category === 'Todos' || item.category === category)
-      );
+      const searchText = search.toLowerCase();
+      if (!searchText) return true;
+
+      const textArray = [item.question, item.answer] as RTTextNode[][];
+      const hasTextIncluded = textArray.reduce((acc, text) => {
+        if (acc) return true;
+
+        const hasText = text.reduce((acc, { text }) => {
+          if (acc) return true;
+
+          return text.toLowerCase().includes(searchText);
+        }, false);
+
+        return hasText;
+      }, false);
+
+      return hasTextIncluded;
     });
 
-    setFilteredFAQ(filtered);
-  }, [category, search]);
+    const newFAQ = {
+      ...faq,
+      items: filtered,
+    };
+
+    setFilteredFAQ(newFAQ);
+  }, [category, search, faq]);
 
   return (
     <>
-      <NextSeo {...SEO(faq[0])} />
+      {/* <NextSeo {...SEO(faq[0])} /> */}
 
       <Overlaid className="text-center mt-20">
         <Overlaid.Title>FAQ</Overlaid.Title>
@@ -56,59 +84,74 @@ const FAQ: NextPage = () => {
             Categorias
           </Title>
           <ul className="flex flex-col">
-            {Children.toArray(
-              categories.map((value) => (
-                <li
-                  className={classNames(
-                    'py-1',
-                    value === category
-                      ? 'text-primary-500 font-bold'
-                      : 'text-neutral-900',
-                  )}
+            {categories.map((item) => (
+              <li
+                key={item}
+                className={classNames(
+                  'py-1',
+                  item === category
+                    ? 'text-primary-500 font-bold'
+                    : 'text-neutral-900',
+                )}
+              >
+                <button
+                  className="outline-none"
+                  onClick={() => setCategory(item)}
                 >
-                  <button
-                    className="outline-none"
-                    onClick={() => setCategory(value)}
-                  >
-                    {value}
-                  </button>
-                </li>
-              )),
-            )}
+                  {item}
+                </button>
+              </li>
+            ))}
           </ul>
         </aside>
 
-        <motion.ul className="flex flex-col max-w-4xl w-full mx-auto mb-48">
-          {/* <AnimatePresence mode="wait"> */}
-          {filteredFAQ.length ? (
-            filteredFAQ.map(({ question, answer }) => (
-              <Disclosure key={question}>
-                <Disclosure.Question>{question}</Disclosure.Question>
-                <Disclosure.Answer>{answer}</Disclosure.Answer>
-              </Disclosure>
-            ))
-          ) : (
-            <motion.li
-              className="flex flex-col items-center my-10"
-              key="empty"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              layout
-            >
-              <Title as="span" variant="h3" className="text-center mb-4">
-                Nenhuma pergunta encontrada
-              </Title>
-              <Button>
-                <Link href="contato">Fale conosco</Link>
-              </Button>
-            </motion.li>
-          )}
-          {/* </AnimatePresence> */}
-        </motion.ul>
+        <SliceZone slices={[filteredFAQ]} components={components} />
       </section>
     </>
   );
 };
 
 export default FAQ;
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  previewData,
+}) => {
+  const nextClient = createClient({ previewData });
+
+  const [faq] = await nextClient.getAllByType('faq').catch(() => [null]);
+
+  if (!faq) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const categories = [
+    'Todos',
+    ...faq.data.slices.map(({ primary }) => primary.category as string),
+  ];
+
+  const slices = (faq.data.slices as PerguntasSlice[]).reduce(
+    (acc: PerguntasSliceWithCategory, item) => {
+      return {
+        ...acc,
+        ...item,
+        items: [
+          ...acc.items,
+          ...item.items.map((texts) => ({
+            ...texts,
+            category: item.primary.category as string,
+          })),
+        ],
+      };
+    },
+    { items: [] as Items[] } as PerguntasSliceWithCategory,
+  );
+
+  return {
+    props: {
+      categories,
+      faq: slices,
+    },
+  };
+};

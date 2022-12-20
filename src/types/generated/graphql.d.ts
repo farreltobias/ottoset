@@ -1,14 +1,9 @@
+import { gql } from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -54,17 +49,16 @@ export type PageInfo = {
   startCursor?: Maybe<Scalars['String']>;
 };
 
-export type Project = _Document &
-  _Linkable & {
-    __typename?: 'Project';
-    _linkType?: Maybe<Scalars['String']>;
-    _meta: Meta;
-    category?: Maybe<Scalars['String']>;
-    cover?: Maybe<Scalars['Json']>;
-    description?: Maybe<Scalars['Json']>;
-    slices?: Maybe<Array<ProjectSlices>>;
-    title?: Maybe<Scalars['Json']>;
-  };
+export type Project = _Document & _Linkable & {
+  __typename?: 'Project';
+  _linkType?: Maybe<Scalars['String']>;
+  _meta: Meta;
+  category?: Maybe<Scalars['String']>;
+  cover?: Maybe<Scalars['Json']>;
+  description?: Maybe<Scalars['Json']>;
+  slices?: Maybe<Array<ProjectSlices>>;
+  title?: Maybe<Scalars['Json']>;
+};
 
 /** A connection to a list of items. */
 export type ProjectConnectionConnection = {
@@ -120,6 +114,7 @@ export type Query = {
   project?: Maybe<Project>;
 };
 
+
 export type Query_AllDocumentsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -142,6 +137,7 @@ export type Query_AllDocumentsArgs = {
   type?: InputMaybe<Scalars['String']>;
   type_in?: InputMaybe<Array<Scalars['String']>>;
 };
+
 
 export type QueryAllProjectsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -167,6 +163,7 @@ export type QueryAllProjectsArgs = {
   where?: InputMaybe<WhereProject>;
 };
 
+
 export type QueryProjectArgs = {
   lang: Scalars['String'];
   uid: Scalars['String'];
@@ -188,7 +185,7 @@ export enum SortDocumentsBy {
   MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
   MetaFirstPublicationDateDesc = 'meta_firstPublicationDate_DESC',
   MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
-  MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
+  MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC'
 }
 
 export enum SortProjecty {
@@ -201,7 +198,7 @@ export enum SortProjecty {
   MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
   MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 export type WhereProject = {
