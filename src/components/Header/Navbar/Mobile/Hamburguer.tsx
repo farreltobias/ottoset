@@ -60,6 +60,7 @@ export const Hamburguer: React.FC = () => {
 
   return (
     <button
+      aria-label="Abrir menu de navegação"
       onClick={() => {
         document.body.classList.toggle('overflow-hidden');
         setShow(!show);

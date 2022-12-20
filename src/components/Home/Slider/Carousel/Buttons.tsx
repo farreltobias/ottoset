@@ -17,8 +17,9 @@ export const PrevButton: React.FC<Props> = ({
   total,
   current,
 }) => (
-  <span className="absolute top-10 translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex items-center children:transition-opacity children:delay-200">
+  <div className="absolute top-10 translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex items-center children:transition-opacity children:delay-200">
     <button
+      aria-label="Ver projeto anterior"
       className="flex justify-center outline-none peer disabled:opacity-0 rotate-90"
       onClick={onClick}
       disabled={!enabled}
@@ -36,7 +37,7 @@ export const PrevButton: React.FC<Props> = ({
     >
       {current + 1} / {total}
     </Text>
-  </span>
+  </div>
 );
 
 export const NextButton: React.FC<Props> = ({
@@ -45,8 +46,9 @@ export const NextButton: React.FC<Props> = ({
   total,
   current,
 }) => (
-  <span className="absolute right-0 top-10 -translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex flex-row-reverse items-center children:transition-opacity children:delay-200">
+  <div className="absolute right-0 top-10 -translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex flex-row-reverse items-center children:transition-opacity children:delay-200">
     <button
+      aria-label="Ver próximo projeto"
       className="flex justify-center outline-none peer disabled:opacity-0 -rotate-90"
       onClick={onClick}
       disabled={!enabled}
@@ -61,5 +63,5 @@ export const NextButton: React.FC<Props> = ({
     >
       {current + 1} / {total}
     </Text>
-  </span>
+  </div>
 );

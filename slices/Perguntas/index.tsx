@@ -47,7 +47,7 @@ const Perguntas: React.FC<PerguntasProps> = ({ slice: { items } }) => (
             Nenhuma pergunta encontrada
           </Title>
           <Button>
-            <Link href="contato">Fale conosco</Link>
+            <Link href="/contato">Fale conosco</Link>
           </Button>
         </motion.li>
       )}

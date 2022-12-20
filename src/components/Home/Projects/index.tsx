@@ -24,20 +24,24 @@ export const Projects: React.FC<Props> = ({ initialData }) => {
             >
               Portfolio de Projetos
             </Title>
-            <Link href="/projetos">
-              <Button variant="outline" className="my-auto hidden lg:block">
-                Ver todos os cases
-              </Button>
+            <Link href="/projetos" legacyBehavior>
+              <a aria-label="Veja todos os nossos cases">
+                <Button variant="outline" className="my-auto hidden lg:block">
+                  Ver todos os cases
+                </Button>
+              </a>
             </Link>
           </div>
           <Tabs initialData={initialData} />
-          <Link href="/projetos">
-            <Button
-              variant="outline"
-              className="my-auto block lg:hidden mx-auto mb-14"
-            >
-              Ver todos os cases
-            </Button>
+          <Link href="/projetos" legacyBehavior>
+            <a aria-label="Veja todos os nossos cases">
+              <Button
+                variant="outline"
+                className="my-auto block lg:hidden mx-auto mb-14"
+              >
+                Ver todos os cases
+              </Button>
+            </a>
           </Link>
         </div>
       </div>

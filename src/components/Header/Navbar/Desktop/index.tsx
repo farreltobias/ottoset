@@ -31,10 +31,12 @@ export const Desktop: React.FC<React.PropsWithChildren> = () => {
   return (
     <>
       <ul className="hidden lg:flex">{Children.toArray(NavList)}</ul>
-      <Link href="contato">
-        <Button className="hidden lg:flex text-xs xl:text-base">
-          Fale conosco
-        </Button>
+      <Link href="/contato" legacyBehavior>
+        <a aria-label="Fale conosco">
+          <Button className="hidden lg:flex text-xs xl:text-base">
+            Fale conosco
+          </Button>
+        </a>
       </Link>
     </>
   );

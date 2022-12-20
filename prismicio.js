@@ -15,10 +15,15 @@ const routes = [
     lang: 'pt-br',
     path: '/projetos/:uid',
   },
+  {
+    type: 'faq',
+    lang: 'pt-br',
+    path: '/faq',
+  },
 ];
 
 const prismicClient = prismic.createClient(
-  prismic.getEndpoint(repositoryName),
+  prismic.getRepositoryEndpoint(repositoryName),
   {
     accessToken: process.env.PRISMIC_API_KEY,
     routes,

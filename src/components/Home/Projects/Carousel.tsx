@@ -78,16 +78,16 @@ export const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>
-      <div className="grid grid-flow-col gap-2 lg:gap-6">
+      <ul className="grid grid-flow-col gap-2 lg:gap-6">
         {projectPage.data.projects.map((project) => (
           <Card key={project.slug} project={project} />
         ))}
         {projectPage.data.pageInfo.hasNextPage && (
-          <div className="flex items-center justify-center w-80 h-[40.625rem] lg:w-[35rem] lg:h-[47.5rem]">
+          <li className="flex items-center justify-center w-80 h-[40.625rem] lg:w-[35rem] lg:h-[47.5rem]">
             {loadingMore && <Spinner size={3} />}
-          </div>
+          </li>
         )}
-      </div>
+      </ul>
     </div>
   );
 };

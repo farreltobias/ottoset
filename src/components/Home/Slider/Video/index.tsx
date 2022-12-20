@@ -29,7 +29,11 @@ export const Video: React.FC = () => {
         sizes="100vw"
         fill
       />
-      <button onClick={() => setIsOpen(true)} className="h-full w-full">
+      <button
+        aria-label="Abrir vídeo sobre a Ottoset"
+        onClick={() => setIsOpen(true)}
+        className="h-full w-full"
+      >
         <span className="flex justify-center items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border p-4 border-neutral">
           <span className="animate-ping h-2/3 w-2/3 border-4 border-neutral absolute rounded-full opacity-75" />
           <Play className="pl-2 w-9 h-9" />
