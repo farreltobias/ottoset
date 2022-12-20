@@ -37,21 +37,21 @@ const rotate: Variants = {
 
 export const Icon: React.FC<Props> = ({ isOpen }) => {
   return (
-    <span className="relative w-6 h-8 flex items-center">
-      <motion.span
+    <div className="relative flex items-center grow-0 shrink-0 basis-6 h-6">
+      <motion.div
         variants={colors}
-        className="w-full h-1 absolute rounded-full"
+        className="w-6 h-1 absolute rounded-full"
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
         transition={transition}
       />
-      <motion.span
-        className="w-full h-1 absolute rounded-full"
+      <motion.div
+        className="w-6 h-1 absolute rounded-full"
         variants={rotate}
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
         transition={transition}
       />
-    </span>
+    </div>
   );
 };
