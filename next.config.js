@@ -1,7 +1,9 @@
+const ANALYZE = process.env.ANALYZE === 'true';
+
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: ANALYZE,
 });
 
 /** @type {import('next').NextConfig} */
@@ -17,7 +19,9 @@ const nextConfig = withBundleAnalyzer({
     ],
   },
   webpack(config) {
-    config.plugins.push(new DuplicatePackageCheckerPlugin());
+    if (ANALYZE) {
+      config.plugins.push(new DuplicatePackageCheckerPlugin());
+    }
 
     config.resolve.alias['@prismicio/helper'] = path.resolve(
       __dirname,
