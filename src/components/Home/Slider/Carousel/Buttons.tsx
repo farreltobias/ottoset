@@ -31,7 +31,7 @@ export const PrevButton: React.FC<Props> = ({
       largeVariant="p1"
       as="span"
       className={classNames(
-        'ml-2 lg:ml-6 text-neutral',
+        'ml-2 lg:ml-6 text-neutral peer-disabled:opacity-0',
         current + 1 !== total ? 'opacity-0' : 'opacity-100',
       )}
     >

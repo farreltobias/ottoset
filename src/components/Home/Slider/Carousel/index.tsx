@@ -2,13 +2,12 @@ import React, { Children, useCallback, useEffect, useState } from 'react';
 
 import { EmblaCarouselType } from 'embla-carousel-react';
 
-import { Service } from '@data/static/services';
-
 import { NextButton, PrevButton } from './Buttons';
 import { Slide } from './Slide';
+import { BannerSlice } from '.slicemachine/prismicio';
 
 type Props = {
-  slides: Service[];
+  slides: BannerSlice[];
   emblaApi?: EmblaCarouselType;
 };
 
@@ -51,14 +50,9 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
       <div className="h-full" ref={emblaRef}>
         <div className="flex h-full">
           {Children.toArray(
-            slides.map(({ title, description, background, link }) => (
+            slides.map(({ primary }) => (
               <div className="w-full h-full shrink-0 grow-0 basis-full">
-                <Slide
-                  title={title}
-                  link={link}
-                  description={description}
-                  image={background}
-                />
+                <Slide {...primary} />
               </div>
             )),
           )}

@@ -1,33 +1,55 @@
-import { Children } from 'react';
-import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+
+import { PrismicNextImage } from '@prismicio/next';
+import { PrismicRichText } from '@prismicio/react';
+import { RTHeading1Node } from '@prismicio/types';
 
 import { Caps } from '@components/Texts';
 
 import { classNames } from '@utils/classNames';
+import { removeBaseUrl } from '@utils/removeBaseUrl';
 
-type Props = {
-  title: string;
-  image: StaticImageData;
-  description: string[];
-  link: string;
-};
+import { BannerSliceDefaultPrimary } from '.slicemachine/prismicio';
 
-export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
+type Props = BannerSliceDefaultPrimary;
+
+export const Slide: React.FC<Props> = ({
+  title,
+  background,
+  description,
+  navTo,
+}) => {
+  const titleText = (title as RTHeading1Node[])?.reduce(
+    (acc: string, { text }) => (acc ? `${acc}\n${text}` : text),
+    '',
+  );
+
+  const { url } = navTo as { url?: string };
+
+  const link = removeBaseUrl(url);
+
+  const props = link?.includes('http')
+    ? { target: '_blank', rel: 'noopener noreferrer', href: link }
+    : {};
+
+  if (link) {
+    props.href = link;
+  }
+
+  const Component = (link ? Link : 'div') as React.ElementType;
+
   const titleSizes =
     'leading-120 text-4xl xs:text-5xl sm:text-7xl lg:text-8xl xl:text-9xl';
   const descriptionSizes =
     'leading-125 text-sm xs:text-xl sm:text-2xl lg:text-3xl';
 
   return (
-    <Link
-      href={link}
+    <Component
+      {...props}
       className="relative block text-center overflow-hidden w-full h-full bg-cover bg-no-repeat bg-center"
     >
-      <Image
-        src={image}
-        alt="background image"
-        placeholder="blur"
+      <PrismicNextImage
+        field={background}
         className="object-cover brightness-50"
         sizes="100vw"
         fill
@@ -39,9 +61,9 @@ export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
           'absolute z-20 bottom-0 pb-20 xs:pb-28 flex items-center justify-center w-full h-full text-transparent bg-cover bg-center bg-clip-text brightness-50 whitespace-pre',
           titleSizes,
         )}
-        style={{ backgroundImage: `url(${image.src})` }}
+        style={{ backgroundImage: `url(${background.url})` }}
       >
-        {title}
+        {titleText}
       </Caps>
 
       <div className="relative flex flex-col justify-center items-center h-full w-full z-10">
@@ -53,7 +75,7 @@ export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
             titleSizes,
           )}
         >
-          {title}
+          {titleText}
         </Caps>
         <span
           className={classNames(
@@ -61,18 +83,23 @@ export const Slide: React.FC<Props> = ({ title, image, description, link }) => {
             descriptionSizes,
           )}
         >
-          <span className="flex flex-wrap justify-center items-center">
-            {Children.toArray(
-              description.map((text) => (
-                <span className="font-title font-bold pr-2 whitespace-pre lg:pr-4">
-                  {text}
-                  <span className="text-primary-400">.</span>
+          <PrismicRichText
+            field={description}
+            components={{
+              paragraph: ({ children }) => (
+                <p className="flex flex-wrap justify-center items-center gap-x-2 lg:gap-x-4 font-title font-bold">
+                  {children}
+                </p>
+              ),
+              strong: ({ children }) => (
+                <span className="text-primary-400 -ml-2 lg:-ml-4">
+                  {children}
                 </span>
-              )),
-            )}
-          </span>
+              ),
+            }}
+          />
         </span>
       </div>
-    </Link>
+    </Component>
   );
 };

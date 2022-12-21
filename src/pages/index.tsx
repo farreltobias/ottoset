@@ -1,6 +1,8 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
+import { createClient } from 'prismicio';
+
 import { Areas } from '@components/Areas';
 import { Clients } from '@components/Home/Clients';
 import { Energy } from '@components/Home/Energy';
@@ -18,25 +20,20 @@ import { projectPagerByCategory } from '@graphql/projectPagerByCategory';
 import { SEO } from '@seo/home';
 
 import { Response } from './api/get-instagram-photos';
+import { CarouselDocument } from '.slicemachine/prismicio';
 
 type PageProps = {
   initialProjects: ProjectsPageByCategory[];
   images: Response['data'];
-  extra: {
-    instagramTime: number;
-    projectsTime: number;
-  };
+  carousel: CarouselDocument;
 };
 
-const Home: NextPage<PageProps> = ({ initialProjects, images, extra }) => {
-  console.log('Instagram Time:', extra.instagramTime);
-  console.log('Projects Time:', extra.projectsTime);
-
+const Home: NextPage<PageProps> = ({ initialProjects, images, carousel }) => {
   return (
     <>
       <NextSeo {...SEO} />
 
-      <Slider />
+      <Slider carousel={carousel} />
       <Areas />
       <Energy />
       <Monitor />
@@ -53,13 +50,12 @@ export default Home;
 export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   req,
   res,
+  previewData,
 }) => {
   const SECONDS_IN_10_MINUTES = 60 * 10;
   const SECONDS_IN_A_DAY = 60 * 60 * 24;
 
   const INSTAGRAM_LIMIT = 12;
-
-  let instagramTime = performance.now();
 
   res.setHeader(
     'Cache-Control',
@@ -74,10 +70,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
   );
   const { data: images } = (await response.json()) as Response;
 
-  instagramTime = performance.now() - instagramTime;
-
-  let projectsTime = performance.now();
-
   const categories = await getAllCategories();
 
   const allProjectsPage = await projectPager();
@@ -91,21 +83,19 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({
 
   const projects = await Promise.all(promises);
 
-  projectsTime = performance.now() - projectsTime;
-
   const allProjects = {
     category: 'Todos',
     data: allProjectsPage,
   };
 
+  const nextClient = createClient({ previewData });
+  const carousel = await nextClient.getSingle('carousel');
+
   return {
     props: {
       initialProjects: [allProjects, ...projects],
       images,
-      extra: {
-        instagramTime,
-        projectsTime,
-      },
+      carousel,
     },
   };
 };

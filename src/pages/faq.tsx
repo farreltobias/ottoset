@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 }) => {
   const nextClient = createClient({ previewData });
 
-  const [faq] = await nextClient.getAllByType('faq').catch(() => [null]);
+  const faq = await nextClient.getSingle('faq').catch(() => null);
 
   if (!faq) {
     return {

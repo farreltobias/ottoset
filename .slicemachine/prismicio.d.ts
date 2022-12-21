@@ -84,6 +84,35 @@ export interface CareerDocumentDataDesirableItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type CareerDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CareerDocumentData>, "career", Lang>;
+/** Content for Carrossel documents */
+interface CarouselDocumentData {
+    /**
+     * Slice Zone field in *Carrossel*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: carousel.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<CarouselDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Carrossel → Slice Zone*
+ *
+ */
+type CarouselDocumentDataSlicesSlice = BannerSlice;
+/**
+ * Carrossel document from Prismic
+ *
+ * - **API ID**: `carousel`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CarouselDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<CarouselDocumentData>, "carousel", Lang>;
 /** Content for Perguntas Frequentes documents */
 interface FaqDocumentData {
     /**
@@ -197,7 +226,7 @@ type ProjectDocumentDataSlicesSlice = ArtigoSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = CareerDocument | FaqDocument | ProjectDocument;
+export type AllDocumentTypes = CareerDocument | CarouselDocument | FaqDocument | ProjectDocument;
 /**
  * Primary content in Artigo → Primary
  *
@@ -263,6 +292,75 @@ type ArtigoSliceVariation = ArtigoSliceDefault;
  *
  */
 export type ArtigoSlice = prismicT.SharedSlice<"artigo", ArtigoSliceVariation>;
+/**
+ * Primary content in Banner → Primary
+ *
+ */
+interface BannerSliceDefaultPrimary {
+    /**
+     * Título field in *Banner → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Digite o título do banner
+     * - **API ID Path**: banner.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * Descrição field in *Banner → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Digite a descrição do banner
+     * - **API ID Path**: banner.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Plano de fundo field in *Banner → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: banner.primary.background
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background: prismicT.ImageField<never>;
+    /**
+     * Link field in *Banner → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: https://ottoset.com.br/servicos#grupo-geradores
+     * - **API ID Path**: banner.primary.navTo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    navTo: prismicT.LinkField;
+}
+/**
+ * Default variation for Banner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Banner`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BannerSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<BannerSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *Banner*
+ *
+ */
+type BannerSliceVariation = BannerSliceDefault;
+/**
+ * Banner Shared Slice
+ *
+ * - **API ID**: `banner`
+ * - **Description**: `Banner`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BannerSlice = prismicT.SharedSlice<"banner", BannerSliceVariation>;
 /**
  * Primary content in Perguntas → Primary
  *
@@ -333,6 +431,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CareerDocumentData, CareerDocumentDataRequirementsItem, CareerDocumentDataDesirableItem, CareerDocument, FaqDocumentData, FaqDocumentDataSlicesSlice, FaqDocument, ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice, PerguntasSliceDefaultPrimary, PerguntasSliceDefaultItem, PerguntasSliceDefault, PerguntasSliceVariation, PerguntasSlice };
+        export type { CareerDocumentData, CareerDocumentDataRequirementsItem, CareerDocumentDataDesirableItem, CareerDocument, CarouselDocumentData, CarouselDocumentDataSlicesSlice, CarouselDocument, FaqDocumentData, FaqDocumentDataSlicesSlice, FaqDocument, ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice, BannerSliceDefaultPrimary, BannerSliceDefault, BannerSliceVariation, BannerSlice, PerguntasSliceDefaultPrimary, PerguntasSliceDefaultItem, PerguntasSliceDefault, PerguntasSliceVariation, PerguntasSlice };
     }
 }
