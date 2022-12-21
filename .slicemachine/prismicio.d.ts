@@ -6,6 +6,84 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Carreira documents */
+interface CareerDocumentData {
+    /**
+     * Título field in *Carreira*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: Digite o título da vaga
+     * - **API ID Path**: career.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Requisitos field in *Carreira*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career.requirements[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    requirements: prismicT.GroupField<Simplify<CareerDocumentDataRequirementsItem>>;
+    /**
+     * Desejáveis field in *Carreira*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career.desirable[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    desirable: prismicT.GroupField<Simplify<CareerDocumentDataDesirableItem>>;
+}
+/**
+ * Item in Carreira → Requisitos
+ *
+ */
+export interface CareerDocumentDataRequirementsItem {
+    /**
+     * Requisito field in *Carreira → Requisitos*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Digite um requisito da vaga
+     * - **API ID Path**: career.requirements[].item
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    item: prismicT.RichTextField;
+}
+/**
+ * Item in Carreira → Desejáveis
+ *
+ */
+export interface CareerDocumentDataDesirableItem {
+    /**
+     * Desejável field in *Carreira → Desejáveis*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Digite uma característica desejável
+     * - **API ID Path**: career.desirable[].item
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    item: prismicT.RichTextField;
+}
+/**
+ * Carreira document from Prismic
+ *
+ * - **API ID**: `career`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CareerDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CareerDocumentData>, "career", Lang>;
 /** Content for Perguntas Frequentes documents */
 interface FaqDocumentData {
     /**
@@ -119,7 +197,7 @@ type ProjectDocumentDataSlicesSlice = ArtigoSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = FaqDocument | ProjectDocument;
+export type AllDocumentTypes = CareerDocument | FaqDocument | ProjectDocument;
 /**
  * Primary content in Artigo → Primary
  *
@@ -255,6 +333,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { FaqDocumentData, FaqDocumentDataSlicesSlice, FaqDocument, ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice, PerguntasSliceDefaultPrimary, PerguntasSliceDefaultItem, PerguntasSliceDefault, PerguntasSliceVariation, PerguntasSlice };
+        export type { CareerDocumentData, CareerDocumentDataRequirementsItem, CareerDocumentDataDesirableItem, CareerDocument, FaqDocumentData, FaqDocumentDataSlicesSlice, FaqDocument, ProjectDocumentData, ProjectDocumentDataSlicesSlice, ProjectDocument, AllDocumentTypes, ArtigoSliceDefaultPrimary, ArtigoSliceDefaultItem, ArtigoSliceDefault, ArtigoSliceVariation, ArtigoSlice, PerguntasSliceDefaultPrimary, PerguntasSliceDefaultItem, PerguntasSliceDefault, PerguntasSliceVariation, PerguntasSlice };
     }
 }

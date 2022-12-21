@@ -1,14 +1,18 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
-import { Item } from '@components/careers/Item';
+import { createClient } from 'prismicio';
+
+import { CustomCareerDocument, Item } from '@components/careers/Item';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/carreiras';
 
-import { careers } from '@data/static/careers';
+type PageProps = {
+  careers: CustomCareerDocument[];
+};
 
-const Careers: NextPage = () => {
+const Careers: NextPage<PageProps> = ({ careers }) => {
   return (
     <>
       <NextSeo {...SEO} />
@@ -20,8 +24,8 @@ const Careers: NextPage = () => {
         </Overlaid>
 
         <ul className="mt-11">
-          {careers.map(({ title, slug }) => (
-            <Item key={slug} title={title} link={`/carreiras/${slug}`} />
+          {careers.map(({ data, uid }) => (
+            <Item key={uid} title={data.title} slug={uid} />
           ))}
         </ul>
       </section>
@@ -30,3 +34,27 @@ const Careers: NextPage = () => {
 };
 
 export default Careers;
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  previewData,
+}) => {
+  const nextClient = createClient({ previewData });
+
+  const careers = (await nextClient
+    .getAllByType('career', {
+      fetch: ['career.title', 'career.slug'],
+    })
+    .catch(() => [])) as CustomCareerDocument[];
+
+  if (!careers.length) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      careers,
+    },
+  };
+};

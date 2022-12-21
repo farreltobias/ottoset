@@ -17,7 +17,31 @@
         "content": "Grupo Gerador"
       }
     },
-    "faq": {}
+    "faq": {},
+    "career": {
+      "requirements": {
+        "item": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      },
+      "desirable": {
+        "item": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      },
+      "title": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      }
+    }
   },
   "slices": {
     "Artigo": {

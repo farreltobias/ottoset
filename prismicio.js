@@ -20,6 +20,11 @@ const routes = [
     lang: 'pt-br',
     path: '/faq',
   },
+  {
+    type: 'career',
+    lang: 'pt-br',
+    path: '/carreiras/:uid',
+  },
 ];
 
 const prismicClient = prismic.createClient(

@@ -1,0 +1,44 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "career",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Problem",
+        "spans": []
+      }
+    ],
+    "requirements": [
+      {
+        "item": [
+          {
+            "type": "paragraph",
+            "text": "Ipsum aliqua cillum incididunt ea velit aliqua culpa proident. Nulla eu pariatur quis adipisicing sunt minim tempor commodo excepteur duis id aute.",
+            "spans": []
+          }
+        ]
+      }
+    ],
+    "desirable": [
+      {
+        "item": [
+          {
+            "type": "paragraph",
+            "text": "Sunt aliquip anim pariatur. Ullamco quis sint ullamco Lorem quis ullamco aliquip aliqua consequat et. Non labore mollit excepteur sit culpa irure ad ad laborum deserunt nulla aute voluptate fugiat labore.",
+            "spans": []
+          }
+        ]
+      }
+    ]
+  }
+}

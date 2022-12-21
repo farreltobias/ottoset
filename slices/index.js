@@ -3,9 +3,12 @@
 import Artigo from './Artigo';
 import Perguntas from './Perguntas';
 
-export { Artigo, Perguntas };
+export {
+	Artigo,
+	Perguntas,
+};
 
 export const components = {
-  artigo: Artigo,
-  perguntas: Perguntas,
+	artigo: Artigo,
+	perguntas: Perguntas,
 };

@@ -1,8 +1,12 @@
-import { useRef, useState } from 'react';
+import { Children, useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
+import * as prismicH from '@prismicio/helpers';
+import { PrismicRichText } from '@prismicio/react';
+
+import { createClient } from 'prismicio';
 import { z } from 'zod';
 
 import { Button } from '@components/Button';
@@ -13,17 +17,17 @@ import { Text, Title } from '@components/Texts';
 
 import { SEO } from '@seo/carreiras/carreira';
 
-import { careers } from '@data/static/careers';
+import { CareerDocument } from '.slicemachine/prismicio';
 
 import { FormRequest } from '@pages/api/carrer';
 import { FormHandles, SubmitHandler } from '@unform/core';
 import { Form } from '@unform/web';
 
-type Props = {
-  career: typeof careers[0];
+type PageProps = {
+  career: CareerDocument;
 };
 
-const Career: NextPage<Props> = ({ career }) => {
+const Career: NextPage<PageProps> = ({ career }) => {
   const formRef = useRef<FormHandles>(null);
 
   const [sending, setSending] = useState(false);
@@ -77,7 +81,7 @@ const Career: NextPage<Props> = ({ career }) => {
       formData.append('state', data.state);
       formData.append('city', data.city);
       formData.append('message', data.message);
-      formData.append('career', career.title);
+      formData.append('career', prismicH.asText(career.data.title));
 
       formData.append(
         'curriculum',
@@ -172,37 +176,52 @@ const Career: NextPage<Props> = ({ career }) => {
 
   return (
     <>
-      <NextSeo {...SEO(career)} />
+      <NextSeo {...SEO({ slug: career.uid, ...career.data })} />
 
       <ToastContainer />
 
       <section className="container mx-auto mt-12 mb-36 lg:mt-20 lg:mb-48">
         <Title variant="h3" largeVariant="display4" center>
-          {career.title}
+          <PrismicRichText field={career.data.title} />
         </Title>
 
-        <Text
-          as="div"
-          variant="p2"
-          className="flex flex-col lg:flex-row justify-between text-neutral-500 mt-8 mb-12 lg:mt-12 lg:mb-20 lg:child:max-w-[50%]"
-        >
-          <div className="mb-10 lg:mb-0">
-            <b>Requisitos:</b>
-            <ul>
-              {career.requirements.map((requirement) => (
-                <li key={requirement}>- {requirement}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <b>Desejável:</b>
-            <ul>
-              {career.desirable.map((requirement) => (
-                <li key={requirement}>- {requirement}</li>
-              ))}
-            </ul>
-          </div>
-        </Text>
+        {career.data.requirements.length > 0 &&
+          career.data.desirable.length > 0 && (
+            <Text
+              as="div"
+              variant="p2"
+              className="flex flex-col lg:flex-row justify-between text-neutral-500 mt-8 mb-12 lg:mt-12 lg:mb-20 lg:child:max-w-[50%]"
+            >
+              {career.data.requirements.length > 0 && (
+                <div className="mb-10 lg:mb-0">
+                  <b>Requisitos:</b>
+                  <ul>
+                    {Children.toArray(
+                      career.data.requirements.map(({ item }) => (
+                        <li>
+                          - <PrismicRichText field={item} />
+                        </li>
+                      )),
+                    )}
+                  </ul>
+                </div>
+              )}
+              {career.data.desirable.length > 0 && (
+                <div>
+                  <b>Desejável:</b>
+                  <ul>
+                    {Children.toArray(
+                      career.data.desirable.map(({ item }) => (
+                        <li>
+                          - <PrismicRichText field={item} />
+                        </li>
+                      )),
+                    )}
+                  </ul>
+                </div>
+              )}
+            </Text>
+          )}
 
         <Form
           ref={formRef}
@@ -248,11 +267,24 @@ const Career: NextPage<Props> = ({ career }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const { slug } = ctx.params || {};
-  const career = careers.find(({ slug: careerSlug }) => careerSlug === slug);
+export default Career;
 
-  if (!slug || !career) {
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  previewData,
+  params,
+}) => {
+  const { slug } = (params || {}) as { slug?: string };
+
+  if (!slug) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const nextClient = createClient({ previewData });
+  const career = await nextClient.getByUID('career', slug).catch(() => null);
+
+  if (!career) {
     return {
       notFound: true,
     };
@@ -265,4 +297,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   };
 };
 
-export default Career;
+export async function getStaticPaths() {
+  const nextClient = createClient();
+
+  const pages = await nextClient.getAllByType('career');
+
+  return {
+    paths: pages.map((page) => prismicH.asLink(page)),
+    fallback: false,
+  };
+}

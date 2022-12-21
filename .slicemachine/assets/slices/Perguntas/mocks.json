@@ -7,21 +7,21 @@
         "question": [
           {
             "type": "heading2",
-            "text": "Sentence",
+            "text": "Chair",
             "spans": []
           }
         ],
         "answer": [
           {
             "type": "paragraph",
-            "text": "Dolor dolor aliquip id qui cupidatat consequat occaecat sunt sit ipsum et incididunt proident minim officia. Anim nulla non est amet qui ad cupidatat ullamco anim mollit adipisicing ipsum ex. Quis ipsum reprehenderit deserunt duis magna amet officia sunt ad minim eiusmod et.",
+            "text": "Aliquip ipsum officia eu exercitation.",
             "spans": []
           }
         ]
       }
     ],
     "primary": {
-      "category": "human"
+      "category": "grass"
     },
     "slice_type": "perguntas"
   }
