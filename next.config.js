@@ -1,5 +1,11 @@
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const path = require('path');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withBundleAnalyzer({
   // reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -11,6 +17,26 @@ const nextConfig = {
     ],
   },
   webpack(config) {
+    config.plugins.push(new DuplicatePackageCheckerPlugin());
+
+    config.resolve.alias['@prismicio/helper'] = path.resolve(
+      __dirname,
+      'node_modules',
+      '@prismicio/helper',
+    );
+
+    config.resolve.alias['@prismicio/richtext'] = path.resolve(
+      __dirname,
+      'node_modules',
+      '@prismicio/richtext',
+    );
+
+    config.resolve.alias.tslib = path.resolve(
+      __dirname,
+      'node_modules',
+      'tslib',
+    );
+
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: { and: [/\.(js|ts)x?$/] },
@@ -36,6 +62,6 @@ const nextConfig = {
 
     return config;
   },
-};
+});
 
 module.exports = nextConfig;

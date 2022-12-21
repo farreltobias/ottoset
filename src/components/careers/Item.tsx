@@ -20,7 +20,10 @@ export const Item: React.FC<Props> = ({ title, link }) => {
         <Title variant="h6" largeVariant="h3">
           {title}
         </Title>
-        <button className="bg-primary-600 rounded items-center justify-center p-1 lg:p-3 group-hover:bg-neutral-900 group-hover:shadow-button group-hover:shadow-primary-600">
+        <button
+          aria-label={`Abrir o formulário para se candidatar a vaga de ${title}`}
+          className="bg-primary-600 rounded items-center justify-center p-1 lg:p-3 group-hover:bg-neutral-900 group-hover:shadow-button group-hover:shadow-primary-600"
+        >
           <DoubleArrow className="fill-neutral" />
         </button>
       </Link>
