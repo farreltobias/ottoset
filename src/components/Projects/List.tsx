@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -11,6 +12,12 @@ import { projectPager, ProjectsPage } from '@graphql/projectPager';
 type Props = {
   initialData: ProjectsPage;
 };
+
+const Loader: React.FC = () => (
+  <div className="flex items-center justify-center max-w-md w-full lg:w-fit mt-16 mx-auto">
+    <Spinner color="black" size={2} />
+  </div>
+);
 
 export const List: React.FC<Props> = ({
   initialData: {
@@ -25,6 +32,7 @@ export const List: React.FC<Props> = ({
 
   const cursor = useRef(initialCursor || null);
   const [loading, setLoading] = useState(false);
+  const [firstLoaded, setFirstLoaded] = useState(false);
 
   const onClick = async () => {
     if (loading || !cursor.current || !data.hasNextPage) return;
@@ -44,30 +52,42 @@ export const List: React.FC<Props> = ({
     }));
 
     setLoading(false);
+
+    if (!firstLoaded) setFirstLoaded(true);
   };
 
   return (
     <>
-      <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-        <AnimatePresence>
-          {data.projects.map((project) => (
-            <Card
-              key={project.slug}
-              className="h-[40.625rem]"
-              project={project}
-            />
-          ))}
-        </AnimatePresence>
-      </ul>
+      <InfiniteScroll
+        className="!overflow-hidden"
+        dataLength={data.projects.length}
+        next={onClick}
+        hasMore={data.hasNextPage && firstLoaded}
+        loader={<Loader />}
+      >
+        <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <AnimatePresence>
+            {data.projects.map((project) => (
+              <Card
+                key={project.slug}
+                className="h-[40.625rem]"
+                project={project}
+              />
+            ))}
+          </AnimatePresence>
+        </ul>
+      </InfiniteScroll>
 
-      {data.hasNextPage && (
+      {!firstLoaded && loading && <Loader />}
+
+      {data.hasNextPage && !loading && (
         <Button
           variant="outline"
           disabled={loading}
           className="justify-center max-w-md w-full lg:w-fit mt-16 mx-auto"
           onClick={onClick}
         >
-          {loading ? <Spinner color="gray" /> : 'Carregar mais'}
+          Carregar mais
         </Button>
       )}
     </>

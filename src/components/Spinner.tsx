@@ -23,9 +23,14 @@ const borders = {
 type Props = {
   size?: keyof typeof sizes;
   color?: keyof typeof colors;
+  className?: string;
 };
 
-export const Spinner: React.FC<Props> = ({ size = 1, color = 'white' }) => {
+export const Spinner: React.FC<Props> = ({
+  size = 1,
+  color = 'white',
+  className = '',
+}) => {
   return (
     <div
       className={classNames(
@@ -33,6 +38,7 @@ export const Spinner: React.FC<Props> = ({ size = 1, color = 'white' }) => {
         sizes[size],
         borders[size],
         colors[color],
+        className,
       )}
     />
   );

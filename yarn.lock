@@ -1931,7 +1931,7 @@
     "@prismicio/types" "^0.2.3"
     imgix-url-builder "^0.0.3"
 
-"@prismicio/react@^2.5.0":
+"@prismicio/react@^2.5.1":
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.5.1.tgz#1902a68bae53f6367f724c7d8730c9aa43b51e1d"
   integrity sha512-gGF4UareQP1kdwtxNEbFyqWuFhQFqRjteMgsY7GxE0YKxKD3hByfUcKoFvSgkZIngk/boMpGRbRoE1S1Ouz2Jw==
@@ -1964,7 +1964,7 @@
     fp-ts "^2.13.1"
     io-ts "^2.2.19"
 
-"@prismicio/slice-simulator-react@^0.2.2":
+"@prismicio/slice-simulator-react@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@prismicio/slice-simulator-react/-/slice-simulator-react-0.2.3.tgz#01d7bfb598d0cbe950356ec2c9c8b88201ee020b"
   integrity sha512-v9fBg/QZnlByBV0SyH5UVHay30TgX3y1JYZUkVIq4mNxQMqzetd+W/If/mh2qZeVF5NyQiNbENvqJkeNkY3fMw==
@@ -7847,6 +7847,13 @@ react-dropzone@^14.2.3:
     file-selector "^0.6.0"
     prop-types "^15.8.1"
 
+react-infinite-scroll-component@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.1.0.tgz#7e511e7aa0f728ac3e51f64a38a6079ac522407f"
+  integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 react-input-mask@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-2.0.4.tgz#9ade5cf8196f4a856dbf010820fe75a795f3eb14"
@@ -8884,6 +8891,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
+
+throttle-debounce@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
+  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 through2@^2.0.0, through2@~2.0.0:
   version "2.0.5"

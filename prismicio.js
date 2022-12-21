@@ -25,6 +25,11 @@ const routes = [
     lang: 'pt-br',
     path: '/carreiras/:uid',
   },
+  {
+    type: 'carousel',
+    lang: 'pt-br',
+    path: '/',
+  },
 ];
 
 const prismicClient = prismic.createClient(
