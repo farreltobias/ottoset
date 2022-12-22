@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo';
 
 import { createClient } from 'prismicio';
 
-import { CustomCareerDocument, Item } from '@components/Careers/Item';
+import { CustomCareerDocument, Item } from '@components/Career/Item';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/carreiras';

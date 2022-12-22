@@ -16,13 +16,11 @@ const ToastContainer = dynamic(
 );
 
 const CareerForm = dynamic(() =>
-  import('@components/Careers/Career/Form').then(
-    ({ CareerForm }) => CareerForm,
-  ),
+  import('@components/Career/Form').then(({ CareerForm }) => CareerForm),
 );
 
 const Header = dynamic(() =>
-  import('@components/Careers/Career/Header').then(({ Header }) => Header),
+  import('@components/Career/Header').then(({ Header }) => Header),
 );
 
 type PageProps = {
