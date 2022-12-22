@@ -1,30 +1,38 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
+
+import * as prismic from '@prismicio/client';
+import * as prismicH from '@prismicio/helpers';
 
 import { createClient } from 'prismicio';
 
-import { Article } from '@components/Project/Article';
-import { Footer } from '@components/Project/Footer';
-import { RelatedProjectType } from '@components/Project/Footer/Button';
-import { Header } from '@components/Project/Header';
-
-import { getRelatedProjects } from '@graphql/getRelatedProjects';
-import { AFTER_CURSOR, BEFORE_CURSOR } from '@graphql/queries';
-
 import { SEO } from '@seo/projetos/projeto';
 
-import { Project as ProjectType } from '@utils/convertProject';
+import { ProjectDocument } from '.slicemachine/prismicio';
+
+const Header = dynamic(() =>
+  import('@components/Projects/Project/Header').then(({ Header }) => Header),
+);
+
+const Article = dynamic(() =>
+  import('@components/Projects/Project/Article').then(({ Article }) => Article),
+);
+
+const Footer = dynamic(() =>
+  import('@components/Projects/Project/Footer').then(({ Footer }) => Footer),
+);
 
 type PageProps = {
-  project: ProjectType;
-  previousProject?: RelatedProjectType;
-  nextProject?: RelatedProjectType;
+  project: ProjectDocument;
+  previousProjectUrl?: string | null;
+  nextProjectUrl?: string | null;
 };
 
 const Project: NextPage<PageProps> = ({
   project,
-  nextProject,
-  previousProject,
+  nextProjectUrl,
+  previousProjectUrl,
 }) => {
   return (
     <article className="container mx-auto lg:mt-8">
@@ -32,56 +40,72 @@ const Project: NextPage<PageProps> = ({
 
       <Header />
       <Article project={project} />
-      <Footer previousProject={previousProject} nextProject={nextProject} />
+      <Footer
+        previousProject={previousProjectUrl}
+        nextProject={nextProjectUrl}
+      />
     </article>
   );
 };
 
 export default Project;
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({
+export const getStaticProps: GetStaticProps<PageProps> = async ({
   params,
-  query,
   previewData,
 }) => {
   const { slug } = params as { slug: string };
-  const { cursor } = query as { cursor?: string };
 
   const nextClient = createClient({ previewData });
 
-  const project = await nextClient.getByUID('project', slug).catch(() => null);
+  const project = await nextClient.getByUID('project', slug);
 
-  if (!project) {
-    return {
-      notFound: true,
-    };
-  }
+  const dates = [
+    'document.last_publication_date',
+    project.last_publication_date,
+  ] as [string, string];
 
-  if (!cursor) {
-    return {
-      props: {
-        project: {
-          ...project.data,
-          slug: project.uid,
-        },
+  const predicateProject = prismic.predicate.at('document.type', 'project');
+  const before = {
+    predicate: prismic.predicate.dateAfter(...dates),
+    direction: 'asc' as const,
+  };
+  const after = {
+    predicate: prismic.predicate.dateBefore(...dates),
+    direction: 'desc' as const,
+  };
+
+  const promises = [before, after].map(({ predicate, direction }) =>
+    nextClient.get({
+      fetch: ['project.category'],
+      orderings: {
+        field: 'document.last_publication_date',
+        direction,
       },
-    };
-  }
-
-  const promises = [BEFORE_CURSOR, AFTER_CURSOR].map((query) =>
-    getRelatedProjects({ query, cursor }),
+      predicates: [predicateProject, predicate],
+      pageSize: 1,
+    }),
   );
 
-  const [previousProject, nextProject] = await Promise.all(promises);
+  const [{ results: beforeProject }, { results: afterProject }] =
+    await Promise.all(promises);
 
   return {
     props: {
-      project: {
-        ...project.data,
-        slug: project.uid,
-      },
-      previousProject,
-      nextProject,
+      project,
+      previousProjectUrl: prismicH.asLink(beforeProject[0]),
+      nextProjectUrl: prismicH.asLink(afterProject[0]),
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const nextClient = createClient();
+
+  const projects = await nextClient.getAllByType('project');
+
+  return {
+    paths: projects.map((project) => prismicH.asLink(project)) as string[],
+    fallback: false,
   };
 };

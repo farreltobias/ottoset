@@ -4,15 +4,15 @@ import { PrismicText } from '@prismicio/react';
 
 import { motion } from 'framer-motion';
 
-import { Project } from '@utils/convertProject';
 import { convertTime } from '@utils/convertTime';
 import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
 import { Caps, Text, Title } from './Texts';
+import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Props = {
   className?: string;
-  project: Project;
+  project: ProjectDocument;
 };
 
 const listVariants = {
@@ -32,7 +32,10 @@ const contentVariants = {
 };
 
 export const Card: React.FC<Props> = ({
-  project: { title, description, cover, slices, slug, cursor },
+  project: {
+    data: { title, cover, description, slices },
+    uid: slug,
+  },
   className = 'list-none w-80 lg:w-[35rem] h-[40.625rem] lg:h-[47.5rem]',
 }) => {
   const duration = getDurationFromSlices(slices);
@@ -59,7 +62,7 @@ export const Card: React.FC<Props> = ({
         <Link
           href={{
             pathname: '/projetos/[slug]',
-            query: { slug, cursor },
+            query: { slug },
           }}
         >
           <motion.header

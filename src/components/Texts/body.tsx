@@ -19,7 +19,7 @@ type Props = React.PropsWithChildren<{
   largeVariant?: keyof typeof largeVarients;
   center?: boolean;
   className?: string;
-  as?: 'p' | 'span' | 'div' | 'li' | 'label';
+  as?: keyof JSX.IntrinsicElements;
 }>;
 
 export const Text: React.FC<Props> = ({

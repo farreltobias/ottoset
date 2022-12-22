@@ -1,109 +1,73 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import type { EmblaCarouselType } from 'embla-carousel-react';
+type Data = {
+  page: number;
+  total_pages: number;
+};
 
-type InfiniteScrollProps = {
-  slides: any[];
-  hasMoreToLoad: boolean;
-  embla?: EmblaCarouselType;
+type Props = {
+  data: Data;
+  ref: React.RefObject<HTMLUListElement>;
+  handleSearch: () => Promise<void>;
+  pageToUse?: number;
 };
 
 export const useInfiniteScroll = ({
-  slides,
-  hasMoreToLoad,
-  embla,
-}: InfiniteScrollProps) => {
-  const scrollListener = useRef(() => {});
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [pointerIsDown, setPointerIsDown] = useState(false);
+  data,
+  ref,
+  handleSearch,
+  pageToUse = 1,
+}: Props) => {
+  const [loading, setLoading] = useState(false);
 
-  const setPointerDown = useCallback(() => setPointerIsDown(true), []);
-  const setPointerNotDown = useCallback(() => setPointerIsDown(false), []);
+  const loadMore = async () => {
+    const maxPageHasReached = data.page >= data.total_pages;
 
-  const lastSlideIsInView = useCallback(() => {
-    if (!embla) return false;
-    const lastSlide = embla.slideNodes().length - 1;
-    return embla.slidesInView().indexOf(lastSlide) !== -1;
-  }, [embla]);
+    if (maxPageHasReached || loading) return;
 
-  const onScroll = useCallback(() => {
-    if (!embla) return;
-    setLoadingMore((isLoadingMore) => {
-      if (isLoadingMore) return true;
-      const shouldLoadMore = lastSlideIsInView();
-      if (shouldLoadMore) embla.off('scroll', scrollListener.current);
-      return shouldLoadMore;
-    });
-  }, [embla, setLoadingMore, lastSlideIsInView]);
+    const { children } = ref.current || {};
 
-  const addScrollListener = useCallback(() => {
-    if (!embla || !hasMoreToLoad) return;
-    scrollListener.current = () => onScroll();
-    embla.on('scroll', scrollListener.current);
-  }, [embla, hasMoreToLoad, onScroll]);
+    const lastDataLoaded = children?.[children.length - 1];
 
-  const reloadEmbla = useCallback(() => {
-    if (!embla) return;
-    const oldEngine = embla.internalEngine();
-    embla.reInit();
-    const newEngine = embla.internalEngine();
-    const propsToCopy = ['scrollBody', 'location', 'target'] as (
-      | 'scrollBody'
-      | 'location'
-      | 'target'
-    )[];
-    propsToCopy.forEach((p) => Object.assign(newEngine[p], oldEngine[p]));
-    const { index } = newEngine.scrollTarget.byDistance(0, false);
-    newEngine.index.set(index);
-    newEngine.animation.start();
-    setLoadingMore(false);
-  }, [embla]);
+    if (!lastDataLoaded) return;
 
-  useEffect(() => {
-    if (!embla || slides.length === embla.slideNodes().length - 1) return;
-    const engine = embla.internalEngine();
-    const boundsActive = engine.limit.reachedMax(engine.target.get());
-    engine.scrollBounds.toggleActive(boundsActive);
-  }, [embla, slides]);
+    const { top, bottom } = lastDataLoaded.getBoundingClientRect();
+    const isOnScreen =
+      (top >= 0 && top <= window.innerHeight) ||
+      (bottom >= 0 && bottom <= window.innerHeight);
+
+    if (!isOnScreen) return;
+
+    const { offsetTop, clientHeight } = lastDataLoaded as HTMLLIElement;
+    const lastDataLoadedOffset = offsetTop + clientHeight;
+
+    const pageOffset = window.scrollY + window.innerHeight;
+
+    const lastDataLodedIsVisible = pageOffset > lastDataLoadedOffset;
+
+    if (!lastDataLodedIsVisible || loading) return;
+
+    setLoading(true);
+
+    handleSearch();
+
+    setLoading(false);
+  };
+
+  const handleScroll = () => {
+    const shouldLoad = data.page >= pageToUse;
+
+    if (!shouldLoad) return;
+
+    loadMore();
+  };
 
   useEffect(() => {
-    if (!embla || !hasMoreToLoad || pointerIsDown) return;
-    if (slides.length === embla.slideNodes().length - 1) return;
-    reloadEmbla();
-    addScrollListener();
-  }, [
-    embla,
-    slides,
-    pointerIsDown,
-    hasMoreToLoad,
-    reloadEmbla,
-    addScrollListener,
-  ]);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
 
-  useEffect(() => {
-    if (!embla || hasMoreToLoad) return;
-    if (slides.length === embla.slideNodes().length) return;
-    if (pointerIsDown && !lastSlideIsInView()) return;
-    reloadEmbla();
-    embla.off('pointerDown', setPointerDown);
-    embla.off('pointerUp', setPointerNotDown);
-  }, [
-    embla,
-    slides,
-    hasMoreToLoad,
-    pointerIsDown,
-    setPointerDown,
-    setPointerNotDown,
-    reloadEmbla,
-    lastSlideIsInView,
-  ]);
-
-  useEffect(() => {
-    if (!embla) return;
-    embla.on('pointerDown', setPointerDown);
-    embla.on('pointerUp', setPointerNotDown);
-    addScrollListener();
-  }, [embla, setPointerDown, setPointerNotDown, addScrollListener]);
-
-  return loadingMore;
+  return { loading };
 };

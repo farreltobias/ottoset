@@ -40,7 +40,6 @@ module.exports = {
           ['^@hooks'],
           ['^@contexts'],
           ['^@components'],
-          ['^@graphql'],
           ['^@seo'],
           ['^@data'],
           ['^@utils'],
@@ -94,5 +93,5 @@ module.exports = {
     React: 'readonly',
     JSX: 'readonly',
   },
-  ignorePatterns: ['node_modules/', 'src/types/generated/graphql.*.ts'],
+  ignorePatterns: ['node_modules/'],
 };

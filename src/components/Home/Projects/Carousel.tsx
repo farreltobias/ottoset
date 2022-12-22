@@ -1,90 +1,79 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel-react';
+import { Query } from '@prismicio/types';
 
-import { useInfiniteScroll } from '@hooks/useInfiniteScroll';
+import { EmblaCarouselType } from 'embla-carousel-react';
+
+import { useEmblaInfiniteScroll } from '@hooks/useEmblaInfiniteScroll';
 
 import { Card } from '@components/Card';
 import { Spinner } from '@components/Spinner';
 
-import { projectPager, ProjectsPage } from '@graphql/projectPager';
-import { projectPagerByCategory } from '@graphql/projectPagerByCategory';
+import { ProjectDocument } from '.slicemachine/prismicio';
 
-export type ProjectsPageByCategory = {
-  category: string;
-  data: ProjectsPage;
-};
+import { ProjectsByCategory } from '@pages/index';
 
 type Props = {
   index: number;
-  projectPage: ProjectsPageByCategory;
-  setProjectsPage: React.Dispatch<
-    React.SetStateAction<ProjectsPageByCategory[]>
-  >;
+  projectPage: ProjectsByCategory;
+  setProjectsPage: React.Dispatch<React.SetStateAction<ProjectsByCategory[]>>;
   emblaApi?: EmblaCarouselType;
-  options: EmblaOptionsType;
 };
 
 export const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
-  { projectPage, index, setProjectsPage, emblaApi, options },
+  { projectPage, index, setProjectsPage, emblaApi },
   emblaRef,
 ) => {
-  const loadingMore = useInfiniteScroll({
+  const [hasMoreToLoad, setHasMoreToLoad] = React.useState(
+    !!projectPage.data.next_page,
+  );
+
+  const loading = useEmblaInfiniteScroll({
     embla: emblaApi,
-    hasMoreToLoad: projectPage.data.pageInfo.hasNextPage,
-    slides: projectPage.data.projects,
+    hasMoreToLoad,
+    slides: projectPage.data.results,
   });
 
-  const reloadEmbla = useCallback(() => {
-    if (!emblaApi) return;
-
-    emblaApi.reInit(options);
-  }, [emblaApi, options]);
-
   useEffect(() => {
-    const { endCursor, hasNextPage } = projectPage.data.pageInfo;
+    const { next_page: nextPage } = projectPage.data;
 
-    if (!endCursor || !loadingMore || !hasNextPage) return;
+    if (!loading || !nextPage) return;
 
     const loadMore = async () => {
-      let data = {} as ProjectsPage;
+      const data = (await fetch(nextPage).then((res) =>
+        res.json(),
+      )) as Query<ProjectDocument>;
 
-      if (projectPage.category === 'Todos') {
-        data = await projectPager(endCursor);
-      } else {
-        data = await projectPagerByCategory(projectPage.category, endCursor);
-      }
+      console.log(data);
 
       setProjectsPage((prevProjects) => {
         const newProjects = [...prevProjects];
 
-        const oldProjects = newProjects[index].data.projects;
+        const oldResults = newProjects[index].data.results;
 
         newProjects[index].data = {
-          pageInfo: data.pageInfo,
-          projects: [...oldProjects, ...data.projects],
+          ...data,
+          results: [...oldResults, ...data.results],
         };
 
         return newProjects;
       });
+
+      setHasMoreToLoad(!!data.next_page);
     };
 
     loadMore();
-  }, [loadingMore, projectPage, setProjectsPage, index]);
-
-  useEffect(() => {
-    reloadEmbla();
-  }, [projectPage.data.projects, reloadEmbla]);
+  }, [loading, projectPage, setProjectsPage, index]);
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>
       <ul className="grid grid-flow-col gap-2 lg:gap-6">
-        {projectPage.data.projects.map((project) => (
-          <Card key={project.slug} project={project} />
+        {projectPage.data.results.map((project) => (
+          <Card key={project.uid} project={project} />
         ))}
-        {projectPage.data.pageInfo.hasNextPage && (
+        {hasMoreToLoad && (
           <li className="flex items-center justify-center w-80 h-[40.625rem] lg:w-[35rem] lg:h-[47.5rem]">
-            {loadingMore && <Spinner size={3} />}
+            {loading && <Spinner size={3} />}
           </li>
         )}
       </ul>

@@ -1,18 +1,22 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
+
+import { Query } from '@prismicio/types';
+
+import { createClient } from 'prismicio';
 
 import { List } from '@components/Projects/List';
 import { Overlaid } from '@components/Texts/Overlaid';
 
-import { projectPager, ProjectsPage } from '@graphql/projectPager';
-
 import { SEO } from '@seo/projetos';
 
+import { ProjectDocument } from '.slicemachine/prismicio';
+
 type PageProps = {
-  data: ProjectsPage;
+  projects: Query<ProjectDocument>;
 };
 
-const Projetos: NextPage<PageProps> = ({ data }) => {
+const Projetos: NextPage<PageProps> = ({ projects }) => {
   return (
     <article className="container mx-auto mt-12">
       <NextSeo {...SEO} />
@@ -23,7 +27,7 @@ const Projetos: NextPage<PageProps> = ({ data }) => {
       </Overlaid>
 
       <section className="mb-28 mt-11 md:mt-14 lg:mt-14">
-        <List initialData={data} />
+        <List initialData={projects} />
       </section>
     </article>
   );
@@ -31,22 +35,42 @@ const Projetos: NextPage<PageProps> = ({ data }) => {
 
 export default Projetos;
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({
-  res,
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  previewData,
 }) => {
-  const SECONDS_IN_10_MINUTES = 60 * 10;
-  const SECONDS_IN_A_DAY = 60 * 60 * 24;
+  const nextClient = createClient({ previewData });
 
-  res.setHeader(
-    'Cache-Control',
-    `public, s-maxage=${SECONDS_IN_10_MINUTES}, stale-while-revalidate=${SECONDS_IN_A_DAY}`,
-  );
-
-  const data = await projectPager();
+  const projects = await nextClient.getByType('project', {
+    graphQuery: `{
+      project {
+        title
+        category
+        description
+        cover
+        slices {
+          ... on artigo {
+            variation {
+              ... on default {
+                items {
+                  paragraph
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+    orderings: {
+      field: 'document.last_publication_date',
+      direction: 'desc',
+    },
+    pageSize: 6,
+    page: 1,
+  });
 
   return {
     props: {
-      data,
+      projects,
     },
   };
 };

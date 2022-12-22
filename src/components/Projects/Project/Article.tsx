@@ -7,13 +7,13 @@ import { components } from 'slices';
 
 import { Title } from '@components/Texts';
 
-import { Project } from '@utils/convertProject';
+import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Props = {
-  project: Project;
+  project: ProjectDocument;
 };
 
-export const Article: React.FC<Props> = ({ project }) => {
+export const Article: React.FC<Props> = ({ project: { data } }) => {
   return (
     <>
       <Title
@@ -22,17 +22,17 @@ export const Article: React.FC<Props> = ({ project }) => {
         className="mt-8 mb-6 lg:mt-6 lg:mb-10"
         center
       >
-        <PrismicRichText field={project.title} />
+        <PrismicRichText field={data.title} />
       </Title>
 
       <PrismicNextImage
-        field={project.cover}
+        field={data.cover}
         className="w-full h-auto mb-6 lg:mb-12"
         sizes="100vw"
         priority
       />
 
-      <SliceZone slices={project.slices} components={components} />
+      <SliceZone slices={data.slices} components={components} />
     </>
   );
 };

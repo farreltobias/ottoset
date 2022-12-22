@@ -1,9 +1,14 @@
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import Logo from '@public/company/logo.svg';
 
 import { Desktop } from './Desktop';
-import { Mobile } from './Mobile';
+
+const DynamicMobile = dynamic(
+  () => import('./Mobile').then(({ Mobile }) => Mobile),
+  { ssr: false },
+);
 
 export const Navbar: React.FC<React.PropsWithChildren> = () => {
   return (
@@ -15,7 +20,7 @@ export const Navbar: React.FC<React.PropsWithChildren> = () => {
       </Link>
 
       <Desktop />
-      <Mobile />
+      <DynamicMobile />
     </nav>
   );
 };

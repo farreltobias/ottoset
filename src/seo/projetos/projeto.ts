@@ -1,10 +1,14 @@
 import * as prismicH from '@prismicio/helpers';
 
-import { Project } from '@utils/convertProject';
 import { convertTime } from '@utils/convertTime';
 import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
-export const SEO = ({ title, description, slug, slices }: Project) => {
+import { ProjectDocument } from '.slicemachine/prismicio';
+
+export const SEO = ({
+  data: { title, description, slices },
+  uid: slug,
+}: ProjectDocument) => {
   const duration = getDurationFromSlices(slices);
 
   return {

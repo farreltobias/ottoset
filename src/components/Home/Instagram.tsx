@@ -12,7 +12,7 @@ import { Title } from '@components/Texts';
 
 import { instagram } from '@data/static/ottoset';
 
-import { Response } from '@pages/api/get-instagram-photos';
+import { Response } from '@pages/index';
 
 type Props = {
   images: Response['data'];

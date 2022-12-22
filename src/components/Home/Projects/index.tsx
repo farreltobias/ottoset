@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { Button } from '@components/Button';
 import { Title } from '@components/Texts';
 
-import { ProjectsPageByCategory } from './Carousel';
 import { Tabs } from './Tabs';
 
+import { ProjectsByCategory } from '@pages/index';
+
 type Props = {
-  initialData: ProjectsPageByCategory[];
+  initialData: ProjectsByCategory[];
 };
 
 export const Projects: React.FC<Props> = ({ initialData }) => {

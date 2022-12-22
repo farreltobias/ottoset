@@ -1,16 +1,19 @@
-import { useRef, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { createRef, useState } from 'react';
+
+import { Query } from '@prismicio/types';
 
 import { AnimatePresence } from 'framer-motion';
+
+import { useInfiniteScroll } from '@hooks/useInfiniteScroll';
 
 import { Button } from '@components/Button';
 import { Card } from '@components/Card';
 import { Spinner } from '@components/Spinner';
 
-import { projectPager, ProjectsPage } from '@graphql/projectPager';
+import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Props = {
-  initialData: ProjectsPage;
+  initialData: Query<ProjectDocument>;
 };
 
 const Loader: React.FC = () => (
@@ -19,73 +22,59 @@ const Loader: React.FC = () => (
   </div>
 );
 
-export const List: React.FC<Props> = ({
-  initialData: {
-    projects: initialProjects,
-    pageInfo: { endCursor: initialCursor, hasNextPage: initialHasNextPage },
-  },
-}) => {
-  const [data, setData] = useState({
-    projects: initialProjects,
-    hasNextPage: initialHasNextPage,
-  });
+export const List: React.FC<Props> = ({ initialData }) => {
+  const [data, setData] = useState(initialData);
 
-  const cursor = useRef(initialCursor || null);
-  const [loading, setLoading] = useState(false);
-  const [firstLoaded, setFirstLoaded] = useState(false);
+  const ref = createRef<HTMLUListElement>();
 
-  const onClick = async () => {
-    if (loading || !cursor.current || !data.hasNextPage) return;
+  const [projects, setProjects] = useState<ProjectDocument[]>(
+    initialData.results,
+  );
 
-    setLoading(true);
+  const handleSearch = async () => {
+    const maxPageHasReached = data.page >= data.total_pages;
 
-    const {
-      pageInfo: { hasNextPage: newHasNextPage, endCursor },
-      projects: newProjects,
-    } = await projectPager(cursor.current);
+    if (maxPageHasReached || loading) return;
 
-    cursor.current = endCursor || null;
+    const response = await fetch(data.next_page as string);
+    const newData = (await response.json()) as typeof initialData;
 
-    setData((prev) => ({
-      projects: [...prev.projects, ...newProjects],
-      hasNextPage: newHasNextPage,
-    }));
-
-    setLoading(false);
-
-    if (!firstLoaded) setFirstLoaded(true);
+    setProjects((prev) => [...prev, ...newData.results]);
+    setData(newData);
   };
+
+  const { loading } = useInfiniteScroll({
+    ref,
+    handleSearch,
+    data,
+    pageToUse: 2,
+  });
 
   return (
     <>
-      <InfiniteScroll
-        className="!overflow-hidden"
-        dataLength={data.projects.length}
-        next={onClick}
-        hasMore={data.hasNextPage && firstLoaded}
-        loader={<Loader />}
+      <ul
+        ref={ref}
+        className="project-list grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
-        <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {data.projects.map((project) => (
-              <Card
-                key={project.slug}
-                className="h-[40.625rem]"
-                project={project}
-              />
-            ))}
-          </AnimatePresence>
-        </ul>
-      </InfiniteScroll>
+        <AnimatePresence>
+          {projects.map((project) => (
+            <Card
+              key={project.uid}
+              className="project h-[40.625rem]"
+              project={project}
+            />
+          ))}
+        </AnimatePresence>
+      </ul>
 
-      {!firstLoaded && loading && <Loader />}
+      {loading && <Loader />}
 
-      {data.hasNextPage && !loading && (
+      {data.page < data.total_pages && !loading && (
         <Button
           variant="outline"
           disabled={loading}
           className="justify-center max-w-md w-full lg:w-fit mt-16 mx-auto"
-          onClick={onClick}
+          onClick={handleSearch}
         >
           Carregar mais
         </Button>

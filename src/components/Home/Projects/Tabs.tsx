@@ -5,16 +5,17 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { Title } from '@components/Texts';
 
-import { Carousel, ProjectsPageByCategory } from './Carousel';
+import { Carousel } from './Carousel';
 
 import { Tab } from '@headlessui/react';
+import { ProjectsByCategory } from '@pages/index';
 
 type Props = {
-  initialData: ProjectsPageByCategory[];
+  initialData: ProjectsByCategory[];
 };
 
 export const Tabs: React.FC<Props> = ({ initialData }) => {
-  const [projectsPage, setPrjectsPage] = useState(initialData);
+  const [projectsPage, setProjectsPage] = useState(initialData);
 
   const options: EmblaOptionsType = useMemo(
     () => ({
@@ -53,10 +54,9 @@ export const Tabs: React.FC<Props> = ({ initialData }) => {
             <Carousel
               ref={emblaRef}
               emblaApi={emblaApi}
-              options={options}
               index={index}
               projectPage={data}
-              setProjectsPage={setPrjectsPage}
+              setProjectsPage={setProjectsPage}
             />
           </Tab.Panel>
         ))}
