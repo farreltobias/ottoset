@@ -1,4 +1,5 @@
-import Flecha from '@public/navigation/flecha.svg';
+import Next from '@public/icons/next.svg';
+import Prev from '@public/icons/prev.svg';
 
 type Props = {
   enabled: boolean;
@@ -8,11 +9,12 @@ type Props = {
 export const PrevButton: React.FC<Props> = ({ enabled, onClick }) => {
   return (
     <button
-      className="flex justify-center outline-none peer disabled:opacity-0 rotate-90 transition-opacity delay-200"
+      aria-label="Ver área de atuação anterior"
+      className="flex justify-center outline-none peer disabled:opacity-0 transition-opacity delay-200"
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha className="fill-neutral w-2/3 lg:w-full" />
+      <Prev className="fill-neutral h-8" />
     </button>
   );
 };
@@ -20,11 +22,12 @@ export const PrevButton: React.FC<Props> = ({ enabled, onClick }) => {
 export const NextButton: React.FC<Props> = ({ enabled, onClick }) => {
   return (
     <button
-      className="flex justify-center outline-none peer disabled:opacity-0 -rotate-90 transition-opacity delay-200"
+      aria-label="Ver próxima área de atuação"
+      className="flex justify-center outline-none peer disabled:opacity-0 transition-opacity delay-200"
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha className="fill-neutral w-2/3 lg:w-full" />
+      <Next className="fill-neutral h-8" />
     </button>
   );
 };

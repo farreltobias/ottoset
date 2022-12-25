@@ -29,7 +29,12 @@ const solar = [
   'monitoramento remoto',
 ];
 
-const missions = [
+export type Mision = {
+  topic: string;
+  content: string;
+};
+
+const missions: Mision[] = [
   {
     topic: 'Missão',
     content:

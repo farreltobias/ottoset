@@ -13,7 +13,9 @@ export const useWindowSize = () => {
   useEffect(() => {
     handleWindowSizeChange();
 
-    window.addEventListener('resize', handleWindowSizeChange);
+    window.addEventListener('resize', handleWindowSizeChange, {
+      passive: true,
+    });
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
     };

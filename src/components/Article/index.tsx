@@ -1,15 +1,10 @@
-import { Children } from 'react';
-
 import { ArticleProvider } from '@contexts/ArticleContext';
 
 import { classNames } from '@utils/classNames';
+import { ChildrenType, getSubComponents } from '@utils/getSubComponents';
 
 import { Content } from './Content';
 import { Image } from './Image';
-
-type ChildrenType =
-  | React.ReactElement<typeof Content>
-  | React.ReactElement<typeof Image>;
 
 type SubComponents = {
   Content: typeof Content;
@@ -19,7 +14,7 @@ type SubComponents = {
 type Props = {
   className?: string;
   order?: 'left' | 'right';
-  children: ChildrenType | ChildrenType[];
+  children: ChildrenType<SubComponents> | ChildrenType<SubComponents>[];
   id?: string;
 };
 
@@ -29,24 +24,9 @@ const Article: React.FC<Props> & SubComponents = ({
   order = 'left',
   id,
 }) => {
-  const keys = Object.keys(Article) as (keyof typeof Article)[];
-
-  const Components = keys.reduce(
-    (acc, key) => [
-      ...acc,
-      ...Children.map(children, (child) => {
-        if (child?.type === Article[key]) return child;
-      }),
-    ],
-    [] as React.ReactElement[],
-  );
-
-  const Image = Components.find((node) => {
-    return node?.type === Article.Image;
-  });
-
-  const Content = Components.find((node) => {
-    return node?.type === Article.Content;
+  const { Content, Image } = getSubComponents<SubComponents>({
+    children,
+    FC: Article,
   });
 
   return (
@@ -64,9 +44,9 @@ const Article: React.FC<Props> & SubComponents = ({
             order === 'left' ? 'lg:order-1' : 'lg:order-2',
           )}
         >
-          {Image}
+          {Image.component}
         </div>
-        {Content}
+        {Content.component}
       </section>
     </ArticleProvider>
   );

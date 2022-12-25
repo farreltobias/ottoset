@@ -6,15 +6,16 @@ import { useWindowSize } from '@hooks/useWindowSize';
 
 import { Overlaid } from '@components/Texts/Overlaid';
 
-import { expertises } from '@data/static/expertises';
+import { Expertise } from '@data/static/expertises';
 
 import { Carousel } from './Carousel';
 
 type Props = {
   className?: string;
+  expertises: Expertise[];
 };
 
-export const Expertises: React.FC<Props> = ({ className = '' }) => {
+export const Expertises: React.FC<Props> = ({ className = '', expertises }) => {
   const { width } = useWindowSize();
 
   const desktopWidth = Number(screens.lg.match(/\d+/g)?.[0]);
@@ -29,14 +30,15 @@ export const Expertises: React.FC<Props> = ({ className = '' }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [wheelGestures]);
 
   return (
-    <section className={className}>
+    <article className={className}>
       <Overlaid className="text-center mb-12">
         <Overlaid.Title>Conheça nossas</Overlaid.Title>
         <Overlaid.SubTitle>Áreas de Atuação</Overlaid.SubTitle>
       </Overlaid>
+
       <div className="flex">
         <Carousel ref={emblaRef} emblaApi={emblaApi} slides={expertises} />
       </div>
-    </section>
+    </article>
   );
 };

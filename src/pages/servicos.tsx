@@ -12,6 +12,8 @@ import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/servicos';
 
+import { expertises } from '@data/static/expertises';
+
 const Servicos: NextPage = () => {
   return (
     <>
@@ -28,7 +30,7 @@ const Servicos: NextPage = () => {
       <Aviation />
       <Maintenance />
       <Services />
-      <Expertises className="mt-12 lg:mt-56" />
+      <Expertises className="mt-12 lg:mt-56" expertises={expertises} />
     </>
   );
 };

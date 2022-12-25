@@ -3,7 +3,7 @@ import { Title as MainTitle } from '../titles';
 import { SubTitle } from './SubTitle';
 import { Title } from './Title';
 
-type SubComponents = {
+export type SubComponents = {
   Title: typeof Title;
   SubTitle: typeof SubTitle;
 };

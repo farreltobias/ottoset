@@ -1,27 +1,19 @@
-import { Children } from 'react';
-
-import { services } from '@data/static/services';
+import { Service } from '@data/static/services';
 
 import { Area } from './Area';
 
-export const Areas: React.FC = () => {
+type Props = {
+  services: Service[];
+};
+
+export const Areas: React.FC<Props> = ({ services }) => {
   return (
-    <div className="flex flex-col lg:flex-row">
-      {Children.toArray(
-        services.map(({ icon, image, title, subTitle, link }) => (
-          <div className="h-72 sm:h-96 w-full overflow-hidden">
-            <div className="flex justify-center items-center w-full h-full">
-              <Area
-                title={title}
-                icon={icon}
-                image={image}
-                link={link}
-                subTitle={subTitle}
-              />
-            </div>
-          </div>
-        )),
-      )}
-    </div>
+    <ul role="grid" className="flex flex-col lg:flex-row">
+      {services.map((service) => (
+        <li key={service.title} className="h-72 sm:h-96 full overflow-hidden">
+          <Area service={service} />
+        </li>
+      ))}
+    </ul>
   );
 };

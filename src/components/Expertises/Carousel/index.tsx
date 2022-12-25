@@ -4,14 +4,14 @@ import { EmblaCarouselType } from 'embla-carousel-react';
 
 import { Text } from '@components/Texts';
 
-import { expertises } from '@data/static/expertises';
+import { Expertise as ExpertiseType } from '@data/static/expertises';
 
 import { Expertise } from '../Expertise';
 
 import { NextButton, PrevButton } from './Buttons';
 
 type Props = {
-  slides: typeof expertises;
+  slides: ExpertiseType[];
   emblaApi?: EmblaCarouselType;
 };
 

@@ -1,10 +1,9 @@
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
 
 import { SidebarProvider } from '@contexts/SidebarContext';
-
-import { SEO } from '@seo/next-seo.config';
 
 import 'tailwindcss/tailwind.css';
 import 'react-toastify/dist/ReactToastify.css';

@@ -19,7 +19,6 @@ const FowardFunction: React.ForwardRefRenderFunction<
   const Component = as;
 
   const font = variant === 'title' ? 'font-title' : 'font-body';
-
   const leading = className.includes('leading-') ? '' : 'leading-150';
 
   return (

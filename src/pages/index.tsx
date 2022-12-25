@@ -17,6 +17,8 @@ import { Slider } from '@components/Home/Slider';
 
 import { SEO } from '@seo/home';
 
+import { services } from '@data/static/services';
+
 import { CarouselDocument, ProjectDocument } from '.slicemachine/prismicio';
 
 type Data = {
@@ -61,7 +63,7 @@ const Home: NextPage<PageProps> = ({ initialProjects, carousel, images }) => {
       <NextSeo {...SEO} />
 
       <Slider carousel={carousel} />
-      <Areas />
+      <Areas services={services} />
       <Energy />
       <Monitor />
       <Projects initialData={initialProjects} />

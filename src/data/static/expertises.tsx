@@ -1,9 +1,16 @@
-import agribusiness from '@public/photos/agribusiness.png';
-import hospital from '@public/photos/hospital.png';
-import hospitality from '@public/photos/hospitality.png';
-import truck from '@public/photos/truck.png';
+import { StaticImageData } from 'next/image';
 
-export const expertises = [
+import agribusiness from '@public/photos/agribusiness.webp';
+import hospital from '@public/photos/hospital.webp';
+import hospitality from '@public/photos/hospitality.webp';
+
+export type Expertise = {
+  title: string;
+  image: StaticImageData;
+  link: string;
+};
+
+export const expertises: Expertise[] = [
   {
     title: 'Hospitais',
     image: hospital,
@@ -21,7 +28,7 @@ export const expertises = [
   },
   {
     title: 'Hospitais',
-    image: truck,
+    image: hospital,
     link: '/contato',
   },
 ];
