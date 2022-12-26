@@ -105,7 +105,11 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
           <motion.button
             variants={buttonVariants}
             transition={{ duration: 0.05 }}
-            className="flex items-center h-10 text-lg rounded outline-none px-4 transition-all hover:!bg-neutral-900 hover:shadow-button hover:shadow-primary-600"
+            className={classNames(
+              'flex items-center h-10 text-lg rounded outline-none px-4 transition-all',
+              'hover:!bg-neutral-900 hover:shadow-button hover:shadow-primary-600',
+              'hover:!text-neutral hover:!border-none',
+            )}
           >
             Solicite orçamento
           </motion.button>
