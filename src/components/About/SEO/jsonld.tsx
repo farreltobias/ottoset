@@ -17,7 +17,7 @@ export const JsonLd: React.FC<Props> = ({ images }) => {
     description:
       'A Ottoset Energy é uma empresa especializada em soluções em energia.',
     images,
-    datePublished: '2022-25-12T20:00:00+03:00',
+    datePublished: new Date('2022-12-25T20:00:00+03:00').toISOString(),
     isAccessibleForFree: true,
     authorName: 'Ottoset Energy',
   };

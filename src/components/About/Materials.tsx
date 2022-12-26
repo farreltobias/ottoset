@@ -33,6 +33,7 @@ export const Materials: React.FC = () => {
             alt="arte de apresentação comercial"
             placeholder="blur"
             className="min-w-full max-h-full -mt-2 xs:-mt-9 lg:-mt-14 object-cover object-center"
+            sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 33vw"
           />
         </div>
         <div className="absolute bottom-6 xs:bottom-20 lg:bottom-28 left-1/3">
@@ -42,7 +43,7 @@ export const Materials: React.FC = () => {
               alt="arte de portfólio de serviços"
               className="object-cover object-center"
               placeholder="blur"
-              sizes="(min-width: 0) 100vw"
+              sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 33vw"
               fill
             />
             <Title
@@ -63,8 +64,8 @@ export const Materials: React.FC = () => {
               src={energy}
               alt="arte de guia da marca"
               placeholder="blur"
-              sizes="(min-width: 0) 100vw"
               className="object-cover object-center"
+              sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 33vw"
               fill
             />
             <Title

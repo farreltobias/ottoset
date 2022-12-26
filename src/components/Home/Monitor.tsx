@@ -22,7 +22,7 @@ export const Monitor: React.FC = () => {
 
       <div className="flex flex-col-reverse mt-8 lg:flex-row lg:mt-[4.5rem]">
         <div className="flex items-center justify-center mt-10 lg:mt-0 lg:w-1/2">
-          <ul role="list">
+          <ul>
             {Children.toArray(
               monitor.map((item) => (
                 <li className="relative flex mb-6">

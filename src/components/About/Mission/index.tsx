@@ -13,12 +13,13 @@ type Props = {
 };
 
 export const Mission: React.FC<Props> = ({ missions }) => (
-  <>
+  <div className="relative mt-24 lg:mt-16">
     <Image
       src={background}
       alt="plano de fundo com formas geométricas"
       placeholder="blur"
       className="absolute -z-10 h-full xl:h-auto object-cover object-top"
+      sizes="(min-width: 768px) 384vw, (min-width: 1024px) 100vw"
     />
 
     <div className="container mx-auto flex flex-col items-center">
@@ -36,5 +37,5 @@ export const Mission: React.FC<Props> = ({ missions }) => (
 
       <Attributes missions={missions} />
     </div>
-  </>
+  </div>
 );

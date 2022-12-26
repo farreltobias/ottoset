@@ -14,6 +14,7 @@ export const CompanyImages: React.FC = () => {
           alt="office"
           placeholder="blur"
           className="w-full h-auto"
+          priority
         />
         <Image
           src={streetview}

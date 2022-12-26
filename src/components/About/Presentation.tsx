@@ -7,9 +7,7 @@ import { Button } from '@components/Button';
 import { Text, Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
 
-const ReactToPrint = dynamic(() => import('react-to-print'), {
-  ssr: false,
-});
+const ReactToPrint = dynamic(() => import('react-to-print'));
 
 const FowardFunction: React.ForwardRefRenderFunction<HTMLElement | null> = (
   _,

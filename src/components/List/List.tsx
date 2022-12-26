@@ -10,7 +10,7 @@ type Props = {
 
 export const List: React.FC<Props> = ({ items }) => {
   return (
-    <ul role="list" className="flex flex-col gap-y-4 lg:gap-y-6">
+    <ul className="flex flex-col gap-y-4 lg:gap-y-6">
       {Children.toArray(
         items.map((item) => (
           <li className="flex gap-x-4">

@@ -4,8 +4,6 @@ import dynamic from 'next/dynamic';
 
 import ogImage from '@public/photos/office.webp';
 
-import { CompanyImages } from '@components/About/CompanyImages';
-import { Mission } from '@components/About/Mission';
 import { Presentation } from '@components/About/Presentation';
 import { SEO } from '@components/About/SEO';
 
@@ -18,36 +16,38 @@ import {
 import { expertises } from '@data/static/expertises';
 import { services } from '@data/static/services';
 
-const Services = dynamic(
-  () => import('@components/About/Services').then(({ Services }) => Services),
-  { ssr: false },
+const CompanyImages = dynamic(() =>
+  import('@components/About/CompanyImages').then(
+    ({ CompanyImages }) => CompanyImages,
+  ),
 );
 
-const MoreServices = dynamic(
-  () =>
-    import('@components/About/MoreServices').then(
-      ({ MoreServices }) => MoreServices,
-    ),
-  { ssr: false },
+const Mission = dynamic(() =>
+  import('@components/About/Mission').then(({ Mission }) => Mission),
 );
 
-const Diferentials = dynamic(
-  () =>
-    import('@components/About/Diferentials').then(
-      ({ Diferentials }) => Diferentials,
-    ),
-  { ssr: false },
+const Services = dynamic(() =>
+  import('@components/About/Services').then(({ Services }) => Services),
 );
 
-const Expertises = dynamic(
-  () => import('@components/Expertises').then(({ Expertises }) => Expertises),
-  { ssr: false },
+const MoreServices = dynamic(() =>
+  import('@components/About/MoreServices').then(
+    ({ MoreServices }) => MoreServices,
+  ),
 );
 
-const Materials = dynamic(
-  () =>
-    import('@components/About/Materials').then(({ Materials }) => Materials),
-  { ssr: false },
+const Diferentials = dynamic(() =>
+  import('@components/About/Diferentials').then(
+    ({ Diferentials }) => Diferentials,
+  ),
+);
+
+const Expertises = dynamic(() =>
+  import('@components/Expertises').then(({ Expertises }) => Expertises),
+);
+
+const Materials = dynamic(() =>
+  import('@components/About/Materials').then(({ Materials }) => Materials),
 );
 
 const Sobre: NextPage = () => {
@@ -69,9 +69,7 @@ const Sobre: NextPage = () => {
       </div>
 
       {/* Mission of the company, secondary content */}
-      <div className="relative mt-24 lg:mt-16">
-        <Mission missions={missions} />
-      </div>
+      <Mission missions={missions} />
 
       {/* Services, arbitrary content */}
       <Services services={services} />

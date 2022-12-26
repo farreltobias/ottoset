@@ -47,7 +47,7 @@ export const Area: React.FC<Props> = ({ service }) => {
             placeholder="blur"
             alt="background image"
             className="object-cover brightness-50 -z-10"
-            sizes="(min-width: 0) 100vw"
+            sizes="(min-width: 768px) 110vw, (min-width: 1024px) 26vw"
             fill
           />
 
