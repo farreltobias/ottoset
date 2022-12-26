@@ -10,11 +10,6 @@ const config: DefaultSeoProps = {
     url: 'https://www.ottoset.com.br/',
     siteName: 'Ottoset Energy',
   },
-  twitter: {
-    handle: '@handle',
-    site: '@site',
-    cardType: 'summary_large_image',
-  },
   additionalLinkTags: [
     {
       rel: 'icon',
