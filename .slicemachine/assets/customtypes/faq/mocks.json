@@ -1,17 +1,62 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "faq",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "key_question": "class",
-    "slices": []
+  "key_question": {
+    "__TYPE__": "FieldContent",
+    "value": "already",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "perguntas$d22e1631-1d01-4680-a397-a823a81179f5",
+        "name": "perguntas",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "category": {
+              "__TYPE__": "FieldContent",
+              "value": "am",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "question",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "heading2",
+                        "content": {
+                          "text": "Difficulty"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "answer",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Veniam pariatur aliqua aute consequat ad eiusmod labore. Aute aute elit incididunt. Ipsum laboris non magna consectetur qui nisi id fugiat nisi."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

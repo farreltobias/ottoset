@@ -4,14 +4,10 @@ import Artigo from './Artigo';
 import Banner from './Banner';
 import Perguntas from './Perguntas';
 
-export {
-	Artigo,
-	Banner,
-	Perguntas,
-};
+export { Artigo, Banner, Perguntas };
 
 export const components = {
-	artigo: Artigo,
-	banner: Banner,
-	perguntas: Perguntas,
+  artigo: Artigo,
+  banner: Banner,
+  perguntas: Perguntas,
 };

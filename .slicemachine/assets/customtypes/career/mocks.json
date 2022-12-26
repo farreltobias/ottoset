@@ -1,42 +1,63 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "career",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "title": [
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "back"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "heading1",
-        "text": "Problem",
-        "spans": []
+        "content": {
+          "text": "Wonderful"
+        }
       }
-    ],
-    "requirements": [
+    ]
+  },
+  "requirements": {
+    "__TYPE__": "GroupContentType",
+    "value": [
       {
-        "item": [
-          {
-            "type": "paragraph",
-            "text": "Ipsum aliqua cillum incididunt ea velit aliqua culpa proident. Nulla eu pariatur quis adipisicing sunt minim tempor commodo excepteur duis id aute.",
-            "spans": []
-          }
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "item",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Commodo Lorem ad ea id aliquip dolor culpa ad. Ut qui id aliqua anim elit id. Id irure minim aliquip incididunt laborum proident id aliqua excepteur ullamco sit ea."
+                  }
+                }
+              ]
+            }
+          ]
         ]
       }
-    ],
-    "desirable": [
+    ]
+  },
+  "desirable": {
+    "__TYPE__": "GroupContentType",
+    "value": [
       {
-        "item": [
-          {
-            "type": "paragraph",
-            "text": "Sunt aliquip anim pariatur. Ullamco quis sint ullamco Lorem quis ullamco aliquip aliqua consequat et. Non labore mollit excepteur sit culpa irure ad ad laborum deserunt nulla aute voluptate fugiat labore.",
-            "spans": []
-          }
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "item",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Cillum commodo nostrud ut nostrud fugiat laborum eiusmod ea sint. Minim eiusmod aliqua quis proident magna voluptate labore ad sint."
+                  }
+                }
+              ]
+            }
+          ]
         ]
       }
     ]

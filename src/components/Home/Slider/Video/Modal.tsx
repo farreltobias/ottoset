@@ -1,4 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Transition, Variants } from 'framer-motion';
+
+import Close from '@public/icons/close.svg';
 
 import { Dialog } from '@headlessui/react';
 
@@ -8,6 +10,45 @@ type Props = {
 };
 
 export const Modal: React.FC<Props> = ({ isOpen, setIsOpen }) => {
+  const transition: Transition = {
+    type: 'spring',
+    stiffness: 500,
+    damping: 20,
+  };
+
+  const variants: Variants = {
+    initial: {
+      scale: 0,
+    },
+    animate: {
+      scale: 1,
+    },
+    exit: {
+      scale: 0,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
+  const buttonVariants: Variants = {
+    initial: {
+      opacity: 0,
+      visibility: 'hidden',
+    },
+    animate: {
+      opacity: 1,
+      visibility: 'visible',
+    },
+    exit: {
+      opacity: 0,
+      visibility: 'hidden',
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
   return (
     <Dialog
       open={isOpen}
@@ -25,23 +66,31 @@ export const Modal: React.FC<Props> = ({ isOpen, setIsOpen }) => {
               />
               <motion.div
                 className="fixed inset-0 flex items-center justify-center"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0, transition: { duration: 0.2 } }}
+                variants={variants}
+                transition={transition}
+                initial="initial"
+                animate="animate"
+                exit="exit"
               >
-                <Dialog.Panel className="h-[80vh]">
-                  {/* <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/EG4KHwZut0o?autoplay=1&loop=1&origin=https://ottoset.com&iv_load_policy=3&hl=pt&controls=2&color=white"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title="Embedded youtube"
-                  /> */}
-                  <video autoPlay loop className="w-full h-full">
-                    <source src="/videos/ottoset.mp4" />
-                  </video>
-                </Dialog.Panel>
+                <div className="relative h-fit">
+                  <motion.button
+                    variants={buttonVariants}
+                    transition={{ delay: 1, ...transition }}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    aria-label="Fechar Modal"
+                    className="absolute z-10 top-4 right-4 outline-none"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Close className="w-12 h-12 fill-neutral" />
+                  </motion.button>
+                  <Dialog.Panel className="h-[80vh]">
+                    <video autoPlay loop className="w-full h-full">
+                      <source src="/videos/ottoset.mp4" />
+                    </video>
+                  </Dialog.Panel>
+                </div>
               </motion.div>
             </>
           )}

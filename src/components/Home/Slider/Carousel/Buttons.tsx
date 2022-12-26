@@ -1,8 +1,30 @@
-import Flecha from '@public/navigation/flecha.svg';
+import { motion, Transition, Variants } from 'framer-motion';
+
+import Next from '@public/icons/next.svg';
+import Prev from '@public/icons/prev.svg';
 
 import { Text } from '@components/Texts';
 
-import { classNames } from '@utils/classNames';
+const transition: Transition = {
+  type: 'spring',
+  stiffness: 500,
+  damping: 20,
+};
+
+const variants: Variants = {
+  initial: {
+    opacity: 0,
+    display: 'none',
+  },
+  animate: {
+    opacity: 1,
+    display: 'flex',
+  },
+  exit: {
+    opacity: 0,
+    display: 'none',
+  },
+};
 
 type Props = {
   enabled: boolean;
@@ -17,27 +39,34 @@ export const PrevButton: React.FC<Props> = ({
   total,
   current,
 }) => (
-  <div className="absolute top-10 translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex items-center children:transition-opacity children:delay-200">
+  <motion.div
+    variants={variants}
+    transition={transition}
+    initial="initial"
+    animate={enabled ? 'animate' : 'exit'}
+    exit="exit"
+    className="absolute flex items-center top-10 lg:top-1/2 translate-x-2 lg:-translate-y-1/2 gap-2 lg:gap-6 text-neutral"
+  >
     <button
       aria-label="Ver projeto anterior"
-      className="flex justify-center outline-none peer disabled:opacity-0 rotate-90"
+      className="flex justify-center outline-none"
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha className="fill-neutral w-2/3 lg:w-full" />
+      <Prev className="w-2/3 lg:w-full" />
     </button>
-    <Text
-      variant="p2"
-      largeVariant="p1"
-      as="span"
-      className={classNames(
-        'ml-2 lg:ml-6 text-neutral peer-disabled:opacity-0',
-        current + 1 !== total ? 'opacity-0' : 'opacity-100',
-      )}
+    <motion.span
+      variants={variants}
+      transition={transition}
+      initial="initial"
+      animate={current + 1 === total ? 'animate' : 'exit'}
+      exit="exit"
     >
-      {current + 1} / {total}
-    </Text>
-  </div>
+      <Text variant="p2" largeVariant="p1" as="span">
+        {current + 1} / {total}
+      </Text>
+    </motion.span>
+  </motion.div>
 );
 
 export const NextButton: React.FC<Props> = ({
@@ -46,22 +75,24 @@ export const NextButton: React.FC<Props> = ({
   total,
   current,
 }) => (
-  <div className="absolute right-0 top-10 -translate-x-2 lg:top-1/2 lg:-translate-y-1/2 flex flex-row-reverse items-center children:transition-opacity children:delay-200">
+  <motion.div
+    variants={variants}
+    transition={transition}
+    initial="initial"
+    animate={enabled ? 'animate' : 'exit'}
+    exit="exit"
+    className="absolute flex flex-row-reverse items-center right-0 top-10 lg:top-1/2 -translate-x-2 lg:-translate-y-1/2 gap-2 lg:gap-6 text-neutral"
+  >
     <button
       aria-label="Ver próximo projeto"
-      className="flex justify-center outline-none peer disabled:opacity-0 -rotate-90"
+      className="flex justify-center outline-none"
       onClick={onClick}
       disabled={!enabled}
     >
-      <Flecha className="fill-neutral w-2/3 lg:w-full" />
+      <Next className="w-2/3 lg:w-full" />
     </button>
-    <Text
-      variant="p2"
-      largeVariant="p1"
-      as="span"
-      className="mr-2 lg:mr-6 peer-disabled:opacity-0 text-neutral"
-    >
+    <Text variant="p2" largeVariant="p1" as="span">
       {current + 1} / {total}
     </Text>
-  </div>
+  </motion.div>
 );

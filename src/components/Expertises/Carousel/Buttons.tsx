@@ -14,7 +14,7 @@ export const PrevButton: React.FC<Props> = ({ enabled, onClick }) => {
       onClick={onClick}
       disabled={!enabled}
     >
-      <Prev className="fill-neutral h-8" />
+      <Prev className="h-8" />
     </button>
   );
 };
@@ -27,7 +27,7 @@ export const NextButton: React.FC<Props> = ({ enabled, onClick }) => {
       onClick={onClick}
       disabled={!enabled}
     >
-      <Next className="fill-neutral h-8" />
+      <Next className="h-8" />
     </button>
   );
 };

@@ -1,9 +1,11 @@
-import React, { Children, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+
+import { SliceZone } from '@prismicio/react';
 
 import { EmblaCarouselType } from 'embla-carousel-react';
+import { components } from 'slices';
 
 import { NextButton, PrevButton } from './Buttons';
-import { Slide } from './Slide';
 import { BannerSlice } from '.slicemachine/prismicio';
 
 type Props = {
@@ -49,28 +51,22 @@ const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
     <div className="h-full relative overflow-hidden">
       <div className="h-full" ref={emblaRef}>
         <div className="flex h-full">
-          {Children.toArray(
-            slides.map(({ primary }) => (
-              <div className="w-full h-full shrink-0 grow-0 basis-full">
-                <Slide {...primary} />
-              </div>
-            )),
-          )}
+          {<SliceZone slices={slides} components={components} />}
         </div>
       </div>
       <div className="absolute top-10 container mx-auto lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2">
         <div className="relative w-full">
-          <NextButton
-            current={currentSlide}
-            total={slides.length}
-            onClick={scrollNext}
-            enabled={nextBtnEnabled}
-          />
           <PrevButton
             current={currentSlide}
             total={slides.length}
             onClick={scrollPrev}
             enabled={prevBtnEnabled}
+          />
+          <NextButton
+            current={currentSlide}
+            total={slides.length}
+            onClick={scrollNext}
+            enabled={nextBtnEnabled}
           />
         </div>
       </div>

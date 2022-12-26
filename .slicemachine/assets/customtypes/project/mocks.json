@@ -1,40 +1,122 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "project",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "category": "Grupo Gerador",
-    "title": [
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "coast"
+  },
+  "category": {
+    "__TYPE__": "FieldContent",
+    "value": "Grupo Gerador",
+    "type": "Text"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "heading1",
-        "text": "Ability",
-        "spans": []
+        "content": {
+          "text": "Brush"
+        }
       }
-    ],
-    "description": [
+    ]
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Ex deserunt nisi labore sit fugiat in anim aliquip tempor enim. Officia sunt velit id commodo.",
-        "spans": []
+        "content": {
+          "text": "Reprehenderit et voluptate nisi magna cillum do officia ut id."
+        }
       }
-    ],
-    "cover": {
-      "dimensions": {
-        "width": 900,
-        "height": 500
-      },
-      "alt": null,
-      "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e"
+    ]
+  },
+  "cover": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+      "width": 3277,
+      "height": 4092
     },
-    "slices": []
+    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+    "width": 3277,
+    "height": 4092,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "artigo$638ac792-c858-4629-a170-2743f4c6f987",
+        "name": "artigo",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading2",
+                  "content": {
+                    "text": "Certain"
+                  }
+                }
+              ]
+            },
+            "image": {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+                "width": 3456,
+                "height": 4320
+              },
+              "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+              "width": 3456,
+              "height": 4320,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "paragraph",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Exercitation laborum et sit consectetur proident et sit ullamco. Nulla id amet laborum quis laborum eiusmod dolore Lorem amet ex magna aute eu."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

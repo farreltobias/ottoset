@@ -1,0 +1,89 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "category": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Geral"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading2",
+                  "content": {
+                    "text": "O que é a Ottoset Energy?",
+                    "spans": []
+                  },
+                  "direction": "ltr"
+                }
+              ]
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "A Ottoset Energy é uma empresa de engenharia e consultoria que atua no mercado de energia renovável, com foco em energia solar fotovoltaica, energia eólica, energia hídrica e energia geotérmica. A Ottoset Energy também atua no mercado de energia convencional, com foco em grupo geradores, automação, aviação, manutenção e adequação, serviços GMC e serviços UFV.",
+                    "spans": []
+                  },
+                  "direction": "ltr"
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "question",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading2",
+                  "content": {
+                    "text": "O que é a Ottoset Energy?",
+                    "spans": []
+                  },
+                  "direction": "ltr"
+                }
+              ]
+            }
+          ],
+          [
+            "answer",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "A Ottoset Energy é uma empresa de engenharia e consultoria que atua no mercado de energia renovável, com foco em energia solar fotovoltaica, energia eólica, energia hídrica e energia geotérmica. A Ottoset Energy também atua no mercado de energia convencional, com foco em grupo geradores, automação, aviação, manutenção e adequação, serviços GMC e serviços UFV.",
+                    "spans": []
+                  },
+                  "direction": "ltr"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
