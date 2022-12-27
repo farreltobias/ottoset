@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
@@ -51,7 +51,7 @@ export const Tabs: React.FC<Props> = ({ initialData }) => {
       </Tab.List>
       <Tab.Panels className="mb-16 lg:mb-36">
         {projectsPage.map((data, index) => (
-          <Tab.Panel as={Fragment} key={data.category}>
+          <Tab.Panel key={data.category}>
             <Carousel
               ref={emblaRef}
               emblaApi={emblaApi}

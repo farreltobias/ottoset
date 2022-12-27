@@ -10,6 +10,7 @@ import sm from 'sm.json';
 
 import { SEO } from '@seo/home';
 
+import { reasons } from '@data/static/content';
 import { services } from '@data/static/services';
 
 import { projectCard } from '@utils/graphQueries';
@@ -37,8 +38,8 @@ const Energy = dynamic(() =>
   import('@components/Home/Energy').then(({ Energy }) => Energy),
 );
 
-const Monitor = dynamic(() =>
-  import('@components/Home/Monitor').then(({ Monitor }) => Monitor),
+const WhyUs = dynamic(() =>
+  import('@components/Home/WhyUs').then(({ WhyUs }) => WhyUs),
 );
 
 const Projects = dynamic(() =>
@@ -57,10 +58,10 @@ const Instagram = dynamic(() =>
   import('@components/Home/Instagram').then(({ Instagram }) => Instagram),
 );
 
-type CategoryOptions = Exclude<ProjectDocumentData['category'], null>;
+type CategoryOptions = 'Tudo' | Exclude<ProjectDocumentData['category'], null>;
 
 export type ProjectsByCategory = {
-  category: CategoryOptions | 'Tudo';
+  category: CategoryOptions;
   data: Query<ProjectDocument>;
 };
 
@@ -71,22 +72,35 @@ type PageProps = {
 
 const Home: NextPage<PageProps> = ({ projectsByCategory, carousel }) => {
   return (
-    <>
+    <article>
       <NextSeo {...SEO} />
 
+      {/* Slider Carousel, arbitrary content */}
       <Slider carousel={carousel} />
+
+      {/* Areas of services, arbitrary content */}
       <Areas services={services} />
+
+      {/* Energy, primary content */}
       <Energy />
-      <Monitor />
+
+      {/* Why us, secondary content */}
+      <WhyUs reasons={reasons} />
+
+      {/* Projects Carousel, arbitrary content */}
       <Projects initialData={projectsByCategory} />
+
+      {/* Clients, tertiary content */}
       <Clients />
+
+      {/* Reach, quaternary content */}
       <Reach />
 
       {/* Insagram photos, arbitrary content */}
       <SWRProvider>
         <Instagram />
       </SWRProvider>
-    </>
+    </article>
   );
 };
 
@@ -110,7 +124,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 
   const data = await response.json();
 
-  const CATEGORIES: (CategoryOptions | 'Tudo')[] = [
+  const CATEGORIES: CategoryOptions[] = [
     'Tudo',
     ...data.json.Main.category.config.options,
   ];

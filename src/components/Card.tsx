@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { convertTime } from '@utils/convertTime';
 import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
+import { PrismicBlurImage } from './BlurImage';
 import { Caps, Text, Title } from './Texts';
 import { ProjectDocument } from '.slicemachine/prismicio';
 
@@ -41,11 +42,6 @@ export const Card: React.FC<Props> = ({
   const duration = getDurationFromSlices(slices);
   const formatedTime = convertTime(duration);
 
-  const { url } = cover;
-  const articleStyle = {
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${url})`,
-  };
-
   return (
     <motion.li
       className={className}
@@ -55,10 +51,13 @@ export const Card: React.FC<Props> = ({
       animate="animate"
       exit="exit"
     >
-      <article
-        className="relative group bg-cover bg-center backdrop-brightness-50 h-full"
-        style={articleStyle}
-      >
+      <article className="relative group bg-cover bg-center backdrop-brightness-50 h-full overflow-hidden">
+        <PrismicBlurImage
+          field={cover}
+          className="object-cover brightness-50 -z-10"
+          sizes="(min-width: 768px) 50vw, (min-width: 1024px) 35vw, 100vw"
+          fill
+        />
         <Link
           href={{
             pathname: '/projetos/[slug]',

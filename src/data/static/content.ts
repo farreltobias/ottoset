@@ -1,4 +1,4 @@
-const monitor = [
+const reasons = [
   'Plantão 24 horas realizado por engenheiros e técnicos especializados;',
   'Manutenção Preditiva, Preventiva e Corretiva',
   'Técnicos habilitados para atendimento em todo o país;',
@@ -72,7 +72,7 @@ const diferentials = [
 ];
 
 export {
-  monitor,
+  reasons,
   missions,
   services,
   diferentials,

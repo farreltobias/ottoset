@@ -7,8 +7,8 @@ import { clients } from '@data/clients';
 
 export const Clients: React.FC = () => {
   return (
-    <section className="mt-28 lg:mt-40 container mx-auto">
-      <Overlaid className="text-center">
+    <div className="mt-28 lg:mt-40 container mx-auto">
+      <Overlaid as="h2" className="text-center">
         <Overlaid.Title>Nossos</Overlaid.Title>
         <Overlaid.SubTitle>Clientes</Overlaid.SubTitle>
       </Overlaid>
@@ -30,6 +30,6 @@ export const Clients: React.FC = () => {
           }),
         )}
       </div>
-    </section>
+    </div>
   );
 };

@@ -1,13 +1,12 @@
 /* eslint-disable camelcase */
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
 
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 
 import { useInstagram } from '@hooks/useInstagram';
-import { useWindowSize } from '@hooks/useWindowSize';
 
+import { BlurImage } from '@components/BlurImage';
 import { Link } from '@components/Link';
 import { Title } from '@components/Texts';
 
@@ -18,11 +17,14 @@ type Props = {
 };
 
 export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
-  const { data: initialImages, error, mutate } = useInstagram(limit);
+  const {
+    data: initialImages,
+    error,
+    mutate,
+    isValidating,
+  } = useInstagram(limit);
 
   const [photos, setPhotos] = useState(initialImages?.data || []);
-
-  const { width } = useWindowSize();
 
   const options: EmblaOptionsType = useMemo(
     () => ({
@@ -48,8 +50,6 @@ export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
   }, [emblaApi, options]);
 
   useEffect(() => {
-    if (!width) return;
-
     const setNewPhotos = async () => {
       let images = initialImages?.data;
 
@@ -57,21 +57,11 @@ export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
         images = await mutate().then((data) => data?.data);
       }
 
-      const limit = Math.ceil(width / 240) + 1;
-
-      if (photos.length === limit || photos.length > limit) return;
-
-      const repetitions = Math.ceil(limit / limit);
-      const newPhotos = Array.from(
-        { length: repetitions },
-        () => initialImages?.data || [],
-      ).flat();
-
-      setPhotos(newPhotos.slice(0, limit));
+      setPhotos(images || []);
     };
 
     setNewPhotos();
-  }, [width, initialImages, photos, mutate]);
+  }, [initialImages, mutate, isValidating]);
 
   useEffect(() => {
     reloadEmbla();
@@ -80,32 +70,15 @@ export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
   if (error || !photos.length) return null;
 
   return (
-    <section>
+    <article>
       <Link
         href={`https://www.instagram.com/${instagram}`}
         target="_blank"
         rel="noreferrer"
-        className="flex-col m-0"
+        className="flex flex-col m-0"
       >
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="grid grid-flow-col">
-            {photos.map(({ media_url, id }, index) => (
-              <div className="relative w-60 h-60" key={id}>
-                <Image
-                  src={media_url}
-                  alt={`Instagram photo ${index + 1}`}
-                  className="w-full h-full"
-                  sizes="(min-width: 0) 100vw"
-                  fill
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full p-9 text-center bg-primary-50">
+        <div className="w-full p-9 text-center bg-primary-50 order-last">
           <Title
-            as="span"
             variant="h6"
             largeVariant="h4"
             style={{
@@ -118,7 +91,23 @@ export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
             Siga @ottosetenergy no instagram
           </Title>
         </div>
+
+        <div className="overflow-hidden" ref={emblaRef}>
+          <ul className="grid grid-flow-col">
+            {photos.map(({ media_url, id }, index) => (
+              <li className="relative w-60 h-60" key={id}>
+                <BlurImage
+                  src={media_url}
+                  alt={`Instagram photo ${index + 1}`}
+                  className="w-full h-full"
+                  sizes="(min-width: 0) 100vw"
+                  fill
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </Link>
-    </section>
+    </article>
   );
 };
