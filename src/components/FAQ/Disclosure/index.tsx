@@ -1,15 +1,13 @@
-import { Children, useState } from 'react';
+import { useState } from 'react';
 
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 import { DisclosureProvider } from '@contexts/DisclosureContext';
 
+import { ChildrenType, getSubComponents } from '@utils/getSubComponents';
+
 import { Answer } from './Answer';
 import { Question } from './Question';
-
-type ChildrenType =
-  | React.ReactElement<typeof Question>
-  | React.ReactElement<typeof Answer>;
 
 type SubComponents = {
   Question: typeof Question;
@@ -18,30 +16,15 @@ type SubComponents = {
 
 type Props = {
   className?: string;
-  children: ChildrenType | ChildrenType[];
+  children: ChildrenType<SubComponents> | ChildrenType<SubComponents>[];
 };
 
 const Disclosure: React.FC<Props> & SubComponents = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const keys = Object.keys(Disclosure) as (keyof typeof Disclosure)[];
-
-  const Components = keys.reduce(
-    (acc, key) => [
-      ...acc,
-      ...Children.map(children, (child) => {
-        if (child?.type === Disclosure[key]) return child;
-      }),
-    ],
-    [] as React.ReactElement[],
-  );
-
-  const Question = Components.find((node) => {
-    return node?.type === Disclosure.Question;
-  });
-
-  const Answer = Components.find((node) => {
-    return node?.type === Disclosure.Answer;
+  const { Question, Answer } = getSubComponents<SubComponents>({
+    children,
+    FC: Disclosure,
   });
 
   const colors: Variants = {
@@ -74,16 +57,30 @@ const Disclosure: React.FC<Props> & SubComponents = ({ children }) => {
             },
           }}
         >
-          {Question}
+          {Question.component}
         </motion.button>
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ height: 0 }}
-              animate={{ height: 'auto' }}
-              exit={{ height: 0 }}
+              animate={{
+                height: 'auto',
+                transition: {
+                  type: 'spring',
+                  stiffness: 500,
+                  damping: 20,
+                },
+              }}
+              exit={{
+                height: 0,
+                transition: {
+                  type: 'spring',
+                  stiffness: 500,
+                  damping: 50,
+                },
+              }}
             >
-              {Answer}
+              {Answer.component}
             </motion.div>
           )}
         </AnimatePresence>
