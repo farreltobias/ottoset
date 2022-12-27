@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
 
@@ -45,12 +44,10 @@ export const Photovoltaic: React.FC = () => {
           Dimensionamos e cuidamos de todo o processo de instalação e
           homologação do seu sistema.
         </Content.Text>
-        <Content.Button className="xl:w-3/5">
-          <Link href="/contato" className="flex justify-center w-full">
-            Simule seu sistema
-            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-          </Link>
-        </Content.Button>
+        <Content.Link href="/contato" text="Simule seu sistema">
+          Simule seu sistema
+          <DoubleArrow className="transition-all fill-primary-600 group-hover:fill-secondary-900" />
+        </Content.Link>
       </Article.Content>
     </Article>
   );

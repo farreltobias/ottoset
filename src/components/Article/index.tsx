@@ -1,5 +1,3 @@
-import { ArticleProvider } from '@contexts/ArticleContext';
-
 import { classNames } from '@utils/classNames';
 import { ChildrenType, getSubComponents } from '@utils/getSubComponents';
 
@@ -12,16 +10,16 @@ type SubComponents = {
 };
 
 type Props = {
+  as?: React.ElementType;
   className?: string;
-  order?: 'left' | 'right';
   children: ChildrenType<SubComponents> | ChildrenType<SubComponents>[];
   id?: string;
 };
 
 const Article: React.FC<Props> & SubComponents = ({
+  as = 'section',
   children,
   className = '',
-  order = 'left',
   id,
 }) => {
   const { Content, Image } = getSubComponents<SubComponents>({
@@ -29,26 +27,21 @@ const Article: React.FC<Props> & SubComponents = ({
     FC: Article,
   });
 
+  const Component = as;
+
   return (
-    <ArticleProvider order={order}>
-      <section
-        id={id}
-        className={classNames(
-          'container mx-auto flex flex-col-reverse lg:flex-row w-full justify-evenly',
-          className,
-        )}
-      >
-        <div
-          className={classNames(
-            'flex items-center justify-center w-full lg:w-1/2',
-            order === 'left' ? 'lg:order-1' : 'lg:order-2',
-          )}
-        >
-          {Image.component}
-        </div>
-        {Content.component}
-      </section>
-    </ArticleProvider>
+    <Component
+      id={id}
+      className={classNames(
+        'container mx-auto flex flex-col lg:flex-row w-full justify-evenly gap-x-20',
+        className,
+      )}
+    >
+      {Content.component}
+      <div className="flex items-center justify-center w-full lg:w-1/2">
+        {Image.component}
+      </div>
+    </Component>
   );
 };
 

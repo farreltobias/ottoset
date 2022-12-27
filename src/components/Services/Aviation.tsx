@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
 
@@ -10,11 +9,7 @@ import { Article, Content } from '@components/Article';
 
 export const Aviation: React.FC = () => {
   return (
-    <Article
-      id="aviacao"
-      className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]"
-      order="right"
-    >
+    <Article id="aviacao" className="pt-32 -mt-20 lg:pt-48 lg:-mt-[4.5rem]">
       <Article.Image className="shadow-[24px_24px_0px_-1px_white,24px_24px_#818181] lg:shadow-[32px_32px_0_-1px_white,32px_32px_#818181]">
         <Image
           src={aviation}
@@ -29,23 +24,21 @@ export const Aviation: React.FC = () => {
         <Content.Title>Aviação</Content.Title>
         <Content.SubTitle>Modernização de GPU</Content.SubTitle>
         <Content.Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non tempor
-          aliquet quis feugiat ac at. Scelerisque lectus phasellus dignissim nec
-          accumsan. Mi tincidunt aenean tristique metus venenatis ac, volutpat.
-          Dictum ultrices lacus at hac nibh bibendum at elit. Nisl, amet congue
-          lectus a, a. Diam, mattis imperdiet pellentesque euismod mattis.
-          Blandit congue nullam nisl, sed. Egestas ultricies mollis augue cum.
-          Lacus facilisis lorem morbi pharetra tristique sit eget tortor
-          pulvinar. Condimentum volutpat, volutpat dui habitant. Fermentum
-          facilisis enim nunc placerat est cras eget mi. Proin odio amet,
-          aliquet elementum. Elementum mi ultrices dui sagittis convallis.
+          A Aviação é um dos segmentos que mais cresce no mundo, e a cada dia
+          novas tecnologias são desenvolvidas para tornar a experiência do
+          passageiro ainda mais confortável e segura. A Ottoset Energy é
+          especialista em projetos de modernização de GPU (Geradores de Potência
+          de Unidade) e de GME (Geradores de Motores de Emergência) para
+          aeronaves, e possui uma equipe de engenheiros e técnicos altamente
+          qualificados para atender as necessidades de cada cliente. Nossos
+          projetos são desenvolvidos de acordo com as normas e regulamentações
+          internacionais e nacionais, e são certificados por órgãos de
+          fiscalização aeronáutica.
         </Content.Text>
-        <Content.Button className="xl:w-3/5">
-          <Link href="/contato" className="flex justify-center w-full">
-            Solicite um orçamento
-            <DoubleArrow className="fill-primary-600 group-hover:fill-secondary-900" />
-          </Link>
-        </Content.Button>
+        <Content.Link href="/contato" text="Solicite um orçamento">
+          Solicite um orçamento
+          <DoubleArrow className="transition-all fill-primary-600 group-hover:fill-secondary-900" />
+        </Content.Link>
       </Article.Content>
     </Article>
   );

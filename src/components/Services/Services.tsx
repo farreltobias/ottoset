@@ -15,16 +15,16 @@ export const Services: React.FC = () => {
       </Title>
 
       <Text variant="p2" center className="max-w-4xl lg:ml-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non tempor
-        aliquet quis feugiat ac at. Scelerisque lectus phasellus dignissim nec
-        accumsan. Mi tincidunt aenean tristique metus venenatis ac, volutpat.
-        Dictum ultrices lacus at hac nibh bibendum at elit. Nisl, amet congue
-        lectus a, a. Diam, mattis imperdiet pellentesque euismod mattis. Blandit
-        congue nullam nisl, sed. Egestas ultricies mollis augue cum. Lacus
-        facilisis lorem morbi pharetra tristique sit eget tortor pulvinar.
-        Condimentum volutpat, volutpat dui habitant. Fermentum facilisis enim
-        nunc placerat est cras eget mi. Proin odio amet, aliquet elementum.
-        Elementum mi ultrices dui sagittis convallis.
+        A Ottoset Energy é uma empresa especializada em soluções energéticas,
+        atuando no segmento de geração de energia, com foco em geradores de
+        energia, monitoramento remoto e manutenção preventiva e corretiva.
+        Oferecemos soluções completas para o seu negócio, com garantia de
+        qualidade e segurança. Nossos serviços são realizados por profissionais
+        altamente qualificados e com experiência no mercado. Contamos com
+        serviços de manutenção preventiva e corretiva, monitoramento remoto,
+        modernização de GPU e GME, e projetos de instalação de geradores de
+        energia. Os serviçoes de GMC e UFV são realizados em todo o território
+        nacional. Entre em contato conosco e solicite um orçamento.
       </Text>
     </section>
   );

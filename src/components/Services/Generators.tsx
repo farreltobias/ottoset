@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import DoubleArrow from '@public/navigation/double-arrow-right.svg';
 
@@ -32,15 +31,10 @@ export const Generators: React.FC = () => {
           Monitoramento remoto através de APP e WEB. Monitoramento contínuo e em
           tempo real.
         </Content.Text>
-        <Content.Button className="xl:w-3/5">
-          <Link
-            href="/contato"
-            className="flex items-center justify-center w-full"
-          >
-            Seja um cliente Ottoset
-            <DoubleArrow className="transition-all fill-primary-600 group-hover:fill-secondary-900" />
-          </Link>
-        </Content.Button>
+        <Content.Link href="/contato" text="Seja um cliente Ottoset">
+          Seja um cliente Ottoset
+          <DoubleArrow className="transition-all fill-primary-600 group-hover:fill-secondary-900" />
+        </Content.Link>
       </Article.Content>
     </Article>
   );
