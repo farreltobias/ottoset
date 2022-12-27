@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
-  const { data: initialImages, error } = useInstagram(limit);
+  const { data: initialImages, error, mutate } = useInstagram(limit);
 
   const [photos, setPhotos] = useState(initialImages?.data || []);
 
@@ -50,18 +50,28 @@ export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
   useEffect(() => {
     if (!width) return;
 
-    const limit = Math.ceil(width / 240) + 1;
+    const setNewPhotos = async () => {
+      let images = initialImages?.data;
 
-    if (photos.length === limit || photos.length > limit) return;
+      if (!images) {
+        images = await mutate().then((data) => data?.data);
+      }
 
-    const repetitions = Math.ceil(limit / limit);
-    const newPhotos = Array.from(
-      { length: repetitions },
-      () => initialImages?.data || [],
-    ).flat();
+      const limit = Math.ceil(width / 240) + 1;
 
-    setPhotos(newPhotos.slice(0, limit));
-  }, [photos.length, width, initialImages]);
+      if (photos.length === limit || photos.length > limit) return;
+
+      const repetitions = Math.ceil(limit / limit);
+      const newPhotos = Array.from(
+        { length: repetitions },
+        () => initialImages?.data || [],
+      ).flat();
+
+      setPhotos(newPhotos.slice(0, limit));
+    };
+
+    setNewPhotos();
+  }, [width, initialImages, photos, mutate]);
 
   useEffect(() => {
     reloadEmbla();
