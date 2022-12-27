@@ -41,6 +41,11 @@ const Perguntas: React.FC<PerguntasProps> = ({ slice: { items } }) => (
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 500,
+            damping: 35,
+          }}
           layout
         >
           <Title as="span" variant="h3" className="text-center mb-4">
