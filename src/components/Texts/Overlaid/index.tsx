@@ -9,17 +9,19 @@ export type SubComponents = {
 };
 
 type Props = React.PropsWithChildren<{
+  as?: React.ElementType;
   className?: string;
   center?: boolean;
 }>;
 
 const Overlaid: React.FC<Props> & SubComponents = ({
+  as = 'h1',
   children,
   className = '',
   center = false,
 }) => (
   <MainTitle
-    as="h1"
+    as={as}
     variant="h3"
     smallVariant="h2"
     largeVariant="display2"

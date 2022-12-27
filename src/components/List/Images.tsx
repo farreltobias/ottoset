@@ -1,7 +1,18 @@
-type Props = {
-  children: JSX.Element | JSX.Element[];
-};
+import { classNames } from '@utils/classNames';
 
-export const Images: React.FC<Props> = ({ children }) => {
-  return <>{children}</>;
+type Props = React.PropsWithChildren<{
+  className?: string;
+}>;
+
+export const Images: React.FC<Props> = ({ children, className = '' }) => {
+  return (
+    <div
+      className={classNames(
+        'flex items-center justify-center lg:w-1/2',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 };

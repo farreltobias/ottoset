@@ -1,9 +1,8 @@
-import Image from 'next/image';
-
 import energy from '@public/photos/energy.webp';
 import services from '@public/photos/services.webp';
 import shock from '@public/photos/shock.webp';
 
+import { BlurImage } from '@components/BlurImage';
 import { Title } from '@components/Texts';
 import { Overlaid } from '@components/Texts/Overlaid';
 
@@ -28,7 +27,7 @@ export const Materials: React.FC = () => {
             Apresentação <br />
             comercial
           </Title>
-          <Image
+          <BlurImage
             src={shock}
             alt="arte de apresentação comercial"
             placeholder="blur"
@@ -38,7 +37,7 @@ export const Materials: React.FC = () => {
         </div>
         <div className="absolute bottom-6 xs:bottom-20 lg:bottom-28 left-1/3">
           <div className="relative full">
-            <Image
+            <BlurImage
               src={services}
               alt="arte de portfólio de serviços"
               className="object-cover object-center"
@@ -60,7 +59,7 @@ export const Materials: React.FC = () => {
         </div>
         <div className="flex bg-no-repeat mb-10 xs:mb-28 lg:mb-44 z-10">
           <div className="relative full">
-            <Image
+            <BlurImage
               src={energy}
               alt="arte de guia da marca"
               placeholder="blur"

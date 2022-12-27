@@ -1,7 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { motion, Transition, Variants } from 'framer-motion';
+
+import { BlurImage } from '@components/BlurImage';
 
 import { Service } from '@data/static/services';
 
@@ -41,10 +42,9 @@ export const Area: React.FC<Props> = ({ service }) => {
           href={service.link}
           className="relative flex flex-col justify-center items-center full"
         >
-          <Image
+          <BlurImage
             area-hidden="true"
             src={service.image}
-            placeholder="blur"
             alt="background image"
             className="object-cover brightness-50 -z-10"
             sizes="(min-width: 768px) 110vw, (min-width: 1024px) 26vw"

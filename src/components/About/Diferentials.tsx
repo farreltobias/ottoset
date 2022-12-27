@@ -1,8 +1,7 @@
-import Image from 'next/image';
-
 import workers from '@public/photos/diferentials-workers.webp';
 import monitor from '@public/photos/double-monitor.webp';
 
+import { BlurImage } from '@components/BlurImage';
 import { List } from '@components/List';
 
 type Props = {
@@ -11,18 +10,20 @@ type Props = {
 
 export const Diferentials: React.FC<Props> = ({ diferentials }) => {
   return (
-    <section className="mt-12 lg:mt-28">
-      <List>
-        <List.Content items={diferentials}>Nossos diferenciais</List.Content>
-        <List.Images>
-          <Image
+    <section className="mt-12 lg:mt-24">
+      <List className="">
+        <List.Content items={diferentials} className="lg:w-3/5 gap-20">
+          Nossos diferenciais
+        </List.Content>
+        <List.Images className="relative w-5/6 mx-auto">
+          <BlurImage
             src={workers}
             alt="Office workers"
             placeholder="blur"
             className="w-full h-auto"
             sizes="100vw"
           />
-          <Image
+          <BlurImage
             src={monitor}
             alt="Concentrated worker"
             placeholder="blur"

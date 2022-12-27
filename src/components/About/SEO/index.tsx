@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 
 import { JsonLd } from './jsonld';
-import { SEO as DefaultSeo } from './seo';
+import { SEO as NextSeo } from './seo';
 
 type Props = {
   image: StaticImageData;
@@ -15,8 +15,8 @@ export const SEO: React.FC<Props> = ({ image, siteURL, pageImages }) => {
 
   return (
     <>
-      <DefaultSeo ogImageURL={ogImage} />
-      <JsonLd images={images} ogImageURL={ogImage} />
+      <NextSeo ogImageURL={ogImage} siteURL={siteURL} />
+      <JsonLd images={images} siteURL={siteURL} />
     </>
   );
 };

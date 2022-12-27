@@ -4,24 +4,26 @@ import config from 'next-seo.config';
 
 type Props = {
   ogImageURL: string;
+  siteURL: string;
 };
 
-export const SEO: React.FC<Props> = ({ ogImageURL }) => {
+export const SEO: React.FC<Props> = ({ ogImageURL, siteURL }) => {
   const defaultOptions = {
+    title: 'Sobre a Ottoset Energy',
     description:
       'A Ottoset Energy é uma empresa especializada em soluções em energia.',
-    url: 'https://www.ottoset.com.br/sobre',
+    url: `${siteURL}/sobre`,
   };
 
-  const { description, url } = defaultOptions;
+  const { description, url, title } = defaultOptions;
 
   const prorps: NextSeoProps = {
-    title: 'Sobre',
+    title,
     description,
     canonical: url,
     openGraph: {
       ...config.openGraph,
-      title: 'Sobre a Ottoset Energy',
+      title,
       description,
       url,
       images: [
@@ -29,7 +31,7 @@ export const SEO: React.FC<Props> = ({ ogImageURL }) => {
           url: ogImageURL,
           width: 528,
           height: 360,
-          alt: 'Sobre a Ottoset Energy',
+          alt: title,
         },
       ],
     },

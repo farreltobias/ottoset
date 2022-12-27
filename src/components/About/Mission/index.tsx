@@ -22,12 +22,12 @@ export const Mission: React.FC<Props> = ({ missions }) => (
       sizes="(min-width: 768px) 384vw, (min-width: 1024px) 100vw"
     />
 
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="container mx-auto flex flex-col items-center lg:pt-20">
       <Title
         as="h2"
         variant="h3"
         largeVariant="h1"
-        className="text-center lg:mt-20 mb-4 lg:mb-2"
+        className="text-center mb-4 lg:mb-2"
       >
         Missão, Visão e Valores
       </Title>

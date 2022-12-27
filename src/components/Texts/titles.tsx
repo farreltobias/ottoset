@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { classNames } from '@utils/classNames';
 
@@ -71,7 +71,7 @@ type Props = React.PropsWithChildren<{
   className?: string;
   center?: boolean;
   style?: React.CSSProperties;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
+  as?: React.ElementType;
   variant?: keyof typeof variants;
   xlVariant?: keyof typeof extraLargeVarients;
   largeVariant?: keyof typeof largeVarients;

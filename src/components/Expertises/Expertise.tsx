@@ -1,7 +1,9 @@
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import { motion, Transition, Variants } from 'framer-motion';
+
+import { BlurImage } from '@components/BlurImage';
 
 import { classNames } from '@utils/classNames';
 
@@ -73,10 +75,9 @@ export const Expertise: React.FC<Props> = ({ title, image, link }) => {
       transition={transition}
       className="relative full font-bold font-title text-neutral text-center tracking-wider uppercase whitespace-pre"
     >
-      <Image
+      <BlurImage
         src={image}
         alt="background image"
-        placeholder="blur"
         className="object-cover brightness-50"
         sizes="(min-width: 0) 100vw"
         fill

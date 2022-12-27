@@ -81,7 +81,7 @@ const Sobre: NextPage = () => {
       <Diferentials diferentials={diferentials} />
 
       {/* Expertises, arbitrary content */}
-      <Expertises className="mt-20 lg:mt-28" expertises={expertises} />
+      <Expertises className="mt-20 lg:mt-24" expertises={expertises} />
 
       {/* Other materials, arbitrary content */}
       <Materials />

@@ -11,7 +11,7 @@ import {
   WebPageJsonLdProps,
 } from 'next-seo';
 
-import logo from '@public/company/logo.svg';
+import logo from '@public/company/logo.png';
 
 import { socials } from '@data/socials';
 import { address, email, phone, whatsapp } from '@data/static/ottoset';
@@ -22,7 +22,7 @@ type Props = {
 };
 
 export const DefaultJsonLd: React.FC<Props> = ({ siteURL, lastReviewed }) => {
-  const logoURL = `${siteURL}/${(logo as any).src}`;
+  const logoURL = `${siteURL}${(logo as any).src}`;
 
   const webPageProps: WebPageJsonLdProps = {
     description:

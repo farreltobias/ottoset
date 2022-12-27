@@ -7,13 +7,14 @@ type Props = React.PropsWithChildren<{
   style?: React.CSSProperties;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p';
   variant?: 'title' | 'text';
+  'aria-hidden'?: 'true' | 'false';
 }>;
 
 const FowardFunction: React.ForwardRefRenderFunction<
   HTMLHeadingElement,
   Props
 > = (
-  { children, className = '', as = 'span', variant = 'title', style },
+  { children, className = '', as = 'span', variant = 'title', style, ...props },
   ref,
 ) => {
   const Component = as;
@@ -23,6 +24,7 @@ const FowardFunction: React.ForwardRefRenderFunction<
 
   return (
     <Component
+      aria-hidden={props['aria-hidden']}
       ref={ref}
       className={classNames('uppercase font-bold', font, leading, className)}
       style={style}
