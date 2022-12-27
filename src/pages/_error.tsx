@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Button } from '@components/Button';
 
-const Custom404: NextPage = () => {
+const Custom500: NextPage = () => {
   return (
     <>
       <Head>
@@ -34,4 +34,4 @@ const Custom404: NextPage = () => {
   );
 };
 
-export default Custom404;
+export default Custom500;

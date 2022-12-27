@@ -6,7 +6,7 @@ import {
   PrismicProvider as Provider,
 } from '@prismicio/react';
 
-import { repositoryName } from 'prismicio';
+import { reactClient, repositoryName } from 'prismicio';
 
 const richTextComponents: JSXMapSerializer = {
   heading1: ({ children }) => <>{children}</>,
@@ -21,6 +21,7 @@ export const PrismicProvider: React.FC<Props> = ({ children }) => {
     <Provider
       internalLinkComponent={({ ...props }) => <Link {...props} />}
       richTextComponents={richTextComponents}
+      client={reactClient}
     >
       <PrismicPreview repositoryName={repositoryName}>
         {children}

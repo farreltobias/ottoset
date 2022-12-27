@@ -156,17 +156,6 @@ export type FaqDocument<Lang extends string = string> = prismicT.PrismicDocument
 /** Content for Projeto documents */
 interface ProjectDocumentData {
     /**
-     * Categoria field in *Projeto*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: Categoria do Projeto
-     * - **API ID Path**: project.category
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    category: prismicT.KeyTextField;
-    /**
      * Título field in *Projeto*
      *
      * - **Field Type**: Title
@@ -188,6 +177,17 @@ interface ProjectDocumentData {
      *
      */
     description: prismicT.RichTextField;
+    /**
+     * Categoria field in *Projeto*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    category: prismicT.SelectField<"Grupo Geradores" | "Energia Solar" | "Manutenção" | "Aviação">;
     /**
      * Capa field in *Projeto*
      *

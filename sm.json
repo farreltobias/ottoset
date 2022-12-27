@@ -1,5 +1,6 @@
 {
   "apiEndpoint": "https://ottoset.prismic.io/api/v2",
+  "customTypeApiEndpoint": "https://customtypes.prismic.io",
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
   "libraries": [
     "@/slices"

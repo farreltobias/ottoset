@@ -4,7 +4,7 @@ type Params = {
 
 export const SEO = ({ question }: Params) => {
   return {
-    title: `Perguntas frequentes - Ottoset Energy`,
+    title: `Perguntas frequentes`,
     description: `${question} Veja a resposta dessa e de outras perguntas frequentes sobre a Ottoset Energy.`,
     canonical: `https://www.ottoset.com.br/faq`,
   };

@@ -14,7 +14,7 @@ import { BannerSlice } from '.slicemachine/prismicio';
 
 type Props = SliceComponentProps<BannerSlice>;
 
-const Banner: React.FC<Props> = ({ slice }) => {
+const Banner: React.FC<Props> = ({ slice, index }) => {
   const { background, description, navTo, title } = slice.primary;
 
   const titleText = (title as RTHeading1Node[])?.reduce(
@@ -55,6 +55,7 @@ const Banner: React.FC<Props> = ({ slice }) => {
     >
       <Component {...props} className="relative block h-full">
         <PrismicNextImage
+          priority={index === 0}
           field={background}
           className="object-cover brightness-50"
           sizes="(min-width: 0) 100vw"

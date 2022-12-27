@@ -10,6 +10,7 @@ const SliceSimulatorPage = () => {
       sliceZone={({ slices }) => (
         <SliceZone slices={slices} components={components} />
       )}
+      className="full grid place-items-center child:w-full"
       state={state}
     />
   );

@@ -12,7 +12,7 @@ export const SEO = ({
   const duration = getDurationFromSlices(slices);
 
   return {
-    title: `${prismicH.asText(title)} - Ottoset Energy`,
+    title: prismicH.asText(title),
     description: `${prismicH.asText(
       description,
     )}. Veja mais sobre o projeto ${prismicH.asText(

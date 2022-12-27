@@ -1,5 +1,5 @@
 export const SEO = {
-  title: 'Política de privacidade - Ottoset Energy',
+  title: 'Política de privacidade',
   description: 'Política de privacidade da Ottoset Energy',
   canonical: 'https://www.ottoset.com.br/',
 };

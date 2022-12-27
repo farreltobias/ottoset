@@ -66,6 +66,9 @@ const nextConfig = withBundleAnalyzer({
 
     return config;
   },
+  env: {
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
+  },
 });
 
 module.exports = nextConfig;

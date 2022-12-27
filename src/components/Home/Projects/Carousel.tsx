@@ -44,8 +44,6 @@ export const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
         res.json(),
       )) as Query<ProjectDocument>;
 
-      console.log(data);
-
       setProjectsPage((prevProjects) => {
         const newProjects = [...prevProjects];
 

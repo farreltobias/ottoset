@@ -51,3 +51,8 @@ export const createClient = (config = {}) => {
 
   return client;
 };
+
+export const reactClient = prismic.createClient(sm.apiEndpoint, {
+  accessToken: process.env.PRISMIC_API_KEY,
+  routes,
+});

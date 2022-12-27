@@ -15,7 +15,8 @@ type Props = {
 };
 
 export const Tabs: React.FC<Props> = ({ initialData }) => {
-  const [projectsPage, setProjectsPage] = useState(initialData);
+  const [projectsPage, setProjectsPage] =
+    useState<ProjectsByCategory[]>(initialData);
 
   const options: EmblaOptionsType = useMemo(
     () => ({

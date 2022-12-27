@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 
+import { useInstagram } from '@hooks/useInstagram';
 import { useWindowSize } from '@hooks/useWindowSize';
 
 import { Link } from '@components/Link';
@@ -12,15 +13,16 @@ import { Title } from '@components/Texts';
 
 import { instagram } from '@data/static/ottoset';
 
-import { Response } from '@pages/index';
-
 type Props = {
-  images: Response['data'];
+  limit?: number;
 };
 
-export const Instagram: React.FC<Props> = ({ images }) => {
+export const Instagram: React.FC<Props> = ({ limit = 12 }) => {
+  const { data: initialImages, error } = useInstagram(limit);
+
+  const [photos, setPhotos] = useState(initialImages?.data || []);
+
   const { width } = useWindowSize();
-  const [photos, setPhotos] = useState(images);
 
   const options: EmblaOptionsType = useMemo(
     () => ({
@@ -52,15 +54,20 @@ export const Instagram: React.FC<Props> = ({ images }) => {
 
     if (photos.length === limit || photos.length > limit) return;
 
-    const repetitions = Math.ceil(limit / images.length);
-    const newPhotos = Array.from({ length: repetitions }, () => images).flat();
+    const repetitions = Math.ceil(limit / limit);
+    const newPhotos = Array.from(
+      { length: repetitions },
+      () => initialImages?.data || [],
+    ).flat();
 
     setPhotos(newPhotos.slice(0, limit));
-  }, [photos.length, width, images]);
+  }, [photos.length, width, initialImages]);
 
   useEffect(() => {
     reloadEmbla();
   }, [reloadEmbla, photos]);
+
+  if (error || !photos.length) return null;
 
   return (
     <section>

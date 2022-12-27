@@ -1,20 +1,11 @@
 {
-  "uid": {
-    "__TYPE__": "UIDContent",
-    "value": "coast"
-  },
-  "category": {
-    "__TYPE__": "FieldContent",
-    "value": "Grupo Gerador",
-    "type": "Text"
-  },
   "title": {
     "__TYPE__": "StructuredTextContent",
     "value": [
       {
         "type": "heading1",
         "content": {
-          "text": "Brush"
+          "text": "Fastened"
         }
       }
     ]
@@ -25,22 +16,27 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Reprehenderit et voluptate nisi magna cillum do officia ut id."
+          "text": "Reprehenderit elit nulla magna et elit ullamco nulla in voluptate commodo amet reprehenderit tempor. Laborum adipisicing ex anim labore tempor eu exercitation ullamco elit et mollit. Exercitation nisi laboris et amet."
         }
       }
     ]
+  },
+  "category": {
+    "__TYPE__": "FieldContent",
+    "value": "Energia Solar",
+    "type": "Select"
   },
   "cover": {
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
-      "width": 3277,
-      "height": 4092
+      "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+      "width": 3958,
+      "height": 3958
     },
-    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
-    "width": 3277,
-    "height": 4092,
+    "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+    "width": 3958,
+    "height": 3958,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -51,11 +47,15 @@
     },
     "thumbnails": {}
   },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "yesterday"
+  },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "artigo$638ac792-c858-4629-a170-2743f4c6f987",
+        "key": "artigo$6e8ba5eb-6e8a-4d87-9823-ecd363c910ad",
         "name": "artigo",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -67,7 +67,7 @@
                 {
                   "type": "heading2",
                   "content": {
-                    "text": "Certain"
+                    "text": "Vegetable"
                   }
                 }
               ]
@@ -76,13 +76,13 @@
               "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
-                "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
-                "width": 3456,
-                "height": 4320
+                "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+                "width": 3958,
+                "height": 3958
               },
-              "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
-              "width": 3456,
-              "height": 4320,
+              "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+              "width": 3958,
+              "height": 3958,
               "edit": {
                 "zoom": 1,
                 "crop": {
@@ -106,7 +106,7 @@
                       {
                         "type": "paragraph",
                         "content": {
-                          "text": "Exercitation laborum et sit consectetur proident et sit ullamco. Nulla id amet laborum quis laborum eiusmod dolore Lorem amet ex magna aute eu."
+                          "text": "Laboris veniam ea officia aliquip Lorem velit excepteur sit voluptate ea."
                         }
                       }
                     ]
