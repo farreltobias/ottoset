@@ -1,5 +1,4 @@
 import { GetStaticProps, NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -8,16 +7,13 @@ import { Query } from '@prismicio/types';
 import { createClient } from 'prismicio';
 
 import { JsonLd } from '@components/ProjectsList/JsonLd';
+import { List } from '@components/ProjectsList/List';
 import { SEO } from '@components/SEO';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { projectCard } from '@utils/graphQueries';
 
 import { ProjectDocument } from '.slicemachine/prismicio';
-
-const List = dynamic(() =>
-  import('@components/ProjectsList/List').then(({ List }) => List),
-);
 
 type PageProps = {
   projects: Query<ProjectDocument>;

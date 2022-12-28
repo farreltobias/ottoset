@@ -11,7 +11,7 @@ type Props = {
 export const MoreServices: React.FC<Props> = ({ services }) => {
   return (
     <section className="mt-14 lg:mt-24">
-      <List>
+      <List className="gap-y-20 gap-x-16">
         <List.Content
           items={services}
           className="lg:order-last lg:w-3/5 gap-20"

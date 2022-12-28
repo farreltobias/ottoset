@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Transition } from 'framer-motion';
 
 import Arrow from '@public/navigation/arrow-right.svg';
 
@@ -11,6 +11,12 @@ import { Disclosure as Menu } from '@headlessui/react';
 type Props = {
   label: string;
   children: ReactNode[];
+};
+
+const transition: Transition = {
+  type: 'spring',
+  stiffness: 500,
+  damping: 25,
 };
 
 export const Disclosure: React.FC<Props> = ({ label, children }) => {
@@ -37,7 +43,8 @@ export const Disclosure: React.FC<Props> = ({ label, children }) => {
                 className="w-full overflow-hidden"
                 initial={{ height: 0 }}
                 animate={{ height: 'auto' }}
-                exit={{ height: 0 }}
+                exit={{ height: 0, transition: { duration: 0.2 } }}
+                transition={transition}
               >
                 {children}
               </Menu.Panel>

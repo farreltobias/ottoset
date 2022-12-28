@@ -51,7 +51,7 @@ export const JsonLd: React.FC<Props> = ({
     isAccessibleForFree: true,
     authorName: [
       {
-        '@type': 'Organization',
+        type: 'Organization',
         name: 'Ottoset Energy',
         url: siteURL,
       },

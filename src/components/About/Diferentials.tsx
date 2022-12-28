@@ -11,8 +11,8 @@ type Props = {
 export const Diferentials: React.FC<Props> = ({ diferentials }) => {
   return (
     <section className="mt-12 lg:mt-24">
-      <List className="">
-        <List.Content items={diferentials} className="lg:w-3/5 gap-20">
+      <List className="gap-y-20 gap-x-16">
+        <List.Content items={diferentials} className="lg:w-3/5">
           Nossos diferenciais
         </List.Content>
         <List.Images className="relative w-5/6 mx-auto">
