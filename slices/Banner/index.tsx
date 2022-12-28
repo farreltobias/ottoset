@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
 import { RTHeading1Node } from '@prismicio/types';
 
-import { PrismicBlurImage } from '@components/BlurImage';
 import { Caps } from '@components/Texts';
 
 import { classNames } from '@utils/classNames';
@@ -54,7 +54,7 @@ const Banner: React.FC<Props> = ({ slice, index }) => {
       )}
     >
       <Component {...props} className="relative block h-full overflow-hidden">
-        <PrismicBlurImage
+        <PrismicNextImage
           priority={index === 0}
           field={background}
           className="object-cover brightness-50"

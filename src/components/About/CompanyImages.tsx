@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import eletronic from '@public/photos/eletronic.webp';
 import mechanic from '@public/photos/mechanic.webp';
 import office from '@public/photos/office.webp';
@@ -9,9 +11,10 @@ export const CompanyImages: React.FC = () => {
   return (
     <div className="relative flex items-center justify-center lg:justify-end w-full lg:w-2/5 child:drop-shadow-xl">
       <div className="relative w-5/6 lg:w-full child:drop-shadow-xl">
-        <BlurImage
+        <Image
           src={office}
           alt="office"
+          placeholder="blur"
           className="w-full h-auto"
           priority
         />
