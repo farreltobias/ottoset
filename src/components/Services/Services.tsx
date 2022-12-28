@@ -2,8 +2,9 @@ import { Text, Title } from '@components/Texts';
 
 export const Services: React.FC = () => {
   return (
-    <section className="container mx-auto flex flex-col lg:flex-row justify-between mt-16 lg:mt-40">
+    <div className="container mx-auto flex flex-col lg:flex-row justify-between mt-16 lg:mt-40">
       <Title
+        as="h2"
         variant="h3"
         largeVariant="h2"
         center
@@ -21,11 +22,12 @@ export const Services: React.FC = () => {
         Oferecemos soluções completas para o seu negócio, com garantia de
         qualidade e segurança. Nossos serviços são realizados por profissionais
         altamente qualificados e com experiência no mercado. Contamos com
-        serviços de manutenção preventiva e corretiva, monitoramento remoto,
+        serviços para grupos geradores (GMG) & energia solar fotovoltaica (UFV),
+        com manutenção preventiva e corretiva, monitoramento remoto,
         modernização de GPU e GME, e projetos de instalação de geradores de
-        energia. Os serviçoes de GMC e UFV são realizados em todo o território
+        energia. Os serviços de GMC e UFV são realizados em todo o território
         nacional. Entre em contato conosco e solicite um orçamento.
       </Text>
-    </section>
+    </div>
   );
 };

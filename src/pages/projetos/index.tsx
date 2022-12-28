@@ -1,16 +1,22 @@
 import { GetStaticProps, NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
 import { Query } from '@prismicio/types';
 
 import { createClient } from 'prismicio';
 
-import { List } from '@components/Projects/List';
 import { Overlaid } from '@components/Texts/Overlaid';
 
 import { SEO } from '@seo/projetos';
 
+import { projectCard } from '@utils/graphQueries';
+
 import { ProjectDocument } from '.slicemachine/prismicio';
+
+const List = dynamic(() =>
+  import('@components/Projects/List').then(({ List }) => List),
+);
 
 type PageProps = {
   projects: Query<ProjectDocument>;
@@ -41,25 +47,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   const nextClient = createClient({ previewData });
 
   const projects = await nextClient.getByType('project', {
-    graphQuery: `{
-      project {
-        title
-        category
-        description
-        cover
-        slices {
-          ... on artigo {
-            variation {
-              ... on default {
-                items {
-                  paragraph
-                }
-              }
-            }
-          }
-        }
-      }
-    }`,
+    graphQuery: projectCard,
     orderings: {
       field: 'document.last_publication_date',
       direction: 'desc',

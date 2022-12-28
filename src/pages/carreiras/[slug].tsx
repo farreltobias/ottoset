@@ -2,8 +2,6 @@ import type { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
-import { createClient } from 'prismicio';
-
 import { SEO } from '@seo/carreiras/carreira';
 
 import type { CareerDocument } from '.slicemachine/prismicio';
@@ -56,6 +54,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     };
   }
 
+  const { createClient } = await import('prismicio');
+
   const nextClient = createClient({ previewData });
   const career = await nextClient.getByUID('career', slug).catch(() => null);
 
@@ -73,6 +73,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 };
 
 export async function getStaticPaths() {
+  const { createClient } = await import('prismicio');
+
   const nextClient = createClient();
 
   const pages = await nextClient.getAllByType('career');

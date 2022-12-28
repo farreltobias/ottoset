@@ -16,7 +16,7 @@ export const Projects: React.FC<Props> = ({ initialData }) => {
     <article className="flex flex-col w-full mt-16 lg:mt-36 bg-primary-600">
       <div className="bg-no-repeat bg-right lg:bg-center lg:bg-cover bg-[url('/backgrounds/portfolio-mobile.png')] lg:bg-[url('/backgrounds/portfolio.svg')]">
         <div className="container mx-auto">
-          <div className="flex justify-center lg:justify-between mt-16 lg:mt-28 mb-8">
+          <div className="flex justify-center items-center lg:justify-between mt-16 lg:mt-28 mb-8">
             <Title
               variant="h2"
               largeVariant="h1"
