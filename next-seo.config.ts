@@ -16,6 +16,12 @@ const config: DefaultSeoProps = {
       href: '/favicon.ico',
     },
   ],
+  additionalMetaTags: [
+    {
+      name: 'google-site-verification',
+      content: 'MFR03KFcayQjduI3PHU1XDpRVM03yenhTmrw7kQj4_4',
+    },
+  ],
 };
 
 export default config;
