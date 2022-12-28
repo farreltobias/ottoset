@@ -1,8 +1,13 @@
 import type { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
-import { SEO } from '@seo/carreiras/carreira';
+import * as prismicH from '@prismicio/helpers';
+
+import logo from '@public/company/logo.png';
+
+import { JsonLd } from '@components/Career/JsonLd';
+import { SEO } from '@components/SEO';
 
 import type { CareerDocument } from '.slicemachine/prismicio';
 
@@ -26,9 +31,22 @@ type PageProps = {
 };
 
 const Career: NextPage<PageProps> = ({ career }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const titleText = prismicH.asText(career.data.title);
+
+  const seoOptions = {
+    title: `${titleText} - Ottoset Energy`,
+    description: `Se candidate para a vaga de ${titleText}. Venha fazer parte da Ottoset, uma empresa que está revolucionando o mercado de energia solar no Brasil.`,
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <>
-      <NextSeo {...SEO({ slug: career.uid, ...career.data })} />
+      <SEO options={seoOptions} ogImage={logo} />
+      <JsonLd options={seoOptions} career={career} />
 
       <ToastContainer />
 

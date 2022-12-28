@@ -1,13 +1,15 @@
 import React from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 import { createClient } from 'prismicio';
 
-import { Overlaid } from '@components/Texts/Overlaid';
+import logo from '@public/company/logo.png';
 
-import { SEO } from '@seo/faq';
+import { JsonLd } from '@components/FAQ/JsonLd';
+import { SEO } from '@components/SEO';
+import { Overlaid } from '@components/Texts/Overlaid';
 
 import { PerguntasSlice } from '.slicemachine/prismicio';
 
@@ -30,9 +32,20 @@ type PageProps = {
 };
 
 const FAQ: NextPage<PageProps> = ({ faq, categories, keyQuestion }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Perguntas frequentes da Ottoset Energy',
+    description: `${keyQuestion} Veja a resposta dessa e de outras perguntas frequentes sobre a Ottoset Energy.`,
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <article>
-      <NextSeo {...SEO({ question: keyQuestion })} />
+      <SEO options={seoOptions} ogImage={logo} />
+      <JsonLd options={seoOptions} items={faq.items} />
 
       <Overlaid className="text-center mt-20">
         <Overlaid.Title>FAQ</Overlaid.Title>

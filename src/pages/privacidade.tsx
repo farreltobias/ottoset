@@ -1,14 +1,26 @@
 import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
+import logo from '@public/company/logo.png';
+
+import { SEO } from '@components/SEO';
 import { Text, Title } from '@components/Texts';
 
-import { SEO } from '@seo/privacidade';
-
 const Privacidade: NextPage = () => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Política de privacidade da Ottoset Energy',
+    description:
+      'Conheça a política de privacidade e cookies da Ottoset Energy.',
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <article className="container mx-auto mt-12 mb-36 lg:mt-24 lg:mb-72">
-      <NextSeo {...SEO} />
+      <SEO options={seoOptions} ogImage={logo} />
 
       <Title variant="h3" largeVariant="h1" center className="mb-6">
         Política de privacidade e cookies

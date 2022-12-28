@@ -1,11 +1,14 @@
 import { useRef } from 'react';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import { StaticImageData } from 'next/image';
+import { useRouter } from 'next/router';
 
 import ogImage from '@public/photos/office.webp';
 
+import { JsonLd } from '@components/About/JsonLd';
 import { Presentation } from '@components/About/Presentation';
-import { SEO } from '@components/About/SEO';
+import { SEO } from '@components/SEO';
 
 import { images } from '@data/images/sobre';
 import {
@@ -54,13 +57,25 @@ const Sobre: NextPage = () => {
   const ref = useRef<HTMLElement | null>(null);
 
   const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
-  const allImages = Object.values(images).flatMap((image) =>
-    Object.values(image),
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Sobre a Ottoset Energy',
+    description:
+      'Conheça a Ottoset, uma empresa especializada em soluções em energia que oferece soluções para o seu negócio. Acesse e saiba mais!',
+    path: asPath,
+    siteURL,
+  };
+
+  const pageImages = Object.values(images).flatMap(
+    (image: Record<string, StaticImageData>) =>
+      Object.values(image).map(({ src }) => src),
   );
 
   return (
     <article ref={(el) => (ref.current = el)}>
-      <SEO image={ogImage} siteURL={siteURL} pageImages={allImages} />
+      <SEO options={seoOptions} ogImage={ogImage} />
+      <JsonLd options={seoOptions} pageImages={pageImages} />
 
       {/* About the company, primary content */}
       <div className="container mx-auto flex flex-col lg:flex-row gap-x-32 mt-10 lg:mt-12">

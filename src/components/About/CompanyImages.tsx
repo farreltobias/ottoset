@@ -19,6 +19,7 @@ export const CompanyImages: React.FC = () => {
           priority
         />
         <BlurImage
+          priority
           src={streetview}
           alt="streetview"
           className="absolute w-2/5 top-0 left-0 -translate-x-1/3 -translate-y-1/3"

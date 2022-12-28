@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { StaticImageData } from 'next/image';
+import { useRouter } from 'next/router';
 
 import { predicate } from '@prismicio/client';
 import { Query } from '@prismicio/types';
@@ -8,8 +9,12 @@ import { Query } from '@prismicio/types';
 import { createClient } from 'prismicio';
 import sm from 'sm.json';
 
-import { SEO } from '@seo/home';
+import logo from '@public/company/logo.png';
 
+import { JsonLd } from '@components/Home/JsonLd';
+import { SEO } from '@components/SEO';
+
+import { images } from '@data/images/home';
 import { reasons } from '@data/static/content';
 import { services } from '@data/static/services';
 
@@ -71,9 +76,25 @@ type PageProps = {
 };
 
 const Home: NextPage<PageProps> = ({ projectsByCategory, carousel }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    description:
+      'A Ottoset é uma empresa de engenharia e consultoria especializada em soluções em energia, com foco em energia solar, energia eólica, energia hídrica, energia de biomassa e energia fotovoltaica.',
+    path: asPath,
+    siteURL,
+  };
+
+  const pageImages = Object.values(images).flatMap(
+    (image: Record<string, StaticImageData>) =>
+      Object.values(image).map(({ src }) => src),
+  );
+
   return (
     <article>
-      <NextSeo {...SEO} />
+      <SEO options={seoOptions} ogImage={logo} />
+      <JsonLd pageImages={pageImages} />
 
       {/* Slider Carousel, arbitrary content */}
       <Slider carousel={carousel} />

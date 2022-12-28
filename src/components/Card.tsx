@@ -12,6 +12,7 @@ import { Caps, Text, Title } from './Texts';
 import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Props = {
+  priority?: boolean;
   className?: string;
   project: ProjectDocument;
 };
@@ -38,6 +39,7 @@ export const Card: React.FC<Props> = ({
     uid: slug,
   },
   className = 'list-none w-80 lg:w-[35rem] h-[40.625rem] lg:h-[47.5rem]',
+  priority = false,
 }) => {
   const duration = getDurationFromSlices(slices);
   const formatedTime = convertTime(duration);
@@ -53,6 +55,7 @@ export const Card: React.FC<Props> = ({
     >
       <article className="relative group bg-cover bg-center backdrop-brightness-50 h-full overflow-hidden">
         <PrismicBlurImage
+          priority={priority}
           field={cover}
           className="object-cover brightness-50 -z-10"
           sizes="(min-width: 768px) 50vw, (min-width: 1024px) 35vw, 100vw"

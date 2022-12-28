@@ -1,19 +1,27 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import logo from '@public/company/logo.png';
 
 import { Button } from '@components/Button';
+import { SEO } from '@components/SEO';
 
 const Custom500: NextPage = () => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Erro 500 - Ottoset Energy',
+    description:
+      'Um erro inesperado aconteceu, contate o administrador do site.',
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <>
-      <Head>
-        <title>Erro 500 - ottoset</title>
-        <meta
-          name="description"
-          content="venda, instalação, locação, automação, manutenção e monitoramento remoto"
-        />
-      </Head>
+      <SEO options={seoOptions} ogImage={logo} />
 
       <article className="pt-12 pb-28 lg:pt-[12.5rem] lg:pb-[9.75rem] flex items-center justify-center bg-[url('/backgrounds/not-found.svg')] bg-cover bg-no-repeat bg-center">
         <div className="container flex flex-col items-center justify-center">

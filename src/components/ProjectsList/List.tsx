@@ -57,11 +57,12 @@ export const List: React.FC<Props> = ({ initialData }) => {
         className="project-list grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
         <AnimatePresence>
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <Card
               key={project.uid}
               className="project h-[40.625rem]"
               project={project}
+              priority={index < 3}
             />
           ))}
         </AnimatePresence>

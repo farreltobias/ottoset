@@ -1,19 +1,26 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import logo from '@public/company/logo.png';
 
 import { Button } from '@components/Button';
+import { SEO } from '@components/SEO';
 
 const Custom404: NextPage = () => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Página não encontrada',
+    description: 'Desculpe não encontramos o que você procurava',
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <>
-      <Head>
-        <title>Página não encontrada - ottoset</title>
-        <meta
-          name="description"
-          content="venda, instalação, locação, automação, manutenção e monitoramento remoto"
-        />
-      </Head>
+      <SEO options={seoOptions} ogImage={logo} />
 
       <article className="pt-12 pb-28 lg:pt-[12.5rem] lg:pb-[9.75rem] flex items-center justify-center bg-[url('/backgrounds/not-found.svg')] bg-cover bg-no-repeat bg-center">
         <div className="container flex flex-col items-center justify-center">

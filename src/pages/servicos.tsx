@@ -1,11 +1,15 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { StaticImageData } from 'next/image';
+import { useRouter } from 'next/router';
 
+import generator from '@public/photos/generator-alt.png';
+
+import { SEO } from '@components/SEO';
+import { JsonLd } from '@components/Services/JsonLd';
 import { Overlaid } from '@components/Texts/Overlaid';
 
-import { SEO } from '@seo/servicos';
-
+import { images } from '@data/images/servicos';
 import { expertises } from '@data/static/expertises';
 
 const Generators = dynamic(() =>
@@ -45,9 +49,26 @@ const Expertises = dynamic(() =>
 );
 
 const Servicos: NextPage = () => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Serviços da Ottoset Energy',
+    description:
+      'Grupo geradores, automação, energia solar fotovoltaica, aviação, manutenção e adequação, serviços GMC e serviços UFV. Conheça os serviços prestados da Ottoset Energy.',
+    path: asPath,
+    siteURL,
+  };
+
+  const pageImages = Object.values(images).flatMap(
+    (image: Record<string, StaticImageData>) =>
+      Object.values(image).map(({ src }) => src),
+  );
+
   return (
     <article>
-      <NextSeo {...SEO} />
+      <SEO options={seoOptions} ogImage={generator} />
+      <JsonLd options={seoOptions} pageImages={pageImages} />
 
       {/* Title */}
       <Overlaid center className="container mx-auto mt-12 lg:mt-12 w-full">

@@ -89,11 +89,14 @@ export const DefaultJsonLd: React.FC<Props> = ({ siteURL, lastReviewed }) => {
 
   return (
     <>
-      <WebPageJsonLd {...webPageProps} />
-      <OrganizationJsonLd {...organizationProps} />
-      <BrandJsonLd {...brandProps} />
-      <LogoJsonLd {...logoProps} />
-      <SocialProfileJsonLd {...socialProfileProps} />
+      <WebPageJsonLd keyOverride="web-page" {...webPageProps} />
+      <OrganizationJsonLd keyOverride="organization" {...organizationProps} />
+      <BrandJsonLd keyOverride="brand" {...brandProps} />
+      <LogoJsonLd keyOverride="logo" {...logoProps} />
+      <SocialProfileJsonLd
+        keyOverride="social-profile"
+        {...socialProfileProps}
+      />
     </>
   );
 };

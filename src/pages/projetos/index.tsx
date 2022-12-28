@@ -1,21 +1,22 @@
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { StaticImageData } from 'next/image';
+import { useRouter } from 'next/router';
 
 import { Query } from '@prismicio/types';
 
 import { createClient } from 'prismicio';
 
+import { JsonLd } from '@components/ProjectsList/JsonLd';
+import { SEO } from '@components/SEO';
 import { Overlaid } from '@components/Texts/Overlaid';
-
-import { SEO } from '@seo/projetos';
 
 import { projectCard } from '@utils/graphQueries';
 
 import { ProjectDocument } from '.slicemachine/prismicio';
 
 const List = dynamic(() =>
-  import('@components/Projects/List').then(({ List }) => List),
+  import('@components/ProjectsList/List').then(({ List }) => List),
 );
 
 type PageProps = {
@@ -23,9 +24,29 @@ type PageProps = {
 };
 
 const Projetos: NextPage<PageProps> = ({ projects }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const { url, dimensions } = projects.results[0].data.cover;
+
+  const image = {
+    src: url,
+    width: dimensions?.width,
+    height: dimensions?.height,
+  };
+
+  const seoOptions = {
+    title: 'Projetos da Ottoset Energy',
+    description:
+      'Veja todos os projetos da Ottoset Energy, desde os mais recentes até os mais antigos. Acompanhe o nosso crescimento e a nossa evolução. A Ottoset Energy é uma empresa de energia solar fotovoltaica, que atua no mercado de energia renovável desde 2015.',
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <article className="container mx-auto mt-12">
-      <NextSeo {...SEO} />
+      <SEO options={seoOptions} ogImage={image as StaticImageData} />
+      <JsonLd options={seoOptions} projects={projects.results} />
 
       <Overlaid center>
         <Overlaid.Title>Nossos</Overlaid.Title>

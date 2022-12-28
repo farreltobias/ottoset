@@ -1,26 +1,31 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { StaticImageData } from 'next/image';
+import { useRouter } from 'next/router';
 
 import * as prismic from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
 
 import { createClient } from 'prismicio';
 
-import { SEO } from '@seo/projetos/projeto';
+import { JsonLd } from '@components/Project/JsonLd';
+import { SEO } from '@components/SEO';
+
+import { convertTime } from '@utils/convertTime';
+import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
 import { ProjectDocument } from '.slicemachine/prismicio';
 
 const Header = dynamic(() =>
-  import('@components/Projects/Project/Header').then(({ Header }) => Header),
+  import('@components/Project/Header').then(({ Header }) => Header),
 );
 
 const Article = dynamic(() =>
-  import('@components/Projects/Project/Article').then(({ Article }) => Article),
+  import('@components/Project/Article').then(({ Article }) => Article),
 );
 
 const Footer = dynamic(() =>
-  import('@components/Projects/Project/Footer').then(({ Footer }) => Footer),
+  import('@components/Project/Footer').then(({ Footer }) => Footer),
 );
 
 type PageProps = {
@@ -34,9 +39,39 @@ const Project: NextPage<PageProps> = ({
   nextProjectUrl,
   previousProjectUrl,
 }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const duration = getDurationFromSlices(project.data.slices);
+
+  const customNames = {
+    [project.uid]: prismicH.asText(project.data.title),
+  };
+
+  const seoOptions = {
+    title: `${prismicH.asText(project.data.title)} - Ottoset Energy`,
+    description: `${prismicH.asText(
+      project.data.description,
+    )}. Veja mais sobre o projeto ${prismicH.asText(
+      project.data.title,
+    )} da Ottoset Energy - ${convertTime(duration)}`,
+    path: asPath,
+    siteURL,
+    customNames,
+  };
+
+  const { url, dimensions } = project.data.cover;
+
+  const image = {
+    src: url,
+    width: dimensions?.width,
+    height: dimensions?.height,
+  };
+
   return (
     <article className="container mx-auto lg:mt-8">
-      <NextSeo {...SEO(project)} />
+      <SEO options={seoOptions} ogImage={image as StaticImageData} />
+      <JsonLd options={seoOptions} project={project} />
 
       <Header />
       <Article project={project} />

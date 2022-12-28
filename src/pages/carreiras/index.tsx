@@ -1,26 +1,40 @@
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 import { createClient } from 'prismicio';
 
-import { CustomCareerDocument } from '@components/Career/Item';
-import { Overlaid } from '@components/Texts/Overlaid';
+import logo from '@public/company/logo.png';
 
-import { SEO } from '@seo/carreiras';
+import { CustomCareerDocument } from '@components/CareersList/Item';
+import { JsonLd } from '@components/CareersList/JsonLd';
+import { SEO } from '@components/SEO';
+import { Overlaid } from '@components/Texts/Overlaid';
 
 type PageProps = {
   careers: CustomCareerDocument[];
 };
 
 const Item = dynamic(() =>
-  import('@components/Career/Item').then(({ Item }) => Item),
+  import('@components/CareersList/Item').then(({ Item }) => Item),
 );
 
 const Careers: NextPage<PageProps> = ({ careers }) => {
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ottoset.com.br';
+  const { asPath } = useRouter();
+
+  const seoOptions = {
+    title: 'Carreiras na Ottoset',
+    description:
+      'Venha fazer parte da Ottoset, uma empresa que está revolucionando o mercado de energia solar no Brasil.',
+    path: asPath,
+    siteURL,
+  };
+
   return (
     <article className="container mx-auto mt-12 mb-48 lg:mt-[4.5rem]">
-      <NextSeo {...SEO} />
+      <SEO options={seoOptions} ogImage={logo} />
+      <JsonLd options={seoOptions} careers={careers} />
 
       <Overlaid center>
         <Overlaid.Title>Carreiras</Overlaid.Title>
