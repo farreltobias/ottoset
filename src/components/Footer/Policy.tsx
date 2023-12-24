@@ -1,4 +1,6 @@
-import Lets from '@public/logo/lets.svg';
+import NextLink from 'next/link';
+
+import Lets from '@public/company/lets.svg';
 
 import { Link } from '@components/Link';
 
@@ -6,9 +8,12 @@ export const Policy: React.FC = () => {
   return (
     <div className="border-t border-t-secondary-300">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center py-6 lg:py-8">
-        <span className="hidden lg:block font-medium text-sm">
+        <NextLink
+          href="/privacidade"
+          className='className="hidden lg:block font-medium text-sm"'
+        >
           Política de privacidade
-        </span>
+        </NextLink>
         <Link
           className="flex items-center mb-6 lg:mb-2"
           href="https://letscomunica.com.br/"

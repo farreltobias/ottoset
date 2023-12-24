@@ -1,6 +1,7 @@
 type SubItem = {
   href: string;
   label: string;
+  target?: string;
   onlyFooter?: boolean;
   onlyHeader?: boolean;
 };
@@ -40,6 +41,10 @@ export const navLinks: NavLink[] = [
         label: 'Seja prestador de serviços Ottoset',
       },
       {
+        href: '/faq',
+        label: 'Perguntas frequentes',
+      },
+      {
         href: '/carreiras',
         label: 'Trabalhe conosco',
       },
@@ -49,27 +54,27 @@ export const navLinks: NavLink[] = [
     label: 'Grupo Gerador',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Venda',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Locação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Instalação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Manutenção',
       },
       {
-        href: '/',
+        href: '/servicos#automacao',
         label: 'Automação',
       },
       {
-        href: '/',
+        href: '/servicos#grupo-geradores',
         label: 'Monitoramento remoto',
       },
     ],
@@ -78,7 +83,7 @@ export const navLinks: NavLink[] = [
     label: 'Aviação',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#aviacao',
         label: 'Modernização de GPU',
       },
     ],
@@ -87,19 +92,20 @@ export const navLinks: NavLink[] = [
     label: 'Energia Solar',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Venda',
       },
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Instalação',
       },
       {
-        href: '/',
+        href: '/servicos#fotovoltaica',
         label: 'Manutenção',
       },
       {
-        href: '/',
+        href: 'https://solar.ottoset.com.br/',
+        target: '_blank',
         label: 'Simule seu sistema',
         onlyFooter: true,
       },
@@ -109,15 +115,15 @@ export const navLinks: NavLink[] = [
     label: 'Soluções prediais',
     subItems: [
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Elétrica',
       },
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Civil',
       },
       {
-        href: '/',
+        href: '/servicos#manutencao',
         label: 'Hidráulica',
       },
     ],

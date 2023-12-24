@@ -1,8 +1,8 @@
-import Whatsapp from '@public/social/whatsapp.svg';
-import Phone from '@public/others/phone.svg';
 import Email from '@public/others/email-outline.svg';
+import Phone from '@public/others/phone.svg';
+import Whatsapp from '@public/social/whatsapp.svg';
 
-import { phone, email, whatsapp } from './static/ottoset';
+import { email, phone, whatsapp } from './static/ottoset';
 
 export const contacts = [
   {

@@ -1,0 +1,28 @@
+{
+  "id": "faq",
+  "label": "Perguntas Frequentes",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "key_question": {
+        "type": "Text",
+        "config": {
+          "label": "Pergunta chave",
+          "placeholder": "Qual a pergunta mais frequente?"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "perguntas": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from '@components/Link';
 import { Caps } from '@components/Texts';
 
-import { email } from '@data/static/ottoset';
 import { contacts } from '@data/contacts';
+import { email } from '@data/static/ottoset';
 
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
               )}
             </>
           );
-        })
+        }),
       )}
       <Link
         href={`mailto:${email}`}

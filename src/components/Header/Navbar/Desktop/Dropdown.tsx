@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
 
 import { Caps } from '@components/Texts';
+
+import { Menu, Transition } from '@headlessui/react';
 
 type Props = React.PropsWithChildren<{
   label: string;

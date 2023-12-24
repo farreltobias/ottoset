@@ -1,0 +1,54 @@
+{
+  "id": "banner",
+  "type": "SharedSlice",
+  "name": "Banner",
+  "description": "Banner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Banner",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Título",
+            "placeholder": "Digite o título do banner",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descrição",
+            "placeholder": "Digite a descrição do banner",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong"
+          }
+        },
+        "background": {
+          "type": "Image",
+          "config": {
+            "label": "Plano de fundo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "navTo": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "https://ottoset.com.br/servicos#grupo-geradores",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

@@ -5,8 +5,8 @@ import { Button } from '@components/Button';
 
 import { navLinks } from '@data/navLinks';
 
-import { Item } from './Item';
 import { Dropdown } from './Dropdown';
+import { Item } from './Item';
 import { SubItem } from './SubItem';
 
 export const Desktop: React.FC<React.PropsWithChildren> = () => {
@@ -18,22 +18,26 @@ export const Desktop: React.FC<React.PropsWithChildren> = () => {
           {Children.toArray(
             subItems
               .filter(({ onlyFooter }) => !onlyFooter)
-              .map((item) => <SubItem href={item.href} label={item.label} />)
+              .map(({ href, label, target }) => (
+                <SubItem href={href} label={label} target={target} />
+              )),
           )}
         </Dropdown>
       ) : (
         <Item href={href || ''}>{label}</Item>
-      )
+      ),
     );
 
   return (
     <>
       <ul className="hidden lg:flex">{Children.toArray(NavList)}</ul>
-      <Button className="hidden lg:flex text-xs xl:text-base">
-        <Link href="contato">
-          Fale conosco
-        </Link>
-      </Button>
+      <Link href="/contato" legacyBehavior>
+        <a aria-label="Fale conosco">
+          <Button className="hidden lg:flex text-xs xl:text-base">
+            Fale conosco
+          </Button>
+        </a>
+      </Link>
     </>
   );
 };

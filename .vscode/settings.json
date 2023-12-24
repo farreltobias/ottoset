@@ -2,6 +2,16 @@
   "conventionalCommits.scopes": [
     "header",
     "footer",
-    "home"
+    "home",
+    "about",
+    "services",
+    "projects",
+    "faq",
+    "provider",
+    "contact",
+    "privacy",
+    "careers",
+    "deploy",
+    "documentation"
   ]
 }

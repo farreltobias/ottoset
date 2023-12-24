@@ -1,0 +1,62 @@
+{
+  "key_question": {
+    "__TYPE__": "FieldContent",
+    "value": "already",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "perguntas$d22e1631-1d01-4680-a397-a823a81179f5",
+        "name": "perguntas",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "category": {
+              "__TYPE__": "FieldContent",
+              "value": "am",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "question",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "heading2",
+                        "content": {
+                          "text": "Difficulty"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "answer",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Veniam pariatur aliqua aute consequat ad eiusmod labore. Aute aute elit incididunt. Ipsum laboris non magna consectetur qui nisi id fugiat nisi."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

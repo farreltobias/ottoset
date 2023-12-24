@@ -1,3 +1,5 @@
+import { classNames } from '@utils/classNames';
+
 type Props = React.PropsWithChildren<React.ComponentPropsWithoutRef<'a'>>;
 
 export const Link: React.FC<Props> = ({
@@ -7,7 +9,10 @@ export const Link: React.FC<Props> = ({
 }) => {
   return (
     <a
-      className={`flex font-bold m-2 text-neutral cursor-pointer ${className}`}
+      className={classNames(
+        'flex font-bold m-2 text-neutral cursor-pointer',
+        className,
+      )}
       {...props}
     >
       {children}

@@ -2,8 +2,12 @@ const plugin = require('tailwindcss/plugin');
 
 const components = plugin(function ({ addComponents, matchComponents, theme }) {
   const staticComponents = {
-    'button-shadow': {
+    '.button-shadow': {
       boxShadow: '4px 4px 0px var(--tw-shadow)',
+    },
+    '.full': {
+      width: '100%',
+      height: '100%',
     },
   };
 

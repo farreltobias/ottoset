@@ -1,0 +1,65 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "back"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "heading1",
+        "content": {
+          "text": "Wonderful"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "item",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Commodo Lorem ad ea id aliquip dolor culpa ad. Ut qui id aliqua anim elit id. Id irure minim aliquip incididunt laborum proident id aliqua excepteur ullamco sit ea."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "desirable": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "item",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Cillum commodo nostrud ut nostrud fugiat laborum eiusmod ea sint. Minim eiusmod aliqua quis proident magna voluptate labore ad sint."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

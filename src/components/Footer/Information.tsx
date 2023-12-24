@@ -2,9 +2,9 @@ import { Children } from 'react';
 
 import { Text } from '@components/Texts';
 
-import { address } from '@data/static/ottoset';
 import { contacts } from '@data/contacts';
 import { socials } from '@data/socials';
+import { address } from '@data/static/ottoset';
 
 import { formatPhoneNumber } from '@utils/formatPhoneNumber';
 
@@ -16,7 +16,7 @@ export const Information = () => {
     .map(({ Icon, number, link, email }) => ({
       Icon,
       number: number ? formatPhoneNumber(number) : null,
-      email: email ? email : null,
+      email: email || null,
       link,
     }))
     .reverse();
@@ -41,30 +41,29 @@ export const Information = () => {
             rel="noreferrer"
             className="flex items-center mb-2"
           >
-            <Icon
-              width={16}
-              height={16}
-              viewBox="0 0 24 24"
-              className="fill-secondary-900 mr-1"
-            />
+            <Icon width={16} height={16} className="fill-secondary-900 mr-1" />
             <Text variant="p4">{number || email}</Text>
           </a>
-        ))
+        )),
       )}
       <ul className="flex lg:mt-2 mx-auto lg:mx-0">
         {Children.toArray(
-          socials.map(({ Icon, href }) => (
+          socials.map(({ Icon, href, type }) => (
             <li className="mx-3 lg:mr-6 lg:ml-0">
-              <a href={href} target="_blank" rel="noreferrer">
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Visite o ${type} da ottoset`}
+              >
                 <Icon
                   width={24}
                   height={24}
-                  viewBox="0 0 16 16"
                   className="child:fill-secondary-900"
                 />
               </a>
             </li>
-          ))
+          )),
         )}
       </ul>
     </>

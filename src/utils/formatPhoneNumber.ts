@@ -4,7 +4,7 @@ export const formatPhoneNumber = (number: string) => {
 
   const phoneNumber = number.replace(/\+55/g, '');
 
-  const [_, ddd, num1, num2] = phoneRegex.exec(phoneNumber) || [];
+  const [, ddd, num1, num2] = phoneRegex.exec(phoneNumber) || [];
   let phone = `${num1}-${num2}`;
 
   if (ddd) {
