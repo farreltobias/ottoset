@@ -1,7 +1,7 @@
 <img style="margin-bottom: 4%" src="https://i.imgur.com/TKsFjGK.jpg"/>
 
 <h1 align="center">
-  Ottoset's institutional website built with Next.js 
+  Ottoset's institutional website built with Next.js and Prismic
 </h1>
 
 <p align="center" style="margin-bottom: 4%">
@@ -37,7 +37,7 @@ The website is fully responsive for both desktop and mobile viewing. It's rich w
 
 You can explore the live website by [clicking here](https://ottoset.farrel.tech)
 
-The site was developed using Next.js, (TypeScript)[], Tailwind, Prismic, Framer Motion, and SendGrid.
+The site was developed using Next.js, [TypeScript](https://www.typescriptlang.org/), [Tailwind](https://tailwindcss.com/), [Prismic](https://prismic.io/), [Framer Motion](https://www.framer.com/motion/), and [SendGrid](https://docs.sendgrid.com/pt-br/for-developers/sending-email/api-getting-started).
 
 <!-- ## :muscle: New Features
 
@@ -74,9 +74,9 @@ This project is under the Apache License. See the [LICENSE](https://github.com/f
 
 Made with :yellow_heart: by Guilherme Farrel [Get in touch!](https://www.linkedin.com/in/farreltobias/)
 
-<p align="center">
+<a align="center" href="https://ottoset.farrel.tech">
   <img style="margin-top: 4%;" width="30%" src="https://i.imgur.com/73NRgo5.png"/>
-</p>
+</a>
 
 [nodejs]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
