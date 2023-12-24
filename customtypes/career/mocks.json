@@ -1,0 +1,67 @@
+[
+  {
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "every"
+    },
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Enjoy"
+          }
+        }
+      ]
+    },
+    "requirements": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "item",
+              {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Voluptate velit deserunt ut nulla mollit ad velit Lorem minim laboris velit eu."
+                    }
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "desirable": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "item",
+              {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Laborum incididunt ut ad ipsum ut qui exercitation ea quis culpa aliquip nulla. Amet velit esse do adipisicing et nulla cupidatat voluptate aliquip minim Lorem dolor sint duis."
+                    }
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+]

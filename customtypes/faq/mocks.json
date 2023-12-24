@@ -1,0 +1,64 @@
+[
+  {
+    "key_question": {
+      "__TYPE__": "FieldContent",
+      "value": "enjoy",
+      "type": "Text"
+    },
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "perguntas$4c509663-7ce9-483a-9eb6-030953cd5273",
+          "name": "perguntas",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "category": {
+                "__TYPE__": "FieldContent",
+                "value": "vertical",
+                "type": "Text"
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": [
+                  [
+                    "question",
+                    {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "heading2",
+                          "content": {
+                            "text": "Trick"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "answer",
+                    {
+                      "__TYPE__": "StructuredTextContent",
+                      "value": [
+                        {
+                          "type": "paragraph",
+                          "content": {
+                            "text": "Cupidatat voluptate amet cupidatat incididunt tempor ex cillum anim quis sit elit aliquip. Aliquip consectetur ex laboris tempor excepteur duis in aliqua pariatur ut labore ut Lorem culpa voluptate."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

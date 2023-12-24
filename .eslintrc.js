@@ -93,5 +93,5 @@ module.exports = {
     React: 'readonly',
     JSX: 'readonly',
   },
-  ignorePatterns: ['node_modules/'],
+  ignorePatterns: ['node_modules/', 'prismicio-types.d.ts'],
 };
