@@ -1,16 +1,17 @@
 import dynamic from 'next/dynamic';
 
+import type { Content } from '@prismicio/client';
+
 import { Text, Title } from '@components/Texts';
 
 import { List } from './List';
-import { CareerDocument } from '.slicemachine/prismicio';
 
 const PrismicRichText = dynamic(() =>
   import('@prismicio/react').then(({ PrismicRichText }) => PrismicRichText),
 );
 
 type Props = {
-  career: CareerDocument;
+  career: Content.CareerDocument;
 };
 
 export const Header: React.FC<Props> = ({ career }) => {

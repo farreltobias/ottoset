@@ -6,7 +6,7 @@ import {
   PrismicProvider as Provider,
 } from '@prismicio/react';
 
-import { reactClient, repositoryName } from 'prismicio';
+import { reactClient, repositoryName } from 'src/prismicio';
 
 const richTextComponents: JSXMapSerializer = {
   heading1: ({ children }) => <>{children}</>,

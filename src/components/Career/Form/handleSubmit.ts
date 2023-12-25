@@ -1,8 +1,8 @@
 import type { Dispatch, RefObject, SetStateAction } from 'react';
 
-import type { z as zod } from 'zod';
+import type { Content } from '@prismicio/client';
 
-import type { CareerDocumentData } from '.slicemachine/prismicio';
+import type { z as zod } from 'zod';
 
 import type { FormRequest } from '@pages/api/carrer';
 import type { FormHandles } from '@unform/core';
@@ -17,7 +17,7 @@ const defaultToasterOptions = {
 };
 
 type Props = {
-  data: { title: CareerDocumentData['title'] } & FormRequest;
+  data: { title: Content.CareerDocumentData['title'] } & FormRequest;
   sending: boolean;
   setSending: Dispatch<SetStateAction<boolean>>;
   formRef: RefObject<FormHandles>;

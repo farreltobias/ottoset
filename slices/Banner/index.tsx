@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+import type { Content } from '@prismicio/client';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
 import { RTHeading1Node } from '@prismicio/types';
@@ -10,9 +11,7 @@ import { Caps } from '@components/Texts';
 import { classNames } from '@utils/classNames';
 import { removeBaseUrl } from '@utils/removeBaseUrl';
 
-import { BannerSlice } from '.slicemachine/prismicio';
-
-type Props = SliceComponentProps<BannerSlice>;
+type Props = SliceComponentProps<Content.BannerSlice>;
 
 const Banner: React.FC<Props> = ({ slice, index }) => {
   const { background, description, navTo, title } = slice.primary;

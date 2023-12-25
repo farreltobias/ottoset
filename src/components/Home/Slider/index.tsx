@@ -1,13 +1,14 @@
+import { Content } from '@prismicio/client';
+
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { Carousel } from './Carousel';
 import { Role } from './Role';
 import { Video } from './Video';
-import { CarouselDocument } from '.slicemachine/prismicio';
 
 type Props = {
-  carousel: CarouselDocument;
+  carousel: Content.CarouselDocument;
 };
 
 export const Slider: React.FC<Props> = ({ carousel }) => {

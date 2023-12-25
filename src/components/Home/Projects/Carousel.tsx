@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import type { Content } from '@prismicio/client';
 import { Query } from '@prismicio/types';
 
 import { EmblaCarouselType } from 'embla-carousel-react';
@@ -8,8 +9,6 @@ import { useEmblaInfiniteScroll } from '@hooks/useEmblaInfiniteScroll';
 
 import { Card } from '@components/Card';
 import { Spinner } from '@components/Spinner';
-
-import { ProjectDocument } from '.slicemachine/prismicio';
 
 import { ProjectsByCategory } from '@pages/index';
 
@@ -42,7 +41,7 @@ export const FowardFunction: React.ForwardRefRenderFunction<any, Props> = (
     const loadMore = async () => {
       const data = (await fetch(nextPage).then((res) =>
         res.json(),
-      )) as Query<ProjectDocument>;
+      )) as Query<Content.ProjectDocument>;
 
       setProjectsPage((prevProjects) => {
         const newProjects = [...prevProjects];

@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import { Content } from '@prismicio/client';
+
 import { Button } from '@components/Button';
 import { Dropzone } from '@components/Form/Dropzone';
 import { Input } from '@components/Form/Input';
@@ -8,13 +10,12 @@ import { InputMask } from '@components/Form/InputMask';
 import { inputs } from '@data/forms/career';
 
 import { handleSubmit } from './handleSubmit';
-import { CareerDocument } from '.slicemachine/prismicio';
 
 import type { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 
 type Props = {
-  career: CareerDocument;
+  career: Content.CareerDocument;
 };
 
 export const CareerForm: React.FC<Props> = ({ career }) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+import type { Content } from '@prismicio/client';
 import {
   PrismicRichText,
   PrismicText,
@@ -13,9 +14,7 @@ import { Button } from '@components/Button';
 import { Disclosure } from '@components/FAQ/Disclosure';
 import { Title } from '@components/Texts';
 
-import { PerguntasSlice } from '.slicemachine/prismicio';
-
-export type PerguntasProps = SliceComponentProps<PerguntasSlice>;
+export type PerguntasProps = SliceComponentProps<Content.PerguntasSlice>;
 
 const Perguntas: React.FC<PerguntasProps> = ({ slice: { items } }) => (
   <ul className="flex flex-col max-w-4xl w-full mx-auto mb-48">

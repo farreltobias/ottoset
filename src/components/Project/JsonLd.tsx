@@ -7,9 +7,9 @@ import {
   ImageJsonLdProps,
 } from 'next-seo';
 
-import { getBreadcrumbs } from '@utils/getBreadcrumbs';
+import type { Content } from '@prismicio/client';
 
-import { ProjectDocument } from '.slicemachine/prismicio';
+import { getBreadcrumbs } from '@utils/getBreadcrumbs';
 
 type Options = {
   title: string;
@@ -21,7 +21,7 @@ type Options = {
 
 type Props = {
   options: Options;
-  project: ProjectDocument;
+  project: Content.ProjectDocument;
 };
 
 export const JsonLd: React.FC<Props> = ({

@@ -2,17 +2,25 @@ import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { createClient } from 'prismicio';
+import { Content } from '@prismicio/client';
+
+import { createClient } from 'src/prismicio';
 
 import logo from '@public/company/logo.png';
 
-import { CustomCareerDocument } from '@components/CareersList/Item';
 import { JsonLd } from '@components/CareersList/JsonLd';
 import { SEO } from '@components/SEO';
 import { Overlaid } from '@components/Texts/Overlaid';
 
+export type Career = {
+  uid: Content.CareerDocument['uid'];
+  data: {
+    title: Content.CareerDocument['data']['title'];
+  };
+};
+
 type PageProps = {
-  careers: CustomCareerDocument[];
+  careers: Career[];
 };
 
 const Item = dynamic(() =>
@@ -42,8 +50,8 @@ const Careers: NextPage<PageProps> = ({ careers }) => {
       </Overlaid>
 
       <ul className="mt-11">
-        {careers.map(({ data, uid }) => (
-          <Item key={uid} title={data.title} slug={uid} />
+        {careers.map((career) => (
+          <Item key={career.uid} {...career} />
         ))}
       </ul>
     </article>
@@ -61,7 +69,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     .getAllByType('career', {
       fetch: ['career.title', 'career.slug'],
     })
-    .catch(() => [])) as CustomCareerDocument[];
+    .catch(() => [])) as Career[];
 
   if (!careers.length) {
     return {

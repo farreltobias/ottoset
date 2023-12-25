@@ -26,6 +26,6 @@
       "@seo/*": ["./src/seo/*"],
     }
   },
-  "include": ["next-env.d.ts", "./.slicemachine/prismicio.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "next-env.d.ts"]
 }

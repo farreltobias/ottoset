@@ -1,4 +1,4 @@
-import { Content } from '@prismicio/client';
+import type { Content } from '@prismicio/client';
 import { RTParagraphNode } from '@prismicio/types';
 
 const MINUTES_IN_MILLISECONDS = 60 * 1000;

@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { Content } from '@prismicio/client';
 import { SliceZone } from '@prismicio/react';
 
 import { EmblaCarouselType } from 'embla-carousel-react';
 import { components } from 'slices';
 
 import { NextButton, PrevButton } from './Buttons';
-import { BannerSlice } from '.slicemachine/prismicio';
 
 type Props = {
-  slides: BannerSlice[];
+  slides: Content.BannerSlice[];
   emblaApi?: EmblaCarouselType;
 };
 

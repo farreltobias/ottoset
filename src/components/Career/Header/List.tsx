@@ -1,14 +1,10 @@
 import { Children } from 'react';
 
+import type { Content } from '@prismicio/client';
 import { PrismicRichText } from '@prismicio/react';
 
-import {
-  CareerDocumentDataRequirementsItem,
-  Simplify,
-} from '.slicemachine/prismicio';
-
 type Props = {
-  information: Simplify<CareerDocumentDataRequirementsItem>[];
+  information: Content.CareerDocumentDataRequirementsItem[];
   title: string;
 };
 

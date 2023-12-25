@@ -1,5 +1,6 @@
 import { createRef, useState } from 'react';
 
+import type { Content } from '@prismicio/client';
 import { Query } from '@prismicio/types';
 
 import { AnimatePresence } from 'framer-motion';
@@ -10,10 +11,8 @@ import { Button } from '@components/Button';
 import { Card } from '@components/Card';
 import { Spinner } from '@components/Spinner';
 
-import { ProjectDocument } from '.slicemachine/prismicio';
-
 type Props = {
-  initialData: Query<ProjectDocument>;
+  initialData: Query<Content.ProjectDocument>;
 };
 
 const Loader: React.FC = () => (
@@ -27,7 +26,7 @@ export const List: React.FC<Props> = ({ initialData }) => {
 
   const ref = createRef<HTMLUListElement>();
 
-  const [projects, setProjects] = useState<ProjectDocument[]>(
+  const [projects, setProjects] = useState<Content.ProjectDocument[]>(
     initialData.results,
   );
 

@@ -2,14 +2,13 @@ import type { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
+import type { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
 
 import logo from '@public/company/logo.png';
 
 import { JsonLd } from '@components/Career/JsonLd';
 import { SEO } from '@components/SEO';
-
-import type { CareerDocument } from '.slicemachine/prismicio';
 
 const ToastContainer = dynamic(
   () => import('react-toastify').then(({ ToastContainer }) => ToastContainer),
@@ -27,7 +26,7 @@ const Header = dynamic(() =>
 );
 
 type PageProps = {
-  career: CareerDocument;
+  career: Content.CareerDocument;
 };
 
 const Career: NextPage<PageProps> = ({ career }) => {
@@ -72,7 +71,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     };
   }
 
-  const { createClient } = await import('prismicio');
+  const { createClient } = await import('src/prismicio');
 
   const nextClient = createClient({ previewData });
   const career = await nextClient.getByUID('career', slug).catch(() => null);
@@ -91,7 +90,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 };
 
 export async function getStaticPaths() {
-  const { createClient } = await import('prismicio');
+  const { createClient } = await import('src/prismicio');
 
   const nextClient = createClient();
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import type { Content } from '@prismicio/client';
 import { PrismicText } from '@prismicio/react';
 
 import { motion } from 'framer-motion';
@@ -9,12 +10,11 @@ import { getDurationFromSlices } from '@utils/getDurationFromSlices';
 
 import { PrismicBlurImage } from './BlurImage';
 import { Caps, Text, Title } from './Texts';
-import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Props = {
   priority?: boolean;
   className?: string;
-  project: ProjectDocument;
+  project: Content.ProjectDocument;
 };
 
 const listVariants = {

@@ -2,9 +2,10 @@ import { GetStaticProps, NextPage } from 'next';
 import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/router';
 
+import type { Content } from '@prismicio/client';
 import { Query } from '@prismicio/types';
 
-import { createClient } from 'prismicio';
+import { createClient } from 'src/prismicio';
 
 import { JsonLd } from '@components/ProjectsList/JsonLd';
 import { List } from '@components/ProjectsList/List';
@@ -13,10 +14,8 @@ import { Overlaid } from '@components/Texts/Overlaid';
 
 import { projectCard } from '@utils/graphQueries';
 
-import { ProjectDocument } from '.slicemachine/prismicio';
-
 type PageProps = {
-  projects: Query<ProjectDocument>;
+  projects: Query<Content.ProjectDocument>;
 };
 
 const Projetos: NextPage<PageProps> = ({ projects }) => {

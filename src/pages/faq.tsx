@@ -3,7 +3,9 @@ import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { createClient } from 'prismicio';
+import type { Content } from '@prismicio/client';
+
+import { createClient } from 'src/prismicio';
 
 import logo from '@public/company/logo.png';
 
@@ -11,17 +13,18 @@ import { JsonLd } from '@components/FAQ/JsonLd';
 import { SEO } from '@components/SEO';
 import { Overlaid } from '@components/Texts/Overlaid';
 
-import { PerguntasSlice } from '.slicemachine/prismicio';
-
 const Questions = dynamic(() =>
   import('@components/FAQ/Questions').then(({ Questions }) => Questions),
 );
 
-type Items = PerguntasSlice['items'][0] & {
+type Items = Content.PerguntasSlice['items'][0] & {
   category: string;
 };
 
-export type PerguntasSliceWithCategory = Omit<PerguntasSlice, 'items'> & {
+export type PerguntasSliceWithCategory = Omit<
+  Content.PerguntasSlice,
+  'items'
+> & {
   items: Items[];
 };
 
@@ -75,7 +78,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     ...faq.data.slices.map(({ primary }) => primary.category as string),
   ];
 
-  const slices = (faq.data.slices as PerguntasSlice[]).reduce(
+  const slices = (faq.data.slices as Content.PerguntasSlice[]).reduce(
     (acc: PerguntasSliceWithCategory, item) => {
       return {
         ...acc,

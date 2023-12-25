@@ -7,7 +7,7 @@ import {
 
 import { getBreadcrumbs } from '@utils/getBreadcrumbs';
 
-import { CustomCareerDocument } from './Item';
+import { Career } from '@pages/carreiras';
 
 type Options = {
   title: string;
@@ -19,7 +19,7 @@ type Options = {
 
 type Props = {
   options: Options;
-  careers: CustomCareerDocument[];
+  careers: Career[];
 };
 
 export const JsonLd: React.FC<Props> = ({

@@ -7,11 +7,10 @@ import {
   ImageJsonLdProps,
 } from 'next-seo';
 
+import type { Content } from '@prismicio/client';
 import { Query } from '@prismicio/types';
 
 import { getBreadcrumbs } from '@utils/getBreadcrumbs';
-
-import { ProjectDocument } from '.slicemachine/prismicio';
 
 type Options = {
   title: string;
@@ -23,7 +22,7 @@ type Options = {
 
 type Props = {
   options: Options;
-  projects: Query<ProjectDocument>['results'];
+  projects: Query<Content.ProjectDocument>['results'];
 };
 
 export const JsonLd: React.FC<Props> = ({

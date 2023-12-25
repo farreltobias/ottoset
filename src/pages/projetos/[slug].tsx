@@ -6,15 +6,13 @@ import { useRouter } from 'next/router';
 import * as prismic from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
 
-import { createClient } from 'prismicio';
+import { createClient } from 'src/prismicio';
 
 import { JsonLd } from '@components/Project/JsonLd';
 import { SEO } from '@components/SEO';
 
 import { convertTime } from '@utils/convertTime';
 import { getDurationFromSlices } from '@utils/getDurationFromSlices';
-
-import { ProjectDocument } from '.slicemachine/prismicio';
 
 const Header = dynamic(() =>
   import('@components/Project/Header').then(({ Header }) => Header),
@@ -29,7 +27,7 @@ const Footer = dynamic(() =>
 );
 
 type PageProps = {
-  project: ProjectDocument;
+  project: prismic.Content.ProjectDocument;
   previousProjectUrl?: string | null;
   nextProjectUrl?: string | null;
 };
@@ -100,13 +98,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     project.last_publication_date,
   ] as [string, string];
 
-  const predicateProject = prismic.predicate.at('document.type', 'project');
+  const predicateProject = prismic.filter.at('document.type', 'project');
   const before = {
-    predicate: prismic.predicate.dateAfter(...dates),
+    predicate: prismic.filter.dateAfter(...dates),
     direction: 'asc' as const,
   };
   const after = {
-    predicate: prismic.predicate.dateBefore(...dates),
+    predicate: prismic.filter.dateBefore(...dates),
     direction: 'desc' as const,
   };
 

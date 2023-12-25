@@ -5,11 +5,11 @@ import {
   JobPostingJsonLdProps,
 } from 'next-seo';
 
+import type { Content } from '@prismicio/client';
+
 import { address } from '@data/static/ottoset';
 
 import { getBreadcrumbs } from '@utils/getBreadcrumbs';
-
-import { CareerDocument } from '.slicemachine/prismicio';
 
 type Options = {
   title: string;
@@ -21,7 +21,7 @@ type Options = {
 
 type Props = {
   options: Options;
-  career: CareerDocument;
+  career: Content.CareerDocument;
 };
 
 export const JsonLd: React.FC<Props> = ({

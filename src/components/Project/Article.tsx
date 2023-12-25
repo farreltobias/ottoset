@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type { Content } from '@prismicio/client';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 
@@ -7,10 +8,8 @@ import { components } from 'slices';
 
 import { Title } from '@components/Texts';
 
-import { ProjectDocument } from '.slicemachine/prismicio';
-
 type Props = {
-  project: ProjectDocument;
+  project: Content.ProjectDocument;
 };
 
 export const Article: React.FC<Props> = ({ project: { data } }) => {

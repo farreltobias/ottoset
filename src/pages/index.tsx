@@ -3,11 +3,12 @@ import dynamic from 'next/dynamic';
 import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/router';
 
-import { predicate } from '@prismicio/client';
+import type { Content } from '@prismicio/client';
+import { filter } from '@prismicio/client';
 import { Query } from '@prismicio/types';
 
-import { createClient } from 'prismicio';
-import sm from 'sm.json';
+import slicemachine from 'slicemachine.config.json';
+import { createClient } from 'src/prismicio';
 
 import logo from '@public/company/logo.png';
 
@@ -19,12 +20,6 @@ import { reasons } from '@data/static/content';
 import { services } from '@data/static/services';
 
 import { projectCard } from '@utils/graphQueries';
-
-import {
-  CarouselDocument,
-  ProjectDocument,
-  ProjectDocumentData,
-} from '.slicemachine/prismicio';
 
 const SWRProvider = dynamic(
   () => import('@contexts/SWRProvider').then(({ SWRProvider }) => SWRProvider),
@@ -63,16 +58,18 @@ const Instagram = dynamic(() =>
   import('@components/Home/Instagram').then(({ Instagram }) => Instagram),
 );
 
-type CategoryOptions = 'Tudo' | Exclude<ProjectDocumentData['category'], null>;
+type CategoryOptions =
+  | 'Tudo'
+  | Exclude<Content.ProjectDocumentData['category'], null>;
 
 export type ProjectsByCategory = {
   category: CategoryOptions;
-  data: Query<ProjectDocument>;
+  data: Query<Content.ProjectDocument>;
 };
 
 type PageProps = {
   projectsByCategory: ProjectsByCategory[];
-  carousel: CarouselDocument;
+  carousel: Content.CarouselDocument;
 };
 
 const Home: NextPage<PageProps> = ({ projectsByCategory, carousel }) => {
@@ -133,7 +130,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   const nextClient = createClient({ previewData });
 
   const response = await fetch(
-    `${sm.customTypeApiEndpoint}/customtypes/project`,
+    `${slicemachine.customTypeApiEndpoint}/customtypes/project`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -157,7 +154,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
         predicates:
           category === 'Tudo'
             ? []
-            : [predicate.at('my.project.category', category)],
+            : [filter.at('my.project.category', category)],
         orderings: {
           field: 'document.last_publication_date',
           direction: 'desc',

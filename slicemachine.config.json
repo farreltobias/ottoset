@@ -3,5 +3,6 @@
   "repositoryName": "ottoset-example",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./slices"],
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
+  "customTypeApiEndpoint": "https://customtypes.prismic.io"
 }
