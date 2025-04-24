@@ -35,7 +35,7 @@ It's my first project with the company, aiming to create an institutional websit
 
 The website is fully responsive for both desktop and mobile viewing. It's rich with animations and integrates seamlessly with the use of Prismic for the company's project customization and job listings.
 
-You can explore the live website by [clicking here](https://ottoset.farrel.tech)
+You can explore the live website by [clicking here](https://energy.farrel.tech)
 
 The site was developed using Next.js, [TypeScript](https://www.typescriptlang.org/), [Tailwind](https://tailwindcss.com/), [Prismic](https://prismic.io/), [Framer Motion](https://www.framer.com/motion/), and [SendGrid](https://docs.sendgrid.com/pt-br/for-developers/sending-email/api-getting-started).
 
